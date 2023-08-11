@@ -1,0 +1,95 @@
+plugin: openapi
+specFile: ./private-api.yaml
+
+validation:
+  request: true
+
+resources:
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "toy-success"
+    response:
+      statusCode: 201
+      template: true
+      content: '{"session_id": "toy-success", "state": "sT@t3", "redirect_uri": "http://example.net/return"}'
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "toy-authorization-error"
+    response:
+      statusCode: 201
+      template: true
+      content: '{"session_id": "toy-authorization-error", "state": "sT@t3", "redirect_uri": "http://example.net/return"}'
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "test-session-400"
+    response:
+      statusCode: 400
+      template: true
+      content: "{}"
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "test-session-500"
+    response:
+      statusCode: 500
+      template: true
+      content: "{}"
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "toy-success"
+    response:
+      template: true
+      statusCode: 200
+      content: '{"authorizationCode": {"value":"auth-code-${random.uuid()}"}, "state":"sT@t3","redirect_uri":"http://example.net/return"}'
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "toy-authorization-error"
+    response:
+      statusCode: 500
+      content: '{"redirect_uri": "http://example.net", "oauth_error": {"error_description": "gateway", "error": "server_error"}}'
+
+  - method: POST
+    path: /favourite
+    requestHeaders:
+      session-id: "toy-authorization-error"
+    response:
+      template: true
+      statusCode: 500
+      content: '{"redirect_uri": "http://example.net", "oauth_error": {"error_description": "gateway", "error": "server_error"}}'
+
+  - method: POST
+    path: /favourite
+    requestHeaders:
+      session-id: "toy-success"
+    requestBody:
+      anyOf:
+        - jsonPath: $.toy
+          value: "dolls-house"
+        - jsonPath: $.toy
+          value: "jigsaw-puzzle"
+        - jsonPath: $.toy
+          value: "spinning-top"
+        - jsonPath: $.toy
+          value: "train-set"
+    response:
+      statusCode: 200
+      content: "{}"
+
+  - method: POST
+    path: /favourite
+    response:
+      statusCode: 500
