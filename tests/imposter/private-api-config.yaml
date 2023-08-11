@@ -1,0 +1,89 @@
+plugin: openapi
+specFile: ./private-api.yaml
+
+validation:
+  request: true
+
+resources:
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "success"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "success",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net/return"
+        }
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "authorization-error"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "authorization-error",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net/return"
+        }
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "test-session-400"
+    response:
+      statusCode: 400
+      template: true
+      content: |
+        {}
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "test-session-500"
+    response:
+      statusCode: 500
+      template: true
+      content: |
+        {}
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "success"
+    response:
+      template: true
+      statusCode: 200
+      content: |
+        {
+          "authorizationCode": {
+            "value":"auth-code-${random.uuid()}"
+          },
+          "state":"sT@t3",
+          "redirect_uri":"http://example.net/return"
+        }
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "authorization-error"
+    response:
+      statusCode: 500
+      content: |
+        {
+          "redirect_uri": "http://example.net",
+          "oauth_error": {
+            "error_description": "gateway",
+            "error": "server_error"
+          }
+        }
