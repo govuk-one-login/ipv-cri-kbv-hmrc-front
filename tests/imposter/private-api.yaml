@@ -123,6 +123,8 @@ paths:
       responses:
         "200":
           description: "Answered submitted"
+        "404":
+          description: "Does not exist"
         "400":
           description: "Client Error"
           content:
@@ -159,7 +161,7 @@ components:
         client_id:
           type: "string"
           minLength: 1
-          example: "ipv-toy-stub"
+          example: "ipv-stub"
         request:
           type: "string"
     AuthorizationResponse:
