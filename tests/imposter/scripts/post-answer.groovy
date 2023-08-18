@@ -1,8 +1,8 @@
-def parser = new groovy.json.JsonSlurper()
-def body = parser.parseText(context.request.body)
+def parser = new groovy.json.JsonSlurper();
+def body = parser.parseText(context.request.body);
 
-def questionKey = body.key
-def answer = body.value
+def questionKey = body.key;
+def answer = body.value;
 
 def questionData = stores.open("questions").loadAll();
 def questions = questionData.questions;

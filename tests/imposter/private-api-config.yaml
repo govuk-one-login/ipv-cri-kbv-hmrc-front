@@ -4,7 +4,7 @@ specFile: ./private-api.yaml
 pickFirstIfNoneMatch: false
 
 validation:
-  request: false
+  request: true
 
 system:
   stores:
@@ -16,7 +16,7 @@ resources:
     path: /question
     response:
       scriptFile: scripts/get-question.groovy
- 
+
   - method: GET
     path: /question
     requestHeaders:

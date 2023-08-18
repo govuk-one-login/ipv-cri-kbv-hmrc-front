@@ -4,9 +4,7 @@ def questionStore = stores.open("questions");
 def questions = questionStore.load("questions");
 
 def answers = stores.open("answers").loadAll();
-def unansweredQuestions = questions.findAll {
-     question -> !answers.containsKey(question.questionKey)
-}
+def unansweredQuestions = questions.findAll {question -> !answers.containsKey(question.questionKey)};
 
 if (unansweredQuestions.size() === 0) {
     respond {
@@ -15,11 +13,11 @@ if (unansweredQuestions.size() === 0) {
     return
 }
 
-def currentQuestion = unansweredQuestions[0]
+def currentQuestion = unansweredQuestions[0];
 
 respond {
     withStatusCode(200)
     withContent(serializer.toJson(currentQuestion))
 }
 
-questionStore.save("currentQuestionKey", currentQuestion.questionKey)
+questionStore.save("currentQuestionKey", currentQuestion.questionKey);
