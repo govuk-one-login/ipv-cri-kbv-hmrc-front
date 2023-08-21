@@ -23,7 +23,7 @@ if (!result) {
 
 if (answers.containsKey(questionKey)) {
     respond {
-        withStatusCode(400)
+        withStatusCode(422)
         withContent("Question already answered.")
     }
     return
@@ -38,7 +38,7 @@ if (currentQuestionKey != questionKey) {
 }
 
 respond {
-    withStatusCode(201)
+    withStatusCode(202)
 }
 
 answerStore.save(questionKey, answer);
