@@ -14,13 +14,22 @@ system:
 resources:
   - method: GET
     path: /question
+    requestHeaders:
+      session-id: "success"
     response:
       scriptFile: scripts/get-question.groovy
 
   - method: GET
     path: /question
     requestHeaders:
-      session-id: test-question-500
+      session-id: insufficient-questions
+    response:
+      statusCode: 204
+
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id: question-500
     response:
       statusCode: 500
       template: true
@@ -34,7 +43,7 @@ resources:
   - method: POST
     path: /answer
     requestHeaders:
-      session-id: test-answer-500
+      session-id: answer-500
     response:
       statusCode: 500
       template: true
@@ -52,7 +61,22 @@ resources:
         {
           "session_id": "success",
           "state": "sT@t3",
-          "redirect_uri": "http://example.net/return"
+          "redirect_uri": "http://example.net"
+        }
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "insufficient-questions"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "insufficient-questions",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
         }
 
   - method: POST
@@ -67,7 +91,7 @@ resources:
         {
           "session_id": "authorization-error",
           "state": "sT@t3",
-          "redirect_uri": "http://example.net/return"
+          "redirect_uri": "http://example.net"
         }
 
   - method: POST
@@ -105,7 +129,7 @@ resources:
             "value":"auth-code-${random.uuid()}"
           },
           "state":"sT@t3",
-          "redirect_uri":"http://example.net/return"
+          "redirect_uri":"http://example.net"
         }
 
   - method: GET
@@ -121,4 +145,20 @@ resources:
             "error_description": "gateway",
             "error": "server_error"
           }
+        }
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "insufficient-questions"
+    response:
+      template: true
+      statusCode: 200
+      content: |
+        {
+          "authorizationCode": {
+            "value":"auth-code-${random.uuid()}"
+          },
+          "state":"sT@t3",
+          "redirect_uri":"http://example.net"
         }
