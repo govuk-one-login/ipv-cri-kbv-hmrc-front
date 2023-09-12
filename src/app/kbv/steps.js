@@ -1,11 +1,20 @@
+const loadQuestionController = require("./controllers/load-question");
+
 module.exports = {
   "/": {
     resetJourney: true,
     entryPoint: true,
     skip: true,
-    next: "intro",
+    next: "load-question",
   },
-  "/intro": {
+  "/load-question": {
+    controller: loadQuestionController,
+    skip: true,
+    next: loadQuestionController.prototype.next,
+  },
+  "/done": {
+    skip: true,
+    noPost: true,
     next: "/oauth2/callback",
   },
 };
