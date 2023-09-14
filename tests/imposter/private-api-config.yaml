@@ -74,7 +74,7 @@ resources:
     path: /session
     requestBody:
       jsonPath: $.client_id
-      value: "test-session-400"
+      value: "session-400"
     response:
       statusCode: 400
       template: true
@@ -85,7 +85,7 @@ resources:
     path: /session
     requestBody:
       jsonPath: $.client_id
-      value: "test-session-500"
+      value: "session-500"
     response:
       statusCode: 500
       template: true
