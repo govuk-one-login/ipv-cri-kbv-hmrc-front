@@ -1,4 +1,5 @@
 const {
+  setAssetsPath,
   setAPIConfig,
   setOAuthPaths,
 } = require("../../../../src/lib/settings.js");
@@ -43,6 +44,14 @@ describe("settings", () => {
         "APP.PATHS.ENTRYPOINT",
         "/website/subpath"
       );
+    });
+  });
+
+  describe("setAssetsPath", () => {
+    it("should set 'APP.ASSET_PATH", () => {
+      setAssetsPath({ app, assetsPath: "/website/assetpath" });
+
+      expect(app.set).toBeCalledWith("APP.ASSET_PATH", "/website/assetpath");
     });
   });
 });

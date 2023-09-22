@@ -12,12 +12,17 @@ const setHeaders = commonExpress.lib.headers;
 const setScenarioHeaders = commonExpress.lib.scenarioHeaders;
 const setAxiosDefaults = commonExpress.lib.axios;
 
-const { setAPIConfig, setOAuthPaths } = require("./lib/settings.js");
+const {
+  setAPIConfig,
+  setOAuthPaths,
+  setAssetsPath,
+} = require("./lib/settings.js");
 const {
   setGTM,
 } = require("@govuk-one-login/di-ipv-cri-common-express/src/lib/settings");
 const {
   getGTM,
+  getAssetPath,
 } = require("@govuk-one-login/di-ipv-cri-common-express/src/lib/locals");
 const {
   setI18n,
@@ -111,6 +116,8 @@ setAPIConfig({
 
 setOAuthPaths({ app, entryPointPath: APP.PATHS.KBV });
 
+setAssetsPath({ app, assetsPath: APP.ASSETS_PATH });
+
 setGTM({
   app,
   id: APP.ANALYTICS.ID,
@@ -118,6 +125,7 @@ setGTM({
 });
 
 router.use(getGTM);
+router.use(getAssetPath);
 
 router.use(setScenarioHeaders);
 router.use(setAxiosDefaults);
