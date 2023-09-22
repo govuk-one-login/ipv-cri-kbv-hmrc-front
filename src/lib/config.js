@@ -18,6 +18,7 @@ module.exports = {
       GA4_ID: process.env.ANALYTICS_GA4_ID,
       DOMAIN: process.env.ANALYTICS_DOMAIN || "localhost",
     },
+    ASSETS_PATH: process.env.ASSETS_BASE_URL || "/public",
   },
   AWS_REGION: process.env.AWS_REGION || "eu-west-2",
   PORT: process.env.PORT || 5000,

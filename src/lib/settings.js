@@ -8,4 +8,8 @@ module.exports = {
   setOAuthPaths: ({ app, entryPointPath }) => {
     app.set("APP.PATHS.ENTRYPOINT", entryPointPath);
   },
+
+  setAssetsPath: ({ app, assetsPath }) => {
+    app.set("APP.ASSET_PATH", assetsPath);
+  },
 };
