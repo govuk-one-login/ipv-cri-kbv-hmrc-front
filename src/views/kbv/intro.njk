@@ -1,0 +1,9 @@
+{% extends "base-form.njk" %}
+
+{% set hmpoPageKey = "intro" %}
+{% set hmpoPageContent = "intro" %}
+{% set gtmJourney = "kbv-hmrc - start" %}
+
+{% block submitButton %}
+  {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
+{% endblock %}
