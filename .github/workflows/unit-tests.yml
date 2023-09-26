@@ -6,6 +6,10 @@ on:
       - reopened
       - ready_for_review
       - synchronize
+  push:
+    branches:
+      - main
+
 jobs:
   test:
     runs-on: ubuntu-latest
