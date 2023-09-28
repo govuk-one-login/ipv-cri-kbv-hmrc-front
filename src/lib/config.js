@@ -6,6 +6,7 @@ module.exports = {
     PATHS: {
       SESSION: "session",
       AUTHORIZATION: "authorization",
+      QUESTION: "question",
     },
   },
   APP: {

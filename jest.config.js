@@ -30,6 +30,7 @@ module.exports = {
       lines: 100,
     },
   },
+  setupFilesAfterEnv: ["./tests/unit/lib/helpers"],
   testMatch: ["**/tests/unit/**/*.test.js"],
   testEnvironment: "node",
 };
