@@ -18,6 +18,13 @@ jobs:
         with:
           node-version: 18.x
 
+      - name: Login to GDS Dev Dynatrace Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: khw46367.live.dynatrace.com
+          username: khw46367
+          password: ${{ secrets.DYNATRACE_PAAS_TOKEN }}
+
       - name: Start Docker
         run: docker compose up web mocks --detach
         working-directory: tests/docker
