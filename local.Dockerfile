@@ -4,7 +4,7 @@ ENV PORT 5000
 
 WORKDIR /app
 
-COPY package.json.hbs package-lock.json ./
+COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . ./

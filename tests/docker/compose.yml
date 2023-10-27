@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  mocks:
+    image: outofcoffee/imposter:3.25.1
+    volumes:
+      - "../imposter:/opt/imposter/config"
+    ports:
+      - "8050:8080"
+    network_mode: "host"
+
+  web:
+    build:
+      context: ../..
+      dockerfile: local.Dockerfile
+    environment:
+      REDIS_SESSION_URL: db
+      API_BASE_URL: http://localhost:8080
+      PORT: 5050
+      NODE_ENV: development
+    ports:
+      - "5050:5050"
+    depends_on:
+      - mocks
+    network_mode: "host"
+
+  cucumber:
+    build:
+      context: ../browser
+      dockerfile: Dockerfile
+    environment:
+      MOCK_API: true
+      GITHUB_ACTIONS: true
+      WEBSITE_HOST: http://localhost:5050
+    volumes:
+      - ./reports:/reports
+    network_mode: "host"
