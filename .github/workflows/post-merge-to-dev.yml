@@ -1,0 +1,24 @@
+name: Deploy to dev
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Deploy Manually
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    name: Deploy to dev
+    env:
+      AWS_REGION: eu-west-2
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: "Push image and template"
+        uses: govuk-one-login/devplatform-upload-action-ecr@1.0.5
+        with:
+          artifact-bucket-name: ${{ secrets.DEV_ARTIFACT_BUCKET_NAME }}
+          template-file: deploy/template.yaml
+          role-to-assume-arn: ${{ secrets.DEV_GH_ACTIONS_ROLE_ARN }}
+          ecr-repo-name: ${{ secrets.DEV_ECR_NAME_FRONT }}
