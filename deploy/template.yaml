@@ -37,9 +37,7 @@ Parameters:
 Conditions:
   IsCSLSDisabled: !And
     - !Not
-      - !Or
-        - !Equals [!Ref CriIdentifier, "di-ipv-cri-hmrc-kbv-api"]
-        - !Equals [!Ref CriIdentifier, "di-ipv-cri-kbv-hmrc-api"]
+      - !Equals [!Ref CriIdentifier, "di-ipv-cri-kbv-hmrc-api"]
     - !Not
       - !Or
         - !Equals [!Ref Environment, "dev"]
