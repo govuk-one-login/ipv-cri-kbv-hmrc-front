@@ -1,0 +1,619 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Transform:
+  - AWS::Serverless-2016-10-31
+Description: >-
+  This creates the necessary components to deploy HMRC KBV CRI Frontend onto ECS
+  Fargate within an existing VPC and private subnets (imported parameters).
+  HMRC KBV Front can be invoked via the public API Gateway on the url in the
+  FrontUrl output.
+
+  The ingress route in summary is: API Gateway -> VPC link -> Private ALB ->
+  HMRC KBV Front ECS Service
+
+  HMRC KBV Front egress to HMRC KBV API Gateway is via a NAT Gateway which
+  should have a route in the provided private subnets' route table.
+
+Parameters:
+  Environment:
+    Description: The name of the environment to deploy to.
+    Type: String
+    AllowedPattern: ((production)|(integration)|(staging)|(build)|(dev))
+  VpcStackName:
+    Description: >
+      The name of the stack that defines the VPC in which this container will
+      run.
+    Type: String
+  PermissionsBoundary:
+    Description: "The ARN of the permissions boundary to apply when creating IAM roles"
+    Type: String
+    Default: "none"
+
+  CriIdentifier:
+    Description: "The unique credential issuer identifier"
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: "/common-cri-parameters/CriIdentifier"
+
+Conditions:
+  IsCSLSDisabled: !And
+    - !Not
+      - !Equals [!Ref CriIdentifier, "di-ipv-cri-kbv-hmrc-api"]
+    - !Not
+      - !Or
+        - !Equals [!Ref Environment, "dev"]
+        - !Equals [!Ref Environment, "build"]
+        - !Equals [!Ref Environment, "staging"]
+        - !Equals [!Ref Environment, "integration"]
+        - !Equals [!Ref Environment, "production"]
+
+  IsNotDevelopment: !Or
+    - !Equals [!Ref Environment, build]
+    - !Equals [!Ref Environment, staging]
+    - !Equals [!Ref Environment, integration]
+    - !Equals [!Ref Environment, production]
+  IsProduction: !Equals [!Ref Environment, production]
+  UsePermissionsBoundary:
+    Fn::Not:
+      - Fn::Equals:
+          - !Ref PermissionsBoundary
+          - "none"
+
+Mappings:
+  # see https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html
+  ElasticLoadBalancerAccountIds:
+    eu-west-2:
+      AccountId: 652711504416
+
+Resources:
+  # Security Groups for the ECS service and load balancer
+  LoadBalancerSG:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: >-
+        KBV HMRC Front LoadBalancer Security Group
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          Description: Allow from anyone on port 80
+          FromPort: 80
+          IpProtocol: tcp
+          ToPort: 80
+      VpcId:
+        Fn::ImportValue: !Sub "${VpcStackName}-VpcId"
+
+  LoadBalancerSGEgressToECSSecurityGroup:
+    Type: "AWS::EC2::SecurityGroupEgress"
+    Properties:
+      GroupId: !GetAtt LoadBalancerSG.GroupId
+      IpProtocol: tcp
+      Description: >-
+        Egress between the KBV HMRC Front load balancer and
+        the KBV HMRC Front ECS security group
+      DestinationSecurityGroupId: !GetAtt ECSSecurityGroup.GroupId
+      FromPort: 8080
+      ToPort: 8080
+
+  ECSSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: >-
+        KBV HMRC Front ECS Security Group permitting outbound
+        to anywhere.
+      SecurityGroupEgress:
+        - CidrIp: 0.0.0.0/0
+          Description: Allow all outbound traffic by default
+          IpProtocol: "-1"
+      VpcId:
+        Fn::ImportValue: !Sub "${VpcStackName}-VpcId"
+
+  ECSSecurityGroupIngressFromLoadBalancer:
+    Type: "AWS::EC2::SecurityGroupIngress"
+    Properties:
+      IpProtocol: tcp
+      Description: >-
+        KBV HMRC Front ECS permits inbound from the KBV Front
+        load balancer.
+      FromPort: 8080
+      ToPort: 8080
+      GroupId: !GetAtt ECSSecurityGroup.GroupId
+      SourceSecurityGroupId: !GetAtt LoadBalancerSG.GroupId
+
+  AccessLogsBucket:
+    Condition: IsNotDevelopment
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-${Environment}-access-logs
+      VersioningConfiguration:
+        Status: "Enabled"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  AccessLogsBucketPolicy:
+    Condition: IsNotDevelopment
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref AccessLogsBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub
+                - "arn:aws:iam::${ElbAccountId}:root"
+                - ElbAccountId:
+                    !FindInMap [
+                      ElasticLoadBalancerAccountIds,
+                      !Ref AWS::Region,
+                      AccountId,
+                    ]
+            Action:
+              - s3:PutObject
+            Resource:
+              - !Sub arn:aws:s3:::${AccessLogsBucket}/${AWS::StackName}-${Environment}/AWSLogs/${AWS::AccountId}/*
+
+  # Private Application Load Balancer
+  LoadBalancer:
+    Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
+    Properties:
+      Scheme: internal
+      SecurityGroups:
+        - !GetAtt LoadBalancerSG.GroupId
+      Subnets:
+        - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdA"
+        - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdB"
+      Type: application
+      LoadBalancerAttributes: !If
+        - IsNotDevelopment
+        - - Key: access_logs.s3.enabled
+            Value: true
+          - Key: access_logs.s3.bucket
+            Value: !Ref AccessLogsBucket
+          - Key: access_logs.s3.prefix
+            Value: !Sub ${AWS::StackName}-${Environment}
+        - !Ref AWS::NoValue
+
+  LoadBalancerListenerTargetGroupECS:
+    Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
+    Properties:
+      HealthCheckEnabled: TRUE
+      HealthCheckProtocol: HTTP
+      HealthCheckPath: /healthcheck
+      Matcher:
+        HttpCode: 200
+      Port: 8080
+      Protocol: HTTP
+      TargetType: ip
+      VpcId:
+        Fn::ImportValue: !Sub "${VpcStackName}-VpcId"
+      TargetGroupAttributes:
+        - Key: deregistration_delay.timeout_seconds
+          Value: 60
+
+  LoadBalancerListener:
+    Type: "AWS::ElasticLoadBalancingV2::Listener"
+    # checkov:skip=CKV_AWS_2:Certificate generation must be resolved before the listener can use HTTPS.
+    # checkov:skip=CKV_AWS_103:The load balancer cannot use TLS v1.2 until HTTPS is enabled
+    Properties:
+      DefaultActions:
+        - TargetGroupArn: !Ref LoadBalancerListenerTargetGroupECS
+          Type: forward
+      LoadBalancerArn: !Ref LoadBalancer
+      Port: 80
+      Protocol: HTTP
+
+  # ECS cluster, service and task definition
+  EcsCluster:
+    Type: "AWS::ECS::Cluster"
+    Properties:
+      ClusterSettings:
+        - Name: containerInsights
+          Value: enabled
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-ECSCluster"
+        - Key: Product
+          Value: "GOV.UK Sign In"
+        - Key: System
+          Value: "KBV HMRC CRI"
+        - Key: Environment
+          Value: !Sub "${Environment}"
+
+  EcsService:
+    Type: "AWS::ECS::Service"
+    Properties:
+      Cluster: !Ref EcsCluster
+      DeploymentConfiguration:
+        MaximumPercent: 200
+        MinimumHealthyPercent: 50
+        DeploymentCircuitBreaker:
+          Enable: TRUE
+          Rollback: TRUE
+      DesiredCount: 2
+      EnableECSManagedTags: false
+      HealthCheckGracePeriodSeconds: 60
+      LaunchType: FARGATE
+      LoadBalancers:
+        - ContainerName: app
+          ContainerPort: 8080
+          TargetGroupArn: !Ref LoadBalancerListenerTargetGroupECS
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: DISABLED
+          SecurityGroups:
+            - !GetAtt ECSSecurityGroup.GroupId
+          Subnets:
+            - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdA"
+            - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdB"
+      TaskDefinition: !Ref ECSServiceTaskDefinition
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-ECS"
+        - Key: Product
+          Value: "GOV.UK Sign In"
+        - Key: System
+          Value: "KBV HMRC CRI"
+        - Key: Environment
+          Value: !Sub "${Environment}"
+    DependsOn:
+      - LoadBalancerListener
+
+  ECSAccessLogsGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/vendedlogs/aws/ecs/${AWS::StackName}-Front-ECS
+      RetentionInDays: 14
+
+  ECSAccessLogsGroupSubscriptionFilterCSLS:
+    Type: AWS::Logs::SubscriptionFilter
+    Condition: IsCSLSDisabled
+    Properties:
+      DestinationArn: "arn:aws:logs:eu-west-2:885513274347:destination:csls_cw_logs_destination_prodpython"
+      FilterPattern: ""
+      LogGroupName: !Ref ECSAccessLogsGroup
+
+  ECSServiceTaskDefinition:
+    Type: "AWS::ECS::TaskDefinition"
+    Properties:
+      ContainerDefinitions:
+        - Essential: true
+          Image: CONTAINER-IMAGE-PLACEHOLDER
+          Name: app
+          Environment:
+            - Name: API_BASE_URL
+              Value: !Sub
+                - "https://${APIGatewayId}-${VpceId}.execute-api.${AWS::Region}.amazonaws.com/${Environment}"
+                - APIGatewayId:
+                    Fn::ImportValue: kbv-hmrc-cri-api-PrivateApiGatewayId
+                  VpceId:
+                    Fn::ImportValue: cri-vpc-ExecuteApiGatewayEndpointId
+                  Environment: !Ref Environment
+            - Name: EXTERNAL_WEBSITE_HOST
+              Value: !GetAtt ApiGwHttpEndpoint.ApiEndpoint
+            - Name: SESSION_TABLE_NAME
+              Value: !Sub
+                - "${AWS::StackName}-sessions-${Environment}"
+                - Environment: !Ref Environment
+            - Name: GTM_ID
+              Value: !If [IsProduction, "GTM-TT5HDKV", "GTM-TK92W68"]
+            - Name: ANALYTICS_DOMAIN
+              Value:
+                !If [
+                  IsProduction,
+                  "account.gov.uk",
+                  !Sub "${Environment}.account.gov.uk",
+                ]
+          PortMappings:
+            - ContainerPort: 8080
+              Protocol: tcp
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref ECSAccessLogsGroup
+              awslogs-region: !Sub ${AWS::Region}
+              awslogs-stream-prefix: !Sub ${AWS::StackName}-${Environment}
+      Cpu: "512"
+      ExecutionRoleArn: !GetAtt ECSTaskExecutionRole.Arn
+      Memory: "1024"
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      TaskRoleArn: !GetAtt ECSTaskRole.Arn
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-TaskDefinition"
+        - Key: Product
+          Value: "GOV.UK Sign In"
+        - Key: System
+          Value: "KBV HMRC CRI"
+        - Key: Environment
+          Value: !Sub "${Environment}"
+
+  ECSTaskExecutionRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: "sts:AssumeRole"
+            Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+        Version: 2012-10-17
+      Policies:
+        - PolicyName: PullFrontImage
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "ecr:BatchGetImage"
+                  - "ecr:GetDownloadUrlForLayer"
+                  - "ecr:GetAuthorizationToken"
+                Resource:
+                  - "*"
+              - Effect: Allow
+                Action:
+                  - "logs:CreateLogStream"
+                  - "logs:PutLogEvents"
+                Resource:
+                  - !GetAtt "ECSAccessLogsGroup.Arn"
+                  - !Sub "${ECSAccessLogsGroup.Arn}:*"
+      PermissionsBoundary: !If
+        - UsePermissionsBoundary
+        - !Ref PermissionsBoundary
+        - !Ref AWS::NoValue
+
+  ECSTaskRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: "sts:AssumeRole"
+            Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+        Version: 2012-10-17
+      Policies:
+        - PolicyName: DynamoDBSessionAccess
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "dynamodb:BatchGetItem"
+                  - "dynamodb:DescribeTable"
+                  - "dynamodb:GetItem"
+                  - "dynamodb:Query"
+                  - "dynamodb:Scan"
+                  - "dynamodb:BatchWriteItem"
+                  - "dynamodb:DeleteItem"
+                  - "dynamodb:UpdateItem"
+                  - "dynamodb:PutItem"
+                Resource:
+                  - !GetAtt SessionsTable.Arn
+      PermissionsBoundary: !If
+        - UsePermissionsBoundary
+        - !Ref PermissionsBoundary
+        - !Ref AWS::NoValue
+
+  # Create the VPC Link to join the API Gateway to the
+  # private Load Balancer in front of Passport Front ECS
+  # Service.
+  VpcLink:
+    Type: "AWS::ApiGatewayV2::VpcLink"
+    Properties:
+      Name: ApiGwVpcLinkToLoadBalancer
+      SubnetIds:
+        - Fn::ImportValue: !Sub ${VpcStackName}-PrivateSubnetIdA
+        - Fn::ImportValue: !Sub ${VpcStackName}-PrivateSubnetIdB
+      SecurityGroupIds: []
+  ApiGwHttpEndpoint:
+    Type: "AWS::ApiGatewayV2::Api"
+    Properties:
+      Name: !Sub ${AWS::StackName}-${Environment}
+      ProtocolType: HTTP
+
+  ApiGwHttpEndpointIntegration:
+    Type: "AWS::ApiGatewayV2::Integration"
+    Properties:
+      ApiId: !Ref ApiGwHttpEndpoint
+      IntegrationType: HTTP_PROXY
+      ConnectionId:
+        Fn::ImportValue: !Sub "${VpcStackName}-VpcLinkId"
+      ConnectionType: VPC_LINK
+      IntegrationMethod: ANY
+      IntegrationUri: !Ref LoadBalancerListener
+      PayloadFormatVersion: "1.0"
+
+  APIGWRoute:
+    Type: "AWS::ApiGatewayV2::Route"
+    Properties:
+      ApiId: !Ref ApiGwHttpEndpoint
+      RouteKey: "ANY /{proxy+}"
+      Target: !Join
+        - /
+        - - integrations
+          - !Ref ApiGwHttpEndpointIntegration
+
+  APIStageDefault:
+    Type: "AWS::ApiGatewayV2::Stage"
+    Properties:
+      ApiId: !Ref ApiGwHttpEndpoint
+      StageName: $default
+      AutoDeploy: true
+      AccessLogSettings:
+        DestinationArn: !GetAtt APIGWAccessLogsGroup.Arn
+        Format: >-
+          {
+          "requestId":"$context.requestId",
+          "ip": "$context.identity.sourceIp",
+          "requestTime":"$context.requestTime",
+          "httpMethod":"$context.httpMethod",
+          "path": "$context.path",
+          "routeKey":"$context.routeKey",
+          "status":"$context.status",
+          "protocol":"$context.protocol",
+          "responseLength":"$context.responseLength",
+          "responseLatency":"$context.responseLatency"
+          }
+
+  APIGWAccessLogsGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/vendedlogs/aws/apigateway/${AWS::StackName}-API-GW-AccessLogs
+      RetentionInDays: 30
+
+  APIGWAccessLogsGroupSubscriptionFilterCSLS:
+    Type: AWS::Logs::SubscriptionFilter
+    Condition: IsCSLSDisabled
+    Properties:
+      DestinationArn: "arn:aws:logs:eu-west-2:885513274347:destination:csls_cw_logs_destination_prodpython"
+      FilterPattern: ""
+      LogGroupName: !Ref APIGWAccessLogsGroup
+
+  # ECS Autoscaling
+  # The number of pods will increase when the configured CPU utilization is breached for more than 3 minutes.
+  # Scaling down will occur after 15 minutes of 90% utilization of the configured CPU utilization.
+
+  ECSAutoScalingTarget:
+    Condition: IsProduction
+    Type: AWS::ApplicationAutoScaling::ScalableTarget
+    Properties:
+      MaxCapacity: 4
+      MinCapacity: 2
+      ResourceId: !Join
+        - "/"
+        - - "service"
+          - !Ref EcsCluster
+          - !GetAtt EcsService.Name
+      RoleARN: !Sub "arn:aws:iam::${AWS::AccountId}:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService"
+      ScalableDimension: ecs:service:DesiredCount
+      ServiceNamespace: ecs
+
+  ECSAutoScalingPolicy:
+    Condition: IsProduction
+    DependsOn: ECSAutoScalingTarget
+    Type: AWS::ApplicationAutoScaling::ScalingPolicy
+    Properties:
+      PolicyName: ECSAutoScalingPolicy
+      PolicyType: TargetTrackingScaling
+      ResourceId: !Join
+        - "/"
+        - - "service"
+          - !Ref EcsCluster
+          - !GetAtt EcsService.Name
+      ScalableDimension: ecs:service:DesiredCount
+      ServiceNamespace: ecs
+      TargetTrackingScalingPolicyConfiguration:
+        PredefinedMetricSpecification:
+          PredefinedMetricType: ECSServiceAverageCPUUtilization
+        TargetValue: 70.0
+
+  SessionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      # checkov:skip=CKV_AWS_28: Point in time recovery is not necessary for this table.
+      TableName: !Sub "${AWS::StackName}-sessions-${Environment}"
+      BillingMode: "PAY_PER_REQUEST"
+      AttributeDefinitions:
+        - AttributeName: "id"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "id"
+          KeyType: "HASH"
+      TimeToLiveSpecification:
+        AttributeName: "expires"
+        Enabled: true
+      SSESpecification:
+        # checkov:skip=CKV_AWS_119: Implement Customer Managed Keys in PYIC-1391
+        SSEEnabled: true
+        SSEType: KMS
+
+  NoTaskCountAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: !Sub KBV HMRC ${Environment} frontend no ECS service tasks
+      ActionsEnabled: true
+      AlarmActions:
+        - !ImportValue core-infrastructure-AlarmTopic
+      OKActions: []
+      InsufficientDataActions: []
+      MetricName: TaskCount
+      Namespace: ECS/ContainerInsights
+      Statistic: Average
+      Dimensions:
+        - Name: ClusterName
+          Value: !Ref EcsCluster
+      Period: 60
+      EvaluationPeriods: 2
+      DatapointsToAlarm: 2
+      Threshold: 1
+      ComparisonOperator: LessThanThreshold
+      TreatMissingData: breaching
+
+  OnlyOneTaskCountAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: !Sub KBV ${Environment} frontend below desired ECS service tasks
+      ActionsEnabled: true
+      AlarmActions:
+        - !ImportValue core-infrastructure-AlarmTopic
+      OKActions: []
+      InsufficientDataActions: []
+      MetricName: TaskCount
+      Namespace: ECS/ContainerInsights
+      Statistic: Average
+      Dimensions:
+        - Name: ClusterName
+          Value: !Ref EcsCluster
+      Period: 300
+      EvaluationPeriods: 3
+      DatapointsToAlarm: 3
+      Threshold: 2
+      ComparisonOperator: LessThanThreshold
+      TreatMissingData: breaching
+
+  5XXOnELB:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: !Sub KBV HRMC ${Environment} frontend 5XX count
+      ActionsEnabled: true
+      AlarmActions:
+        - !ImportValue core-infrastructure-AlarmTopic
+      OKActions: []
+      InsufficientDataActions: []
+      MetricName: HTTPCode_Target_5XX_Count
+      Namespace: AWS/ApplicationELB
+      Statistic: Sum
+      Dimensions:
+        - Name: TargetGroup
+          Value: !Ref LoadBalancerListenerTargetGroupECS
+        - Name: LoadBalancer
+          Value: !Ref LoadBalancer
+      Period: 60
+      EvaluationPeriods: 5
+      DatapointsToAlarm: 5
+      Threshold: 1
+      ComparisonOperator: GreaterThanThreshold
+      TreatMissingData: notBreaching
+
+Outputs:
+  FrontUrl:
+    Description: >-
+      The API Gateway URL which KBV Front can be invoked on.
+    Value: !GetAtt ApiGwHttpEndpoint.ApiEndpoint
+  FrontGatewayId:
+    Description: KBV Front API Gateway ID
+    Export:
+      Name: !Sub "${AWS::StackName}-GatewayId"
+    Value: !Ref ApiGwHttpEndpoint
+  LoadBalancerArn:
+    Description: The Fargate Front End Load Balancer ARN
+    Export:
+      Name: !Sub "${AWS::StackName}-LoadBalancer"
+    Value: !Ref LoadBalancer
