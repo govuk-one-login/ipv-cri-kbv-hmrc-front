@@ -1,14 +1,14 @@
-name: Deploy to build
+name: Deploy to dev
 on:
   push:
-    branches:
+    branches-ignore:
       - main
   workflow_dispatch: # Deploy Manually
 
 jobs:
-  deploy-to-build:
+  deploy-to-dev:
     runs-on: ubuntu-latest
-    name: Deploy to build
+    name: Deploy to dev
     env:
       AWS_REGION: eu-west-2
     permissions:
@@ -22,7 +22,7 @@ jobs:
       - name: Set up AWS creds
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.BUILD_GH_ACTIONS_ROLE_ARN }}
+          role-to-assume: ${{ secrets.DEV_GH_ACTIONS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
@@ -39,8 +39,8 @@ jobs:
       - name: "Push image and template"
         uses: govuk-one-login/devplatform-upload-action-ecr@1.0.5
         with:
-          artifact-bucket-name: ${{ secrets.BUILD_ARTIFACT_BUCKET_NAME }}
-          container-sign-kms-key-arn: ${{ secrets.BUILD_CONTAINER_SIGN_KMS_KEY }}
+          artifact-bucket-name: ${{ secrets.DEV_ARTIFACT_BUCKET_NAME }}
+          container-sign-kms-key-arn: ${{ secrets.DEV_CONTAINER_SIGN_KMS_KEY }}
           template-file: deploy/template.yaml
-          role-to-assume-arn: ${{ secrets.BUILD_GH_ACTIONS_ROLE_ARN }}
-          ecr-repo-name: ${{ secrets.BUILD_ECR_NAME_FRONT }}
+          role-to-assume-arn: ${{ secrets.DEV_GH_ACTIONS_ROLE_ARN }}
+          ecr-repo-name: ${{ secrets.DEV_ECR_NAME_FRONT }}
