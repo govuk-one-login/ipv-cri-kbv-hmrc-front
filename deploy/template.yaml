@@ -324,28 +324,28 @@ Resources:
               ValueFrom: !Join
                 - ""
                 - - !FindInMap [
-                  EnvironmentConfiguration,
-                  !Ref Environment,
-                  dynatraceSecretArn,
-                ]
+                      EnvironmentConfiguration,
+                      !Ref Environment,
+                      dynatraceSecretArn,
+                    ]
                   - ":DT_TENANT::"
             - Name: DT_TENANTTOKEN
               ValueFrom: !Join
                 - ""
                 - - !FindInMap [
-                  EnvironmentConfiguration,
-                  !Ref Environment,
-                  dynatraceSecretArn,
-                ]
+                      EnvironmentConfiguration,
+                      !Ref Environment,
+                      dynatraceSecretArn,
+                    ]
                   - ":DT_TENANTTOKEN::"
             - Name: DT_CONNECTION_POINT
               ValueFrom: !Join
                 - ""
                 - - !FindInMap [
-                  EnvironmentConfiguration,
-                  !Ref Environment,
-                  dynatraceSecretArn,
-                ]
+                      EnvironmentConfiguration,
+                      !Ref Environment,
+                      dynatraceSecretArn,
+                    ]
                   - ":DT_CONNECTION_POINT::"
           PortMappings:
             - ContainerPort: 8080
