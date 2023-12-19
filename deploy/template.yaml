@@ -321,40 +321,32 @@ Resources:
                 ]
           Secrets:
             - Name: DT_TENANT
-              ValueFrom: !Sub
-                - "${Environment}:DT_TENANT::"
-                - Prefix: !Select
-                    - 1
-                    - !Split
-                      - "::"
-                      - !FindInMap
-                        - EnvironmentConfiguration
-                        - !Ref Environment
-                        - dynatraceSecretArn
-
+              ValueFrom: !Join
+                - ""
+                - - !FindInMap [
+                      EnvironmentConfiguration,
+                      !Ref Environment,
+                      dynatraceSecretArn,
+                    ]
+                  - ":DT_TENANT::"
             - Name: DT_TENANTTOKEN
-              ValueFrom: !Sub
-                - "${Environment}:DT_TENANTTOKEN::"
-                - Prefix: !Select
-                    - 1
-                    - !Split
-                      - "::"
-                      - !FindInMap
-                        - EnvironmentConfiguration
-                        - !Ref Environment
-                        - dynatraceSecretArn
-
+              ValueFrom: !Join
+                - ""
+                - - !FindInMap [
+                      EnvironmentConfiguration,
+                      !Ref Environment,
+                      dynatraceSecretArn,
+                    ]
+                  - ":DT_TENANTTOKEN::"
             - Name: DT_CONNECTION_POINT
-              ValueFrom: !Sub
-                - "${Environment}:DT_CONNECTION_POINT::"
-                - Prefix: !Select
-                    - 1
-                    - !Split
-                      - "::"
-                      - !FindInMap
-                        - EnvironmentConfiguration
-                        - !Ref Environment
-                        - dynatraceSecretArn
+              ValueFrom: !Join
+                - ""
+                - - !FindInMap [
+                      EnvironmentConfiguration,
+                      !Ref Environment,
+                      dynatraceSecretArn,
+                    ]
+                  - ":DT_CONNECTION_POINT::"
           PortMappings:
             - ContainerPort: 8080
               Protocol: tcp
