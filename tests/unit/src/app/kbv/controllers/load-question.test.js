@@ -49,7 +49,7 @@ describe("question controller", () => {
 
     describe("on API failure", () => {
       it("should call next with error", async () => {
-        let error = new Error("Async error message");
+        const error = new Error("Async error message");
         req.axios.get = jest.fn().mockRejectedValue(error);
 
         await controller.saveValues(req, res, next);
@@ -64,13 +64,13 @@ describe("question controller", () => {
     it('should route to "question" with a question', () => {
       req.session.question = {};
 
-      let route = controller.next(req);
+      const route = controller.next(req);
 
       expect(route).toBe("question");
     });
 
     it('should route to "done" with a question', () => {
-      let route = controller.next(req);
+      const route = controller.next(req);
 
       expect(route).toBe("done");
     });

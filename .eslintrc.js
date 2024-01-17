@@ -31,6 +31,11 @@ module.exports = {
       files: "tests/unit/**/*",
       plugins: ["jest"],
       extends: ["plugin:jest/style", "plugin:jest/recommended"],
+      globals: {
+        req: true,
+        res: true,
+        next: true,
+      },
     },
     {
       files: "tests/**/*",

@@ -16,19 +16,21 @@ describe("settings", () => {
     it("should set 'API.API_BASE_URL", () => {
       setAPIConfig({ app, baseUrl: "http://example.com" });
 
-      expect(app.set).toBeCalledWith("API.BASE_URL", "http://example.com");
+      expect(app.set).toHaveBeenCalledWith(
+        "API.BASE_URL",
+        "http://example.com"
+      );
     });
 
     it("should set 'API.PATHS.SESSION", () => {
       setAPIConfig({ app, sessionPath: "/api/session" });
-
-      expect(app.set).toBeCalledWith("API.PATHS.SESSION", "/api/session");
+      expect(app.set).toHaveBeenCalledWith("API.PATHS.SESSION", "/api/session");
     });
 
-    it("should set 'API.PATHS.SESSION", () => {
+    it("should set 'API.PATHS.AUTHORIZATION", () => {
       setAPIConfig({ app, authorizationPath: "/api/authorization" });
 
-      expect(app.set).toBeCalledWith(
+      expect(app.set).toHaveBeenCalledWith(
         "API.PATHS.AUTHORIZATION",
         "/api/authorization"
       );
@@ -39,7 +41,7 @@ describe("settings", () => {
     it("should set 'APP.PATHS.ENTRYPOINT", () => {
       setOAuthPaths({ app, entryPointPath: "/website/subpath" });
 
-      expect(app.set).toBeCalledWith(
+      expect(app.set).toHaveBeenCalledWith(
         "APP.PATHS.ENTRYPOINT",
         "/website/subpath"
       );
