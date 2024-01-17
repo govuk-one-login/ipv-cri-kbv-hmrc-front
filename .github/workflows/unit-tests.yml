@@ -21,12 +21,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
+          cache: npm
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm ci
-
-      - name: Run lint
-        run: npm run lint
 
       - name: Run test
         run: npm run test
