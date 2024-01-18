@@ -45,6 +45,30 @@ describe("question controller", () => {
         expect(next).toHaveBeenCalledTimes(1);
         expect(next).toHaveBeenCalledWith();
       });
+
+      describe("with 200 response", () => {
+        it("should set question", async () => {
+          req.axios.get = jest
+            .fn()
+            .mockResolvedValue({ status: 200, data: { key: "value" } });
+
+          await controller.saveValues(req, res, next);
+
+          expect(req.session.question).toEqual({ key: "value" });
+        });
+      });
+
+      describe("with 204 response", () => {
+        it("should not set question", async () => {
+          req.axios.get = jest
+            .fn()
+            .mockResolvedValue({ status: 204, data: { key: "value" } });
+
+          await controller.saveValues(req, res, next);
+
+          expect(req.session.question).toBeUndefined();
+        });
+      });
     });
 
     describe("on API failure", () => {
@@ -60,19 +84,19 @@ describe("question controller", () => {
     });
   });
 
-  describe("#next", () => {
-    it('should route to "question" with a question', () => {
+  describe("#hasQuestion", () => {
+    it("should return true with a question", () => {
       req.session.question = {};
 
-      const route = controller.next(req);
+      const hasQuestion = controller.hasQuestion(req);
 
-      expect(route).toBe("question");
+      expect(hasQuestion).toBeTruthy();
     });
 
-    it('should route to "done" with a question', () => {
-      const route = controller.next(req);
+    it("should return false without question", () => {
+      const hasQuestion = controller.hasQuestion(req);
 
-      expect(route).toBe("done");
+      expect(hasQuestion).toBeFalsy();
     });
   });
 });

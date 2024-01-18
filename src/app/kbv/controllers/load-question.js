@@ -17,7 +17,9 @@ class LoadQuestionController extends BaseController {
           },
         });
 
-        req.session.question = apiResponse.data;
+        if (apiResponse.status === 200) {
+          req.session.question = apiResponse.data;
+        }
       } catch (e) {
         debug(e);
         return next(e);
@@ -26,12 +28,8 @@ class LoadQuestionController extends BaseController {
       next();
     });
   }
-  next(req) {
-    if (req.session?.question) {
-      return "question";
-    }
-
-    return "done";
+  hasQuestion(req) {
+    return req.session?.question !== undefined;
   }
 }
 module.exports = LoadQuestionController;

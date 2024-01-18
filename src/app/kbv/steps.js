@@ -10,7 +10,10 @@ module.exports = {
   "/load-question": {
     controller: loadQuestionController,
     skip: true,
-    next: loadQuestionController.prototype.next,
+    next: [
+      { fn: loadQuestionController.prototype.hasQuestion, next: "question" },
+      "done",
+    ],
   },
   "/done": {
     skip: true,

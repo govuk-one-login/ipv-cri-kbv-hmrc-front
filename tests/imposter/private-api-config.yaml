@@ -22,7 +22,7 @@ resources:
   - method: GET
     path: /question
     requestHeaders:
-      session-id: insufficient-questions
+      session-id: "insufficient-questions"
     response:
       statusCode: 204
 
