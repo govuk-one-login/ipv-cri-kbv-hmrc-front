@@ -1,0 +1,39 @@
+name: Unit tests
+
+on:
+  workflow_call:
+    inputs:
+      coverage-report: { type: boolean, required: false, default: false }
+      coverage-artifact: { type: string, required: false, default: coverage }
+    outputs:
+      coverage-artifact:
+        value: ${{ inputs.coverage-artifact }}
+
+concurrency:
+  group: unit-tests-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+permissions: {}
+
+jobs:
+  run-tests:
+    name: Unit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        uses: govuk-one-login/github-actions/env/run-script@145049ebd9a33e57da9a852847c4ee2c8970ea51
+        with:
+          node-version: 18.x
+          script: npm run test:coverage
+
+      - name: Archive coverage results
+        if: ${{ inputs.coverage-report }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.coverage-artifact }}
+          retention-days: 3
+          path: coverage/lcov.info
