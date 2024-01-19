@@ -1,8 +1,3 @@
-/*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/configuration
- */
-
 const wipCoveragePathIgnorePatterns = [
   "src/app.js",
   "src/assets/.*",
@@ -11,13 +6,11 @@ const wipCoveragePathIgnorePatterns = [
 
 module.exports = {
   clearMocks: true,
-  collectCoverage: true,
-  collectCoverageFrom: ["src/**/*.{js,ts}", "!**/tests/**"],
-  coverageDirectory: "coverage",
-  coverageProvider: "v8",
+  modulePaths: ["<rootDir>/src"],
+  collectCoverageFrom: ["<rootDir>/src/**/*"],
+  testMatch: ["<rootDir>/tests/unit/**/*.test.js"],
+  setupFilesAfterEnv: ["<rootDir>/tests/unit/lib/helpers"],
   coveragePathIgnorePatterns: [
-    "node_modules",
-    ".*.test.js",
     "./src/app/.*/steps.js",
     "./src/app/.*/fields.js",
     "./src/lib/config.js",
@@ -30,7 +23,4 @@ module.exports = {
       lines: 100,
     },
   },
-  setupFilesAfterEnv: ["./tests/unit/lib/helpers"],
-  testMatch: ["**/tests/unit/**/*.test.js"],
-  testEnvironment: "node",
 };

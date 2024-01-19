@@ -3,6 +3,7 @@ const { mockRequest, mockResponse } = require("jest-mock-req-res");
 const JourneyModel = require("hmpo-form-wizard/lib/journey-model");
 const WizardModel = require("hmpo-form-wizard/lib/wizard-model.js");
 
+/* global createDefaultReqResNext */
 global.createDefaultReqResNext = () => {
   const req = mockRequest({
     form: {
