@@ -23,7 +23,7 @@
   "dependencies": {
     "@govuk-one-login/di-ipv-cri-common-express": "3.0.0",
     "aws-sdk": "2.1376.0",
-    "axios": "1.4.0",
+    "axios": "1.6.5",
     "cfenv": "1.2.4",
     "connect-dynamodb": "2.0.6",
     "dotenv": "16.3.1",

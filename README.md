@@ -1,16 +1,16 @@
 # di-ipv-cri-kbv-hmrc-front
 
-[![Github Action: Unit Tests](https://github.com/alphagov/di-ipv-cri-kbv-hmrc-front/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/alphagov/di-ipv-cri-kbv-hmrc-front/actions/workflows/unit-tests.yml?query=branch%3Amain)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=alphagov_di-ipv-cri-kbv-hmrc-front&metric=coverage)](https://sonarcloud.io/summary/new_code?id=alphagov_di-ipv-cri-kbv-hmrc-front)
+[![Github Action: Scan repository](https://github.com/govuk-one-login/ipv-cri-kbv-hmrc-front/actions/workflows/scan-repo.yml/badge.svg?branch=main)](https://github.com/govuk-one-login/ipv-cri-kbv-hmrc-front/actions/workflows/scan-repo.yml?query=branch%3Amain)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ipv-cri-kbv-hmrc-front&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ipv-cri-kbv-hmrc-front)
 
-> Note: This repository is templated as part of [di-ipv-cri-templates](https://github.com/alphagov/di-ipv-cri-templates), and any substational changes that can be shared should be included back into that repository for re-use elsewhere
+> Note: This repository is templated as part of [di-ipv-cri-templates](https://github.com/govuk-one-login/di-ipv-cri-templates), and any substantial changes that can be shared should be included back into that repository for re-use elsewhere
 
 KBV HMRC Credential Issuer Frontend is a Credential Issuer as part of the GOV.UK One Login programme.
 
 There are two main repositories that comprise this credential issuer:
 
 - This is the website used for displaying the Kbv Hmrc Credential Issuer.
-- There is a related [api repository](https://github.com/alphagov/di-ipv-cri-kbv-hmrc-api) that contains the backend API that provides all the data interaction consumed
+- There is a related [api repository](https://github.com/govuk-one-login/di-ipv-cri-kbv-hmrc-api) that contains the backend API that provides all the data interaction consumed
 
 For frontend specific work there are the following repositories:
 
@@ -103,7 +103,7 @@ When connecting to a mock API both the `client_id` and `request` parameters are 
 
 ### Deployed API
 
-This can also be connected to a deployed API behind an API Gatewa, using the same `API_BASE_URL` variable.
+This can also be connected to a deployed API behind an API Gateway, using the same `API_BASE_URL` variable.
 
 When connecting to a deployed API both the `client_id` and `request` parameters are supplied by an upstream service acting as this systems Relying Party. The `client_id` is configured for use with API and the `request` payload is signed and encrypted with keys known to the API.
 
@@ -127,7 +127,7 @@ They use Jest as the test runner, which is configured using [jest.config.js](./j
 
 #### Browser tests
 
-Browser tests are run from the [tests/browser](./tests/browser/) folder, with appropriate quick start documentation located there.subfolder of this project, with more details available there.
+Browser tests are run from the [tests/browser](./tests/browser/) folder, with appropriate quick start documentation located there.
 
 ## Licence
 

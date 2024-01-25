@@ -12,6 +12,12 @@ The Imposter server can be started using the cli:
 imposter up
 ```
 
+or in a Docker container:
+
+```bash
+docker run -ti -v .:/opt/imposter/config -p 8080:8080 outofcoffee/imposter
+```
+
 Imposter runs on port `8080` by default, this can be changed using `--port` as an option on the command line.
 
 ## Endpoints
