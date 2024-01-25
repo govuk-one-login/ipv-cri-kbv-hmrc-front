@@ -1,0 +1,32 @@
+name: Browser tests
+
+on: workflow_call
+
+concurrency:
+  group: browser-tests-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+    working-directory: tests/docker
+
+permissions: {}
+
+jobs:
+  run-tests:
+    name: Browser
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull repository
+        uses: actions/checkout@v4
+
+      - name: Start Docker
+        run: docker compose up web mocks --detach
+
+      - name: Run Cucumber tests
+        run: docker compose up cucumber --exit-code-from cucumber
+
+      - name: Stop Docker
+        if: ${{ always() }}
+        run: docker compose down
