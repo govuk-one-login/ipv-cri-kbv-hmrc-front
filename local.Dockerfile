@@ -1,4 +1,4 @@
-FROM node:18.17.1-alpine3.17
+FROM node:21.4.0-alpine3.17
 
 ENV PORT 5000
 
