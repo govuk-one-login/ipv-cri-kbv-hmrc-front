@@ -1,7 +1,7 @@
 # di-ipv-cri-kbv-hmrc-front
 
 [![Github Action: Scan repository](https://github.com/govuk-one-login/ipv-cri-kbv-hmrc-front/actions/workflows/scan-repo.yml/badge.svg?branch=main)](https://github.com/govuk-one-login/ipv-cri-kbv-hmrc-front/actions/workflows/scan-repo.yml?query=branch%3Amain)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ipv-cri-kbv-hmrc-front&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ipv-cri-kbv-hmrc-front)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ipv-cri-kbv-hmrc-front&metric=coverage)](https://sonarcloud.io/summary/overall?id=ipv-cri-kbv-hmrc-front)
 
 > Note: This repository is templated as part of [di-ipv-cri-templates](https://github.com/govuk-one-login/di-ipv-cri-templates), and any substantial changes that can be shared should be included back into that repository for re-use elsewhere
 
@@ -105,7 +105,7 @@ When connecting to a mock API both the `client_id` and `request` parameters are 
 
 This can also be connected to a deployed API behind an API Gateway, using the same `API_BASE_URL` variable.
 
-When connecting to a deployed API both the `client_id` and `request` parameters are supplied by an upstream service acting as this systems Relying Party. The `client_id` is configured for use with API and the `request` payload is signed and encrypted with keys known to the API.
+When connecting to a deployed API both the `client_id` and `request` parameters are supplied by an upstream service acting as this system's Relying Party. The `client_id` is configured for use with API and the `request` payload is signed and encrypted with keys known to the API.
 
 ### URL
 

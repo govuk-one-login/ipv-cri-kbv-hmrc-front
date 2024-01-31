@@ -1,9 +1,3 @@
-const wipCoveragePathIgnorePatterns = [
-  "src/app.js",
-  "src/assets/.*",
-  "src/app/.*/index.js",
-];
-
 module.exports = {
   clearMocks: true,
   modulePaths: ["<rootDir>/src"],
@@ -11,10 +5,13 @@ module.exports = {
   testMatch: ["<rootDir>/tests/unit/**/*.test.js"],
   setupFilesAfterEnv: ["<rootDir>/tests/unit/lib/helpers"],
   coveragePathIgnorePatterns: [
-    "./src/app/.*/steps.js",
-    "./src/app/.*/fields.js",
-    "./src/lib/config.js",
-  ].concat(wipCoveragePathIgnorePatterns),
+    "src/assets/.*",
+    "src/app/.*/fields.js",
+    "src/app/.*/steps.js",
+    "src/app/.*/index.js",
+    "src/lib/config.js",
+    "src/app.js",
+  ],
   coverageThreshold: {
     global: {
       statements: 100,
