@@ -2,3 +2,6 @@ intro:
   h1: Intro
   content:
     - Content
+
+question:
+  abandon: abandon question link

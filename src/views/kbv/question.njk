@@ -1,0 +1,18 @@
+{% extends "base-form.njk" %}
+{% from "hmpo-text/macro.njk" import hmpoText %}
+
+{% set gtmJourney = "kbv-hmrc - middle" %}
+
+{% set hmpoTitle = question.key %}
+
+{% block mainContent %}
+
+  {% call hmpoForm(ctx) %}
+    <h1>{{ question.key }}</h1>
+    {{ hmpoText(ctx, question) }}
+    {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
+  {% endcall %}
+
+  {{ hmpoHtml(translate("pages.question.abandon")) }}
+
+{% endblock %}

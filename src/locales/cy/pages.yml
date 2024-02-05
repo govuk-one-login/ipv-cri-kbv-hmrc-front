@@ -2,3 +2,6 @@ intro:
   h1: Intro
   content:
     - Cynnwys
+
+question:
+  abandon: cy-abandon question link

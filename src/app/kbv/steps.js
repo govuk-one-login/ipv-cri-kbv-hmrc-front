@@ -1,4 +1,5 @@
 const loadQuestionController = require("./controllers/load-question");
+const questionController = require("./controllers/question");
 
 module.exports = {
   "/": {
@@ -11,6 +12,10 @@ module.exports = {
     controller: loadQuestionController,
     skip: true,
     next: loadQuestionController.prototype.next,
+  },
+  "/question": {
+    controller: questionController,
+    next: questionController.prototype.next,
   },
   "/done": {
     skip: true,
