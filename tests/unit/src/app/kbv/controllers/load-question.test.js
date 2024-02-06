@@ -22,10 +22,14 @@ describe("question controller", () => {
   });
 
   describe("#saveValues", () => {
+    const next = jest.fn();
+    const res = jest.fn();
+    let req;
+
     beforeEach(() => {
-      req.session.tokenId = "session-id";
-      req.axios.post = jest.fn();
+      req = global.req;
     });
+
     it("should call question endpoint", async () => {
       await controller.saveValues(req, res, next);
 
@@ -62,14 +66,23 @@ describe("question controller", () => {
 
   describe("#next", () => {
     it('should route to "question" with a question', () => {
-      req.session.question = {};
+      const req = {
+        session: {
+          question: { id: "1" },
+        },
+      };
 
       const route = controller.next(req);
 
-      expect(route).toBe("question");
+      expect(route).toBe("single-amount-question");
     });
 
-    it('should route to "done" with a question', () => {
+    it('should route to "done" with no question', () => {
+      const req = {
+        session: {
+          question: null,
+        },
+      };
       const route = controller.next(req);
 
       expect(route).toBe("done");

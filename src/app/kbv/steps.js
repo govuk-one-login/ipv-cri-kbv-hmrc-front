@@ -1,4 +1,5 @@
 const loadQuestionController = require("./controllers/load-question");
+const singleAmountQuestionController = require("./controllers/single-amount-question");
 
 module.exports = {
   "/": {
@@ -11,6 +12,10 @@ module.exports = {
     controller: loadQuestionController,
     skip: true,
     next: loadQuestionController.prototype.next,
+  },
+  "/single-amount-question": {
+    controller: singleAmountQuestionController,
+    next: singleAmountQuestionController.prototype.next,
   },
   "/done": {
     skip: true,

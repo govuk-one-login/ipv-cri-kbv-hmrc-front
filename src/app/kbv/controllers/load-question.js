@@ -28,7 +28,7 @@ class LoadQuestionController extends BaseController {
   }
   next(req) {
     if (req.session?.question) {
-      return "question";
+      return "single-amount-question";
     }
 
     return "done";
