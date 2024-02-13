@@ -16,8 +16,9 @@
 
 ## Metrics and Analytics
 
-| Name             | Description                 | Default   |
-| :--------------- | :-------------------------- | :-------- |
-| ANALYTICS_UA_ID  | Google Tag Manager ID       |           |
-| ANALYTICS_GA4_ID | Google Tag Manager ID       |           |
-| ANALYTICS_DOMAIN | Domain for Google Analytics | localhost |
+| Name             | Description                   | Default   |
+| :--------------- | :---------------------------- | :-------- |
+| ANALYTICS_DOMAIN | Domain for Google Analytics   | localhost |
+| GA4_CONTAINER_ID | Google GA4 ID                 |           |
+| GA4_ENABLED      | GA4 enabled                   | false     |
+| UA_CONTAINER_ID  | Google Universal Analytics ID |           |
