@@ -11,11 +11,17 @@ module.exports = {
   "/load-question": {
     controller: loadQuestionController,
     skip: true,
-    next: loadQuestionController.prototype.next,
+    next: [
+      {
+        fn: loadQuestionController.prototype.isSingleAmountQuestion,
+        next: "single-amount-question",
+      },
+      "done",
+    ],
   },
   "/single-amount-question": {
     controller: singleAmountQuestionController,
-    next: singleAmountQuestionController.prototype.next,
+    next: "load-question",
   },
   "/done": {
     skip: true,
