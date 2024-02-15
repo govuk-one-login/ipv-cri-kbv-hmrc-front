@@ -28,13 +28,9 @@ class LoadQuestionController extends BaseController {
   }
 
   isSingleAmountQuestion(req) {
-    if (
+    return (
       req.session?.question?.questionKey === "rti-payslip-national-insurance"
-    ) {
-      return true;
-    }
-
-    return false;
+    );
   }
 }
 module.exports = LoadQuestionController;

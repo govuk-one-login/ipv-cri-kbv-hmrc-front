@@ -29,9 +29,9 @@ class SingleAmountQuestionController extends BaseController {
   }
 
   async saveValues(req, res, callback) {
-    await super.saveValues(req, res, async (err, next) => {
+    await super.saveValues(req, res, async (err) => {
       if (err) {
-        next(err);
+        return callback(err);
       }
 
       try {

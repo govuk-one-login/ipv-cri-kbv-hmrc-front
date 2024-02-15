@@ -172,6 +172,21 @@ describe("single-amount-question controller", () => {
         expect(next).toHaveBeenCalledTimes(1);
         expect(next).toHaveBeenCalledWith(error);
       });
+
+      it("should call callback with error if super.locals returns an error", async () => {
+        const mockError = new Error("Some error");
+
+        const callback = jest.fn((err) => {
+          expect(err).toEqual(mockError);
+        });
+
+        const superLocals = jest.spyOn(BaseController.prototype, "saveValues");
+        superLocals.mockImplementation((req, res, callback) => {
+          callback(mockError);
+        });
+
+        await controller.saveValues(req, res, callback);
+      });
     });
   });
 

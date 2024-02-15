@@ -6,7 +6,7 @@ describe("question-to-hint", () => {
 
   beforeEach(() => {
     question = {
-      questionKey: "Q00",
+      questionKey: "rti-payslip-national-insurance",
     };
 
     translate = jest.fn();
@@ -15,7 +15,9 @@ describe("question-to-hint", () => {
   it("should call translate using questionID", () => {
     presenters.questionToHint(question, translate);
 
-    expect(translate).toHaveBeenCalledWith("fields.Q00.hint");
+    expect(translate).toHaveBeenCalledWith(
+      "fields.rti-payslip-national-insurance.hint"
+    );
   });
 
   describe("with found key", () => {

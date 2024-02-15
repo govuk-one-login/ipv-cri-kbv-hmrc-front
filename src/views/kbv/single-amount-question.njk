@@ -8,13 +8,13 @@
 {% set hmpoTitle = question.key %}
 
 {% block mainContent %}
-  <h1 class="govuk-heading-l"> {{ translate("pages.single-amount-question.title") }} </h1>
+  <h1 class="govuk-heading-l"> {{ translate("pages.rti-payslip-national-insurance.title") }} </h1>
 
   {{ govukInsetText({
-    text: translate("pages.single-amount-question.inset")
+    text: translate("pages.rti-payslip-national-insurance.inset")
   }) }}
 
-  {{ hmpoHtml(translate("pages.single-amount-question.content")) }}
+  {{ hmpoHtml(translate("pages.rti-payslip-national-insurance.content")) }}
 
   {% call hmpoForm(ctx) %}
 
@@ -37,6 +37,6 @@
     {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
   {% endcall %}
 
-  {{ hmpoHtml(translate("pages.single-amount-question.abandon")) }}
+  {{ hmpoHtml(translate("pages.rti-payslip-national-insurance.abandon")) }}
 
 {% endblock %}

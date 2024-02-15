@@ -1,6 +1,6 @@
 intro:
   h1: Intro
-single-amount-question:
+rti-payslip-national-insurance:
   title: Enter the amount of National Insurance you paid from a recent payslip
   inset: Use a payslip dated after {{ threeMonthsAgo }} to answer this question
   content:

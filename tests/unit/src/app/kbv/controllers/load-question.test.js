@@ -64,28 +64,28 @@ describe("question controller", () => {
     });
   });
 
-  describe("#next", () => {
-    it('should route to "question" with a question', () => {
+  describe("#isSingleAmountQuestion", () => {
+    it('should return "true" when there is a next question', () => {
       const req = {
         session: {
-          question: { id: "1" },
+          question: { questionKey: "rti-payslip-national-insurance" },
         },
       };
 
-      const route = controller.next(req);
+      const route = controller.isSingleAmountQuestion(req);
 
-      expect(route).toBe("single-amount-question");
+      expect(route).toBe(true);
     });
 
-    it('should route to "done" with no question', () => {
+    it('should return "false" when no question', () => {
       const req = {
         session: {
           question: null,
         },
       };
-      const route = controller.next(req);
+      const route = controller.isSingleAmountQuestion(req);
 
-      expect(route).toBe("done");
+      expect(route).toBe(false);
     });
   });
 });
