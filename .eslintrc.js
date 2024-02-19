@@ -44,6 +44,7 @@ module.exports = {
           "error",
           { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
         ],
+        "jest/no-done-callback": "warn",
       },
     },
   ],
