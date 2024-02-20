@@ -22,10 +22,14 @@ describe("question controller", () => {
   });
 
   describe("#saveValues", () => {
+    const next = jest.fn();
+    const res = jest.fn();
+    let req;
+
     beforeEach(() => {
-      req.session.tokenId = "session-id";
-      req.axios.post = jest.fn();
+      req = global.req;
     });
+
     it("should call question endpoint", async () => {
       await controller.saveValues(req, res, next);
 
@@ -60,19 +64,28 @@ describe("question controller", () => {
     });
   });
 
-  describe("#next", () => {
-    it('should route to "question" with a question', () => {
-      req.session.question = {};
+  describe("#isSingleAmountQuestion", () => {
+    it('should return "true" when there is a next question', () => {
+      const req = {
+        session: {
+          question: { questionKey: "rti-payslip-national-insurance" },
+        },
+      };
 
-      const route = controller.next(req);
+      const route = controller.isSingleAmountQuestion(req);
 
-      expect(route).toBe("question");
+      expect(route).toBe(true);
     });
 
-    it('should route to "done" with a question', () => {
-      const route = controller.next(req);
+    it('should return "false" when no question', () => {
+      const req = {
+        session: {
+          question: null,
+        },
+      };
+      const route = controller.isSingleAmountQuestion(req);
 
-      expect(route).toBe("done");
+      expect(route).toBe(false);
     });
   });
 });

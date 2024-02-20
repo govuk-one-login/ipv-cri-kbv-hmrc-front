@@ -26,12 +26,11 @@ class LoadQuestionController extends BaseController {
       next();
     });
   }
-  next(req) {
-    if (req.session?.question) {
-      return "question";
-    }
 
-    return "done";
+  isSingleAmountQuestion(req) {
+    return (
+      req.session?.question?.questionKey === "rti-payslip-national-insurance"
+    );
   }
 }
 module.exports = LoadQuestionController;

@@ -1,4 +1,10 @@
 intro:
   h1: Intro
+rti-payslip-national-insurance:
+  title: Enter the amount of National Insurance you paid from a recent payslip
+  inset: Use a payslip dated after {{ threeMonthsAgo }} to answer this question
   content:
-    - Content
+    - Tell us the amount of National Insurance you paid.
+    - You can usually find the amount next to any pensions or PAYE/income tax deductions on your payslip.
+    - Enter the amount in pounds and pence, exactly as it appears on your payslip.
+  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>I need to prove my identity another way</a>"
