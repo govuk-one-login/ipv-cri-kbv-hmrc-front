@@ -1,6 +1,5 @@
 {% extends "base-form.njk" %}
 {% from "hmpo-text/macro.njk" import hmpoText %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 {% set gtmJourney = "kbv-hmrc - middle" %}
@@ -18,7 +17,7 @@
 
   {% call hmpoForm(ctx) %}
 
-    {{ govukInput({
+    {{ hmpoText(ctx, {
       id: "question",
       name: "question",
       label: {
@@ -27,9 +26,6 @@
       },
       hint: {
         text: question.hint
-      },
-      prefix: {
-        text: "£"
       },
       classes: "govuk-input--width-5"
     }) }}
