@@ -43,7 +43,10 @@ govuk:
         - href: "https://signin.account.gov.uk/privacy-notice"
           text: "Hysbysiad preifatrwydd"
         - href: "https://signin.account.gov.uk/contact-us"
-          text: "Cefnogaeth"
+          text: "Cymorth (agor mewn tab newydd)"
+          attributes:
+            rel: "noreferrer noopener"
+            target: "_blank"
   copyright:
     text: "© Hawlfraint y goron"
   contentLicence:
