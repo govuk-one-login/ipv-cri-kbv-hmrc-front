@@ -37,6 +37,13 @@ describe("single-amount-question controller", () => {
     expect(controller).toBeInstanceOf(BaseController);
   });
 
+  describe("#configure", () => {
+    it("should set the template to be the shared template for this controller", () => {
+      controller.configure(req, res, next);
+      expect(req.form.options.template).toContain("single-amount-question");
+    });
+  });
+
   describe("#locals", () => {
     beforeEach(() => {
       req.session = {
@@ -185,23 +192,6 @@ describe("single-amount-question controller", () => {
 
         await controller.saveValues(req, res, callback);
       });
-    });
-  });
-
-  describe("#next", () => {
-    it('should route to "single-amount-question" with a question', () => {
-      req.session.question = {};
-
-      const route = controller.next(req);
-
-      expect(route).toBe("single-amount-question");
-    });
-
-    it('should route to "done" with no question', () => {
-      req.session.question = undefined;
-      const route = controller.next(req);
-
-      expect(route).toBe("done");
     });
   });
 });
