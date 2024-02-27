@@ -81,6 +81,16 @@ npm run dev
 
 By default, the application will be running at [http://localhost:5000](http://localhost:5000).
 
+##### In debug mode
+
+To run the server with debug logs and attach a debugger (will not rebuild on changes):
+
+```
+npm run debug
+```
+
+> Note: You'll need to create a debug "attach" configuration in your IDE in order to attach the debugger and set breakpoints. In VSCode create a `.vscode/launch.json` file with a Node.js `attach` configuration.
+
 ##### In production mode
 
 ```

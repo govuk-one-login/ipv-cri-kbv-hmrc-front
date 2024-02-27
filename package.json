@@ -4,6 +4,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "NODE_ENV=development nodemon src/app.js",
+    "debug": "DEBUG=* node --inspect src/app.js",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:eslint && npm run lint:prettier",
