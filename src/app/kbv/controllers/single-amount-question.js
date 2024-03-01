@@ -18,11 +18,14 @@ class SingleAmountQuestionController extends BaseController {
       locals.question = {
         label: presenters.questionToLabel(req.session.question, req.translate),
         hint: presenters.questionToHint(req.session.question, req.translate),
+        prefix: req.session.question?.info?.prefix || " "
       };
 
-      locals.threeMonthsAgo = moment()
-        .subtract(3, "months")
+      if (req.session.question?.info?.months) {
+        locals.threeMonthsAgo = moment()
+        .subtract(req.session.question?.info?.months, "months")
         .format("DD MMMM YYYY");
+      }
 
       callback(null, locals);
     });
