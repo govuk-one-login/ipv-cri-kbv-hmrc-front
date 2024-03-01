@@ -3,7 +3,6 @@ const Controller = require("../../../../../../src/app/kbv/controllers/single-amo
 
 const presenters = require("../../../../../../src/presenters");
 jest.mock("../../../../../../src/presenters");
-const moment = require("moment");
 
 const {
   API: {
@@ -20,6 +19,7 @@ describe("single-amount-question controller", () => {
   beforeEach(() => {
     controller = new Controller({ route: "/test" });
     req = global.req;
+    req.lang = "en";
     req.form.options = {
       fields: {},
     };
@@ -40,21 +40,13 @@ describe("single-amount-question controller", () => {
   describe("#locals", () => {
     beforeEach(() => {
       req.session = {
-        question: {},
+        question: {
+          info: {
+            months: 3,
+          },
+        },
       };
       req.translate = jest.fn();
-    });
-
-    it("should set threeMonthsAgo in locals", (done) => {
-      const callback = jest.fn((err, locals) => {
-        expect(err).toBeNull();
-        expect(locals.threeMonthsAgo).toEqual(
-          moment().subtract(3, "months").format("DD MMMM YYYY")
-        );
-        done();
-      });
-
-      controller.locals(req, res, callback);
     });
 
     it("should call super.locals with req and res", () => {
@@ -68,11 +60,17 @@ describe("single-amount-question controller", () => {
     it("should set question.label and question.hint in locals", (done) => {
       presenters.questionToLabel.mockReturnValue("Question Label");
       presenters.questionToHint.mockReturnValue("Question Hint");
+      presenters.questionToInset.mockReturnValue("Question Inset");
+      presenters.questionToContent.mockReturnValue("Question Content");
+      presenters.questionToTitle.mockReturnValue("Question Title");
 
       const callback = jest.fn((err, locals) => {
         expect(err).toBeNull();
         expect(locals.question.label).toBe("Question Label");
         expect(locals.question.hint).toBe("Question Hint");
+        expect(locals.question.content).toBe("Question Content");
+        expect(locals.question.inset).toBe("Question Inset");
+        expect(locals.question.title).toBe("Question Title");
         done();
       });
 

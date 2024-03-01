@@ -1,7 +1,7 @@
 const debug = require("debug")("load-question");
 const BaseController = require("hmpo-form-wizard").Controller;
 const presenters = require("../../../presenters");
-const moment = require("moment");
+
 const {
   API: {
     PATHS: { QUESTION, ANSWER },
@@ -18,11 +18,17 @@ class SingleAmountQuestionController extends BaseController {
       locals.question = {
         label: presenters.questionToLabel(req.session.question, req.translate),
         hint: presenters.questionToHint(req.session.question, req.translate),
+        content: presenters.questionToContent(
+          req.session.question,
+          req.translate
+        ),
+        inset: presenters.questionToInset(
+          req.session.question,
+          req.translate,
+          req.lang
+        ),
+        title: presenters.questionToTitle(req.session.question, req.translate),
       };
-
-      locals.threeMonthsAgo = moment()
-        .subtract(3, "months")
-        .format("DD MMMM YYYY");
 
       callback(null, locals);
     });
