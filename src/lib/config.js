@@ -23,8 +23,8 @@ module.exports = {
     },
   },
   AWS_REGION: process.env.AWS_REGION || "eu-west-2",
-  PORT: process.env.PORT || 5000,
+  PORT: Number(process.env.PORT) || 5000,
   SESSION_SECRET: process.env.SESSION_SECRET,
   SESSION_TABLE_NAME: process.env.SESSION_TABLE_NAME,
-  SESSION_TTL: process.env.SESSION_TTL || 7200000, // two hours in ms
+  SESSION_TTL: Number(process.env.SESSION_TTL) || 7200000, // two hours in ms
 };
