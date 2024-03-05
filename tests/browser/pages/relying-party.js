@@ -31,7 +31,7 @@ module.exports = class PlaywrightDevPage {
     const { searchParams } = new URL(this.page.url());
 
     return (
-      searchParams.get("client_id") && // FIXME: Restore checking of client_id
+      searchParams.get("client_id") === this.clientId &&
       searchParams.get("state") === "sT@t3" &&
       searchParams.get("code").startsWith("auth-code-")
     );
