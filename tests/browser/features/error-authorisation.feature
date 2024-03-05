@@ -9,5 +9,5 @@ Feature: Error handling
     Given Error Eric is using the system
     And they have started the journey
     Then they should see the intro page
-    And they continue from intro
+    When they continue from intro
     Then they should be redirected as an error with a description "gateway"
