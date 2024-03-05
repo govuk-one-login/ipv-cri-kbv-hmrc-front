@@ -2,11 +2,11 @@ require("dotenv").config();
 
 module.exports = {
   default: {
-    paths: ["./tests/browser/features/**/**.feature"],
+    paths: ["./features/**/**.feature"],
     require: [
-      "./tests/browser/support/**/*.js",
-      "./tests/browser/step_definitions/**/*.js",
-      "./tests/browser/pages/*.js",
+      "./support/**/*.js",
+      "./step_definitions/**/*.js",
+      "./pages/*.js",
     ],
     tags: "not @skip",
   },

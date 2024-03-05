@@ -9,8 +9,6 @@ module.exports = {
     next: "answer-security-questions",
   },
   "/answer-security-questions": {
-    resetJourney: true,
-    entryPoint: true,
     next: "load-question",
   },
   "/load-question": {

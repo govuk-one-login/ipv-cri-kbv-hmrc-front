@@ -26,7 +26,7 @@ Then(
   }
 );
 
-Then(/^they should be redirected as a success$/, function () {
+Then("they should be redirected as a success", function () {
   const rpPage = new RelyingPartyPage(this.page);
 
   expect(rpPage.isRelyingPartyServer()).to.be.true;
@@ -42,7 +42,7 @@ Then(/^the error should be (.*)$/, function (error_code) {
   expect(rpPage.isErrorCode(error_code)).to.be.true;
 });
 
-When(/^they return to a previous page$/, async function () {
+When("they return to a previous page", async function () {
   const rpPage = new RelyingPartyPage(this.page);
 
   await rpPage.page.goBack();
