@@ -20,6 +20,7 @@
     "check-translation": "node node_modules/@govuk-one-login/di-ipv-cri-common-express/scripts/checkTranslations.js ../../../../src/locales/",
     "test:coverage": "npm run test -- --coverage",
     "test": "jest",
+    "test:browser": "wait-on tcp:127.0.0.1:8080 tcp:127.0.0.1:5000 && API_BASE_URL=http://127.0.0.1:8080 MOCK_API=true cucumber-js --config tests/browser/cucumber.js --tags \"not @skip\"",
     "test:watch": "jest --watch"
   },
   "dependencies": {
@@ -41,6 +42,7 @@
     "nunjucks": "3.2.4"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "9.6.0",
     "chai": "4.4.1",
     "chai-as-promised": "7.1.1",
     "copyfiles": "2.4.1",
@@ -51,7 +53,9 @@
     "jest": "29.7.0",
     "jest-mock-req-res": "1.0.2",
     "nodemon": "3.0.1",
+    "playwright": "1.27.1",
     "sass": "1.66.1",
-    "uglify-js": "3.17.4"
+    "uglify-js": "3.17.4",
+    "wait-on": "7.2.0"
   }
 }
