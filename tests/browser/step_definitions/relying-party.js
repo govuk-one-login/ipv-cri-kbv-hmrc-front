@@ -10,7 +10,7 @@ Given(/^([A-Za-z ]+) is using the system$/, async function (_name) {
 });
 
 Given("they have been redirected as a success", function () {
-  const rpPage = new RelyingPartyPage(this.page);
+  const rpPage = new RelyingPartyPage(this.page, this.TESTING_CLIENT_ID);
   expect(rpPage.isRelyingPartyServer()).to.be.true;
   expect(rpPage.hasSuccessQueryParams()).to.be.true;
 });
@@ -18,7 +18,7 @@ Given("they have been redirected as a success", function () {
 Then(
   "they should be redirected as an error with a description {string}",
   function (err) {
-    const rpPage = new RelyingPartyPage(this.page);
+    const rpPage = new RelyingPartyPage(this.page, this.TESTING_CLIENT_ID);
 
     expect(rpPage.isRelyingPartyServer()).to.be.true;
 
@@ -27,7 +27,7 @@ Then(
 );
 
 Then("they should be redirected as a success", function () {
-  const rpPage = new RelyingPartyPage(this.page);
+  const rpPage = new RelyingPartyPage(this.page, this.TESTING_CLIENT_ID);
 
   expect(rpPage.isRelyingPartyServer()).to.be.true;
 
@@ -35,7 +35,7 @@ Then("they should be redirected as a success", function () {
 });
 
 Then(/^the error should be (.*)$/, function (error_code) {
-  const rpPage = new RelyingPartyPage(this.page);
+  const rpPage = new RelyingPartyPage(this.page, this.TESTING_CLIENT_ID);
 
   expect(rpPage.isRelyingPartyServer()).to.be.true;
 
@@ -43,7 +43,7 @@ Then(/^the error should be (.*)$/, function (error_code) {
 });
 
 When("they return to a previous page", async function () {
-  const rpPage = new RelyingPartyPage(this.page);
+  const rpPage = new RelyingPartyPage(this.page, this.TESTING_CLIENT_ID);
 
   await rpPage.page.goBack();
 });
