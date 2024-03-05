@@ -3,8 +3,7 @@
     {
       "questionKey": "rti-payslip-national-insurance",
       "info": {
-        "months": "3",
-        "prefix": "£"
+        "months": "3"
       }
     }
   ]
