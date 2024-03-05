@@ -1,4 +1,4 @@
-const { Then, When } = require("@cucumber/cucumber");
+const { Then } = require("@cucumber/cucumber");
 const { SingleAmountQuestionPage } = require("../pages");
 const { expect } = require("chai");
 
@@ -8,7 +8,7 @@ Then("they should see the single-amount-question page", async function () {
   expect(singleAmountQuestionPage.isCurrentPage()).to.be.true;
 });
 
-When(
+Then(
   "they enter amount and continue from single-amount-question page",
   async function () {
     const singleAmountQuestionPage = new SingleAmountQuestionPage(this.page);

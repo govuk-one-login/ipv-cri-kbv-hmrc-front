@@ -40,4 +40,4 @@ They can have a variety of different parts, in either a root file, or a folder w
 
 - Express middleware should be used to manipulate the request object by adding values to the `req` object which will be used by later middleware functions.
 - `res.locals` should be reserved only for data that will definitely be rendered in some way - often data on the `req` object can replace this usage.
-- HMP Form Wizard is a config based framework so unit tests are not required for the `fields.js` and `steps.js`, this integration is more appropriately tested using [browser tests](../tests/browser)
+- HMP Form Wizard is a config based framework so unit tests are not required for the `fields.js` and `steps.js`, this integreation is more appropriately tested using [browser tests](../tests/browser)

@@ -15,10 +15,10 @@ services:
     environment:
       REDIS_SESSION_URL: db
       API_BASE_URL: http://localhost:8080
-      PORT: 5000
+      PORT: 5050
       NODE_ENV: development
     ports:
-      - "5000:5000"
+      - "5050:5050"
     depends_on:
       - mocks
     network_mode: "host"
@@ -30,7 +30,7 @@ services:
     environment:
       MOCK_API: true
       GITHUB_ACTIONS: true
-      WEBSITE_HOST: http://localhost:5000
+      WEBSITE_HOST: http://localhost:5050
     volumes:
       - ./reports:/reports
     network_mode: "host"
