@@ -7,8 +7,7 @@ answer-security-questions:
     - You must answer enough questions correctly to prove your identity. You can then continue to the service you need to use.
     - "## Before you start"
     - "You'll need some of these documents:"
-    -
-      - payslips
+    - - payslips
       - P60
       - Self Assessment tax return
       - tax credits
