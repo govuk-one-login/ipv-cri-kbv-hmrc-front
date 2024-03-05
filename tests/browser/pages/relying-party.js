@@ -7,7 +7,7 @@ module.exports = class PlaywrightDevPage {
     this.clientId = clientId;
 
     // Starting URL properties
-    const websiteHost = process.env.WEBSITE_HOST || "http://localhost:5050";
+    const websiteHost = process.env.WEBSITE_HOST || "http://localhost:5000";
     this.baseURL = new URL(websiteHost);
 
     this.oauthPath = `/oauth2/authorize?request=lorem&client_id=${this.clientId}`;

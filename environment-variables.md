@@ -6,9 +6,9 @@
 
 | Name                  | Description                                                         | Default               |
 | :-------------------- | :------------------------------------------------------------------ | :-------------------- |
-| API_BASE_URL          | Base URL for the backend API server                                 | http://localhost:5055 |
+| API_BASE_URL          | Base URL for the backend API server                                 | http://localhost:8080 |
 | ASSETS_BASE_URL       | Host for assets CDN                                                 | /public               |
-| EXTERNAL_WEBSITE_HOST | The (accessible) hostname (and port) of the listening web server.   | http://locahost:5050  |
+| EXTERNAL_WEBSITE_HOST | The (accessible) hostname (and port) of the listening web server.   | http://locahost:5000  |
 | PORT                  | Port the web server listens on                                      | 5000                  |
 | SESSION_SECRET        | A complex string unique to the environment, used to encrypt cookies |                       |
 | SESSION_TABLE_NAME    | Table name for the user session data                                |                       |
