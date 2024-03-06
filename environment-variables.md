@@ -6,7 +6,7 @@
 
 | Name                  | Description                                                         | Default               |
 | :-------------------- | :------------------------------------------------------------------ | :-------------------- |
-| API_BASE_URL          | Base URL for the backend API server                                 | http://localhost:5090 |
+| API_BASE_URL          | Base URL for the backend API server                                 | http://localhost:5055 |
 | ASSETS_BASE_URL       | Host for assets CDN                                                 | /public               |
 | EXTERNAL_WEBSITE_HOST | The (accessible) hostname (and port) of the listening web server.   | http://locahost:5050  |
 | PORT                  | Port the web server listens on                                      | 5000                  |
