@@ -1,5 +1,5 @@
 answer-security-questions:
-  title: You need to answer some security questions
+  title: Answer some security questions
   h1: Answer some security questions
   content:
     - We use security questions as the last step in checking your identity.
