@@ -6,6 +6,9 @@ module.exports = {
     resetJourney: true,
     entryPoint: true,
     skip: true,
+    next: "answer-security-questions",
+  },
+  "/answer-security-questions": {
     next: "load-question",
   },
   "/load-question": {

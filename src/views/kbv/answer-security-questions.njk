@@ -1,0 +1,15 @@
+{% extends "base-form.njk" %}
+{% from "hmpo-details/macro.njk" import hmpoDetails %}
+
+{% set hmpoPageKey = "answer-security-questions" %}
+{% set gtmJourney = "kbv-hmrc - start" %}
+
+{% block mainContentBody %}
+  {{ hmpoHtml(translate("pages.answer-security-questions.content")) }}
+  {{ hmpoDetails(translate("pages.answer-security-questions.details", { returnObjects: true}))}}
+{% endblock %}
+
+{% block submitButton %}
+  {{ hmpoSubmit(ctx, {id: "start", text: translate("pages.answer-security-questions.start-button")}) }}
+  <p><a href='/kbv/abandon' class='govuk-link' data-id='abandon'>{{ translate("pages.answer-security-questions.abandon") }}</a></p>
+{% endblock %}

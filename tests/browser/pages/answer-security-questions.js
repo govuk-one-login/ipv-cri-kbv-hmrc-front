@@ -4,11 +4,11 @@ module.exports = class PlaywrightDevPage {
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/intro";
+    this.path = "/kbv/answer-security-questions";
   }
 
-  async continue() {
-    await this.page.click("#continue");
+  async start() {
+    await this.page.click("#start");
   }
 
   isCurrentPage() {
