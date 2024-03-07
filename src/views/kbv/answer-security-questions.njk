@@ -11,5 +11,5 @@
 
 {% block submitButton %}
   {{ hmpoSubmit(ctx, {id: "start", text: translate("pages.answer-security-questions.start-button")}) }}
-  <p><a href='/kbv/abandon' class='govuk-link' data-id='abandon'>{{ translate("pages.answer-security-questions.abandon") }}</a></p>
+  <p>{{ hmpoHtml(translate("pages.shared.abandon")) }}</p>
 {% endblock %}
