@@ -12,15 +12,14 @@ system:
       preloadFile: data/questions.json
 
 resources:
-
-### "single-question" journey ###
+  ### "single-question" journey ###
   - method: GET
     path: /question
     requestHeaders:
       session-id: "single-question"
     response:
       scriptFile: scripts/get-question.groovy
-  
+
   - method: GET
     path: /authorization
     requestHeaders:
@@ -51,7 +50,7 @@ resources:
           "state": "sT@t3",
           "redirect_uri": "http://example.net"
         }
-  
+
   - method: POST
     path: /answer
     requestHeaders:
@@ -59,14 +58,14 @@ resources:
     response:
       scriptFile: scripts/post-answer.groovy
 
-### 'insufficient-questions' journey ###
+  ### 'insufficient-questions' journey ###
   - method: GET
     path: /question
     requestHeaders:
       session-id: insufficient-questions
     response:
       statusCode: 204
-  
+
   - method: POST
     path: /session
     requestBody:
@@ -98,8 +97,7 @@ resources:
           "redirect_uri":"http://example.net"
         }
 
-
-### 'question-500' journey ###
+  ### 'question-500' journey ###
   - method: GET
     path: /question
     requestHeaders:
@@ -109,7 +107,7 @@ resources:
       template: true
       content: Server Error
 
-### 'answer-500' journey ###
+  ### 'answer-500' journey ###
   - method: POST
     path: /answer
     requestHeaders:
@@ -119,7 +117,7 @@ resources:
       template: true
       content: Server Error
 
-### 'authorization-error' journey ###
+  ### 'authorization-error' journey ###
   - method: POST
     path: /session
     requestBody:
@@ -135,7 +133,7 @@ resources:
           "redirect_uri": "http://example.net"
         }
 
-### 'session-400' journey ###
+  ### 'session-400' journey ###
   - method: POST
     path: /session
     requestBody:
@@ -147,7 +145,7 @@ resources:
       content: |
         {}
 
-### 'session-500' journey ###
+  ### 'session-500' journey ###
   - method: POST
     path: /session
     requestBody:
