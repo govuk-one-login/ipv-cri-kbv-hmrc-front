@@ -12,12 +12,85 @@ system:
       preloadFile: data/questions.json
 
 resources:
+
+### "success" journey ###
   - method: GET
     path: /question
     requestHeaders:
       session-id: "success"
     response:
       scriptFile: scripts/get-question.groovy
+  
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "success"
+    response:
+      template: true
+      statusCode: 200
+      content: |
+        {
+          "authorizationCode": {
+            "value":"auth-code-${random.uuid()}"
+          },
+          "state":"sT@t3",
+          "redirect_uri":"http://example.net"
+        }
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "success"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "success",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
+
+### "successExample" journey ###
+
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id: "successExample"
+    response:
+      scriptFile: scripts/get-question.groovy
+  
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "successExample"
+    response:
+      template: true
+      statusCode: 200
+      content: |
+        {
+          "authorizationCode": {
+            "value":"auth-code-${random.uuid()}"
+          },
+          "state":"sT@t3",
+          "redirect_uri":"http://example.net"
+        }
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "successExample"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "successExample",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
 
   - method: GET
     path: /question
@@ -48,21 +121,6 @@ resources:
       statusCode: 500
       template: true
       content: Server Error
-
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "success"
-    response:
-      statusCode: 201
-      template: true
-      content: |
-        {
-          "session_id": "success",
-          "state": "sT@t3",
-          "redirect_uri": "http://example.net"
-        }
 
   - method: POST
     path: /session
@@ -115,23 +173,6 @@ resources:
       template: true
       content: |
         {}
-
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "success"
-    response:
-      template: true
-      statusCode: 200
-      content: |
-        {
-          "authorizationCode": {
-            "value":"auth-code-${random.uuid()}"
-          },
-          "state":"sT@t3",
-          "redirect_uri":"http://example.net"
-        }
-
   - method: GET
     path: /authorization
     requestHeaders:
