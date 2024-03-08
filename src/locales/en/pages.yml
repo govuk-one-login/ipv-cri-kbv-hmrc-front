@@ -1,5 +1,3 @@
-intro:
-  h1: Intro
 shared:
   abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>I need to prove my identity another way</a>"
 answer-security-questions:

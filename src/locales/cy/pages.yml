@@ -1,5 +1,3 @@
-intro:
-  h1: Intro
 shared:
   abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>Mae angen i mi brofi fy hunaniaeth mewn ffordd arall</a>"
 answer-security-questions:
