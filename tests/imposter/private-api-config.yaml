@@ -13,18 +13,18 @@ system:
 
 resources:
 
-### "success" journey ###
+### "single-question" journey ###
   - method: GET
     path: /question
     requestHeaders:
-      session-id: "success"
+      session-id: "single-question"
     response:
       scriptFile: scripts/get-question.groovy
   
   - method: GET
     path: /authorization
     requestHeaders:
-      session-id: "success"
+      session-id: "single-question"
     response:
       template: true
       statusCode: 200
@@ -41,87 +41,32 @@ resources:
     path: /session
     requestBody:
       jsonPath: $.client_id
-      value: "success"
+      value: "single-question"
     response:
       statusCode: 201
       template: true
       content: |
         {
-          "session_id": "success",
+          "session_id": "single-question",
           "state": "sT@t3",
           "redirect_uri": "http://example.net"
         }
-
-### "successExample" journey ###
-
-  - method: GET
-    path: /question
-    requestHeaders:
-      session-id: "successExample"
-    response:
-      scriptFile: scripts/get-question.groovy
   
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "successExample"
-    response:
-      template: true
-      statusCode: 200
-      content: |
-        {
-          "authorizationCode": {
-            "value":"auth-code-${random.uuid()}"
-          },
-          "state":"sT@t3",
-          "redirect_uri":"http://example.net"
-        }
-
   - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "successExample"
+    path: /answer
+    requestHeaders:
+      session-id: "single-question"
     response:
-      statusCode: 201
-      template: true
-      content: |
-        {
-          "session_id": "successExample",
-          "state": "sT@t3",
-          "redirect_uri": "http://example.net"
-        }
+      scriptFile: scripts/post-answer.groovy
 
+### 'insufficient-questions' journey ###
   - method: GET
     path: /question
     requestHeaders:
       session-id: insufficient-questions
     response:
       statusCode: 204
-
-  - method: GET
-    path: /question
-    requestHeaders:
-      session-id: question-500
-    response:
-      statusCode: 500
-      template: true
-      content: Server Error
-
-  - method: POST
-    path: /answer
-    response:
-      scriptFile: scripts/post-answer.groovy
-
-  - method: POST
-    path: /answer
-    requestHeaders:
-      session-id: answer-500
-    response:
-      statusCode: 500
-      template: true
-      content: Server Error
-
+  
   - method: POST
     path: /session
     requestBody:
@@ -135,57 +80,6 @@ resources:
           "session_id": "insufficient-questions",
           "state": "sT@t3",
           "redirect_uri": "http://example.net"
-        }
-
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "authorization-error"
-    response:
-      statusCode: 201
-      template: true
-      content: |
-        {
-          "session_id": "authorization-error",
-          "state": "sT@t3",
-          "redirect_uri": "http://example.net"
-        }
-
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "session-400"
-    response:
-      statusCode: 400
-      template: true
-      content: |
-        {}
-
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "session-500"
-    response:
-      statusCode: 500
-      template: true
-      content: |
-        {}
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "authorization-error"
-    response:
-      statusCode: 500
-      content: |
-        {
-          "redirect_uri": "http://example.net",
-          "oauth_error": {
-            "error_description": "gateway",
-            "error": "server_error"
-          }
         }
 
   - method: GET
@@ -202,4 +96,80 @@ resources:
           },
           "state":"sT@t3",
           "redirect_uri":"http://example.net"
+        }
+
+
+### 'question-500' journey ###
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id: question-500
+    response:
+      statusCode: 500
+      template: true
+      content: Server Error
+
+### 'answer-500' journey ###
+  - method: POST
+    path: /answer
+    requestHeaders:
+      session-id: answer-500
+    response:
+      statusCode: 500
+      template: true
+      content: Server Error
+
+### 'authorization-error' journey ###
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "authorization-error"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "authorization-error",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
+
+### 'session-400' journey ###
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "session-400"
+    response:
+      statusCode: 400
+      template: true
+      content: |
+        {}
+
+### 'session-500' journey ###
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "session-500"
+    response:
+      statusCode: 500
+      template: true
+      content: |
+        {}
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "authorization-error"
+    response:
+      statusCode: 500
+      content: |
+        {
+          "redirect_uri": "http://example.net",
+          "oauth_error": {
+            "error_description": "gateway",
+            "error": "server_error"
+          }
         }

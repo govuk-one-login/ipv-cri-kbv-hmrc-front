@@ -5,9 +5,9 @@ def journeyType = context.request.headers['session-id']
 def questionKey = body.key;
 def answer = body.value;
 
-def questionData = stores.open("questions" + journeyType).loadAll();
-def questions = questionData.questions;
-def currentQuestionKey = questionData.currentQuestionKey;
+def questionStore = stores.open("questions");
+def questions = questionStore.load("questions")[journeyType];
+def currentQuestionKey = stores.open("currentQuestion" + journeyType).load("currentQuestionKey");
 
 def answerStore = stores.open("answers" + journeyType);
 def answers = answerStore.loadAll();

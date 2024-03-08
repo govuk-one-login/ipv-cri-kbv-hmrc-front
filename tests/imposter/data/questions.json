@@ -1,26 +1,11 @@
 {
   "questions": 
   {
-    "success": [{
+    "single-question": [{
       "questionKey": "rti-payslip-national-insurance",
       "info": {
         "months": "3"
       }
-    }
-  ],
-    "successExample": [
-      {
-        "questionKey": "rti-payslip-national-insurance",
-        "info": {
-          "months": "3"
-        }
-      },
-      {
-        "questionKey": "rti-payslip-national-insurance",
-        "info": {
-          "months": "3"
-        }
-      }
-    ]
+    }]
   }
 }

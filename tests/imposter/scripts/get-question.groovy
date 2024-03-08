@@ -5,6 +5,8 @@ def journeyType = context.request.headers['session-id']
 def questionStore = stores.open("questions");
 def questions = questionStore.load("questions")[journeyType];
 
+def currentQuestionStore = stores.open("currentQuestion" + journeyType)
+
 def answers = stores.open("answers" + journeyType).loadAll();
 
 if (answers.size() >= questions.size()) {
@@ -21,4 +23,4 @@ respond {
     withContent(serializer.toJson(currentQuestion))
 }
 
-questionStore.save("currentQuestionKey", currentQuestion.questionKey);
+currentQuestionStore.save("currentQuestionKey", currentQuestion.questionKey);
