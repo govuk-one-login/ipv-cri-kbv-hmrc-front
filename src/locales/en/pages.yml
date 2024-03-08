@@ -1,3 +1,5 @@
+shared:
+  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>I need to prove my identity another way</a>"
 answer-security-questions:
   title: Answer some security questions
   h1: Answer some security questions
@@ -19,13 +21,11 @@ answer-security-questions:
       <p>If you'd like to know more about how your details will be used to prove your identity,
       <a href='https://signin.account.gov.uk/privacy-notice' class='govuk-link' rel='noreferrer noopener' target='_blank'>
       read our privacy notice (opens in a new tab)</a>.</p>
-  abandon: I need to prove my identity another way
   start-button: Start
 rti-payslip-national-insurance:
   title: Enter the amount of National Insurance you paid from a recent payslip
-  inset: Use a payslip dated after {{ threeMonthsAgo }} to answer this question
+  inset: Use a payslip dated after {{ dynamicDate }} to answer this question
   content:
     - Tell us the amount of National Insurance you paid.
     - You can usually find the amount next to any pensions or PAYE/income tax deductions on your payslip.
     - Enter the amount in pounds and pence, exactly as it appears on your payslip.
-  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>I need to prove my identity another way</a>"
