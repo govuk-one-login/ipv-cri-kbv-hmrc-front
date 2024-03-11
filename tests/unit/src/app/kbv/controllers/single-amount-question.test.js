@@ -42,7 +42,7 @@ describe("single-amount-question controller", () => {
       req.session = {
         question: {
           info: {
-            months: 3,
+            months: "3",
           },
         },
       };

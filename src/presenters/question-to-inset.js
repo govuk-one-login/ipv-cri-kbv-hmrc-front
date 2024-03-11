@@ -8,7 +8,7 @@ module.exports = function (question, translate, language) {
     const dynamicDate = moment()
       .subtract(question.info.months, "months")
       .locale(language)
-      .format("DD MMMM YYYY");
+      .format("D MMMM YYYY");
     data.dynamicDate = dynamicDate;
   }
 
