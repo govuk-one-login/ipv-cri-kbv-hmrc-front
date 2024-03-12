@@ -133,6 +133,28 @@ resources:
           "redirect_uri": "http://example.net"
         }
 
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id: "authorization-error"
+    response:
+      statusCode: 202
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "authorization-error"
+    response:
+      statusCode: 500
+      content: |
+        {
+          "redirect_uri": "http://example.net",
+          "oauth_error": {
+            "error_description": "gateway",
+            "error": "server_error"
+          }
+        }
+
   ### 'session-400' journey ###
   - method: POST
     path: /session
@@ -156,18 +178,3 @@ resources:
       template: true
       content: |
         {}
-
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "authorization-error"
-    response:
-      statusCode: 500
-      content: |
-        {
-          "redirect_uri": "http://example.net",
-          "oauth_error": {
-            "error_description": "gateway",
-            "error": "server_error"
-          }
-        }
