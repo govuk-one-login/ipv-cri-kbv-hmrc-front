@@ -1,10 +1,31 @@
-intro:
-  h1: Intro
-rti-payslip-national-insurance:
-  title: Enter the amount of National Insurance you paid from a recent payslip
-  inset: Use a payslip dated after {{ threeMonthsAgo }} to answer this question
+shared:
+  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>Mae angen i mi brofi fy hunaniaeth mewn ffordd arall</a>"
+answer-security-questions:
+  title: Atebwch rhai cwestiynau diogelwch
+  h1: Atebwch rhai cwestiynau diogelwch
   content:
-    - Tell us the amount of National Insurance you paid.
-    - You can usually find the amount next to any pensions or PAYE/income tax deductions on your payslip.
-    - Enter the amount in pounds and pence, exactly as it appears on your payslip.
-  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>I need to prove my identity another way</a>"
+    - Rydym yn defnyddio cwestiynau diogelwch fel y cam olaf i wirio eich hunaniaeth.
+    - Mae'r cwestiynau yn ymwneud â gwybodaeth sy'n bersonol i chi. Mae hyn yn atal pobl eraill rhag esgus bod yn chi.
+    - Mae'n rhaid i chi ateb digon o gwestiynau yn gywir i brofi eich hunaniaeth. Yna gallwch barhau â'r gwasanaeth rydych angen ei ddefnyddio.
+    - "## Cyn i chi ddechrau"
+    - "Byddwch angen rhai o'r dogfennau hyn:"
+    - - slipiau cyflog
+      - P60
+      - Ffurflen dreth Hunanasesiad
+      - credydau treth
+    - Mae hyn oherwydd bod y cwestiynau'n defnyddio gwybodaeth gan Gyllid a Thollau EF (CThEF).
+  details:
+    summaryText: Sut rydym yn defnyddio eich manylion
+    html: >-
+      <p>Ni fyddwn yn cadw'ch atebion i'r cwestiynau diogelwch nac yn eu rhannu â'r gwasanaeth rydych yn ceisio'i gyrchu.</p>
+      <p>Os hoffech wybod mwy am sut y bydd eich manylion yn cael eu defnyddio i brofi eich hunaniaeth,
+      <a href='https://signin.account.gov.uk/privacy-notice' class='govuk-link' rel='noreferrer noopener' target='_blank'>
+      darllenwch ein hysbysiad preifatrwydd (agor mewn tab newydd)</a>.</p>
+  start-button: Dechrau
+rti-payslip-national-insurance:
+  title: Rhowch swm yr Yswiriant Gwladol a dalwyd gennych o slip cyflog diweddar
+  inset: Defnyddiwch slip cyflog wedi'i ddyddio ar ôl {{ dynamicDate }} i ateb y cwestiwn hwn
+  content:
+    - Dywedwch wrthym faint o Yswiriant Gwladol rydych wedi'i dalu.
+    - Fel arfer, gallwch ddod o hyd i'r swm wrth ymyl unrhyw bensiynau neu ddidyniadau TWE/Treth Incwm ar eich slip cyflog.
+    - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
