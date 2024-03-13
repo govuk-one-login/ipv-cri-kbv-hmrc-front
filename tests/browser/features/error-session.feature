@@ -6,5 +6,4 @@ Feature: Error handling
   Scenario: Session error
     Given Error Eric is using the system
     And they have started the journey
-    When there is an immediate error
     Then they should see the unrecoverable error page

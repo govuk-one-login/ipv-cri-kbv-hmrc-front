@@ -8,4 +8,4 @@
 | Name         | Description                                                       | Default               |
 | :----------- | :---------------------------------------------------------------- | :-------------------- |
 | MOCK_API     | Enable the use of passthrough @mock-api tags into the `client-id` | true                  |
-| WEBSITE_HOST | URL of the website to test against                                | http://localhost:5090 |
+| WEBSITE_HOST | URL of the website to test against                                | http://localhost:5000 |
