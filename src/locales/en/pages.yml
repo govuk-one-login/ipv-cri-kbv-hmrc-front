@@ -21,6 +21,7 @@ answer-security-questions:
       <p>If you'd like to know more about how your details will be used to prove your identity,
       <a href='https://signin.account.gov.uk/privacy-notice' class='govuk-link' rel='noreferrer noopener' target='_blank'>
       read our privacy notice (opens in a new tab)</a>.</p>
+  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>I need to prove my identity another way</a>"
   start-button: Start
 rti-payslip-national-insurance:
   title: Enter the amount of National Insurance you paid from a recent payslip
