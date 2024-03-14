@@ -1,5 +1,6 @@
 const loadQuestionController = require("./controllers/load-question");
 const singleAmountQuestionController = require("./controllers/single-amount-question");
+const proveIdentityAnotherWayController = require("./controllers/prove-identity-another-way");
 
 module.exports = {
   "/": {
@@ -29,6 +30,19 @@ module.exports = {
   "/question/enter-tax-payslip": {
     controller: singleAmountQuestionController,
     next: "load-question",
+  },
+  "/prove-identity-another-way": {
+    resetJourney: true,
+    entryPoint: true,
+    controller: proveIdentityAnotherWayController,
+    prereqs: ["/kbv/load-question"],
+    next: [
+      {
+        value: "continue",
+        next: "load-question",
+      },
+      "/oauth2/callback",
+    ],
   },
   "/done": {
     skip: true,

@@ -1,5 +1,5 @@
 shared:
-  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>Mae angen i mi brofi fy hunaniaeth mewn ffordd arall</a>"
+  abandon: "<a href='/kbv/prove-identity-another-way' class='govuk-link' data-id='abandon'>Mae angen i mi brofi fy hunaniaeth mewn ffordd arall</a>"
 answer-security-questions:
   title: Atebwch rhai cwestiynau diogelwch
   h1: Atebwch rhai cwestiynau diogelwch
@@ -36,3 +36,11 @@ rti-payslip-income-tax:
     - Dywedwch wrthym faint o Dreth Incwm rydych wedi'i dalu.
     - Fel arfer, gallwch ddod o hyd i'r swm wrth ymyl unrhyw bensiynau neu daliadau Yswiriant Gwladol ar eich slip cyflog. Gallai gael ei alw'n TWE neu'n Dreth Incwm
     - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
+prove-identity-another-way:
+  title: Prove your identity another way
+  h1: Prove your identity another way
+  content: You may be able to prove your identity another way with GOV.UK One Login. Or you can go back to the service you need to use and check if there are other ways to access it.
+  warning: You cannot return to this screen if you look for another way to prove your identity.
+  legend: What would you like to do?
+  continue: Look for other ways to prove your identity or access the service
+  stop: Go back and try answering security questions

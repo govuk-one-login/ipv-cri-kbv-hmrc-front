@@ -1,5 +1,5 @@
 shared:
-  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>I need to prove my identity another way</a>"
+  abandon: "<a href='/kbv/prove-identity-another-way' class='govuk-link' data-id='abandon'>I need to prove my identity another way</a>"
 answer-security-questions:
   title: Answer some security questions
   h1: Answer some security questions
@@ -36,3 +36,11 @@ rti-payslip-income-tax:
     - Tell us the amount of Income Tax you paid.
     - You can usually find the amount next to any pensions or National Insurance payments on your payslip. It may be called PAYE/Income Tax.
     - Enter the amount in pounds and pence, exactly as it appears on your payslip.
+prove-identity-another-way:
+  title: Prove your identity another way
+  h1: Prove your identity another way
+  content: You may be able to prove your identity another way with GOV.UK One Login. Or you can go back to the service you need to use and check if there are other ways to access it.
+  warning: You cannot return to this screen if you look for another way to prove your identity.
+  legend: What would you like to do?
+  continue: Look for other ways to prove your identity or access the service
+  stop: Go back and try answering security questions
