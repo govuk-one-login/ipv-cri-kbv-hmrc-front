@@ -138,7 +138,7 @@ resources:
     requestHeaders:
       session-id: "authorization-error"
     response:
-      statusCode: 202
+      statusCode: 204
 
   - method: GET
     path: /authorization

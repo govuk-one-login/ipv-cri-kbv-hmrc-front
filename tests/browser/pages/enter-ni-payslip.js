@@ -4,7 +4,7 @@ module.exports = class PlaywrightDevPage {
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/question/";
+    this.path = "/kbv/question/enter-national-insurance-payslip";
   }
 
   async continue() {
@@ -17,6 +17,6 @@ module.exports = class PlaywrightDevPage {
 
   isCurrentPage() {
     const { pathname } = new URL(this.page.url());
-    return pathname.includes(this.path);
+    return pathname === this.path;
   }
 };

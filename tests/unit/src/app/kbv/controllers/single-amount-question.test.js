@@ -22,6 +22,7 @@ describe("single-amount-question controller", () => {
     req.lang = "en";
     req.form.options = {
       fields: {},
+      templatePath: "template-path",
     };
     req.session.question = {
       questionKey: "Q1",

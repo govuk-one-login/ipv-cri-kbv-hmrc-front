@@ -1,4 +1,5 @@
 const debug = require("debug")("load-question");
+const path = require("path");
 const BaseController = require("hmpo-form-wizard").Controller;
 const presenters = require("../../../presenters");
 
@@ -10,7 +11,10 @@ const {
 
 class SingleAmountQuestionController extends BaseController {
   configure(req, res, next) {
-    req.form.options.template = `${req.form.options.templatePath}/single-amount-question`;
+    req.form.options.template = path.join(
+      req.form.options.templatePath,
+      "single-amount-question"
+    );
     super.configure(req, res, next);
   }
 
