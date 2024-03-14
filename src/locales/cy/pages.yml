@@ -21,7 +21,6 @@ answer-security-questions:
       <p>Os hoffech wybod mwy am sut y bydd eich manylion yn cael eu defnyddio i brofi eich hunaniaeth,
       <a href='https://signin.account.gov.uk/privacy-notice' class='govuk-link' rel='noreferrer noopener' target='_blank'>
       darllenwch ein hysbysiad preifatrwydd (agor mewn tab newydd)</a>.</p>
-  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>Rwyf angen profi fy hunaniaeth mewn ffordd arall</a>"
   start-button: Dechrau
 rti-payslip-national-insurance:
   title: Rhowch swm yr Yswiriant Gwladol a dalwyd gennych o slip cyflog diweddar
