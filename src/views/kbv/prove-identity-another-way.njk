@@ -4,7 +4,8 @@
 
 {% set hmpoPageKey = "prove-identity-another-way" %}
 {% set gtmJourney = "kbv-hmrc - pyi" %}
-{% block mainContentBody %}
+{% block mainContent %}
+  <h1 class="govuk-heading-l"> {{ translate("pages.prove-identity-another-way.title") }} </h1>
   {{ hmpoHtml(translate("pages.prove-identity-another-way.content")) }}
 
    {% call hmpoForm(ctx) %}
@@ -13,5 +14,6 @@
         text: translate("pages.prove-identity-another-way.warning"),
         iconFallbackText: "Warning"
       }) }}
+      {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
   {% endcall %}
 {% endblock %}

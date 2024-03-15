@@ -28,17 +28,9 @@ module.exports = {
     next: "load-question",
   },
   "/prove-identity-another-way": {
-    resetJourney: true,
     entryPoint: true,
     controller: proveIdentityAnotherWayController,
-    prereqs: ["/kbv/load-question"],
-    next: [
-      {
-        value: "continue",
-        next: "load-question",
-      },
-      "/oauth2/callback",
-    ],
+    backLink: null,
   },
   "/done": {
     skip: true,

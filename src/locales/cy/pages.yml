@@ -35,5 +35,5 @@ prove-identity-another-way:
   content: Efallai y gallwch brofi eich hunaniaeth mewn ffordd arall gyda GOV.UK One Login. Neu gallwch fynd yn ôl i'r gwasanaeth rydych angen ei ddefnyddio a gwirio a oes ffyrdd eraill o gael mynediad ato.
   warning: Ni allwch ddychwelyd i'r sgrin hon os ydych yn chwilio am ffordd arall o brofi eich hunaniaeth.
   legend: Beth hoffech chi ei wneud?
-  continue: Chwilio am ffyrdd eraill o brofi eich hunaniaeth neu gael mynediad i'r gwasanaeth
-  stop: Ewch yn ôl a cheisiwch ateb cwestiynau diogelwch
+  continue: Ewch yn ôl a cheisiwch ateb cwestiynau diogelwch
+  stop: Chwilio am ffyrdd eraill o brofi eich hunaniaeth neu gael mynediad i'r gwasanaeth

@@ -67,4 +67,73 @@ describe("prove identity another way controller", () => {
       controller.locals(req, res, callback);
     });
   });
+  describe("#saveValues", () => {
+    beforeEach(() => {
+      req.journeyModel.get = jest.fn();
+      res.redirect = jest.fn();
+    });
+
+    it("should call super.saveValues with req, res, and a callback", async () => {
+      const superSaveValues = jest.spyOn(
+        BaseController.prototype,
+        "saveValues"
+      );
+
+      await controller.saveValues(req, res, next);
+
+      expect(superSaveValues).toHaveBeenCalledWith(
+        req,
+        res,
+        expect.any(Function)
+      );
+    });
+
+    it("should redirect to /oauth2/callback?error=access_denied if choice is 'stop'", async () => {
+      req.body = { "prove-identity-another-way": "stop" };
+
+      await controller.saveValues(req, res, next);
+
+      expect(res.redirect).toHaveBeenCalledWith(
+        "/oauth2/callback?error=access_denied"
+      );
+    });
+
+    it("should redirect to /kbv/answer-security-questions if history is empty", async () => {
+      req.body = { "prove-identity-another-way": "continue" };
+      req.journeyModel.get.mockReturnValue([]);
+
+      await controller.saveValues(req, res, next);
+
+      expect(res.redirect).toHaveBeenCalledWith(
+        "/kbv/answer-security-questions"
+      );
+    });
+
+    it("should redirect to the next step in history if history is not empty", async () => {
+      req.body = { "prove-identity-another-way": "continue" };
+      req.journeyModel.get.mockReturnValue([
+        { next: "/kbv/step1" },
+        { next: "/kbv/step2" },
+      ]);
+
+      await controller.saveValues(req, res, next);
+
+      expect(res.redirect).toHaveBeenCalledWith("/kbv/step2");
+    });
+
+    it("should call callback with error if super.locals returns an error", async () => {
+      const mockError = new Error("Some error");
+
+      const callback = jest.fn((err) => {
+        expect(err).toEqual(mockError);
+      });
+
+      const superLocals = jest.spyOn(BaseController.prototype, "saveValues");
+      superLocals.mockImplementation((req, res, callback) => {
+        callback(mockError);
+      });
+
+      await controller.saveValues(req, res, callback);
+    });
+  });
 });

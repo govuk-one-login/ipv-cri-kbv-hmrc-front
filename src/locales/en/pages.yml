@@ -35,5 +35,5 @@ prove-identity-another-way:
   content: You may be able to prove your identity another way with GOV.UK One Login. Or you can go back to the service you need to use and check if there are other ways to access it.
   warning: You cannot return to this screen if you look for another way to prove your identity.
   legend: What would you like to do?
-  continue: Look for other ways to prove your identity or access the service
-  stop: Go back and try answering security questions
+  continue: Go back and try answering security questions
+  stop: Look for other ways to prove your identity or access the service
