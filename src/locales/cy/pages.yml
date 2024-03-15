@@ -37,10 +37,10 @@ rti-payslip-income-tax:
     - Fel arfer, gallwch ddod o hyd i'r swm wrth ymyl unrhyw bensiynau neu daliadau Yswiriant Gwladol ar eich slip cyflog. Gallai gael ei alw'n TWE neu'n Dreth Incwm
     - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
 prove-identity-another-way:
-  title: Prove your identity another way
-  h1: Prove your identity another way
-  content: You may be able to prove your identity another way with GOV.UK One Login. Or you can go back to the service you need to use and check if there are other ways to access it.
-  warning: You cannot return to this screen if you look for another way to prove your identity.
-  legend: What would you like to do?
-  continue: Look for other ways to prove your identity or access the service
-  stop: Go back and try answering security questions
+  title: Profi eich hunaniaeth mewn ffordd arall
+  h1: Profi eich hunaniaeth mewn ffordd arall
+  content: Efallai y gallwch brofi eich hunaniaeth mewn ffordd arall gyda GOV.UK One Login. Neu gallwch fynd yn ôl i'r gwasanaeth rydych angen ei ddefnyddio a gwirio a oes ffyrdd eraill o gael mynediad ato.
+  warning: Ni allwch ddychwelyd i'r sgrin hon os ydych yn chwilio am ffordd arall o brofi eich hunaniaeth.
+  legend: Beth hoffech chi ei wneud?
+  continue: Chwilio am ffyrdd eraill o brofi eich hunaniaeth neu gael mynediad i'r gwasanaeth
+  stop: Ewch yn ôl a cheisiwch ateb cwestiynau diogelwch
