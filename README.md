@@ -3,14 +3,14 @@
 [![Github Action: Scan repository](https://github.com/govuk-one-login/ipv-cri-kbv-hmrc-front/actions/workflows/scan-repo.yml/badge.svg?branch=main)](https://github.com/govuk-one-login/ipv-cri-kbv-hmrc-front/actions/workflows/scan-repo.yml?query=branch%3Amain)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ipv-cri-kbv-hmrc-front&metric=coverage)](https://sonarcloud.io/summary/overall?id=ipv-cri-kbv-hmrc-front)
 
-> Note: This repository is templated as part of [di-ipv-cri-templates](https://github.com/govuk-one-login/di-ipv-cri-templates), and any substantial changes that can be shared should be included back into that repository for re-use elsewhere
+> Note: This repository is templated as part of [di-ipv-cri-templates](https://github.com/govuk-one-login/ipv-cri-templates), and any substantial changes that can be shared should be included back into that repository for re-use elsewhere
 
 KBV HMRC Credential Issuer Frontend is a Credential Issuer as part of the GOV.UK One Login programme.
 
 There are two main repositories that comprise this credential issuer:
 
 - This is the website used for displaying the Kbv Hmrc Credential Issuer.
-- There is a related [api repository](https://github.com/govuk-one-login/di-ipv-cri-kbv-hmrc-api) that contains the backend API that provides all the data interaction consumed
+- There is a related [api repository](https://github.com/govuk-one-login/ipv-cri-kbv-hmrc-api) that contains the backend API that provides all the data interaction consumed
 
 For frontend specific work there are the following repositories:
 
@@ -32,7 +32,7 @@ The following quickstart process details how to install and run the CRI frontend
 1. Clone repository and change directory:
 
 ```
-git clone https://github.com/alphagov/di-ipv-cri-kbv-hmrc-front && cd di-ipv-cri-kbv-hmrc-front
+git clone https://github.com/govuk-one-login/ipv-cri-kbv-hmrc-front && cd ipv-cri-kbv-hmrc-front
 ```
 
 2. Install node dependencies:
@@ -105,11 +105,11 @@ This is configured in the frontend application using the `API_BASE_URL` environm
 
 ### Mock API
 
-A standalone mock of the [api](https://github.com/alphagov/di-ipv-cri-kbv-hmrc-api) is provided using a combination of the API's OpenAPI config and hand-crafted Imposter scenarios.
+A standalone mock of the [api](https://github.com/govuk-one-login/ipv-cri-kbv-hmrc-api) is provided using a combination of the API's OpenAPI config and hand-crafted Imposter scenarios.
 
 More details on how to run this are in the [Imposter folder](./tests/imposter/).
 
-When connecting to a mock API both the `client_id` and `request` parameters are determined by the data in the Imposter configuration files. The `client_id` is used for determining what data to return to the frontend, and the request parameter is ignored.
+When connecting to a mock API both the `client_id` and `request` parameters are determined by the data in the Imposter configuration files. The `client_id` determines the `session_id` which is then used for determining what data to return to the frontend, and the `request` parameter is ignored.
 
 ### Deployed API
 
