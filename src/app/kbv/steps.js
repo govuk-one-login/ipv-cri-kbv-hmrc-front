@@ -16,13 +16,13 @@ module.exports = {
     skip: true,
     next: [
       {
-        fn: loadQuestionController.prototype.isSingleAmountQuestion,
-        next: "single-amount-question",
+        fn: loadQuestionController.prototype.hasQuestion,
+        next: loadQuestionController.prototype.getQuestionPath,
       },
       "done",
     ],
   },
-  "/single-amount-question": {
+  "/question/enter-national-insurance-payslip": {
     controller: singleAmountQuestionController,
     next: "load-question",
   },
