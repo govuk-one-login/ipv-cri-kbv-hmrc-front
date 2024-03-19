@@ -16,9 +16,10 @@
 
 ## Metrics and Analytics
 
-| Name             | Description                   | Default   |
-| :--------------- | :---------------------------- | :-------- |
-| ANALYTICS_DOMAIN | Domain for Google Analytics   | localhost |
-| GA4_CONTAINER_ID | Google GA4 ID                 |           |
-| GA4_ENABLED      | GA4 enabled                   | false     |
-| UA_CONTAINER_ID  | Google Universal Analytics ID |           |
+| Name                    | Description                                                                               | Default     |
+| :---------------------- | :---------------------------------------------------------------------------------------- | :---------- |
+| ANALYTICS_COOKIE_DOMAIN | Cookie domain to persist values throughout the different sections of the OneLogin journey | localhost   |
+| GA4_CONTAINER_ID        | Container ID for GA4, required for analytics to work correctly                            | GTM-KD86CMZ |
+| GA4_DISABLED            | Feature flag to disable GA4                                                               | false       |
+| UA_CONTAINER_ID         | Container ID for Universal Analytics, required for UA to work correctly                   | GTM-TK92W68 |
+| UA_DISABLED             | Feature flag to disable UA                                                                | true        |
