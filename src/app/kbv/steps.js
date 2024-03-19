@@ -26,6 +26,10 @@ module.exports = {
     controller: singleAmountQuestionController,
     next: "load-question",
   },
+  "/question/enter-tax-payslip": {
+    controller: singleAmountQuestionController,
+    next: "load-question",
+  },
   "/done": {
     skip: true,
     noPost: true,

@@ -6,6 +6,12 @@
         "info": {
           "months": "3"
         }
+      },
+      {
+        "questionKey": "rti-payslip-income-tax",
+        "info": {
+          "months": "3"
+        }
       }
     ]
   }
