@@ -1,20 +1,17 @@
 const BaseController = require("hmpo-form-wizard").Controller;
 const Controller = require("../../../../../../src/app/kbv/controllers/prove-identity-another-way");
-const presenters = require("../../../../../../src/presenters");
-jest.mock("../../../../../../src/presenters");
 
-describe("prove identity another way controller", () => {
+const {
+  API: {
+    PATHS: { ABANDON },
+  },
+} = require("../../../../../../src/lib/config");
+
+describe("prove identity another way test", () => {
   let controller;
-  let req;
-  let next;
-  let res;
 
   beforeEach(() => {
     controller = new Controller({ route: "/test" });
-    next = jest.fn();
-    req = global.req;
-    req.lang = "en";
-    res = jest.fn();
   });
 
   it("should be an instance of BaseController", () => {
@@ -23,117 +20,47 @@ describe("prove identity another way controller", () => {
     expect(controller).toBeInstanceOf(BaseController);
   });
 
-  describe("#locals", () => {
-    beforeEach(() => {
-      req.translate = jest.fn();
-    });
-
-    it("should call super.locals with req and res", () => {
-      const superLocals = jest.spyOn(BaseController.prototype, "locals");
-
-      controller.locals(req, res, next);
-
-      expect(superLocals).toHaveBeenCalledWith(req, res, expect.any(Function));
-    });
-
-    it("should set abandonRadio locals", (done) => {
-      presenters.abandonRadio.mockReturnValue({
-        name: "prove-identity-another-way",
-      });
-
-      const callback = jest.fn((err, locals) => {
-        expect(err).toBeNull();
-        expect(locals.abandonRadio.name).toBe("prove-identity-another-way");
-        done();
-      });
-
-      controller.locals(req, res, callback);
-    });
-
-    it("should call callback with error if super.locals returns an error", (done) => {
-      const mockError = new Error("Some error");
-
-      const callback = jest.fn((err, locals) => {
-        expect(err).toEqual(mockError);
-        expect(locals).toBeUndefined();
-        done();
-      });
-
-      const superLocals = jest.spyOn(BaseController.prototype, "locals");
-      superLocals.mockImplementation((req, res, callback) => {
-        callback(mockError);
-      });
-
-      controller.locals(req, res, callback);
-    });
-  });
   describe("#saveValues", () => {
     beforeEach(() => {
-      req.journeyModel.get = jest.fn();
-      res.redirect = jest.fn();
+      req.session.tokenId = "session-id";
+      req.axios.post = jest.fn();
+      req.form.values.abandonRadio = "continue";
     });
 
-    it("should call super.saveValues with req, res, and a callback", async () => {
-      const superSaveValues = jest.spyOn(
-        BaseController.prototype,
-        "saveValues"
-      );
-
+    it("should call abandon endpoint", async () => {
+      req.form.values.abandonRadio = "stop";
       await controller.saveValues(req, res, next);
 
-      expect(superSaveValues).toHaveBeenCalledWith(
-        req,
-        res,
-        expect.any(Function)
-      );
-    });
-
-    it("should redirect to /oauth2/callback?error=access_denied if choice is 'stop'", async () => {
-      req.body = { "prove-identity-another-way": "stop" };
-
-      await controller.saveValues(req, res, next);
-
-      expect(res.redirect).toHaveBeenCalledWith(
-        "/oauth2/callback?error=access_denied"
-      );
-    });
-
-    it("should redirect to /kbv/answer-security-questions if history is empty", async () => {
-      req.body = { "prove-identity-another-way": "continue" };
-      req.journeyModel.get.mockReturnValue([]);
-
-      await controller.saveValues(req, res, next);
-
-      expect(res.redirect).toHaveBeenCalledWith(
-        "/kbv/answer-security-questions"
-      );
-    });
-
-    it("should redirect to the next step in history if history is not empty", async () => {
-      req.body = { "prove-identity-another-way": "continue" };
-      req.journeyModel.get.mockReturnValue([
-        { next: "/kbv/step1" },
-        { next: "/kbv/step2" },
-      ]);
-
-      await controller.saveValues(req, res, next);
-
-      expect(res.redirect).toHaveBeenCalledWith("/kbv/step2");
-    });
-
-    it("should call callback with error if super.locals returns an error", async () => {
-      const mockError = new Error("Some error");
-
-      const callback = jest.fn((err) => {
-        expect(err).toEqual(mockError);
+      expect(req.axios.post).toHaveBeenCalledWith(ABANDON, undefined, {
+        headers: {
+          "session-id": req.session.tokenId,
+          session_id: "session-id",
+        },
       });
+    });
 
-      const superLocals = jest.spyOn(BaseController.prototype, "saveValues");
-      superLocals.mockImplementation((req, res, callback) => {
-        callback(mockError);
+    describe("on API success", () => {
+      it("should call next", async () => {
+        req.axios.post = jest.fn().mockResolvedValue({});
+
+        await controller.saveValues(req, res, next);
+
+        expect(next).toHaveBeenCalledTimes(1);
+        expect(next).toHaveBeenCalledWith();
       });
+    });
 
-      await controller.saveValues(req, res, callback);
+    describe("on API failure", () => {
+      it("should call next with error", async () => {
+        req.form.values.abandonRadio = "stop";
+        const error = new Error("Async error message");
+        req.axios.post = jest.fn().mockRejectedValue(error);
+
+        await controller.saveValues(req, res, next);
+
+        expect(next).toHaveBeenCalledTimes(1);
+        expect(next).toHaveBeenCalledWith(error);
+      });
     });
   });
 });

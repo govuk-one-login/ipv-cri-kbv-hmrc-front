@@ -28,9 +28,19 @@ module.exports = {
     next: "load-question",
   },
   "/prove-identity-another-way": {
-    entryPoint: true,
-    controller: proveIdentityAnotherWayController,
     backLink: null,
+    entryPoint: true,
+    prereqs: ["/load-question"],
+    fields: ["abandonRadio"],
+    controller: proveIdentityAnotherWayController,
+    next: [
+      {
+        field: "abandonRadio",
+        value: "continue",
+        next: "load-question",
+      },
+      "/oauth2/callback?error=access_denied",
+    ],
   },
   "/done": {
     skip: true,

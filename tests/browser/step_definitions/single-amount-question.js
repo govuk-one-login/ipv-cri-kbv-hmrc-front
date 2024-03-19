@@ -16,3 +16,11 @@ When(
     await singleAmountQuestionPage.continue();
   }
 );
+
+When(
+  "they click on the abandon link from single-amount-question page",
+  async function () {
+    const ninoPage = new SingleAmountQuestionPage(this.page);
+    await ninoPage.selectAbandon();
+  }
+);

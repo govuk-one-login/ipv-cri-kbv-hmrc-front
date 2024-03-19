@@ -1,3 +1,22 @@
 rti-payslip-national-insurance:
   label: Amount
   hint: For example 123.86
+
+abandonRadio:
+  label: What would you like to do?
+  legend: What would you like to do?
+  hint: ""
+  content: ""
+  validation:
+    required: You must choose an option to continue
+  items:
+    stop:
+      label: Look for other ways to prove your identity or access the service
+      value: stop
+      hint: ""
+      reveal: ""
+    continue:
+      label: Go back and try answering security questions
+      value: continue
+      hint: ""
+      reveal: ""

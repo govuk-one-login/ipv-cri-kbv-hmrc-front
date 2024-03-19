@@ -1,19 +1,14 @@
 {% extends "base-form.njk" %}
-{% from "hmpo-radios/macro.njk" import hmpoRadios %}
 {% from "hmpo-warning-text/macro.njk" import hmpoWarningText %}
 
 {% set hmpoPageKey = "prove-identity-another-way" %}
-{% set gtmJourney = "kbv-hmrc - pyi" %}
-{% block mainContent %}
-  <h1 class="govuk-heading-l"> {{ translate("pages.prove-identity-another-way.title") }} </h1>
-  {{ hmpoHtml(translate("pages.prove-identity-another-way.content")) }}
+{% set hmpoPageContent = "prove-identity-another-way" %}
+{% set gtmJourney = "prove-identity-another-way - start" %}
 
-   {% call hmpoForm(ctx) %}
-      {{ hmpoRadios(ctx, abandonRadio) }}
-      {{ hmpoWarningText({
-        text: translate("pages.prove-identity-another-way.warning"),
-        iconFallbackText: "Warning"
-      }) }}
-      {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
-  {% endcall %}
+{% block submitButton %}
+  {{ hmpoWarningText({
+    text: translate("pages.prove-identity-another-way.warning"),
+    iconFallbackText: "Warning"
+  }) }}
+  {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
 {% endblock %}

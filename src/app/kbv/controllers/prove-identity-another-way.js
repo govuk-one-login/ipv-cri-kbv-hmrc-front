@@ -1,37 +1,30 @@
 const BaseController = require("hmpo-form-wizard").Controller;
-const presenters = require("../../../presenters");
+
+const {
+  API: {
+    PATHS: { ABANDON },
+  },
+} = require("../../../lib/config");
 
 class ProveIdentityAnotherWayController extends BaseController {
-  locals(req, res, callback) {
-    super.locals(req, res, (err, locals) => {
-      if (err) {
-        return callback(err, locals);
+  async saveValues(req, res, callback) {
+    try {
+      const choice = req.form.values.abandonRadio;
+      if (choice === "stop") {
+        await this.abandonJourney(req);
       }
-
-      locals.abandonRadio = presenters.abandonRadio(req.translate);
-      callback(err, locals);
-    });
+      super.saveValues(req, res, async () => callback());
+    } catch (err) {
+      callback(err);
+    }
   }
 
-  async saveValues(req, res, next) {
-    await super.saveValues(req, res, async (err) => {
-      if (err) {
-        return next(err);
-      }
-      const choice = req.body["prove-identity-another-way"];
-      const history = req.journeyModel.get("history");
-
-      if (choice === "stop") {
-        return res.redirect("/oauth2/callback?error=access_denied");
-      }
-
-      let redirect = "/kbv/answer-security-questions";
-      if (history && history.length > 0) {
-        const last = history[history.length - 1];
-        redirect = last.next;
-      }
-
-      return res.redirect(redirect);
+  abandonJourney(req) {
+    return req.axios.post(ABANDON, undefined, {
+      headers: {
+        "session-id": req.session.tokenId,
+        session_id: req.session.tokenId,
+      },
     });
   }
 }

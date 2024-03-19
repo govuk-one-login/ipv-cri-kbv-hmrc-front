@@ -1,3 +1,22 @@
 rti-payslip-national-insurance:
   label: Swm
   hint: Er enghraifft, 123.86
+
+abandonRadio:
+  label: Beth hoffech chi ei wneud?
+  legend: Beth hoffech chi ei wneud?
+  hint: ""
+  content: ""
+  validation:
+    required: Mae'n rhaid i chi ddewis opsiwn i barhau
+  items:
+    stop:
+      label: Chwilio am ffyrdd eraill o brofi eich hunaniaeth neu gael mynediad i'r gwasanaeth
+      value: stop
+      hint: ""
+      reveal: ""
+    continue:
+      label: Ewch yn ôl a cheisiwch ateb cwestiynau diogelwch
+      value: continue
+      hint: ""
+      reveal: ""
