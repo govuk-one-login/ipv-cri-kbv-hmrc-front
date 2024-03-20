@@ -27,6 +27,13 @@ class ProveIdentityAnotherWayController extends BaseController {
       },
     });
   }
+
+  isQuestionJourneyStarted(req) {
+    const history = req.journeyModel.get("history");
+    const last = history[history.length - 1];
+
+    return last.next !== "/kbv/answer-security-questions";
+  }
 }
 
 module.exports = ProveIdentityAnotherWayController;

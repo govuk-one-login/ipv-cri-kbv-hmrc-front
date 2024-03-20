@@ -239,7 +239,7 @@ resources:
       statusCode: 200
       content: |
         {}
-  
+
   - method: POST
     path: /abandon
     requestHeaders:

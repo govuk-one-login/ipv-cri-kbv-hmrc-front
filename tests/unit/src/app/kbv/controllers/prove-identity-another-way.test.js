@@ -39,6 +39,12 @@ describe("prove identity another way test", () => {
       });
     });
 
+    it("should not call abandon endpoint", async () => {
+      await controller.saveValues(req, res, next);
+
+      expect(req.axios.post).not.toHaveBeenCalled();
+    });
+
     describe("on API success", () => {
       it("should call next", async () => {
         req.axios.post = jest.fn().mockResolvedValue({});
@@ -62,5 +68,46 @@ describe("prove identity another way test", () => {
         expect(next).toHaveBeenCalledWith(error);
       });
     });
+  });
+});
+describe("isQuestionJourneyStarted", () => {
+  let controller;
+
+  beforeEach(() => {
+    controller = new Controller({ route: "/test" });
+  });
+
+  it("should return true if question journey is started", () => {
+    const req = {
+      journeyModel: {
+        get: jest
+          .fn()
+          .mockReturnValue([
+            { next: "/kbv/answer-security-questions" },
+            { next: "/kbv/prove-identity-another-way" },
+          ]),
+      },
+    };
+
+    const result = controller.isQuestionJourneyStarted(req);
+
+    expect(result).toBe(true);
+  });
+
+  it("should return false if question journey is not started", () => {
+    const req = {
+      journeyModel: {
+        get: jest
+          .fn()
+          .mockReturnValue([
+            { next: "/kbv/start" },
+            { next: "/kbv/answer-security-questions" },
+          ]),
+      },
+    };
+
+    const result = controller.isQuestionJourneyStarted(req);
+
+    expect(result).toBe(false);
   });
 });

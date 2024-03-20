@@ -30,16 +30,28 @@ module.exports = {
   "/prove-identity-another-way": {
     backLink: null,
     entryPoint: true,
-    prereqs: ["/load-question"],
     fields: ["abandonRadio"],
     controller: proveIdentityAnotherWayController,
     next: [
       {
         field: "abandonRadio",
+        value: "stop",
+        next: "/oauth2/callback?error=access_denied",
+      },
+      {
+        fn: proveIdentityAnotherWayController.prototype
+          .isQuestionJourneyStarted,
+        field: "abandonRadio",
         value: "continue",
         next: "load-question",
       },
-      "/oauth2/callback?error=access_denied",
+      {
+        fn: !proveIdentityAnotherWayController.prototype
+          .isQuestionJourneyStarted,
+        field: "abandonRadio",
+        value: "continue",
+        next: "answer-security-questions",
+      },
     ],
   },
   "/done": {
