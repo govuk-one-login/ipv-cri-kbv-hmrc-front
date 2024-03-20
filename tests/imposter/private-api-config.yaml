@@ -12,18 +12,18 @@ system:
       preloadFile: data/questions.json
 
 resources:
-  ### "single-question" journey ###
+  ### "payslips" journey ###
   - method: GET
     path: /question
     requestHeaders:
-      session-id: "single-question"
+      session-id: "payslips"
     response:
       scriptFile: scripts/get-question.groovy
 
   - method: GET
     path: /authorization
     requestHeaders:
-      session-id: "single-question"
+      session-id: "payslips"
     response:
       template: true
       statusCode: 200
@@ -40,13 +40,13 @@ resources:
     path: /session
     requestBody:
       jsonPath: $.client_id
-      value: "single-question"
+      value: "payslips"
     response:
       statusCode: 201
       template: true
       content: |
         {
-          "session_id": "single-question",
+          "session_id": "payslips",
           "state": "sT@t3",
           "redirect_uri": "http://example.net"
         }
@@ -54,7 +54,7 @@ resources:
   - method: POST
     path: /answer
     requestHeaders:
-      session-id: "single-question"
+      session-id: "payslips"
     response:
       scriptFile: scripts/post-answer.groovy
 

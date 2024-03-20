@@ -1,6 +1,6 @@
 {
   "questions": {
-    "single-question": [
+    "payslips": [
       {
         "questionKey": "rti-payslip-national-insurance",
         "info": {
