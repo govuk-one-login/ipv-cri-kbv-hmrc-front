@@ -13,6 +13,11 @@
           "months": "3"
         }
       }
+    ],
+    "taxCredits": [
+      {
+        "questionKey": "ita-bankaccount"
+      }
     ]
   }
 }

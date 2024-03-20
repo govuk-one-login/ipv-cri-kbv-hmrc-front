@@ -36,3 +36,11 @@ rti-payslip-income-tax:
     - Tell us the amount of Income Tax you paid.
     - You can usually find the amount next to any pensions or National Insurance payments on your payslip. It may be called PAYE/Income Tax.
     - Enter the amount in pounds and pence, exactly as it appears on your payslip.
+ita-bankaccount:
+  title: Enter the last 4 digits of the bank or building society account your tax credits are paid into
+  content:
+    - "You can look for your account number on your:"
+    - - bank card
+      - online account or banking app
+      - bank statement
+      - paying-in book or cheque book

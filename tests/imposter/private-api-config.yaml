@@ -58,6 +58,50 @@ resources:
     response:
       scriptFile: scripts/post-answer.groovy
 
+  ### "taxCredits" journey ###
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id: "taxCredits"
+    response:
+      scriptFile: scripts/get-question.groovy
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "taxCredits"
+    response:
+      template: true
+      statusCode: 200
+      content: |
+        {
+          "authorizationCode": {
+            "value":"auth-code-${random.uuid()}"
+          },
+          "state":"sT@t3",
+          "redirect_uri":"http://example.net"
+        }
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "taxCredits"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "taxCredits",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
+  - method: POST
+    path: /answer
+    requestHeaders:
+      session-id: "taxCredits"
+    response:
+      scriptFile: scripts/post-answer.groovy
+
   ### 'insufficient-questions' journey ###
   - method: GET
     path: /question

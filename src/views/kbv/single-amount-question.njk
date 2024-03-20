@@ -9,9 +9,11 @@
 {% block mainContent %}
   <h1 class="govuk-heading-l"> {{ question.title }} </h1>
 
-  {{ govukInsetText({
-    text: question.inset
-  }) }}
+  {% if question.inset != " " %}
+    {{ govukInsetText({
+      text: question.inset
+    }) }}
+  {% endif %}
 
   {{ hmpoHtml(question.content) }}
 
