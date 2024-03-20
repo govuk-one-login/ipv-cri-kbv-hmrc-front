@@ -1,8 +1,14 @@
 {
   "questions": {
-    "single-question": [
+    "payslips": [
       {
         "questionKey": "rti-payslip-national-insurance",
+        "info": {
+          "months": "3"
+        }
+      },
+      {
+        "questionKey": "rti-payslip-income-tax",
         "info": {
           "months": "3"
         }
