@@ -84,7 +84,7 @@ describe("isQuestionJourneyStarted", () => {
           .fn()
           .mockReturnValue([
             { next: "/kbv/answer-security-questions" },
-            { next: "/kbv/prove-identity-another-way" },
+            { next: "/kbv/load-question" },
           ]),
       },
     };

@@ -40,21 +40,19 @@ module.exports = {
       {
         field: "abandonRadio",
         value: "stop",
-        next: "/oauth2/callback?error=access_denied",
+        next: "/oauth2/callback",
       },
       {
-        fn: proveIdentityAnotherWayController.prototype
-          .isQuestionJourneyStarted,
         field: "abandonRadio",
         value: "continue",
-        next: "load-question",
-      },
-      {
-        fn: !proveIdentityAnotherWayController.prototype
-          .isQuestionJourneyStarted,
-        field: "abandonRadio",
-        value: "continue",
-        next: "answer-security-questions",
+        next: [
+          {
+            fn: proveIdentityAnotherWayController.prototype
+              .isQuestionJourneyStarted,
+            next: "load-question",
+          },
+          "answer-security-questions",
+        ],
       },
     ],
   },

@@ -26,7 +26,7 @@ Feature: Prove identity another way
     Then they should see the Enter NI Payslip question page
     When they click on the abandon link from Payslip question page
     Then they should see the abandon page
-    And they choose to return to answering question option
+    Given they choose to return to answering question option
     When they click continue from prove identity another way
     Then they should see the Enter NI Payslip question page
 
@@ -36,6 +36,6 @@ Feature: Prove identity another way
     Then they should see the Enter NI Payslip question page
     When they click on the abandon link from Payslip question page
     Then they should see the abandon page
-    And they choose to abandon
+    Given they choose to abandon
     When they click continue from prove identity another way
     Then they should be redirected as access denied
