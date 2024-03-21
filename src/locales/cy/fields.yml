@@ -1,6 +1,9 @@
 rti-payslip-national-insurance:
   label: Swm
   hint: Er enghraifft, 123.86
+rti-payslip-income-tax:
+  label: Swm
+  hint: Er enghraifft, 123.86
 
 abandonRadio:
   label: Beth hoffech chi ei wneud?

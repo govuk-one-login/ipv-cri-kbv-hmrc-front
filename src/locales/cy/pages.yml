@@ -29,6 +29,13 @@ rti-payslip-national-insurance:
     - Dywedwch wrthym faint o Yswiriant Gwladol rydych wedi'i dalu.
     - Fel arfer, gallwch ddod o hyd i'r swm wrth ymyl unrhyw bensiynau neu ddidyniadau TWE/Treth Incwm ar eich slip cyflog.
     - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
+rti-payslip-income-tax:
+  title: Rhowch faint o dreth a dalwyd gennych o slip cyflog diweddar
+  inset: Defnyddiwch slip cyflog wedi'i ddyddio ar ôl {{ dynamicDate }} i ateb y cwestiwn hwn
+  content:
+    - Dywedwch wrthym faint o Dreth Incwm rydych wedi'i dalu.
+    - Fel arfer, gallwch ddod o hyd i'r swm wrth ymyl unrhyw bensiynau neu daliadau Yswiriant Gwladol ar eich slip cyflog. Gallai gael ei alw'n TWE neu'n Dreth Incwm
+    - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
 prove-identity-another-way:
   title: Profi eich hunaniaeth mewn ffordd arall
   h1: Profi eich hunaniaeth mewn ffordd arall

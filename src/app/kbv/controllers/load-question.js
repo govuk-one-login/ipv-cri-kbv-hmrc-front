@@ -7,6 +7,11 @@ const {
   },
 } = require("../../../lib/config");
 
+const questionKeyToPathMap = new Map([
+  ["rti-payslip-national-insurance", "enter-national-insurance-payslip"],
+  ["rti-payslip-income-tax", "enter-tax-payslip"],
+]);
+
 class LoadQuestionController extends BaseController {
   async saveValues(req, res, next) {
     super.saveValues(req, res, async () => {
@@ -27,10 +32,14 @@ class LoadQuestionController extends BaseController {
     });
   }
 
-  isSingleAmountQuestion(req) {
-    return (
-      req.session?.question?.questionKey === "rti-payslip-national-insurance"
-    );
+  hasQuestion(req) {
+    return !!req.session?.question;
+  }
+
+  getQuestionPath(req) {
+    return `question/${questionKeyToPathMap.get(
+      req.session?.question?.questionKey
+    )}`;
   }
 }
 module.exports = LoadQuestionController;

@@ -1,26 +1,26 @@
 const { Then, When } = require("@cucumber/cucumber");
-const { SingleAmountQuestionPage } = require("../pages");
+const { EnterNIPayslipPage } = require("../pages");
 const { expect } = require("chai");
 
-Then("they should see the single-amount-question page", async function () {
-  const singleAmountQuestionPage = new SingleAmountQuestionPage(this.page);
+Then("they should see the Payslip question page", async function () {
+  const enterNIPayslipPage = new EnterNIPayslipPage(this.page);
 
-  expect(singleAmountQuestionPage.isCurrentPage()).to.be.true;
+  expect(enterNIPayslipPage.isCurrentPage()).to.be.true;
 });
 
 When(
-  "they enter amount and continue from single-amount-question page",
+  "they enter amount and continue from Payslip question page",
   async function () {
-    const singleAmountQuestionPage = new SingleAmountQuestionPage(this.page);
-    await singleAmountQuestionPage.answer();
-    await singleAmountQuestionPage.continue();
+    const enterNIPayslipPage = new EnterNIPayslipPage(this.page);
+    await enterNIPayslipPage.answer();
+    await enterNIPayslipPage.continue();
   }
 );
 
 When(
-  "they click on the abandon link from single-amount-question page",
+  "they click on the abandon link from Payslip question page",
   async function () {
-    const ninoPage = new SingleAmountQuestionPage(this.page);
-    await ninoPage.selectAbandon();
+    const enterNIPayslipPage = new EnterNIPayslipPage(this.page);
+    await enterNIPayslipPage.selectAbandon();
   }
 );

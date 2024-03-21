@@ -64,7 +64,7 @@ describe("question controller", () => {
     });
   });
 
-  describe("#isSingleAmountQuestion", () => {
+  describe("#hasQuestion", () => {
     it('should return "true" when there is a next question', () => {
       const req = {
         session: {
@@ -72,9 +72,9 @@ describe("question controller", () => {
         },
       };
 
-      const route = controller.isSingleAmountQuestion(req);
+      const result = controller.hasQuestion(req);
 
-      expect(route).toBe(true);
+      expect(result).toBe(true);
     });
 
     it('should return "false" when no question', () => {
@@ -83,9 +83,23 @@ describe("question controller", () => {
           question: null,
         },
       };
-      const route = controller.isSingleAmountQuestion(req);
+      const result = controller.hasQuestion(req);
 
-      expect(route).toBe(false);
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("#getQuestionPath", () => {
+    it("should return path for the next question", () => {
+      const req = {
+        session: {
+          question: { questionKey: "rti-payslip-national-insurance" },
+        },
+      };
+
+      const result = controller.getQuestionPath(req);
+
+      expect(result).toBe("question/enter-national-insurance-payslip");
     });
   });
 });

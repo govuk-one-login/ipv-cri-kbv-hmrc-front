@@ -1,4 +1,5 @@
 const debug = require("debug")("load-question");
+const path = require("path");
 const BaseController = require("hmpo-form-wizard").Controller;
 const presenters = require("../../../presenters");
 
@@ -9,6 +10,14 @@ const {
 } = require("../../../lib/config");
 
 class SingleAmountQuestionController extends BaseController {
+  configure(req, res, next) {
+    req.form.options.template = path.join(
+      req.form.options.templatePath,
+      "single-amount-question"
+    );
+    super.configure(req, res, next);
+  }
+
   locals(req, res, callback) {
     super.locals(req, res, (err, locals) => {
       if (err) {
@@ -75,14 +84,6 @@ class SingleAmountQuestionController extends BaseController {
 
       callback();
     });
-  }
-
-  next(req) {
-    if (req.session.question) {
-      return "single-amount-question";
-    }
-
-    return "done";
   }
 }
 module.exports = SingleAmountQuestionController;

@@ -4,16 +4,19 @@ module.exports = class PlaywrightDevPage {
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/answer-security-questions";
+    this.path = "/kbv/question/enter-tax-payslip";
   }
 
-  async start() {
-    await this.page.click("#start");
+  async continue() {
+    await this.page.click("#continue");
+  }
+
+  async answer() {
+    await this.page.fill('input[type="text"]', "23");
   }
 
   isCurrentPage() {
     const { pathname } = new URL(this.page.url());
-
     return pathname === this.path;
   }
 
