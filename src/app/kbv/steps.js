@@ -1,5 +1,6 @@
 const loadQuestionController = require("./controllers/load-question");
 const singleAmountQuestionController = require("./controllers/single-amount-question");
+const proveIdentityAnotherWayController = require("./controllers/prove-identity-another-way");
 
 module.exports = {
   "/": {
@@ -34,6 +35,31 @@ module.exports = {
     fields: ["ita-bankaccount"],
     controller: singleAmountQuestionController,
     next: "load-question",
+  },
+  "/prove-identity-another-way": {
+    backLink: null,
+    entryPoint: true,
+    fields: ["abandonRadio"],
+    controller: proveIdentityAnotherWayController,
+    next: [
+      {
+        field: "abandonRadio",
+        value: "stop",
+        next: "/oauth2/callback",
+      },
+      {
+        field: "abandonRadio",
+        value: "continue",
+        next: [
+          {
+            fn: proveIdentityAnotherWayController.prototype
+              .isQuestionJourneyStarted,
+            next: "load-question",
+          },
+          "answer-security-questions",
+        ],
+      },
+    ],
   },
   "/done": {
     skip: true,

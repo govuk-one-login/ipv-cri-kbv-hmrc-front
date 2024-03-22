@@ -5,4 +5,5 @@ module.exports = {
   Enter4DigitsBankAccountTaxCredits: require("./enter-4-digits-bank-account-tax-credits.js"),
   ErrorPage: require("./error.js"),
   RelyingPartyPage: require("./relying-party.js"),
+  ProveIdentityAnotherWayPage: require("./prove-identity-another-way.js"),
 };
