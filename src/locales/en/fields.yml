@@ -7,3 +7,21 @@ rti-payslip-income-tax:
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""
+abandonRadio:
+  label: What would you like to do?
+  legend: What would you like to do?
+  hint: ""
+  content: ""
+  validation:
+    required: You must choose an option to continue
+  items:
+    stop:
+      label: Look for other ways to prove your identity or access the service
+      value: stop
+      hint: ""
+      reveal: ""
+    continue:
+      label: Go back and try answering security questions
+      value: continue
+      hint: ""
+      reveal: ""

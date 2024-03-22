@@ -8,6 +8,7 @@ module.exports = {
       AUTHORIZATION: "authorization",
       QUESTION: "question",
       ANSWER: "answer",
+      ABANDON: "abandon",
     },
   },
   APP: {

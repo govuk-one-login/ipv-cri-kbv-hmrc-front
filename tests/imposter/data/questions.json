@@ -18,6 +18,14 @@
       {
         "questionKey": "ita-bankaccount"
       }
+    ],
+    "abandon": [
+      {
+        "questionKey": "rti-payslip-national-insurance",
+        "info": {
+          "months": "3"
+        }
+      }
     ]
   }
 }
