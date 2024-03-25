@@ -13,6 +13,7 @@ module.exports = {
     next: "load-question",
   },
   "/load-question": {
+    backLink: null,
     controller: loadQuestionController,
     skip: true,
     next: [
@@ -24,14 +25,17 @@ module.exports = {
     ],
   },
   "/question/enter-national-insurance-payslip": {
+    backLink: null,
     controller: singleAmountQuestionController,
     next: "load-question",
   },
   "/question/enter-tax-payslip": {
+    backLink: null,
     controller: singleAmountQuestionController,
     next: "load-question",
   },
   "/question/enter-4-digits-bank-account-tax-credits": {
+    backLink: null,
     fields: ["ita-bankaccount"],
     controller: singleAmountQuestionController,
     next: "load-question",
@@ -52,8 +56,7 @@ module.exports = {
         value: "continue",
         next: [
           {
-            fn: proveIdentityAnotherWayController.prototype
-              .isQuestionJourneyStarted,
+            fn: loadQuestionController.prototype.hasQuestion,
             next: "load-question",
           },
           "answer-security-questions",
