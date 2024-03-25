@@ -36,3 +36,11 @@ rti-payslip-income-tax:
     - Dywedwch wrthym faint o Dreth Incwm rydych wedi'i dalu.
     - Fel arfer, gallwch ddod o hyd i'r swm wrth ymyl unrhyw bensiynau neu daliadau Yswiriant Gwladol ar eich slip cyflog. Gallai gael ei alw'n TWE neu'n Dreth Incwm
     - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
+ita-bankaccount:
+  title: Rhowch 4 digid olaf y cyfrif banc neu gymdeithas adeiladu y telir eich credydau treth iddo
+  content:
+    - Gallwch chwilio am eich rhif cyfrif ar eich
+    - - cerdyn banc
+      - cyfrif ar-lein neu ap bancio
+      - cyfriflen banc
+      - llyfr talu i mewn neu lyfr siec

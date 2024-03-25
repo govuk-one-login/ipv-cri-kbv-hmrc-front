@@ -30,6 +30,10 @@ module.exports = {
     controller: singleAmountQuestionController,
     next: "load-question",
   },
+  "/question/enter-4-digits-bank-account-tax-credits": {
+    controller: singleAmountQuestionController,
+    next: "load-question",
+  },
   "/done": {
     skip: true,
     noPost: true,
