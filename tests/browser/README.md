@@ -8,7 +8,7 @@ The following quickstart process details how to install and run the browser test
 
 ### Major Dependencies
 
-- [Node.js](https://nodejs.org/en/) (>= 18.17.1)
+- [Node.js](https://nodejs.org/en/) (>= 20.11.1)
 - [NPM](https://www.npmjs.com/) (>= 9.6.0)
 
 ### Installation

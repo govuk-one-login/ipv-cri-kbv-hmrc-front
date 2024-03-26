@@ -23,7 +23,7 @@ The following quickstart process details how to install and run the CRI frontend
 
 ### Major Dependencies
 
-- [Node.js](https://nodejs.org/en/) (>= 18.17.1)
+- [Node.js](https://nodejs.org/en/) (>= 20.11.1)
 - [NPM](https://www.npmjs.com/) (>= 9.6.0)
 - [pre-commit](https://pre-commit.com/) (>= 2.17.0)
 
