@@ -60,3 +60,7 @@ error:
     contactMeLink: Contact the GOV.UK One Login team (opens in a new tab)
     buttonText: Go to the GOV.UK homepage
     buttonLink: https://www.gov.uk/
+validation:
+  required: Enter the last 4 digits of your account number
+  numeric: Last 4 digits of your account number must only include numbers
+  exactlength: Last 4 digits of your account number must be 4 numbers

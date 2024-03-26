@@ -43,6 +43,24 @@ describe("single-amount-question controller", () => {
       controller.configure(req, res, next);
       expect(req.form.options.template).toContain("single-amount-question");
     });
+
+    it("should add validation rules for 'question' field if questionKey is 'ita-bankaccount'", () => {
+      req.session.question.questionKey = "ita-bankaccount";
+
+      controller.configure(req, res, next);
+
+      expect(req.form.options.fields["question"].validate).toEqual([
+        "required",
+        "numeric",
+        { type: "exactlength", arguments: 4 },
+      ]);
+    });
+
+    it("should call super.configure with req, res, and next", () => {
+      const superConfigure = jest.spyOn(BaseController.prototype, "configure");
+      controller.configure(req, res, next);
+      expect(superConfigure).toHaveBeenCalledWith(req, res, next);
+    });
   });
 
   describe("#locals", () => {

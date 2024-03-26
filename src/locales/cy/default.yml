@@ -60,3 +60,7 @@ error:
     contactMeLink: "Cysylltwch â’r tîm GOV.UK One Login (agor mewn tab newydd)"
     buttonText: "Ewch i hafan GOV.UK"
     buttonLink: "https://www.gov.uk/"
+validation:
+  required: Rhowch y 4 digid olaf o rif eich cyfrif
+  numeric: Rhaid i'r 4 digid olaf o rif eich cyfrif gynnwys rhifau yn unig
+  exactlength: Rhaid i 4 digid olaf eich rhif cyfrif fod yn 4 rhif

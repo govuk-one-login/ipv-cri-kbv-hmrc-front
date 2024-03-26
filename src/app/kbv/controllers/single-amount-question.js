@@ -15,6 +15,17 @@ class SingleAmountQuestionController extends BaseController {
       req.form.options.templatePath,
       "single-amount-question"
     );
+
+    if (req.session.question?.questionKey === "ita-bankaccount") {
+      req.form.options.fields["question"] = {
+        validate: [
+          "required",
+          "numeric",
+          { type: "exactlength", arguments: 4 },
+        ],
+      };
+    }
+
     super.configure(req, res, next);
   }
 
