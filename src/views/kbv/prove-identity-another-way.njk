@@ -1,0 +1,14 @@
+{% extends "base-form.njk" %}
+{% from "hmpo-warning-text/macro.njk" import hmpoWarningText %}
+
+{% set hmpoPageKey = "prove-identity-another-way" %}
+{% set hmpoPageContent = "prove-identity-another-way" %}
+{% set gtmJourney = "prove-identity-another-way - start" %}
+
+{% block submitButton %}
+  {{ hmpoWarningText({
+    text: translate("pages.prove-identity-another-way.warning"),
+    iconFallbackText: "Warning"
+  }) }}
+  {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
+{% endblock %}

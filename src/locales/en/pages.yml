@@ -1,5 +1,5 @@
 shared:
-  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>I need to prove my identity another way</a>"
+  abandon: "<a href='/kbv/prove-identity-another-way' class='govuk-link' id='abandon' data-id='abandon'>I need to prove my identity another way</a>"
 answer-security-questions:
   title: Answer some security questions
   h1: Answer some security questions
@@ -44,3 +44,8 @@ ita-bankaccount:
       - online account or banking app
       - bank statement
       - paying-in book or cheque book
+prove-identity-another-way:
+  title: Prove your identity another way
+  h1: Prove your identity another way
+  content: You may be able to prove your identity another way with GOV.UK One Login. Or you can go back to the service you need to use and check if there are other ways to access it.
+  warning: You cannot return to this screen if you look for another way to prove your identity.
