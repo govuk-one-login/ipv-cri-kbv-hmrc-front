@@ -20,8 +20,8 @@
   {% call hmpoForm(ctx) %}
 
     {{ hmpoText(ctx, {
-      id: "question",
-      name: "question",
+      id: question.name,
+      name: question.name,
       label: {
         text: question.label,
         classes: "govuk-label--m"
