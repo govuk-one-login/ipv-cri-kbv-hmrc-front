@@ -1,0 +1,9 @@
+{% extends "base-form.njk" %}
+{% from "hmpo-details/macro.njk" import hmpoDetails %}
+
+{% set hmpoPageKey = "enter-4-digits-bank-account-tax-credits" %}
+{% set gtmJourney = "kbv-hmrc - start" %}
+
+{% block submitButton %}
+    {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
+{% endblock %}
