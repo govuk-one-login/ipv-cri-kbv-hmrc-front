@@ -111,8 +111,9 @@ describe("single-amount-question controller", () => {
 
     describe("on API success", () => {
       it("should call answer endpoint to post submitted answer", async () => {
-        req.session.question.questionKey = "rti-payslip-national-insurance";
-        req.body.question = "3";
+        const questionKey = "rti-payslip-national-insurance";
+        req.session.question.questionKey = questionKey;
+        req.body[questionKey] = "3";
         req.axios.get = jest.fn().mockResolvedValue({});
         req.axios.post = jest.fn().mockResolvedValue({});
 

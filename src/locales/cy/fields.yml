@@ -7,3 +7,7 @@ rti-payslip-income-tax:
 ita-bankaccount:
   label: 4 digid olaf o rif eich cyfrif
   hint: ""
+  validation:
+    default: Rhowch y 4 digid olaf o rif eich cyfrif
+    numeric: Rhaid i'r 4 digid olaf o rif eich cyfrif gynnwys rhifau yn unig
+    exactlength: Rhaid i 4 digid olaf eich rhif cyfrif fod yn 4 rhif

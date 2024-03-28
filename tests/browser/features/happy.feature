@@ -21,5 +21,9 @@ Feature: Happy path
     Then they should see the answer security questions page
     When they continue from answer security questions
     Then they should see the enter-4-digits-bank-account-tax-credits question page
-    When they enter amount and continue from the enter-4-digits-bank-account-tax-credits question page
+    When they do not enter an account number and continue from the enter-4-digits-bank-account-tax-credits question page
+    Then they should see enter account number error message
+    When they enter an invalid account number and continue from the enter-4-digits-bank-account-tax-credits question page
+    Then they should see enter correct account number error message
+    When they enter correct account number and continue from the enter-4-digits-bank-account-tax-credits question page
     Then they should be redirected as a success

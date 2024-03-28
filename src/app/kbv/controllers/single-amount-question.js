@@ -38,6 +38,7 @@ class SingleAmountQuestionController extends BaseController {
         ),
         title: presenters.questionToTitle(req.session.question, req.translate),
         prefix: "£",
+        name: req.session.question?.questionKey,
       };
 
       callback(null, locals);
@@ -50,12 +51,14 @@ class SingleAmountQuestionController extends BaseController {
         return callback(err);
       }
 
+      const userInput = req.body[req.session.question.questionKey];
+
       try {
         await req.axios.post(
           ANSWER,
           {
             key: req.session.question.questionKey,
-            value: req.body.question,
+            value: userInput,
           },
           {
             headers: {
