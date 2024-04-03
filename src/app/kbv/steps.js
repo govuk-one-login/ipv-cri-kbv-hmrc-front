@@ -1,5 +1,6 @@
 const loadQuestionController = require("./controllers/load-question");
 const singleAmountQuestionController = require("./controllers/single-amount-question");
+const proveIdentityAnotherWayController = require("./controllers/prove-identity-another-way");
 
 module.exports = {
   "/": {
@@ -12,6 +13,7 @@ module.exports = {
     next: "load-question",
   },
   "/load-question": {
+    backLink: null,
     controller: loadQuestionController,
     skip: true,
     next: [
@@ -23,17 +25,44 @@ module.exports = {
     ],
   },
   "/question/enter-national-insurance-payslip": {
+    backLink: null,
     controller: singleAmountQuestionController,
     next: "load-question",
   },
   "/question/enter-tax-payslip": {
+    backLink: null,
     controller: singleAmountQuestionController,
     next: "load-question",
   },
   "/question/enter-4-digits-bank-account-tax-credits": {
+    backLink: null,
     fields: ["ita-bankaccount"],
     controller: singleAmountQuestionController,
     next: "load-question",
+  },
+  "/prove-identity-another-way": {
+    backLink: null,
+    entryPoint: true,
+    fields: ["abandonRadio"],
+    controller: proveIdentityAnotherWayController,
+    next: [
+      {
+        field: "abandonRadio",
+        value: "stop",
+        next: "/oauth2/callback",
+      },
+      {
+        field: "abandonRadio",
+        value: "continue",
+        next: [
+          {
+            fn: loadQuestionController.prototype.hasQuestion,
+            next: "load-question",
+          },
+          "answer-security-questions",
+        ],
+      },
+    ],
   },
   "/done": {
     skip: true,

@@ -16,3 +16,11 @@ When(
     await singleAmountQuestionPage.continue();
   }
 );
+
+When(
+  "they click on the abandon link from Payslip question page",
+  async function () {
+    const enterNIPayslipPage = new EnterNIPayslipPage(this.page);
+    await enterNIPayslipPage.selectAbandon();
+  }
+);

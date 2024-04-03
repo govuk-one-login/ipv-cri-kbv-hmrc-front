@@ -11,3 +11,21 @@ ita-bankaccount:
     default: Enter the last 4 digits of your account number
     numeric: Last 4 digits of your account number must only include numbers
     exactlength: Last 4 digits of your account number must be 4 numbers
+abandonRadio:
+  label: What would you like to do?
+  legend: What would you like to do?
+  hint: ""
+  content: ""
+  validation:
+    required: You must choose an option to continue
+  items:
+    stop:
+      label: Look for other ways to prove your identity or access the service
+      value: stop
+      hint: ""
+      reveal: ""
+    continue:
+      label: Go back and try answering security questions
+      value: continue
+      hint: ""
+      reveal: ""

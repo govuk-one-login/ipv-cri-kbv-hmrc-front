@@ -222,3 +222,60 @@ resources:
       template: true
       content: |
         {}
+  ### 'abandon' journey ###
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id: "abandon"
+    response:
+      scriptFile: scripts/get-question.groovy
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "abandon"
+    response:
+      statusCode: 500
+      content: |
+        {
+          "redirect_uri": "http://example.net",
+          "oauth_error": {
+            "error_description": "acces-denied",
+            "error": "access_denied"
+          }
+        }
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "abandon"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "abandon",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
+  - method: POST
+    path: /answer
+    requestHeaders:
+      session-id: "abandon"
+    response:
+      scriptFile: scripts/post-answer.groovy
+
+  - method: POST
+    path: /abandon
+    response:
+      statusCode: 200
+      content: |
+        {}
+  - method: POST
+    path: /abandon
+    requestHeaders:
+      session-id: "abandon-fail"
+    response:
+      statusCode: 400
+      content: |
+        {}

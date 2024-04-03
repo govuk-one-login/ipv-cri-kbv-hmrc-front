@@ -21,6 +21,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: "403 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "500":
           description: "500 response"
           content:
@@ -129,6 +135,26 @@ paths:
           description: "Question already answered"
         "400":
           description: "Client Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: "Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /abandon:
+    post:
+      parameters:
+        - $ref: "#/components/parameters/SessionHeader"
+      responses:
+        "200":
+          description: "OK"
+        "400":
+          description: "Bad Request"
           content:
             application/json:
               schema:

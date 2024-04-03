@@ -1,5 +1,5 @@
 shared:
-  abandon: "<a href='/kbv/abandon' class='govuk-link' data-id='abandon'>Mae angen i mi brofi fy hunaniaeth mewn ffordd arall</a>"
+  abandon: "<a href='/kbv/prove-identity-another-way' class='govuk-link' id='abandon' data-id='abandon'>Mae angen i mi brofi fy hunaniaeth mewn ffordd arall</a>"
 answer-security-questions:
   title: Atebwch rhai cwestiynau diogelwch
   h1: Atebwch rhai cwestiynau diogelwch
@@ -44,3 +44,8 @@ ita-bankaccount:
       - cyfrif ar-lein neu ap bancio
       - cyfriflen banc
       - llyfr talu i mewn neu lyfr siec
+prove-identity-another-way:
+  title: Profi eich hunaniaeth mewn ffordd arall
+  h1: Profi eich hunaniaeth mewn ffordd arall
+  content: Efallai y gallwch brofi eich hunaniaeth mewn ffordd arall gyda GOV.UK One Login. Neu gallwch fynd yn ôl i'r gwasanaeth rydych angen ei ddefnyddio a gwirio a oes ffyrdd eraill o gael mynediad ato.
+  warning: Ni allwch ddychwelyd i'r sgrin hon os ydych yn chwilio am ffordd arall o brofi eich hunaniaeth.

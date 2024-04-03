@@ -11,3 +11,21 @@ ita-bankaccount:
     default: Rhowch y 4 digid olaf o rif eich cyfrif
     numeric: Rhaid i'r 4 digid olaf o rif eich cyfrif gynnwys rhifau yn unig
     exactlength: Rhaid i 4 digid olaf eich rhif cyfrif fod yn 4 rhif
+abandonRadio:
+  label: Beth hoffech chi ei wneud?
+  legend: Beth hoffech chi ei wneud?
+  hint: ""
+  content: ""
+  validation:
+    required: Mae'n rhaid i chi ddewis opsiwn i barhau
+  items:
+    stop:
+      label: Chwilio am ffyrdd eraill o brofi eich hunaniaeth neu gael mynediad i'r gwasanaeth
+      value: stop
+      hint: ""
+      reveal: ""
+    continue:
+      label: Ewch yn ôl a cheisiwch ateb cwestiynau diogelwch
+      value: continue
+      hint: ""
+      reveal: ""
