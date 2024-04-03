@@ -7,3 +7,7 @@ rti-payslip-income-tax:
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""
+  validation:
+    default: Enter the last 4 digits of your account number
+    numeric: Last 4 digits of your account number must only include numbers
+    exactlength: Last 4 digits of your account number must be 4 numbers
