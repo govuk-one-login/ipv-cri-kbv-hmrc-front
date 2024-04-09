@@ -1,0 +1,22 @@
+{% extends "base-form.njk" %}
+{% from "hmpo-radios/macro.njk" import hmpoRadios %}
+
+{% set gtmJourney = "kbv-hmrc - middle" %}
+
+{% set hmpoTitle = question.title %}
+
+{% block mainContent %}
+  <h1 class="govuk-heading-l"> {{ question.title }} </h1>
+
+  {{ hmpoHtml(question.content) }}
+
+  {% call hmpoForm(ctx) %}
+
+    {{ hmpoRadios(ctx, question) }}
+
+    {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
+  {% endcall %}
+
+  {{ hmpoHtml(translate("pages.shared.abandon")) }}
+
+{% endblock %}

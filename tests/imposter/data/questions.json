@@ -19,6 +19,14 @@
         "questionKey": "ita-bankaccount"
       }
     ],
+    "selfAssessment": [
+      {
+        "questionKey": "sa-income-from-pensions",
+        "info": {
+          "currentTaxYear": "2022/23"
+        }
+      }
+    ],
     "abandon": [
       {
         "questionKey": "rti-payslip-national-insurance",

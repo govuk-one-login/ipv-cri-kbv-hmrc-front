@@ -29,3 +29,16 @@ abandonRadio:
       value: continue
       hint: ""
       reveal: ""
+sa-income-from-pensions:
+  hint: ""
+  items:
+    sa100:
+      label: Ffurflen dreth Hunanasesiad (SA100)
+      value: sa100
+      hint: ""
+      reveal: ""
+    sa200:
+      label: Ffurflen dreth fer (SA100)
+      value: sa200
+      hint: ""
+      reveal: ""

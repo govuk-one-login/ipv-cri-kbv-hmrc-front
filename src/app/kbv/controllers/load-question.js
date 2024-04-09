@@ -11,6 +11,7 @@ const questionKeyToPathMap = new Map([
   ["rti-payslip-national-insurance", "enter-national-insurance-payslip"],
   ["rti-payslip-income-tax", "enter-tax-payslip"],
   ["ita-bankaccount", "enter-4-digits-bank-account-tax-credits"],
+  ["sa-income-from-pensions", "what-type-self-assessment"],
 ]);
 
 class LoadQuestionController extends BaseController {
