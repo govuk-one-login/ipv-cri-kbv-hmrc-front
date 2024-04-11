@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@govuk-one-login/di-ipv-cri-common-express": "6.2.1",
-    "@govuk-one-login/one-login-analytics": "0.0.9",
+    "@govuk-one-login/one-login-analytics": "1.0.0",
     "aws-sdk": "2.1592.0",
     "axios": "1.6.8",
     "cfenv": "1.2.4",
