@@ -9,7 +9,7 @@ module.exports = {
     items: ["stop", "continue"],
     validate: ["required"],
   },
-  "sa-income-from-pensions": {
+  "self-assessment-router": {
     type: "radios",
     items: ["sa100", "sa200"],
     validate: ["required"],

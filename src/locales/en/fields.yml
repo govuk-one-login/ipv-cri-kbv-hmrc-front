@@ -29,8 +29,9 @@ abandonRadio:
       value: continue
       hint: ""
       reveal: ""
-sa-income-from-pensions:
+self-assessment-router:
   hint: ""
+  legend: " "
   items:
     sa100:
       label: Self Assessment tax return (SA100)

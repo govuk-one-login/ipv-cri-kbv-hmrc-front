@@ -1,7 +1,7 @@
 const loadQuestionController = require("./controllers/load-question");
 const singleAmountQuestionController = require("./controllers/single-amount-question");
 const proveIdentityAnotherWayController = require("./controllers/prove-identity-another-way");
-const saIncomeFromPensionsController = require("./controllers/sa-income-from-pensions");
+const selfAssessmentRouterController = require("./controllers/self-assessment-router");
 
 module.exports = {
   "/": {
@@ -42,18 +42,19 @@ module.exports = {
     next: "load-question",
   },
   "/question/what-type-self-assessment": {
+    template: "self-assessment-router",
     backLink: null,
     entryPoint: true,
-    fields: ["sa-income-from-pensions"],
-    controller: saIncomeFromPensionsController,
+    fields: ["self-assessment-router"],
+    controller: selfAssessmentRouterController,
     next: [
       {
-        field: "sa-income-from-pensions",
+        field: "self-assessment-router",
         value: "sa100",
         next: "sa100",
       },
       {
-        field: "sa-income-from-pensions",
+        field: "self-assessment-router",
         value: "sa200",
         next: "sa200",
       },

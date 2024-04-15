@@ -3,8 +3,7 @@ const questionToLabel = require("./question-to-label");
 const questionToContent = require("./question-to-content");
 const questionToInset = require("./question-to-inset");
 const questionToTitle = require("./question-to-title");
-const questionToRadio = require("./question-to-radio");
-const taxYearToTitle = require("./tax-year-to-title");
+const taxYearToText = require("./tax-year-to-text");
 
 module.exports = {
   questionToHint,
@@ -12,6 +11,5 @@ module.exports = {
   questionToContent,
   questionToInset,
   questionToTitle,
-  questionToRadio,
-  taxYearToTitle,
+  taxYearToText,
 };
