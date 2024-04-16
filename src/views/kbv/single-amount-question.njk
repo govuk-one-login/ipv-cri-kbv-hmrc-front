@@ -1,6 +1,8 @@
 {% extends "base-form.njk" %}
 {% from "hmpo-text/macro.njk" import hmpoText %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "hmpo-details/macro.njk" import hmpoDetails %}
+
 
 {% set gtmJourney = "kbv-hmrc - middle" %}
 
@@ -16,6 +18,13 @@
   {% endif %}
 
   {{ hmpoHtml(question.content) }}
+
+  {% if question.details != " " %}
+    {{ hmpoDetails({
+      summaryText: question.details.summaryText,
+      html: question.details.html
+    }) }}
+  {% endif %}
 
   {% call hmpoForm(ctx) %}
 

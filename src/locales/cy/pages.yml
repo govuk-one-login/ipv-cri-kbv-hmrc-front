@@ -36,6 +36,17 @@ rti-payslip-income-tax:
     - Dywedwch wrthym faint o Dreth Incwm rydych wedi'i dalu.
     - Fel arfer, gallwch ddod o hyd i'r swm wrth ymyl unrhyw bensiynau neu daliadau Yswiriant Gwladol ar eich slip cyflog. Gallai gael ei alw'n TWE neu'n Dreth Incwm
     - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
+rti-p60-payment-for-year:
+  title: Rhowch y ‘cyfanswm am y flwyddyn’ o'ch P60
+  inset: Defnyddiwch P60 o'r flwyddyn dreth {{ dynamicDate }} i ateb y cwestiwn hwn.
+  content:
+    - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘cyfanswm am y flwyddyn’. Byddwch yn dod o hyd i hyn yn yr adran ‘manylion cyflog a threth incwm’ o'ch P60.
+    - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
+  details:
+    summaryText: Os oes gennych fwy nag un P60
+    html: >-
+      <p>Rhowch y swm yn y blwch wedi'i labelu ‘yn y gyflogaeth hon’.</p>
+      <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi. </p>
 ita-bankaccount:
   title: Rhowch 4 digid olaf y cyfrif banc neu gymdeithas adeiladu y telir eich credydau treth iddo
   content:

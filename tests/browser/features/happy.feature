@@ -12,6 +12,8 @@ Feature: Happy path
     When they enter amount and continue from the Enter NI Payslip question page
     Then they should see the Enter Tax Payslip question page
     When they enter amount and continue from the Enter Tax Payslip question page
+    Then they should see the enter-total-for-year-p60 question page
+    When they enter amount and continue from the enter-total-for-year-p60 question page
     Then they should be redirected as a success
 
   @mock-api:taxCredits @taxCredits-journey

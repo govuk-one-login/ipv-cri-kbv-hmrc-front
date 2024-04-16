@@ -12,6 +12,12 @@
         "info": {
           "months": "3"
         }
+      },
+      {
+        "questionKey": "rti-p60-payment-for-year",
+        "info": {
+          "currentTaxYear": "2022/23"
+        }
       }
     ],
     "taxCredits": [
