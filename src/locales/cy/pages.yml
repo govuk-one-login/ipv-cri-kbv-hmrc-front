@@ -47,6 +47,16 @@ rti-p60-payment-for-year:
     html: >-
       <p>Rhowch y swm yn y blwch wedi'i labelu ‘yn y gyflogaeth hon’.</p>
       <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi. </p>
+rti-p60-earnings-above-pt:
+  title: Rhowch swm yr ‘enillion dros y PD’ o'ch P60
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} ateb y cwestiwn hwn.
+  content:
+    - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘enillion dros y PD, hyd at a chan gynnwys y Terfyn Enillion Uchaf (TEU)’. Byddwch yn dod o hyd i hyn yn yr adran ‘Cyfraniadau Yswiriant Gwladol yn y gyflogaeth hon’ o'ch P60.
+    - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
+  details:
+    summaryText: Os oes gennych fwy nag un P60
+    html: >-
+      <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi.</p>
 ita-bankaccount:
   title: Rhowch 4 digid olaf y cyfrif banc neu gymdeithas adeiladu y telir eich credydau treth iddo
   content:

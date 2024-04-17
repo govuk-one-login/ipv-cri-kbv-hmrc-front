@@ -22,8 +22,9 @@ Feature: Happy path
     When they continue from answer security questions
     Then they should see the enter-total-for-year-p60 question page
     When they enter amount and continue from the enter-total-for-year-p60 question page
+    Then they should see the enter-earnings-above-pt-p60 question page
+    When they enter amount and continue from the enter-earnings-above-pt-p60 question page
     Then they should be redirected as a success
-
 
   @mock-api:taxCredits @taxCredits-journey
   Scenario: Happy Path for taxCredits-journey
