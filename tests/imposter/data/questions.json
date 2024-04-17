@@ -12,7 +12,9 @@
         "info": {
           "months": "3"
         }
-      },
+      }
+    ],
+    "p60": [
       {
         "questionKey": "rti-p60-payment-for-year",
         "info": {

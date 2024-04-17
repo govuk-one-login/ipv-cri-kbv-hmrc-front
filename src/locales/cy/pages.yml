@@ -38,7 +38,7 @@ rti-payslip-income-tax:
     - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
 rti-p60-payment-for-year:
   title: Rhowch y ‘cyfanswm am y flwyddyn’ o'ch P60
-  inset: Defnyddiwch P60 o'r flwyddyn dreth {{ dynamicDate }} i ateb y cwestiwn hwn.
+  inset: Defnyddiwch P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} i ateb y cwestiwn hwn.
   content:
     - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘cyfanswm am y flwyddyn’. Byddwch yn dod o hyd i hyn yn yr adran ‘manylion cyflog a threth incwm’ o'ch P60.
     - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.

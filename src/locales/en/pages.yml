@@ -38,7 +38,7 @@ rti-payslip-income-tax:
     - Enter the amount in pounds and pence, exactly as it appears on your payslip.
 rti-p60-payment-for-year:
   title: Enter the ‘total for year’ amount from your P60
-  inset: Use a P60 from the tax year {{ dynamicDate }} to answer this question.
+  inset: Use a P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
   content:
     - Tell us the amount in the box labelled ‘total for year’. You’ll find this in the ‘pay and income tax details’ section of your P60.
     - Enter the amount in pounds and pence, exactly as it appears on your P60.

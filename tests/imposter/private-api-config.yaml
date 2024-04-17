@@ -58,6 +58,52 @@ resources:
     response:
       scriptFile: scripts/post-answer.groovy
 
+  ### "p60" journey ###
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id: "p60"
+    response:
+      scriptFile: scripts/get-question.groovy
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "p60"
+    response:
+      template: true
+      statusCode: 200
+      content: |
+        {
+          "authorizationCode": {
+            "value":"auth-code-${random.uuid()}"
+          },
+          "state":"sT@t3",
+          "redirect_uri":"http://example.net"
+        }
+
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "p60"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "p60",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
+
+  - method: POST
+    path: /answer
+    requestHeaders:
+      session-id: "p60"
+    response:
+      scriptFile: scripts/post-answer.groovy
+
   ### "taxCredits" journey ###
   - method: GET
     path: /question
