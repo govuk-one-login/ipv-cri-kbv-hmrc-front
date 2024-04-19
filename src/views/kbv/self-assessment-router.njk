@@ -3,16 +3,25 @@
 
 {% set gtmJourney = "kbv-hmrc - middle" %}
 
-{% set hmpoTitle = question.title %}
+{% set hmpoTitle = translate(title) %}
 
 {% block mainContent %}
-  <h1 class="govuk-heading-l"> {{ question.title }} </h1>
+  <h1 class="govuk-heading-l"> {{ translate(title) }} </h1>
 
-  {{ hmpoHtml(question.content) }}
+  {{ title | dump }}
+  {{ yearRange | dump }}
+  {{ content | dump }}
+
+  {{ hmpoHtml(content) }}
 
   {% call hmpoForm(ctx) %}
 
-    {{ hmpoRadios(ctx, question) }}
+    {{ hmpoRadios (ctx, {
+      id: "selfAssessmentRouter",
+      name: "selfAssessmentRouter",
+      value: "selfAssessmentRouter",
+      fields: selfAssessmentRouter.items
+    }) }}
 
     {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
   {% endcall %}
