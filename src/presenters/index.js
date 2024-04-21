@@ -4,6 +4,7 @@ const questionToContent = require("./question-to-content");
 const questionToInset = require("./question-to-inset");
 const questionToTitle = require("./question-to-title");
 const taxYearToText = require("./tax-year-to-text");
+const selfAssessmentsQuestion = require("./self-assessments-question");
 
 module.exports = {
   questionToHint,
@@ -12,4 +13,5 @@ module.exports = {
   questionToInset,
   questionToTitle,
   taxYearToText,
+  selfAssessmentsQuestion,
 };

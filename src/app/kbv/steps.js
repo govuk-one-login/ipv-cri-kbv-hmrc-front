@@ -41,20 +41,20 @@ module.exports = {
     controller: singleAmountQuestionController,
     next: "load-question",
   },
-  "/question/what-type-self-assessment": {
+  "/question/self-assessment-router": {
     template: "self-assessment-router",
     backLink: null,
     entryPoint: true,
-    fields: ["self-assessment-router"],
+    fields: ["selfAssessmentRouter"],
     controller: selfAssessmentRouterController,
     next: [
       {
-        field: "self-assessment-router",
+        field: "selfAssessmentRouter",
         value: "sa100",
         next: "sa100",
       },
       {
-        field: "self-assessment-router",
+        field: "selfAssessmentRouter",
         value: "sa200",
         next: "sa200",
       },

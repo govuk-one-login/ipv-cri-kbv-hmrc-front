@@ -8,22 +8,14 @@ class SelfAssessmentRouterController extends BaseController {
         return callback(err, locals);
       }
 
-      const translationKey = "self-assessment-router";
-      const items = Object.values(
-        req.translate(`fields.${translationKey}.items`)
-      );
-      const content = req.translate(`fields.${translationKey}.content`);
+      const translationKey = "questionSelfAssessmentRouter";
 
-      locals.question = {
-        id: translationKey,
-        name: translationKey,
-        content: content,
-        title: req.translate(
-          `fields.${translationKey}.title`,
-          presenters.taxYearToText(req.session.question)
-        ),
-        items: items,
-      };
+      locals.content = req.translate(`fields.${translationKey}.content`);
+      locals.question = presenters.selfAssessmentsQuestion(
+        translationKey,
+        req.session.question,
+        req.translate
+      );
 
       callback(null, locals);
     });

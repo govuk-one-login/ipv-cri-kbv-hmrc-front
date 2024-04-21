@@ -29,7 +29,7 @@ abandonRadio:
       value: continue
       hint: ""
       reveal: ""
-self-assessment-router:
+selfAssessmentRouter:
   hint: ""
   legend: " "
   items:

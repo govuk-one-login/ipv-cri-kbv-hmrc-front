@@ -4,7 +4,7 @@ module.exports = class PlaywrightDevPage {
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/question/what-type-self-assessment";
+    this.path = "/kbv/question/self-assessment-router";
   }
 
   async continue() {

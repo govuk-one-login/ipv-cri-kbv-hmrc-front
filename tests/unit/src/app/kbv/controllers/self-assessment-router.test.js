@@ -37,34 +37,29 @@ describe("SelfAssessmentRouterController", () => {
     it("should set up question object correctly", (done) => {
       const fakeItems = ["item1", "item2", "item3"];
       const fakeContent = "fake content";
-      const fakeTitle = "fake title {{ yearRange }}?";
       const fakeTaxYearText = "2023 to 2024";
 
-      req.translate.mockImplementation(
-        (key) =>
-          ({
-            "fields.self-assessment-router.items": fakeItems,
-            "fields.self-assessment-router.content": fakeContent,
-            "fields.self-assessment-router.title": fakeTitle.replace(
-              "{{ yearRange }}",
-              fakeTaxYearText
-            ),
-          })[key]
-      );
-
-      presenters.taxYearToText.mockReturnValue(fakeTaxYearText);
+      presenters.selfAssessmentsQuestion.mockReturnValue({
+        id: "questionSelfAssessmentRouter",
+        name: "questionSelfAssessmentRouter",
+        content: fakeContent,
+        title: "fake title 2023 to 2024?",
+        items: fakeItems,
+      });
 
       const callback = jest.fn((err, locals) => {
         expect(err).toBeNull();
         expect(locals).toBeDefined();
         expect(locals.question).toBeDefined();
-        expect(locals.question.id).toBe("self-assessment-router");
-        expect(locals.question.name).toBe("self-assessment-router");
+        expect(locals.question.id).toBe("questionSelfAssessmentRouter");
+        expect(locals.question.name).toBe("questionSelfAssessmentRouter");
         expect(locals.question.content).toEqual(fakeContent);
         expect(locals.question.title).toBe(`fake title ${fakeTaxYearText}?`);
         expect(locals.question.items).toEqual(fakeItems);
-        expect(presenters.taxYearToText).toHaveBeenCalledWith(
-          req.session.question
+        expect(presenters.selfAssessmentsQuestion).toHaveBeenCalledWith(
+          "questionSelfAssessmentRouter",
+          req.session.question,
+          req.translate
         );
         done();
       });
