@@ -1,4 +1,5 @@
 const presenters = require("../../../../src/presenters");
+const taxYearToRange = require("../../../../src/utils/tax-year-to-range");
 
 Date.now = jest.fn(() => new Date("2024-05-01"));
 
@@ -19,7 +20,6 @@ describe("question-to-inset", () => {
       },
     };
     data = { dynamicDate: englishDate };
-
     translate = jest.fn();
   });
 
@@ -44,7 +44,7 @@ describe("question-to-inset", () => {
     expect(insetTest).toBe(" ");
   });
 
-  describe("with tranlation key found", () => {
+  describe("with translation key found", () => {
     it("should return english language translated content", () => {
       translate.mockReturnValue(
         `translated question inset three months ago ${englishDate}`
@@ -86,6 +86,48 @@ describe("question-to-inset", () => {
 
       expect(result).toBe(
         `mewnosod cwestiwn wedi'i gyfieithu dri mis yn ôl ${welshDate}`
+      );
+    });
+  });
+
+  describe("question-to-inset with currentTaxYear", () => {
+    let question;
+    const englishLanguage = "en";
+
+    beforeEach(() => {
+      translate = jest.fn();
+    });
+
+    it("should include tax year information in the translated inset when currentTaxYear is defined", () => {
+      question = {
+        questionKey: "rti-payslip-national-insurance",
+        info: {
+          currentTaxYear: "2022/23",
+        },
+      };
+
+      const { yearRangeStart, yearRangeEnd } = taxYearToRange(
+        question?.info?.currentTaxYear
+      );
+      presenters.questionToInset(question, translate, englishLanguage);
+
+      expect(translate).toHaveBeenCalledWith(
+        "fields.rti-payslip-national-insurance.inset",
+        { yearRangeStart, yearRangeEnd }
+      );
+    });
+
+    it("should not include tax year information in the translated inset when currentTaxYear is not defined", () => {
+      question = {
+        questionKey: "rti-payslip-national-insurance",
+        info: {},
+      };
+
+      presenters.questionToInset(question, translate, englishLanguage);
+
+      expect(translate).toHaveBeenCalledWith(
+        "fields.rti-payslip-national-insurance.inset",
+        {}
       );
     });
   });

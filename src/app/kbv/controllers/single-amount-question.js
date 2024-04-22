@@ -36,6 +36,11 @@ class SingleAmountQuestionController extends BaseController {
           req.translate,
           req.lang
         ),
+        details: presenters.questionToDetails(
+          req.session.question,
+          req.translate,
+          req.lang
+        ),
         title: presenters.questionToTitle(req.session.question, req.translate),
         prefix: "£",
         name: req.session.question?.questionKey,

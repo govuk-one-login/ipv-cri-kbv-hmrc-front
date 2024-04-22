@@ -4,6 +4,9 @@ rti-payslip-national-insurance:
 rti-payslip-income-tax:
   label: Amount
   hint: For example 123.86
+rti-p60-payment-for-year:
+  label: Amount
+  hint: For example, 21350.75
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""
