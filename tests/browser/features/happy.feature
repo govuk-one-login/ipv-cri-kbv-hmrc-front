@@ -26,6 +26,8 @@ Feature: Happy path
     When they enter amount and continue from the enter-earnings-above-pt-p60 question page
     Then they should see the enter-postgraduate-loan-deductions-p60 question page
     When they enter amount and continue from the enter-postgraduate-loan-deductions-p60 question page
+    Then they should see the enter-statutory-shared-parental-pay-p60 question page
+    When they enter amount and continue from the enter-statutory-shared-parental-pay-p60 question page
     Then they should be redirected as a success
 
 @mock-api:selfAssessment @selfAssessment-journey
