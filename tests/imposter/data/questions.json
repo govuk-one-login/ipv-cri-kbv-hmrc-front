@@ -50,6 +50,12 @@
         "info": {
           "currentTaxYear": "2022/23"
         }
+      },
+      {
+        "questionKey": "rti-p60-student-loan-deductions",
+        "info": {
+          "currentTaxYear": "2022/23"
+        }
       }
     ],
     "taxCredits": [

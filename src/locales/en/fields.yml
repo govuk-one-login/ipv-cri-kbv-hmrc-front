@@ -22,6 +22,9 @@ rti-p60-statutory-adoption-pay:
 rti-p60-statutory-maternity-pay:
   label: Amount
   hint: For example, 15620.75
+rti-p60-student-loan-deductions:
+  label: Amount
+  hint: For example, 765
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""
