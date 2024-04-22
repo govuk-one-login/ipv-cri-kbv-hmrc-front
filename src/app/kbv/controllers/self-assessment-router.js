@@ -8,7 +8,7 @@ class SelfAssessmentRouterController extends BaseController {
         return callback(err, locals);
       }
 
-      const translationKey = "questionSelfAssessmentRouter";
+      const translationKey = "questionWhatTypeSelfAssessment";
 
       locals.content = req.translate(`fields.${translationKey}.content`);
       locals.question = presenters.selfAssessmentsQuestion(

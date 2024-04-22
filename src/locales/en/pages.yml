@@ -49,7 +49,7 @@ prove-identity-another-way:
   h1: Prove your identity another way
   content: You may be able to prove your identity another way with GOV.UK One Login. Or you can go back to the service you need to use and check if there are other ways to access it.
   warning: You cannot return to this screen if you look for another way to prove your identity.
-questionSelfAssessmentRouter:
+questionWhatTypeSelfAssessment:
   title: What type of Self Assessment tax return did you send for the tax year {{ yearRange }}?
   content:
     - This is so we can ask you questions about the right Self Assessment tax return.

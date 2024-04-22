@@ -41,7 +41,7 @@ module.exports = {
     controller: singleAmountQuestionController,
     next: "load-question",
   },
-  "/question/self-assessment-router": {
+  "/question/what-type-self-assessment": {
     template: "self-assessment-router",
     backLink: null,
     entryPoint: true,
