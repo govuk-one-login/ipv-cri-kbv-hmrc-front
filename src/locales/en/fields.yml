@@ -10,6 +10,9 @@ rti-p60-payment-for-year:
 rti-p60-earnings-above-pt:
   label: Amount
   hint: For example, 24368
+rti-p60-postgraduate-loan-deductions:
+  label: Amount
+  hint: For example, 765
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""

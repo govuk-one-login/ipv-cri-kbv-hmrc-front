@@ -57,6 +57,16 @@ rti-p60-earnings-above-pt:
     summaryText: If you have more than one P60
     html: >-
       <p>You only need to enter the amount from one P60.</p>
+rti-p60-postgraduate-loan-deductions:
+  title: Enter the ‘postgraduate loan deductions’ amount from your P60
+  inset: Use your P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
+  content:
+    - Tell us the amount in the box labelled ‘postgraduate loan deductions.’ You’ll find this in the ‘other details’ section of your P60.
+    - Enter the amount in pounds without the pence, exactly as it appears on your P60.
+  details:
+    summaryText: If you have more than one P60 in a tax year
+    html: >-
+      <p>You only need to enter the amount from one P60.</p>
 ita-bankaccount:
   title: Enter the last 4 digits of the bank or building society account your tax credits are paid into
   content:
