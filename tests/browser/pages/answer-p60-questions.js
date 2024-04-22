@@ -2,9 +2,9 @@ module.exports = class PlaywrightDevPage {
   /**
    * @param {import('@playwright/test').Page} page
    */
-  constructor(page) {
+  constructor(page, path) {
     this.page = page;
-    this.path = "/kbv/question/enter-earnings-above-pt-p60";
+    this.path = `/kbv/question/${path}`;
   }
 
   async continue() {
