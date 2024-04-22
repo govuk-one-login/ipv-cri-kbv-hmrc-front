@@ -38,6 +38,12 @@
         "info": {
           "currentTaxYear": "2022/23"
         }
+      },
+      {
+        "questionKey": "rti-p60-statutory-adoption-pay",
+        "info": {
+          "currentTaxYear": "2022/23"
+        }
       }
     ],
     "taxCredits": [
