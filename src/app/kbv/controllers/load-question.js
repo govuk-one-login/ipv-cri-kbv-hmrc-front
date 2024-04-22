@@ -22,6 +22,7 @@ const questionKeyToPathMap = new Map([
     "enter-statutory-shared-parental-pay-p60",
   ],
   ["rti-p60-statutory-adoption-pay", "enter-statutory-adoption-pay-p60"],
+  ["rti-p60-statutory-maternity-pay", "enter-statutory-maternity-pay-p60"],
   ["sa-income-from-pensions", "what-type-self-assessment"],
 ]);
 

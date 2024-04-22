@@ -19,6 +19,9 @@ rti-p60-statutory-shared-parental-pay:
 rti-p60-statutory-adoption-pay:
   label: Amount
   hint: For example, 15620.75
+rti-p60-statutory-maternity-pay:
+  label: Amount
+  hint: For example, 15620.75
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""
