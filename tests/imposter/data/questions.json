@@ -20,6 +20,12 @@
         "info": {
           "currentTaxYear": "2022/23"
         }
+      },
+      {
+        "questionKey": "rti-p60-earnings-above-pt",
+        "info": {
+          "currentTaxYear": "2022/23"
+        }
       }
     ],
     "taxCredits": [
