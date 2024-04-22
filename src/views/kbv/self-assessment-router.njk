@@ -1,0 +1,27 @@
+{% extends "base-form.njk" %}
+{% from "hmpo-radios/macro.njk" import hmpoRadios %}
+
+{% set gtmJourney = "kbv-hmrc - middle" %}
+
+{% set hmpoTitle = translate(title) %}
+
+{% block mainContent %}
+  <h1 class="govuk-heading-l"> {{ hmpoTitle }} </h1>
+
+  {{ hmpoHtml(content) }}
+
+  {% call hmpoForm(ctx) %}
+
+    {{ hmpoRadios (ctx, {
+      id: "selfAssessmentRouter",
+      name: "selfAssessmentRouter",
+      value: "selfAssessmentRouter",
+      fields: selfAssessmentRouter.items
+    }) }}
+
+    {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
+  {% endcall %}
+
+  {{ hmpoHtml(translate("pages.shared.abandon")) }}
+
+{% endblock %}

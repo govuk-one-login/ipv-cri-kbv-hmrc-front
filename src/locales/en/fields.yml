@@ -35,3 +35,17 @@ abandonRadio:
       value: continue
       hint: ""
       reveal: ""
+selfAssessmentRouter:
+  hint: ""
+  legend: " "
+  items:
+    sa100:
+      label: Self Assessment tax return (SA100)
+      value: sa100
+      hint: ""
+      reveal: ""
+    sa200:
+      label: Short tax return (SA200)
+      value: sa200
+      hint: ""
+      reveal: ""

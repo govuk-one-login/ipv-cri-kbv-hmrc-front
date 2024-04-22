@@ -26,6 +26,15 @@ Feature: Happy path
     When they enter amount and continue from the enter-earnings-above-pt-p60 question page
     Then they should be redirected as a success
 
+@mock-api:selfAssessment @selfAssessment-journey
+  Scenario: Happy Path for selfAssessment-journey
+    Given Happy Harriet is using the system
+    And they have started the journey
+    Then they should see the answer security questions page
+    When they continue from answer security questions
+    Then they should see the what-type-self-assessment question page
+    When they select "sa200" and continue from the what-type-self-assessment question page
+
   @mock-api:taxCredits @taxCredits-journey
   Scenario: Happy Path for taxCredits-journey
     Given Happy Harriet is using the system
