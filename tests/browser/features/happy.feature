@@ -34,6 +34,8 @@ Feature: Happy path
     When they enter amount and continue from the "enter-statutory-maternity-pay-p60" question page
     Then they should see the "enter-student-loan-deductions-p60" question page
     When they enter amount and continue from the "enter-student-loan-deductions-p60" question page
+    Then they should see the "enter-employees-contributions-p60" question page
+    When they enter amount and continue from the "enter-employees-contributions-p60" question page
     Then they should be redirected as a success
 
 @mock-api:selfAssessment @selfAssessment-journey

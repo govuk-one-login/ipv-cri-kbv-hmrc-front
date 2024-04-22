@@ -25,6 +25,9 @@ rti-p60-statutory-maternity-pay:
 rti-p60-student-loan-deductions:
   label: Amount
   hint: For example, 765
+rti-p60-employee-ni-contributions:
+  label: Amount
+  hint: For example, 836.16
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""

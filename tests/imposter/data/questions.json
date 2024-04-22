@@ -56,6 +56,12 @@
         "info": {
           "currentTaxYear": "2022/23"
         }
+      },
+      {
+        "questionKey": "rti-p60-employee-ni-contributions",
+        "info": {
+          "currentTaxYear": "2022/23"
+        }
       }
     ],
     "taxCredits": [

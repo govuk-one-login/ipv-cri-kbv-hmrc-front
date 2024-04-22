@@ -69,6 +69,11 @@ module.exports = {
     controller: singleAmountQuestionController,
     next: "load-question",
   },
+  "/question/enter-employees-contributions-p60": {
+    backLink: null,
+    controller: singleAmountQuestionController,
+    next: "load-question",
+  },
   "/question/enter-4-digits-bank-account-tax-credits": {
     backLink: null,
     fields: ["ita-bankaccount"],

@@ -24,7 +24,10 @@ rti-p60-statutory-maternity-pay:
   hint: Er enghraifft, 15620.75
 rti-p60-student-loan-deductions:
   label: Swm
-  hint: Er enghraifft, 15620.75
+  hint: Er enghraifft, 765
+rti-p60-employee-ni-contributions:
+  label: Swm
+  hint: Er enghraifft, 836.16
 ita-bankaccount:
   label: 4 digid olaf o rif eich cyfrif
   hint: ""
