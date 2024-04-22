@@ -72,6 +72,7 @@ prove-identity-another-way:
   warning: Ni allwch ddychwelyd i'r sgrin hon os ydych yn chwilio am ffordd arall o brofi eich hunaniaeth.
 questionWhatTypeSelfAssessment:
   title: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }}?
+  h1: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }}?
   content:
     - Mae hyn er mwyn i ni ofyn cwestiynau i chi am y ffurflen gywir.
     - Byddwch ond wedi anfon ffurflen dreth fer (SA200) os oedd CThEF wedi dweud wrthych am wneud hynny.

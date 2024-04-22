@@ -49,3 +49,4 @@ selfAssessmentRouter:
       value: sa200
       hint: ""
       reveal: ""
+  content: ""

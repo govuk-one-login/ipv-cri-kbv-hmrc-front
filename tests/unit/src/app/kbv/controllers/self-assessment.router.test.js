@@ -38,14 +38,12 @@ describe("SelfAssessmentRouterController", () => {
         yearRangeStart: 2023,
         yearRangeEnd: 2024,
       });
-      req.translate = jest.fn().mockReturnValue("translated content");
 
       const callback = jest.fn((err, locals) => {
         expect(err).toBeNull();
         expect(locals).toBeDefined();
         expect(locals.yearRangeStart).toBe(2023);
         expect(locals.yearRangeEnd).toBe(2024);
-        expect(locals.content).toBe("translated content");
         done();
       });
 

@@ -8,16 +8,11 @@ class SelfAssessmentRouterController extends BaseController {
         return callback(err, locals);
       }
 
-      const translationKey = "questionWhatTypeSelfAssessment";
-
       const { yearRangeStart, yearRangeEnd } = taxYearToRange(
         req.session.question?.info?.currentTaxYear
       );
-
       locals.yearRangeStart = yearRangeStart;
       locals.yearRangeEnd = yearRangeEnd;
-
-      locals.content = req.translate(`fields.${translationKey}.content`);
 
       callback(null, locals);
     });
