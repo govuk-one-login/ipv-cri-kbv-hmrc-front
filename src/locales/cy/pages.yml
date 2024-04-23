@@ -136,3 +136,19 @@ questionWhatTypeSelfAssessment:
   content:
     - Mae hyn er mwyn i ni ofyn cwestiynau i chi am y ffurflen gywir.
     - Byddwch ond wedi anfon ffurflen dreth fer (SA200) os oedd CThEF wedi dweud wrthych am wneud hynny.
+pensions-benefits-self-assessment:
+  title: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
+  h1: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
+  content:
+    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich Ffurflen dreth Hunanasesiad ar gyfer y naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ info.yearRangeStart }} i {{ info.yearRangeEnd }}</li><li>{{ info.yearRangeStart }} i {{ info.yearRangeEnd }}</li></ul></div>
+    - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
+    - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
+    - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.
+pensions-benefits-short-tax-return:
+  title: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
+  h1: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
+  content:
+    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich ffurflen treth fer (SA200) ar gyfer naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ info.yearRangeStart }} i {{ info.yearRangeEnd }}</li><li>{{ info.yearRangeStart }} i {{ info.yearRangeEnd }}</li></ul></div>
+    - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
+    - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
+    - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.

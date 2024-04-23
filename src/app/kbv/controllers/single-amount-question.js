@@ -2,12 +2,7 @@ const debug = require("debug")("load-question");
 const path = require("path");
 const BaseController = require("hmpo-form-wizard").Controller;
 const presenters = require("../../../presenters");
-
-const {
-  API: {
-    PATHS: { QUESTION, ANSWER },
-  },
-} = require("../../../lib/config");
+const { submitAnswer, getNextQuestion } = require("../service");
 
 class SingleAmountQuestionController extends BaseController {
   configure(req, res, next) {
@@ -59,29 +54,11 @@ class SingleAmountQuestionController extends BaseController {
       const userInput = req.body[req.session.question.questionKey];
 
       try {
-        await req.axios.post(
-          ANSWER,
-          {
-            key: req.session.question.questionKey,
-            value: userInput,
-          },
-          {
-            headers: {
-              "session-id": req.session.tokenId,
-              session_id: req.session.tokenId,
-            },
-          }
-        );
+        await submitAnswer(req, req.session.question.questionKey, userInput);
 
         req.session.question = undefined;
 
-        const nextQuestion = await req.axios.get(QUESTION, {
-          headers: {
-            "session-id": req.session.tokenId,
-            session_id: req.session.tokenId,
-          },
-        });
-
+        const nextQuestion = await getNextQuestion(req);
         if (nextQuestion.data) {
           req.session.question = nextQuestion.data;
         }

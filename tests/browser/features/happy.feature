@@ -38,7 +38,7 @@ Feature: Happy path
     When they enter amount and continue from the "enter-employees-contributions-p60" question page
     Then they should be redirected as a success
 
-@mock-api:selfAssessment @selfAssessment-journey
+  @mock-api:selfAssessment @selfAssessment-journey
   Scenario: Happy Path for selfAssessment-journey
     Given Happy Harriet is using the system
     And they have started the journey
@@ -46,6 +46,21 @@ Feature: Happy path
     When they continue from answer security questions
     Then they should see the what-type-self-assessment question page
     When they select "sa200" and continue from the what-type-self-assessment question page
+    Then they should see the pensions-benefits-short-tax-return question page
+    When they enter correct pension details
+    Then they should be redirected as a success
+
+  @mock-api:selfAssessmentShort @selfAssessment-journey
+  Scenario: Happy Path for selfAssessment-journey
+    Given Happy Harriet is using the system
+    And they have started the journey
+    Then they should see the answer security questions page
+    When they continue from answer security questions
+    Then they should see the what-type-self-assessment question page
+    When they select "sa100" and continue from the what-type-self-assessment question page
+    Then they should see the pensions-benefits-self-assessment question page
+    When they enter correct pension details
+    Then they should be redirected as a success
 
   @mock-api:taxCredits @taxCredits-journey
   Scenario: Happy Path for taxCredits-journey

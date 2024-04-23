@@ -8,4 +8,6 @@ module.exports = {
   ErrorPage: require("./error.js"),
   RelyingPartyPage: require("./relying-party.js"),
   ProveIdentityAnotherWayPage: require("./prove-identity-another-way.js"),
+  PensionsBenefitsSelfAssessmentPage: require("./pensions-benefits-self-assessment.js"),
+  PensionsBenefitsShortTaxReturnPage: require("./pensions-benefits-short-tax-return.js"),
 };

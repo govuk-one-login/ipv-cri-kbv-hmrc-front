@@ -2,6 +2,7 @@ const loadQuestionController = require("./controllers/load-question");
 const singleAmountQuestionController = require("./controllers/single-amount-question");
 const proveIdentityAnotherWayController = require("./controllers/prove-identity-another-way");
 const selfAssessmentRouterController = require("./controllers/self-assessment-router");
+const selfAssessmentQuestionController = require("./controllers/self-assessment-question");
 
 module.exports = {
   "/": {
@@ -90,14 +91,40 @@ module.exports = {
       {
         field: "selfAssessmentRouter",
         value: "sa100",
-        next: "sa100",
+        next: "/kbv/question/enter-pensions-benefits-self-assessment",
       },
       {
         field: "selfAssessmentRouter",
         value: "sa200",
-        next: "sa200",
+        next: "/kbv/question/enter-pensions-benefits-short-tax-return",
       },
     ],
+  },
+  "/question/enter-pensions-benefits-self-assessment": {
+    backLink: null,
+    template: "pensions-benefits-self-assessment",
+    fields: [
+      "statePension",
+      "otherPension",
+      "employmentAndSupportAllowance",
+      "jobSeekersAllowance",
+      "statePensionAndBenefits",
+    ],
+    controller: selfAssessmentQuestionController,
+    next: "load-question",
+  },
+  "/question/enter-pensions-benefits-short-tax-return": {
+    backLink: null,
+    template: "pensions-benefits-short-tax-return",
+    fields: [
+      "statePensionShort",
+      "otherPensionShort",
+      "employmentAndSupportAllowanceShort",
+      "jobSeekersAllowanceShort",
+      "statePensionAndBenefitsShort",
+    ],
+    controller: selfAssessmentQuestionController,
+    next: "load-question",
   },
   "/prove-identity-another-way": {
     backLink: null,

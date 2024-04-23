@@ -68,3 +68,53 @@ selfAssessmentRouter:
       hint: ""
       reveal: ""
   content: ""
+statePension:
+  label: State Pension
+  hint: Use box 8
+  prefix: £
+  content: ""
+otherPension:
+  label: Pensions (other than State Pensions), retirement annuities and taxable lump sums treated as pensions
+  hint: Use box 11
+  prefix: £
+  content: ""
+employmentAndSupportAllowance:
+  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance
+  hint: Use box 13
+  prefix: £
+  content: ""
+jobSeekersAllowance:
+  label: "Jobseeker's Allowance"
+  hint: Use box 15
+  prefix: £
+  content: ""
+statePensionAndBenefits:
+  label: Total of any other taxable State Pensions and benefits
+  hint: Use box 16
+  prefix: £
+  content: ""
+statePensionShort:
+  label: State Pension
+  hint: Use box 4.1
+  prefix: £
+  content: ""
+otherPensionShort:
+  label: Pensions (other than State Pensions), retirement annuities and taxable lump sums treated as pensions
+  hint: Use box 4.2
+  prefix: £
+  content: ""
+employmentAndSupportAllowanceShort:
+  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance
+  hint: Use box 4.3
+  prefix: £
+  content: ""
+jobSeekersAllowanceShort:
+  label: "Jobseeker's Allowance"
+  hint: Use box 4.5
+  prefix: £
+  content: ""
+statePensionAndBenefitsShort:
+  label: Total of any other taxable State Pensions and benefits
+  hint: Use box 4.6
+  prefix: £
+  content: ""

@@ -1,0 +1,11 @@
+{% extends "base-form.njk" %}
+{% from "hmpo-html/macro.njk" import hmpoHtml %}
+
+{% set hmpoPageKey = "pensions-benefits-self-assessment" %}
+{% set hmpoPageContent = "pensions-benefits-self-assessment" %}
+{% set gtmJourney = "pensions-benefits-self-assessment - start" %}
+
+{% block submitButton %}
+  {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
+  {{ hmpoHtml(translate("pages.shared.abandon")) }}
+{% endblock %}

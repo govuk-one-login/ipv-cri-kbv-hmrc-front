@@ -1,12 +1,9 @@
 const BaseController = require("hmpo-form-wizard").Controller;
-const Controller = require("../../../../../../src/app/kbv/controllers/single-amount-question");
+const Controller = require("../../../../../../src/app/kbv/controllers/self-assessment-question");
 const service = require("../../../../../../src/app/kbv/service");
 jest.mock("../../../../../../src/app/kbv/service");
 
-const presenters = require("../../../../../../src/presenters");
-jest.mock("../../../../../../src/presenters");
-
-describe("single-amount-question controller", () => {
+describe("self-assessment-question controller", () => {
   let controller;
   let req;
   let next;
@@ -34,19 +31,13 @@ describe("single-amount-question controller", () => {
     expect(controller).toBeInstanceOf(BaseController);
   });
 
-  describe("#configure", () => {
-    it("should set the template to be the shared template for this controller", () => {
-      controller.configure(req, res, next);
-      expect(req.form.options.template).toContain("single-amount-question");
-    });
-  });
-
   describe("#locals", () => {
     beforeEach(() => {
       req.session = {
         question: {
           info: {
-            months: "3",
+            currentTaxYear: "2022/23",
+            previousTaxYear: "2021/22",
           },
         },
       };
@@ -59,26 +50,6 @@ describe("single-amount-question controller", () => {
       controller.locals(req, res, next);
 
       expect(superLocals).toHaveBeenCalledWith(req, res, expect.any(Function));
-    });
-
-    it("should set question.label and question.hint in locals", (done) => {
-      presenters.questionToLabel.mockReturnValue("Question Label");
-      presenters.questionToHint.mockReturnValue("Question Hint");
-      presenters.questionToInset.mockReturnValue("Question Inset");
-      presenters.questionToContent.mockReturnValue("Question Content");
-      presenters.questionToTitle.mockReturnValue("Question Title");
-
-      const callback = jest.fn((err, locals) => {
-        expect(err).toBeNull();
-        expect(locals.question.label).toBe("Question Label");
-        expect(locals.question.hint).toBe("Question Hint");
-        expect(locals.question.content).toBe("Question Content");
-        expect(locals.question.inset).toBe("Question Inset");
-        expect(locals.question.title).toBe("Question Title");
-        done();
-      });
-
-      controller.locals(req, res, callback);
     });
 
     it("should call callback with error if super.locals returns an error", (done) => {
@@ -102,14 +73,19 @@ describe("single-amount-question controller", () => {
   describe("#saveValues", () => {
     beforeEach(() => {
       req.session.tokenId = "session-id";
-      req.axios.post = jest.fn();
     });
 
     describe("on API success", () => {
       it("should call answer endpoint to post submitted answer", async () => {
-        const questionKey = "rti-payslip-national-insurance";
+        const questionKey = "sa-income-from-pensions";
         req.session.question.questionKey = questionKey;
-        req.body[questionKey] = "3";
+        req.body = {
+          statePension: 20,
+          otherPension: 20,
+          employmentAndSupportAllowance: 30,
+          jobSeekersAllowance: 40,
+          statePensionAndBenefits: 50,
+        };
         service.getNextQuestion.mockResolvedValue({});
         service.submitAnswer.mockResolvedValue({});
 
@@ -117,14 +93,14 @@ describe("single-amount-question controller", () => {
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
-          "rti-payslip-national-insurance",
-          "3"
+          "sa-income-from-pensions",
+          JSON.stringify(req.body)
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
 
       it("should call question endpoint to get next question and store it in session", async () => {
-        req.session.question.questionKey = "rti-payslip-national-insurance";
+        req.session.question.questionKey = "sa-income-from-pensions";
         req.body.question = "3";
         service.getNextQuestion.mockResolvedValue({
           data: { questionKey: "rti-p60-payment-for-year" },
