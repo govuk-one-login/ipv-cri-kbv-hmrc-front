@@ -5,6 +5,7 @@ module.exports = {
   EnterTotalForYearP60Page: require("./enter-total-for-year-p60.js"),
   EnterTotalForYearAbovePtP60Page: require("./enter-earnings-above-pt-p60.js"),
   Enter4DigitsBankAccountTaxCredits: require("./enter-4-digits-bank-account-tax-credits.js"),
+  WhatTypeSelfAssessment: require("./what-type-self-assessment.js"),
   ErrorPage: require("./error.js"),
   RelyingPartyPage: require("./relying-party.js"),
   ProveIdentityAnotherWayPage: require("./prove-identity-another-way.js"),

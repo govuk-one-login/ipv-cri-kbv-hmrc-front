@@ -1,0 +1,8 @@
+{% extends "base-form.njk" %}
+
+{% set gtmJourney = "kbv-hmrc - middle" %}
+
+{% block mainContent %}
+  {{ super() }}
+  {{ hmpoHtml(translate("pages.shared.abandon")) }}
+{% endblock %}

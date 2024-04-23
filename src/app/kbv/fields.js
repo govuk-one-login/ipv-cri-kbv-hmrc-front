@@ -9,4 +9,9 @@ module.exports = {
     items: ["stop", "continue"],
     validate: ["required"],
   },
+  selfAssessmentRouter: {
+    type: "radios",
+    items: ["sa100", "sa200"],
+    validate: ["required"],
+  },
 };

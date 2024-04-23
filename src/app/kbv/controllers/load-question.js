@@ -13,6 +13,7 @@ const questionKeyToPathMap = new Map([
   ["ita-bankaccount", "enter-4-digits-bank-account-tax-credits"],
   ["rti-p60-payment-for-year", "enter-total-for-year-p60"],
   ["rti-p60-earnings-above-pt", "enter-earnings-above-pt-p60"],
+  ["sa-income-from-pensions", "what-type-self-assessment"],
 ]);
 
 class LoadQuestionController extends BaseController {

@@ -148,6 +148,50 @@ resources:
     response:
       scriptFile: scripts/post-answer.groovy
 
+  ### "selfAssessment" journey ###
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id: "selfAssessment"
+    response:
+      scriptFile: scripts/get-question.groovy
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "selfAssessment"
+    response:
+      template: true
+      statusCode: 200
+      content: |
+        {
+          "authorizationCode": {
+            "value":"auth-code-${random.uuid()}"
+          },
+          "state":"sT@t3",
+          "redirect_uri":"http://example.net"
+        }
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "selfAssessment"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "selfAssessment",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
+  - method: POST
+    path: /answer
+    requestHeaders:
+      session-id: "selfAssessment"
+    response:
+      scriptFile: scripts/post-answer.groovy
+
   ### 'insufficient-questions' journey ###
   - method: GET
     path: /question
