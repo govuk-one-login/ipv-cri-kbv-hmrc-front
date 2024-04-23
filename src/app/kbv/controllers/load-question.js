@@ -13,6 +13,18 @@ const questionKeyToPathMap = new Map([
   ["ita-bankaccount", "enter-4-digits-bank-account-tax-credits"],
   ["rti-p60-payment-for-year", "enter-total-for-year-p60"],
   ["rti-p60-earnings-above-pt", "enter-earnings-above-pt-p60"],
+  [
+    "rti-p60-postgraduate-loan-deductions",
+    "enter-postgraduate-loan-deductions-p60",
+  ],
+  [
+    "rti-p60-statutory-shared-parental-pay",
+    "enter-statutory-shared-parental-pay-p60",
+  ],
+  ["rti-p60-statutory-adoption-pay", "enter-statutory-adoption-pay-p60"],
+  ["rti-p60-statutory-maternity-pay", "enter-statutory-maternity-pay-p60"],
+  ["rti-p60-student-loan-deductions", "enter-student-loan-deductions-p60"],
+  ["rti-p60-employee-ni-contributions", "enter-employees-contributions-p60"],
   ["sa-income-from-pensions", "what-type-self-assessment"],
 ]);
 

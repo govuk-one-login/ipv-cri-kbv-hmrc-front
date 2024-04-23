@@ -10,6 +10,24 @@ rti-p60-payment-for-year:
 rti-p60-earnings-above-pt:
   label: Amount
   hint: For example, 24368
+rti-p60-postgraduate-loan-deductions:
+  label: Amount
+  hint: For example, 765
+rti-p60-statutory-shared-parental-pay:
+  label: Amount
+  hint: For example, 15620.75
+rti-p60-statutory-adoption-pay:
+  label: Amount
+  hint: For example, 15620.75
+rti-p60-statutory-maternity-pay:
+  label: Amount
+  hint: For example, 15620.75
+rti-p60-student-loan-deductions:
+  label: Amount
+  hint: For example, 765
+rti-p60-employee-ni-contributions:
+  label: Amount
+  hint: For example, 836.16
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""
