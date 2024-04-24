@@ -192,6 +192,50 @@ resources:
     response:
       scriptFile: scripts/post-answer.groovy
 
+  ### "income from pensions tax return" journey ###
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id: "selfAssessmentShort"
+    response:
+      scriptFile: scripts/get-question.groovy
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id: "selfAssessmentShort"
+    response:
+      template: true
+      statusCode: 200
+      content: |
+        {
+          "authorizationCode": {
+            "value":"auth-code-${random.uuid()}"
+          },
+          "state":"sT@t3",
+          "redirect_uri":"http://example.net"
+        }
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "selfAssessmentShort"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "selfAssessmentShort",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
+  - method: POST
+    path: /answer
+    requestHeaders:
+      session-id: "selfAssessmentShort"
+    response:
+      scriptFile: scripts/post-answer.groovy
+
   ### 'insufficient-questions' journey ###
   - method: GET
     path: /question

@@ -136,3 +136,19 @@ questionWhatTypeSelfAssessment:
   content:
     - This is so we can ask you questions about the right Self Assessment tax return.
     - You’ll only have sent a short tax return (SA200) if HMRC told you to.
+pensions-benefits-self-assessment:
+  title: Enter pensions and benefits amounts from your Self Assessment tax return
+  h1: Enter pensions and benefits amounts from your Self Assessment tax return
+  content:
+    - <div class="govuk-inset-text"><p>To answer this question, use your Self Assessment tax return for either of these tax years:</p><ul class="govuk-list govuk-list--bullet"><li>{{ info.yearRangeStart }} to {{ info.yearRangeEnd }}</li><li>{{ info.yearRangeStart }} to {{ info.yearRangeEnd }}</li></ul></div>
+    - Tell us the amount of pensions and benefits you received.
+    - The box numbers and names on this page are the same as on your tax return.
+    - Enter the amounts in pounds without the pence, exactly as they appear on your tax return. If the box in your tax return is empty, enter 0.
+pensions-benefits-short-tax-return:
+  title: Enter pensions and benefits amounts from your short tax return
+  h1: Enter pensions and benefits amounts from your short tax return
+  content:
+    - <div class="govuk-inset-text"><p>To answer this question, use your short tax return (SA200) for either of these tax years:</p><ul class="govuk-list govuk-list--bullet"><li>{{ info.yearRangeStart }} to {{ info.yearRangeEnd }}</li><li>{{ info.yearRangeStart }} to {{ info.yearRangeEnd }}</li></ul></div>
+    - Tell us the amounts you received in pensions and benefits.
+    - The box numbers and names on this page are the same as on your tax return.
+    - Enter the amounts in pounds without the pence, exactly as they appear on your tax return. If the box on your tax return is empty, enter 0.

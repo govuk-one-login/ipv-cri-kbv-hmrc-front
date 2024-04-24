@@ -68,3 +68,53 @@ selfAssessmentRouter:
       hint: ""
       reveal: ""
   content: ""
+statePension:
+  label: Pensiwn y Wladwriaeth
+  hint: Defnyddiwch blwch 8
+  prefix: £
+  content: ""
+otherPension:
+  label: Pensiynau (heblaw am Bensiynau y Wladwriaeth), blwydd-daliadau ymddeol a chyfandaliadau trethadwy sy'n cael eu trin fel pensiynau
+  hint: Defnyddiwch blwch 11
+  prefix: £
+  content: ""
+employmentAndSupportAllowance:
+  label: Budd-dal Analluogrwydd trethadwy a Lwfans Cyflogaeth a Chymorth yn seiliedig ar gyfraniadau
+  hint: Defnyddiwch blwch 13
+  prefix: £
+  content: ""
+jobSeekersAllowance:
+  label: Lwfans Ceisio Gwaith
+  hint: Defnyddiwch blwch 15
+  prefix: £
+  content: ""
+statePensionAndBenefits:
+  label: Cyfanswm unrhyw Bensiynau y Wladwriaeth a budd-daliadau trethadwy eraill
+  hint: Defnyddiwch blwch 16
+  prefix: £
+  content: ""
+statePensionShort:
+  label: Pensiwn y Wladwriaeth
+  hint: Defnyddiwch blwch 4.1
+  prefix: £
+  content: ""
+otherPensionShort:
+  label: Pensiynau (heblaw am Bensiynau y Wladwriaeth), blwydd-daliadau ymddeol a chyfandaliadau trethadwy sy'n cael eu trin fel pensiynau
+  hint: Defnyddiwch blwch 4.2
+  prefix: £
+  content: ""
+employmentAndSupportAllowanceShort:
+  label: Budd-dal Analluogrwydd trethadwy a Lwfans Cyflogaeth a Chymorth yn seiliedig ar gyfraniadau
+  hint: Defnyddiwch blwch 4.3
+  prefix: £
+  content: ""
+jobSeekersAllowanceShort:
+  label: Lwfans Ceisio Gwaith
+  hint: Defnyddiwch blwch 4.5
+  prefix: £
+  content: ""
+statePensionAndBenefitsShort:
+  label: Cyfanswm unrhyw Bensiynau y Wladwriaeth a budd-daliadau trethadwy eraill
+  hint: Defnyddiwch blwch 4.6
+  prefix: £
+  content: ""
