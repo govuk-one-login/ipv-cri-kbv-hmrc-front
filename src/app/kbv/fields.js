@@ -17,41 +17,51 @@ module.exports = {
   statePension: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
   otherPension: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
   employmentAndSupportAllowance: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
   jobSeekersAllowance: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
   statePensionAndBenefits: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
   statePensionShort: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
   otherPensionShort: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
   employmentAndSupportAllowanceShort: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
   jobSeekersAllowanceShort: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
   statePensionAndBenefitsShort: {
     type: "text",
     validate: ["required", "numeric"],
+    classes: "govuk-input--width-5",
   },
 };

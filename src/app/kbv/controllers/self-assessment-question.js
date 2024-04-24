@@ -24,11 +24,16 @@ class SelfAssessmentQuestionController extends BaseController {
 
       try {
         const userInput = JSON.stringify({
-          statePension: req.body.statePension,
-          otherPension: req.body.otherPension,
-          employmentAndSupportAllowance: req.body.employmentAndSupportAllowance,
-          jobSeekersAllowance: req.body.jobSeekersAllowance,
-          statePensionAndBenefits: req.body.statePensionAndBenefits,
+          statePension: req.body.statePension || req.body.statePensionShort,
+          otherPension: req.body.otherPension || req.body.otherPensionShort,
+          employmentAndSupportAllowance:
+            req.body.employmentAndSupportAllowance ||
+            req.body.employmentAndSupportAllowanceShort,
+          jobSeekersAllowance:
+            req.body.jobSeekersAllowance || req.body.jobSeekersAllowanceShort,
+          statePensionAndBenefits:
+            req.body.statePensionAndBenefits ||
+            req.body.statePensionAndBenefitsShort,
         });
 
         await submitAnswer(req, "sa-income-from-pensions", userInput);

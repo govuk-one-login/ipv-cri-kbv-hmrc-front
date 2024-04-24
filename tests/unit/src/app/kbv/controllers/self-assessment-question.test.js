@@ -99,6 +99,37 @@ describe("self-assessment-question controller", () => {
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
 
+      it("should call answer endpoint to post submitted answer with short self assessment values", async () => {
+        const questionKey = "sa-income-from-pensions";
+        req.session.question.questionKey = questionKey;
+        req.body = {
+          statePensionShort: 20,
+          otherPensionShort: 20,
+          employmentAndSupportAllowanceShort: 30,
+          jobSeekersAllowanceShort: 40,
+          statePensionAndBenefitsShort: 50,
+        };
+        service.getNextQuestion.mockResolvedValue({});
+        service.submitAnswer.mockResolvedValue({});
+
+        const apiRequestBody = {
+          statePension: 20,
+          otherPension: 20,
+          employmentAndSupportAllowance: 30,
+          jobSeekersAllowance: 40,
+          statePensionAndBenefits: 50,
+        };
+
+        await controller.saveValues(req, res, next);
+
+        expect(service.submitAnswer).toHaveBeenCalledWith(
+          req,
+          "sa-income-from-pensions",
+          JSON.stringify(apiRequestBody)
+        );
+        expect(service.submitAnswer).toHaveBeenCalledTimes(1);
+      });
+
       it("should call question endpoint to get next question and store it in session", async () => {
         req.session.question.questionKey = "sa-income-from-pensions";
         req.body.question = "3";
