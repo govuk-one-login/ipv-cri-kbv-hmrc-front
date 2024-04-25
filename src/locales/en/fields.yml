@@ -118,3 +118,6 @@ statePensionAndBenefitsShort:
   hint: Use box 4.6
   prefix: £
   content: ""
+tc-amount:
+  label: Amount
+  hint: For example 36.75

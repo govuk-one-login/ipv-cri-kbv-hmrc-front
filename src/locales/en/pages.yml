@@ -152,3 +152,8 @@ pensions-benefits-short-tax-return:
     - Tell us the amounts you received in pensions and benefits.
     - The box numbers and names on this page are the same as on your tax return.
     - Enter the amounts in pounds without the pence, exactly as they appear on your tax return. If the box on your tax return is empty, enter 0.
+tc-amount:
+  title: Enter a recent tax credits payment amount
+  content:
+    - Tell us about a tax credits payment you’ve had after {{ dynamicDate }}.
+    - You’ll get tax credits payments every week or every 4 weeks. You only need to enter one payment amount.

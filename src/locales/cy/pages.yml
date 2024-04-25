@@ -152,3 +152,8 @@ pensions-benefits-short-tax-return:
     - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
     - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
     - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.
+tc-amount:
+  title: Rhowch swm taliad credydau treth diweddar
+  content:
+    - Dywedwch wrthym am daliad credydau treth a gawsoch ar ôl {{ dynamicDate }}.
+    - Byddwch yn cael taliadau credydau treth bob wythnos neu bob 4 wythnos. Dim ond swm un taliad sydd angen i chi ei roi

@@ -24,7 +24,8 @@ class SingleAmountQuestionController extends BaseController {
         hint: presenters.questionToHint(req.session.question, req.translate),
         content: presenters.questionToContent(
           req.session.question,
-          req.translate
+          req.translate,
+          req.lang
         ),
         inset: presenters.questionToInset(
           req.session.question,

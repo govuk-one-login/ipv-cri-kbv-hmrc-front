@@ -118,3 +118,6 @@ statePensionAndBenefitsShort:
   hint: Defnyddiwch blwch 4.6
   prefix: £
   content: ""
+tc-amount:
+  label: Swm
+  hint: Er enghraifft, 36.75
