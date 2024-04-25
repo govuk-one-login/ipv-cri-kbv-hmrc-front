@@ -41,7 +41,7 @@ abandonRadio:
   hint: ""
   content: ""
   validation:
-    required: Mae'n rhaid i chi ddewis opsiwn i barhau
+    required: Dewiswch beth hoffech chi ei wneud
   items:
     stop:
       label: Chwilio am ffyrdd eraill o brofi eich hunaniaeth neu gael mynediad i'r gwasanaeth
@@ -56,6 +56,8 @@ abandonRadio:
 selfAssessmentRouter:
   hint: ""
   legend: " "
+  validation:
+    required: Dewiswch os ydych wedi anfon ffurflen dreth Hunanasesiad llawn neu fer
   items:
     sa100:
       label: Ffurflen dreth Hunanasesiad (SA100)

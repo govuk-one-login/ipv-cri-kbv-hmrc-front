@@ -41,7 +41,7 @@ abandonRadio:
   hint: ""
   content: ""
   validation:
-    required: You must choose an option to continue
+    required: Select what you would like to do
   items:
     stop:
       label: Look for other ways to prove your identity or access the service
@@ -56,6 +56,8 @@ abandonRadio:
 selfAssessmentRouter:
   hint: ""
   legend: " "
+  validation:
+    required: Select if you sent a full or short Self Assessment tax return
   items:
     sa100:
       label: Self Assessment tax return (SA100)
