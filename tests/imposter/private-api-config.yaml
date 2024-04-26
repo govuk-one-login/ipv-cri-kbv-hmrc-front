@@ -15,6 +15,9 @@ resources:
   ### "payslips" journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "payslips"
@@ -61,6 +64,9 @@ resources:
   ### "p60" journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "p60"
@@ -107,6 +113,9 @@ resources:
   ### "taxCredits" journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "taxCredits"
@@ -153,6 +162,9 @@ resources:
   ### "selfAssessment" journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "selfAssessment"
@@ -199,6 +211,9 @@ resources:
   ### "income from pensions tax return" journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "selfAssessmentShort"
@@ -245,6 +260,9 @@ resources:
   ### 'insufficient-questions' journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "insufficient-questions"
@@ -304,6 +322,9 @@ resources:
   ### 'authorization-error' journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "authorization-error"
@@ -342,6 +363,9 @@ resources:
   ### 'session-400' journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "session-400"
@@ -354,6 +378,9 @@ resources:
   ### 'session-500' journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "session-500"
@@ -366,6 +393,9 @@ resources:
   ### 'abandon' journey ###
   - method: POST
     path: /session
+    steps:
+      - type: script
+        file: scripts/reset-stores.groovy
     requestBody:
       jsonPath: $.client_id
       value: "abandon"
