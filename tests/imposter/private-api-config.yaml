@@ -12,7 +12,6 @@ system:
       preloadFile: data/questions.json
 
 resources:
-
   ### 'question-500' journey ###
   - method: GET
     path: /question
