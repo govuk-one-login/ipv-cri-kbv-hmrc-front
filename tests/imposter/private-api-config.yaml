@@ -12,268 +12,6 @@ system:
       preloadFile: data/questions.json
 
 resources:
-  ### "payslips" journey ###
-  - method: GET
-    path: /question
-    requestHeaders:
-      session-id: "payslips"
-    response:
-      scriptFile: scripts/get-question.groovy
-
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "payslips"
-    response:
-      template: true
-      statusCode: 200
-      content: |
-        {
-          "authorizationCode": {
-            "value":"auth-code-${random.uuid()}"
-          },
-          "state":"sT@t3",
-          "redirect_uri":"http://example.net"
-        }
-
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "payslips"
-    response:
-      statusCode: 201
-      template: true
-      content: |
-        {
-          "session_id": "payslips",
-          "state": "sT@t3",
-          "redirect_uri": "http://example.net"
-        }
-
-  - method: POST
-    path: /answer
-    requestHeaders:
-      session-id: "payslips"
-    response:
-      scriptFile: scripts/post-answer.groovy
-
-  ### "p60" journey ###
-  - method: GET
-    path: /question
-    requestHeaders:
-      session-id: "p60"
-    response:
-      scriptFile: scripts/get-question.groovy
-
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "p60"
-    response:
-      template: true
-      statusCode: 200
-      content: |
-        {
-          "authorizationCode": {
-            "value":"auth-code-${random.uuid()}"
-          },
-          "state":"sT@t3",
-          "redirect_uri":"http://example.net"
-        }
-
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "p60"
-    response:
-      statusCode: 201
-      template: true
-      content: |
-        {
-          "session_id": "p60",
-          "state": "sT@t3",
-          "redirect_uri": "http://example.net"
-        }
-
-  - method: POST
-    path: /answer
-    requestHeaders:
-      session-id: "p60"
-    response:
-      scriptFile: scripts/post-answer.groovy
-
-  ### "taxCredits" journey ###
-  - method: GET
-    path: /question
-    requestHeaders:
-      session-id: "taxCredits"
-    response:
-      scriptFile: scripts/get-question.groovy
-
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "taxCredits"
-    response:
-      template: true
-      statusCode: 200
-      content: |
-        {
-          "authorizationCode": {
-            "value":"auth-code-${random.uuid()}"
-          },
-          "state":"sT@t3",
-          "redirect_uri":"http://example.net"
-        }
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "taxCredits"
-    response:
-      statusCode: 201
-      template: true
-      content: |
-        {
-          "session_id": "taxCredits",
-          "state": "sT@t3",
-          "redirect_uri": "http://example.net"
-        }
-  - method: POST
-    path: /answer
-    requestHeaders:
-      session-id: "taxCredits"
-    response:
-      scriptFile: scripts/post-answer.groovy
-
-  ### "selfAssessment" journey ###
-  - method: GET
-    path: /question
-    requestHeaders:
-      session-id: "selfAssessment"
-    response:
-      scriptFile: scripts/get-question.groovy
-
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "selfAssessment"
-    response:
-      template: true
-      statusCode: 200
-      content: |
-        {
-          "authorizationCode": {
-            "value":"auth-code-${random.uuid()}"
-          },
-          "state":"sT@t3",
-          "redirect_uri":"http://example.net"
-        }
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "selfAssessment"
-    response:
-      statusCode: 201
-      template: true
-      content: |
-        {
-          "session_id": "selfAssessment",
-          "state": "sT@t3",
-          "redirect_uri": "http://example.net"
-        }
-  - method: POST
-    path: /answer
-    requestHeaders:
-      session-id: "selfAssessment"
-    response:
-      scriptFile: scripts/post-answer.groovy
-
-  ### "income from pensions tax return" journey ###
-  - method: GET
-    path: /question
-    requestHeaders:
-      session-id: "selfAssessmentShort"
-    response:
-      scriptFile: scripts/get-question.groovy
-
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "selfAssessmentShort"
-    response:
-      template: true
-      statusCode: 200
-      content: |
-        {
-          "authorizationCode": {
-            "value":"auth-code-${random.uuid()}"
-          },
-          "state":"sT@t3",
-          "redirect_uri":"http://example.net"
-        }
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "selfAssessmentShort"
-    response:
-      statusCode: 201
-      template: true
-      content: |
-        {
-          "session_id": "selfAssessmentShort",
-          "state": "sT@t3",
-          "redirect_uri": "http://example.net"
-        }
-  - method: POST
-    path: /answer
-    requestHeaders:
-      session-id: "selfAssessmentShort"
-    response:
-      scriptFile: scripts/post-answer.groovy
-
-  ### 'insufficient-questions' journey ###
-  - method: GET
-    path: /question
-    requestHeaders:
-      session-id: insufficient-questions
-    response:
-      statusCode: 204
-
-  - method: POST
-    path: /session
-    requestBody:
-      jsonPath: $.client_id
-      value: "insufficient-questions"
-    response:
-      statusCode: 201
-      template: true
-      content: |
-        {
-          "session_id": "insufficient-questions",
-          "state": "sT@t3",
-          "redirect_uri": "http://example.net"
-        }
-
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id: "insufficient-questions"
-    response:
-      template: true
-      statusCode: 200
-      content: |
-        {
-          "authorizationCode": {
-            "value":"auth-code-${random.uuid()}"
-          },
-          "state":"sT@t3",
-          "redirect_uri":"http://example.net"
-        }
 
   ### 'question-500' journey ###
   - method: GET
@@ -357,24 +95,21 @@ resources:
       content: |
         {}
   ### 'abandon' journey ###
-  - method: GET
-    path: /question
-    requestHeaders:
-      session-id: "abandon"
-    response:
-      scriptFile: scripts/get-question.groovy
-
+  # As this handler is first in this file it takes precedence over the default handler for /authorization for questions
+  # (see below)
   - method: GET
     path: /authorization
     requestHeaders:
-      session-id: "abandon"
+      session-id:
+        value: "questions-abandon.+"
+        operator: Matches
     response:
       statusCode: 500
       content: |
         {
           "redirect_uri": "http://example.net",
           "oauth_error": {
-            "error_description": "acces-denied",
+            "error_description": "access-denied",
             "error": "access_denied"
           }
         }
@@ -413,3 +148,64 @@ resources:
       statusCode: 400
       content: |
         {}
+
+  # Default journey that will get questions from the question store matching the initial client_id value as long as that
+  # value starts with "questions-"
+  - method: POST
+    path: /session
+    # Capture the client_id value here so we can use it in the response
+    capture:
+      journey:
+        jsonPath: $.client_id
+        store: request
+    requestBody:
+      jsonPath: $.client_id
+      value: "questions-.+" # match anything starting with "questions-"
+      operator: Matches
+    response:
+      statusCode: 201
+      template: true
+      # Set the session id to a unique value based on the client_id. The random element means that we can run tests
+      # multiple times without clashes in the stores.
+      content: |
+        {
+          "session_id": "${stores.request.journey}-SEPARATOR-${random.uuid()}",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
+
+  - method: GET
+    path: /question
+    requestHeaders:
+      session-id:
+        value: "questions-.+-SEPARATOR-.+" # Match our session_id pattern
+        operator: Matches
+    response:
+      scriptFile: scripts/get-question.groovy
+
+  - method: POST
+    path: /answer
+    requestHeaders:
+      session-id:
+        value: "questions-.+-SEPARATOR-.+" # Match our session_id pattern
+        operator: Matches
+    response:
+      scriptFile: scripts/post-answer.groovy
+
+  - method: GET
+    path: /authorization
+    requestHeaders:
+      session-id:
+        value: "questions-.+-SEPARATOR-.+" # Match our session_id pattern
+        operator: Matches
+    response:
+      template: true
+      statusCode: 200
+      content: |
+        {
+          "authorizationCode": {
+            "value":"auth-code-${random.uuid()}"
+          },
+          "state":"sT@t3",
+          "redirect_uri":"http://example.net"
+        }

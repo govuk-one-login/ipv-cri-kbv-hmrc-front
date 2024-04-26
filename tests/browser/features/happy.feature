@@ -2,7 +2,7 @@ Feature: Happy path
 
   Successful journey through the system and back to the RP
 
-  @mock-api:payslips @payslips-journey
+  @mock-api:questions-payslips @payslips-journey
   Scenario: Happy Path for payslips-journey
     Given Happy Harriet is using the system
     And they have started the journey
@@ -14,7 +14,7 @@ Feature: Happy path
     When they enter amount and continue from the Enter Tax Payslip question page
     Then they should be redirected as a success
 
-  @mock-api:p60 @p60-journey
+  @mock-api:questions-p60 @p60-journey
   Scenario: Happy Path for p60-journey
     Given Happy Harriet is using the system
     And they have started the journey
@@ -38,7 +38,7 @@ Feature: Happy path
     When they enter amount and continue from the "enter-employees-contributions-p60" question page
     Then they should be redirected as a success
 
-  @mock-api:selfAssessment @selfAssessment-journey
+  @mock-api:questions-selfAssessment @selfAssessment-journey
   Scenario: Happy Path for selfAssessment-journey
     Given Happy Harriet is using the system
     And they have started the journey
@@ -50,7 +50,7 @@ Feature: Happy path
     When they enter correct pension details
     Then they should be redirected as a success
 
-  @mock-api:selfAssessmentShort @selfAssessment-journey
+  @mock-api:questions-selfAssessmentShort @selfAssessment-journey
   Scenario: Happy Path for selfAssessment-journey
     Given Happy Harriet is using the system
     And they have started the journey
@@ -62,7 +62,7 @@ Feature: Happy path
     When they enter correct pension details
     Then they should be redirected as a success
 
-  @mock-api:taxCredits @taxCredits-journey
+  @mock-api:questions-taxCredits @taxCredits-journey
   Scenario: Happy Path for taxCredits-journey
     Given Happy Harriet is using the system
     And they have started the journey

@@ -1,4 +1,4 @@
-@mock-api:abandon @prove-identity-another-way
+@mock-api:questions-abandon @prove-identity-another-way
 Feature: Prove identity another way
 
   Background:
