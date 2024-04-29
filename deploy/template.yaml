@@ -278,7 +278,7 @@ Resources:
     Type: AWS::Logs::LogGroup
     Properties:
       LogGroupName: !Sub /aws/vendedlogs/aws/ecs/${AWS::StackName}-Front-ECS
-      RetentionInDays: 14
+      RetentionInDays: 30
 
   ECSAccessLogsGroupSubscriptionFilterCSLS:
     Type: AWS::Logs::SubscriptionFilter
