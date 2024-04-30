@@ -2,6 +2,7 @@ const debug = require("debug")("load-question");
 const path = require("path");
 const BaseController = require("hmpo-form-wizard").Controller;
 const presenters = require("../../../presenters");
+const fields = require("../fieldsHelper");
 const { submitAnswer, getNextQuestion } = require("../service");
 
 class SingleAmountQuestionController extends BaseController {
@@ -52,7 +53,12 @@ class SingleAmountQuestionController extends BaseController {
         return callback(err);
       }
 
-      const userInput = req.body[req.session.question.questionKey];
+      let userInput = req.body[req.session.question.questionKey];
+      userInput = userInput && fields.stripSpaces(userInput);
+
+      if (req.session.question.questionKey === "rti-p60-earnings-above-pt") {
+        userInput = fields.stripDecimal(userInput);
+      }
 
       try {
         await submitAnswer(req, req.session.question.questionKey, userInput);

@@ -10,6 +10,9 @@ rti-p60-payment-for-year:
 rti-p60-earnings-above-pt:
   label: Amount
   hint: For example, 24368
+  validation:
+    required: Enter an amount
+    regex: Amount must be a whole number, like 123
 rti-p60-postgraduate-loan-deductions:
   label: Amount
   hint: For example, 765

@@ -10,6 +10,9 @@ rti-p60-payment-for-year:
 rti-p60-earnings-above-pt:
   label: Swm
   hint: Er enghraifft, 24368
+  validation:
+    required: Rhowch swm
+    regex: Rhaid i'r swm fod yn rhif cyfan, fel 123
 rti-p60-postgraduate-loan-deductions:
   label: Swm
   hint: For example, 765
