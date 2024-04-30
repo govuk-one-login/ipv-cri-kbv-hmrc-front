@@ -157,3 +157,9 @@ tc-amount:
   content:
     - Tell us about a tax credits payment you’ve had after {{ dynamicDate }}.
     - You’ll get tax credits payments every week or every 4 weeks. You only need to enter one payment amount.
+questionEnterRecentSelfAssessmentPayment:
+  title: Enter the details of your most recent Self Assessment payment
+  h1: Enter the details of your most recent Self Assessment payment
+  content:
+    - <div class="govuk-inset-text">You can use a  bank statement to answer this question.</div>
+    - Tell us about the last payment you made towards your Self Assessment tax bill.

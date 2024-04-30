@@ -123,3 +123,18 @@ statePensionAndBenefitsShort:
 tc-amount:
   label: Amount
   hint: For example 36.75
+selfAssessmentPaymentDate:
+  label: Date of payment
+  legend: Date of payment
+  hint: For example 31 3 2024
+  content: ""
+selfAssessmentPaymentAmount:
+  label: Payment amount
+  hint: Enter the amount in pounds and pence. For example, 3625.75.
+  content: ""
+date-day:
+  label: Day
+date-month:
+  label: Month
+date-year:
+  label: Year

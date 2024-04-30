@@ -157,3 +157,9 @@ tc-amount:
   content:
     - Dywedwch wrthym am daliad credydau treth a gawsoch ar ôl {{ dynamicDate }}.
     - Byddwch yn cael taliadau credydau treth bob wythnos neu bob 4 wythnos. Dim ond swm un taliad sydd angen i chi ei roi
+questionEnterRecentSelfAssessmentPayment:
+  title: Rhowch y manylion o'ch taliad Hunanasesiad mwyaf diweddar
+  h1: Rhowch y manylion o'ch taliad Hunanasesiad mwyaf diweddar
+  content:
+    - <div class="govuk-inset-text">Gallwch ddefnyddio cyfriflen banc i ateb y cwestiwn hwn.</div>
+    - Dywedwch wrthym y taliad diwethaf a wnaethoch tuag at eich bil treth Hunanasesiad.

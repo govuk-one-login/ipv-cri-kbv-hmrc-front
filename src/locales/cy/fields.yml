@@ -123,3 +123,18 @@ statePensionAndBenefitsShort:
 tc-amount:
   label: Swm
   hint: Er enghraifft, 36.75
+selfAssessmentPaymentDate:
+  label: Dyddiad y taliad
+  legend: Dyddiad y taliad
+  hint: Er enghraifft, 31 3 2024
+  content: ""
+selfAssessmentPaymentAmount:
+  label: Swm y taliad
+  hint: Rhowch y swm mewn punnoedd a cheiniogau. Er enghraifft, 3625.75.
+  content: ""
+date-day:
+  label: Dydd
+date-month:
+  label: Mis
+date-year:
+  label: Blwyddyn
