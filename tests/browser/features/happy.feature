@@ -74,4 +74,6 @@ Feature: Happy path
     When they enter an invalid account number and continue from the enter-4-digits-bank-account-tax-credits question page
     Then they should see enter correct account number error message
     When they enter correct account number and continue from the enter-4-digits-bank-account-tax-credits question page
+    When they should see the enter-recent-tax-credits-payment question page
+    When they enter correct account number and continue from the enter-recent-tax-credits-payment question page
     Then they should be redirected as a success

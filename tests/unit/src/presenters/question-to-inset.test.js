@@ -1,5 +1,6 @@
 const presenters = require("../../../../src/presenters");
 const taxYearToRange = require("../../../../src/utils/tax-year-to-range");
+const taxCreditsMonths = require("../../../../src/utils/tax-credits-months");
 
 Date.now = jest.fn(() => new Date("2024-05-01"));
 
@@ -118,6 +119,42 @@ describe("question-to-inset", () => {
     });
 
     it("should not include tax year information in the translated inset when currentTaxYear is not defined", () => {
+      question = {
+        questionKey: "rti-payslip-national-insurance",
+        info: {},
+      };
+
+      presenters.questionToInset(question, translate, englishLanguage);
+
+      expect(translate).toHaveBeenCalledWith(
+        "fields.rti-payslip-national-insurance.inset",
+        {}
+      );
+    });
+  });
+
+  describe("question-to-inset with months", () => {
+    it("should include months information in the translated inset when months is defined", () => {
+      question = {
+        questionKey: "rti-payslip-national-insurance",
+        info: {
+          months: "3",
+        },
+      };
+
+      const { dynamicDate } = taxCreditsMonths(
+        question?.info?.months,
+        englishLanguage
+      );
+      presenters.questionToInset(question, translate, englishLanguage);
+
+      expect(translate).toHaveBeenCalledWith(
+        "fields.rti-payslip-national-insurance.inset",
+        { dynamicDate }
+      );
+    });
+
+    it("should not include months information in the translated inset when months is not defined", () => {
       question = {
         questionKey: "rti-payslip-national-insurance",
         info: {},

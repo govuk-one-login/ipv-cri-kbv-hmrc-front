@@ -81,6 +81,12 @@ module.exports = {
     controller: singleAmountQuestionController,
     next: "load-question",
   },
+  "/question/enter-recent-tax-credits-payment": {
+    backLink: null,
+    fields: ["tc-amount"],
+    controller: singleAmountQuestionController,
+    next: "load-question",
+  },
   "/question/what-type-self-assessment": {
     template: "self-assessment-router",
     backLink: null,

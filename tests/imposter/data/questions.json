@@ -67,6 +67,12 @@
     "taxCredits": [
       {
         "questionKey": "ita-bankaccount"
+      },
+      {
+        "questionKey": "tc-amount",
+        "info": {
+          "months": "3"
+        }
       }
     ],
     "selfAssessment": [

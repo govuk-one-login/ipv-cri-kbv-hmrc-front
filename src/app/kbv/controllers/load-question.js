@@ -26,6 +26,7 @@ const questionKeyToPathMap = new Map([
   ["rti-p60-student-loan-deductions", "enter-student-loan-deductions-p60"],
   ["rti-p60-employee-ni-contributions", "enter-employees-contributions-p60"],
   ["sa-income-from-pensions", "what-type-self-assessment"],
+  ["tc-amount", "enter-recent-tax-credits-payment"],
 ]);
 
 class LoadQuestionController extends BaseController {
