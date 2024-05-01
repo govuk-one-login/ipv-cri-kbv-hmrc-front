@@ -1,9 +1,9 @@
 const BaseController = require("hmpo-form-wizard").Controller;
-const Controller = require("../../../../../../src/app/kbv/controllers/self-assessment-payment");
+const Controller = require("../../../../../../src/app/kbv/controllers/self-assessment-payment-question");
 const service = require("../../../../../../src/app/kbv/service");
 jest.mock("../../../../../../src/app/kbv/service");
 
-describe("self-assessment-payment controller", () => {
+describe("self-assessment-payment-question controller", () => {
   let controller;
   let req;
   let next;

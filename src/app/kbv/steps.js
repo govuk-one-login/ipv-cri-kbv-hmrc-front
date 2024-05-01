@@ -3,7 +3,7 @@ const singleAmountQuestionController = require("./controllers/single-amount-ques
 const proveIdentityAnotherWayController = require("./controllers/prove-identity-another-way");
 const selfAssessmentRouterController = require("./controllers/self-assessment-router");
 const selfAssessmentQuestionController = require("./controllers/self-assessment-question");
-const selfAssessmentPaymentController = require("./controllers/self-assessment-payment");
+const selfAssessmentPaymentQuestionController = require("./controllers/self-assessment-payment-question");
 
 module.exports = {
   "/": {
@@ -137,7 +137,7 @@ module.exports = {
     backLink: null,
     template: "self-assessment-payment",
     fields: ["selfAssessmentPaymentDate", "selfAssessmentPaymentAmount"],
-    controller: selfAssessmentPaymentController,
+    controller: selfAssessmentPaymentQuestionController,
     next: "load-question",
   },
   "/prove-identity-another-way": {

@@ -2,7 +2,7 @@ const debug = require("debug")("load-question");
 const BaseController = require("hmpo-form-wizard").Controller;
 const { submitAnswer, getNextQuestion } = require("../service");
 
-class SelfAssessmentPaymentController extends BaseController {
+class SelfAssessmentPaymentQuestionController extends BaseController {
   async saveValues(req, res, callback) {
     await super.saveValues(req, res, async (err) => {
       if (err) {
@@ -33,4 +33,4 @@ class SelfAssessmentPaymentController extends BaseController {
   }
 }
 
-module.exports = SelfAssessmentPaymentController;
+module.exports = SelfAssessmentPaymentQuestionController;
