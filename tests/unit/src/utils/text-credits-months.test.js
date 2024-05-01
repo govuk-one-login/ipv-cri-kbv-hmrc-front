@@ -1,7 +1,7 @@
 const moment = require("moment");
-const taxCreditsMonths = require("../../../../src/utils/tax-credits-months");
+const monthsAgoToDate = require("../../../../src/utils/months-ago-to-date");
 
-describe("tax-credits-months", () => {
+describe("months-ago-to-date", () => {
   const language = "en";
 
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe("tax-credits-months", () => {
   });
 
   it("should return empty object when months is undefined", () => {
-    const result = taxCreditsMonths(undefined, language);
+    const result = monthsAgoToDate(undefined, language);
 
     expect(result).toEqual({});
   });
@@ -21,7 +21,7 @@ describe("tax-credits-months", () => {
       .locale(language)
       .format("D MMMM YYYY");
 
-    const result = taxCreditsMonths(months, language);
+    const result = monthsAgoToDate(months, language);
 
     expect(result).toEqual({ dynamicDate });
   });

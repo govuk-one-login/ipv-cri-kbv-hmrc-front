@@ -1,6 +1,6 @@
 const presenters = require("../../../../src/presenters");
 const taxYearToRange = require("../../../../src/utils/tax-year-to-range");
-const taxCreditsMonths = require("../../../../src/utils/tax-credits-months");
+const monthsAgoToDate = require("../../../../src/utils/months-ago-to-date");
 
 Date.now = jest.fn(() => new Date("2024-05-01"));
 
@@ -142,7 +142,7 @@ describe("question-to-inset", () => {
         },
       };
 
-      const { dynamicDate } = taxCreditsMonths(
+      const { dynamicDate } = monthsAgoToDate(
         question?.info?.months,
         englishLanguage
       );

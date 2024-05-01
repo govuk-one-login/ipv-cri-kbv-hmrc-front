@@ -1,11 +1,11 @@
-const taxCreditsMonths = require("../utils/tax-credits-months");
+const monthsAgoToDate = require("../utils/months-ago-to-date");
 
 module.exports = function (question, translate, language) {
   const key = `fields.${question.questionKey}.content`;
   const data = {};
 
   if (question?.info?.months) {
-    Object.assign(data, taxCreditsMonths(question?.info?.months, language));
+    Object.assign(data, monthsAgoToDate(question?.info?.months, language));
   }
 
   const content = translate(key, data);

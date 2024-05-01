@@ -1,5 +1,5 @@
 const presenters = require("../../../../src/presenters");
-const taxCreditsMonths = require("../../../../src/utils/tax-credits-months");
+const monthsAgoToDate = require("../../../../src/utils/months-ago-to-date");
 
 describe("question-to-content", () => {
   let translate;
@@ -42,10 +42,7 @@ describe("question-to-content", () => {
         months: "3",
       };
 
-      const { dynamicDate } = taxCreditsMonths(
-        question?.info?.months,
-        language
-      );
+      const { dynamicDate } = monthsAgoToDate(question?.info?.months, language);
       presenters.questionToContent(question, translate, language);
 
       expect(translate).toHaveBeenCalledWith(

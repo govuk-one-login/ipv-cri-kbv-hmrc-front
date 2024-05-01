@@ -1,12 +1,12 @@
 const taxYearToRange = require("../utils/tax-year-to-range");
-const taxCreditsMonths = require("../utils/tax-credits-months");
+const monthsAgoToDate = require("../utils/months-ago-to-date");
 
 module.exports = function (question, translate, language) {
   const key = `fields.${question.questionKey}.inset`;
   const data = {};
 
   if (question?.info?.months) {
-    Object.assign(data, taxCreditsMonths(question?.info?.months, language));
+    Object.assign(data, monthsAgoToDate(question?.info?.months, language));
   }
 
   if (question?.info?.currentTaxYear) {
