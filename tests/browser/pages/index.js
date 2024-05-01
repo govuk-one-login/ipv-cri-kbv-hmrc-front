@@ -11,4 +11,5 @@ module.exports = {
   ProveIdentityAnotherWayPage: require("./prove-identity-another-way.js"),
   PensionsBenefitsSelfAssessmentPage: require("./pensions-benefits-self-assessment.js"),
   PensionsBenefitsShortTaxReturnPage: require("./pensions-benefits-short-tax-return.js"),
+  SelfAssessmentPaymentPage: require("./enter-recent-self-assessment-payment.js"),
 };

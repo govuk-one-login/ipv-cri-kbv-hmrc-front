@@ -81,6 +81,9 @@
         "info": {
           "currentTaxYear": "2022/23"
         }
+      },
+      {
+        "questionKey": "sa-payment-details"
       }
     ],
     "selfAssessmentLong": [

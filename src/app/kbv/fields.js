@@ -64,4 +64,12 @@ module.exports = {
     validate: ["required", "numeric"],
     classes: "govuk-input--width-5",
   },
+  selfAssessmentPaymentDate: {
+    type: "date",
+  },
+  selfAssessmentPaymentAmount: {
+    type: "text",
+    validate: ["required"],
+    classes: "govuk-input--width-5",
+  },
 };

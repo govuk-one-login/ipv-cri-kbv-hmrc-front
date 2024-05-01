@@ -48,6 +48,8 @@ Feature: Happy path
     When they select "sa200" and continue from the what-type-self-assessment question page
     Then they should see the pensions-benefits-short-tax-return question page
     When they enter correct pension details
+    Then they should see the enter-recent-self-assessment-payment question page
+    When they enter correct self assessment payment details
     Then they should be redirected as a success
 
   @mock-api:questions-selfAssessmentShort @selfAssessment-journey
