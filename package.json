@@ -22,7 +22,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@govuk-one-login/di-ipv-cri-common-express": "6.2.1",
+    "@govuk-one-login/di-ipv-cri-common-express": "6.2.2",
     "@govuk-one-login/one-login-analytics": "1.0.2",
     "aws-sdk": "2.1611.0",
     "axios": "1.6.8",
