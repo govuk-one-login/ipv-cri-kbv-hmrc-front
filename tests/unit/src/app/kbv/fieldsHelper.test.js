@@ -57,3 +57,23 @@ describe("stripDecimal function test", () => {
     expect(result).toEqual(expectedOutput);
   });
 });
+
+describe("numericWithOptionalDecimal regex test", () => {
+  it("should match numbers with optional decimal zeros and whitespace", () => {
+    expect("123").toMatch(fields.numericWithOptionalDecimal);
+    expect("123.00").toMatch(fields.numericWithOptionalDecimal);
+    expect("123.0").toMatch(fields.numericWithOptionalDecimal);
+    expect("123 . 00").toMatch(fields.numericWithOptionalDecimal);
+    expect(" 123 ").toMatch(fields.numericWithOptionalDecimal);
+  });
+
+  it("should not match strings without numbers", () => {
+    expect("abc").not.toMatch(fields.numericWithOptionalDecimal);
+    expect("  ").not.toMatch(fields.numericWithOptionalDecimal);
+  });
+
+  it("should not match numbers with non-zero decimal parts", () => {
+    expect("123.45").not.toMatch(fields.numericWithOptionalDecimal);
+    expect("123.5").not.toMatch(fields.numericWithOptionalDecimal);
+  });
+});

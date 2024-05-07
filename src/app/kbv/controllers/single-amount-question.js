@@ -56,7 +56,13 @@ class SingleAmountQuestionController extends BaseController {
       let userInput = req.body[req.session.question.questionKey];
       userInput = userInput && fields.stripSpaces(userInput);
 
-      if (req.session.question.questionKey === "rti-p60-earnings-above-pt") {
+      const keysToStripDecimal = [
+        "rti-p60-earnings-above-pt",
+        "rti-p60-postgraduate-loan-deductions",
+        "rti-p60-student-loan-deductions",
+      ];
+
+      if (keysToStripDecimal.includes(req.session.question.questionKey)) {
         userInput = fields.stripDecimal(userInput);
       }
 

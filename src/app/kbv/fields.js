@@ -1,3 +1,5 @@
+const { numericWithOptionalDecimal } = require("./fieldshelper");
+
 module.exports = {
   "ita-bankaccount": {
     type: "text",
@@ -10,7 +12,27 @@ module.exports = {
       "required",
       {
         type: "regex",
-        arguments: [/^\s*\d+(\s*\.\s*0+)?\s*$/], // Matches numbers with optional decimal zeros, allowing whitespace. Example: " 123 ", "123.00", "123.0", "123 . 00", etc.
+        arguments: [numericWithOptionalDecimal],
+      },
+    ],
+  },
+  "rti-p60-postgraduate-loan-deductions": {
+    type: "text",
+    validate: [
+      "required",
+      {
+        type: "regex",
+        arguments: [numericWithOptionalDecimal],
+      },
+    ],
+  },
+  "rti-p60-student-loan-deductions": {
+    type: "text",
+    validate: [
+      "required",
+      {
+        type: "regex",
+        arguments: [numericWithOptionalDecimal],
       },
     ],
   },

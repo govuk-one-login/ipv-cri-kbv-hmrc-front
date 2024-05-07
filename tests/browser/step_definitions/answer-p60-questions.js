@@ -18,7 +18,7 @@ When(
 );
 
 When(
-  "they do not enter an amount and continue from the enter-earnings-above-pt-p60 question page",
+  "they do not enter an amount and continue from the {string} question page",
   async function () {
     const p60QuestionPage = new AnswerP60QuestionsPage(this.page);
     await p60QuestionPage.answer("");
@@ -27,7 +27,7 @@ When(
 );
 
 When(
-  "they enter an invalid amount and continue from the enter-earnings-above-pt-p60 question page",
+  "they enter an invalid amount and continue from the {string} question page",
   async function () {
     const p60QuestionPage = new AnswerP60QuestionsPage(this.page);
     await p60QuestionPage.answer("123.123");

@@ -180,19 +180,8 @@ describe("single-amount-question controller", () => {
       });
     });
 
-    describe("#stripSpaces", () => {
-      it("should remove all whitespace characters from the input string", () => {
-        const userInput = "  123 . 00  ";
-        const expectedOutput = "123.00";
-
-        const result = fields.stripSpaces(userInput);
-
-        expect(result).toBe(expectedOutput);
-      });
-    });
-
-    describe("#stripDecimal 'rti-p60-earnings-above-pt'", () => {
-      it("should strip decimal points from input when questionKey is 'rti-p60-earnings-above-pt'", async () => {
+    describe("#stripDecimal", () => {
+      it("should strip decimal points from input when matching questionKey", async () => {
         req.session.question.questionKey = "rti-p60-earnings-above-pt";
         req.body["rti-p60-earnings-above-pt"] = " 123.00 ";
 
