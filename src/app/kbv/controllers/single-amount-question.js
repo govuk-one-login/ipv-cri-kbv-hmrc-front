@@ -2,8 +2,8 @@ const debug = require("debug")("load-question");
 const path = require("path");
 const BaseController = require("hmpo-form-wizard").Controller;
 const presenters = require("../../../presenters");
-const fields = require("../fieldsHelper");
 const { submitAnswer, getNextQuestion } = require("../service");
+const fields = require("../fieldsHelper");
 
 class SingleAmountQuestionController extends BaseController {
   configure(req, res, next) {

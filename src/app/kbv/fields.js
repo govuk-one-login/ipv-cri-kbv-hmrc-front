@@ -1,4 +1,4 @@
-const { numericWithOptionalDecimal } = require("./fieldshelper");
+const { numericWithOptionalDecimal } = require("./fieldsHelper");
 
 module.exports = {
   "ita-bankaccount": {
