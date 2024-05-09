@@ -178,5 +178,43 @@ describe("single-amount-question controller", () => {
         await controller.saveValues(req, res, callback);
       });
     });
+
+    describe("#stripDecimal", () => {
+      it("should strip decimal points from input when matching questionKey", async () => {
+        req.session.question.questionKey = "rti-p60-earnings-above-pt";
+        req.body["rti-p60-earnings-above-pt"] = " 123.00 ";
+
+        const stripDecimal = jest.spyOn(fields, "stripDecimal");
+
+        const superSaveValues = jest
+          .spyOn(BaseController.prototype, "saveValues")
+          .mockImplementation((req, res, callback) => {
+            callback();
+          });
+
+        await controller.saveValues(req, res, next);
+
+        expect(superSaveValues).toHaveBeenCalled();
+        expect(stripDecimal).toHaveBeenCalledWith("123.00");
+      });
+
+      it("should not strip decimal points from input when questionKey is not in the switch statment", async () => {
+        req.session.question.questionKey = "other-question-key";
+        req.body["other-question-key"] = " 123.00 ";
+
+        const stripDecimal = jest.spyOn(fields, "stripDecimal");
+
+        const superSaveValues = jest
+          .spyOn(BaseController.prototype, "saveValues")
+          .mockImplementation((req, res, callback) => {
+            callback();
+          });
+
+        await controller.saveValues(req, res, next);
+
+        expect(superSaveValues).toHaveBeenCalled();
+        expect(stripDecimal).not.toHaveBeenCalled();
+      });
+    });
   });
 });

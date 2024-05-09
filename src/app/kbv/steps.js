@@ -44,11 +44,13 @@ module.exports = {
   "/question/enter-earnings-above-pt-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
+    fields: ["rti-p60-earnings-above-pt"],
     next: "load-question",
   },
   "/question/enter-postgraduate-loan-deductions-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
+    fields: ["rti-p60-postgraduate-loan-deductions"],
     next: "load-question",
   },
   "/question/enter-statutory-shared-parental-pay-p60": {
@@ -69,6 +71,7 @@ module.exports = {
   "/question/enter-student-loan-deductions-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
+    fields: ["rti-p60-student-loan-deductions"],
     next: "load-question",
   },
   "/question/enter-employees-contributions-p60": {

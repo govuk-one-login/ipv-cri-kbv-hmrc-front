@@ -1,3 +1,4 @@
+
 module.exports = {
   "ita-bankaccount": {
     type: "text",
