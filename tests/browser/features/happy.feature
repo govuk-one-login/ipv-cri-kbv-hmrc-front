@@ -14,6 +14,18 @@ Feature: Happy path
     When they enter amount and continue from the Enter Tax Payslip question page
     Then they should be redirected as a success
 
+  @mock-api:questions-payslips @payslips
+  Scenario: Happy Path for payslips
+    Given Happy Harriet is using the system
+    And they have started the journey
+    Then they should see the answer security questions page
+    When they continue from answer security questions
+    Then they should see the Enter NI Payslip question page
+    When they enter amount and continue from the Enter NI Payslip question page
+    Then they should see the Enter Tax Payslip question page
+    When they enter amount and continue from the Enter Tax Payslip question page
+    Then they should be redirected as a success
+
   @mock-api:questions-p60 @p60-journey
   Scenario: Happy Path for p60-journey
     Given Happy Harriet is using the system
