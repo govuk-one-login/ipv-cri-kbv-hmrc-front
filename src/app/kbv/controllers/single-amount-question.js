@@ -19,6 +19,8 @@ class SingleAmountQuestionController extends BaseController {
         return callback(err, locals);
       }
 
+      
+
       locals.question = {
         label: presenters.questionToLabel(req.session.question, req.translate),
         hint: presenters.questionToHint(req.session.question, req.translate),
@@ -41,7 +43,7 @@ class SingleAmountQuestionController extends BaseController {
         prefix: "£",
         name: req.session.question?.questionKey,
       };
-
+      {{ console.log(locals.question.label) }}
       callback(null, locals);
     });
   }
