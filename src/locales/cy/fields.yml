@@ -10,9 +10,15 @@ rti-p60-payment-for-year:
 rti-p60-earnings-above-pt:
   label: Swm
   hint: Er enghraifft, 24368
+  validation:
+    required: Rhowch swm
+    regex: Rhaid i'r swm fod yn rhif cyfan, fel 123
 rti-p60-postgraduate-loan-deductions:
   label: Swm
   hint: For example, 765
+  validation:
+    required: Rhowch swm
+    regex: Rhaid i'r swm fod yn rhif cyfan, fel 123
 rti-p60-statutory-shared-parental-pay:
   label: Swm
   hint: Er enghraifft, 15620.75
@@ -25,6 +31,9 @@ rti-p60-statutory-maternity-pay:
 rti-p60-student-loan-deductions:
   label: Swm
   hint: Er enghraifft, 765
+  validation:
+    required: Rhowch swm
+    regex: Rhaid i'r swm fod yn rhif cyfan, fel 123
 rti-p60-employee-ni-contributions:
   label: Swm
   hint: Er enghraifft, 836.16

@@ -3,6 +3,7 @@ const path = require("path");
 const BaseController = require("hmpo-form-wizard").Controller;
 const presenters = require("../../../presenters");
 const { submitAnswer, getNextQuestion } = require("../service");
+const fields = require("../fieldsHelper");
 
 class SingleAmountQuestionController extends BaseController {
   configure(req, res, next) {
@@ -52,7 +53,18 @@ class SingleAmountQuestionController extends BaseController {
         return callback(err);
       }
 
-      const userInput = req.body[req.session.question.questionKey];
+      let userInput = req.body[req.session.question.questionKey];
+      userInput = userInput && fields.stripSpaces(userInput);
+
+      const keysToStripDecimal = [
+        "rti-p60-earnings-above-pt",
+        "rti-p60-postgraduate-loan-deductions",
+        "rti-p60-student-loan-deductions",
+      ];
+
+      if (keysToStripDecimal.includes(req.session.question.questionKey)) {
+        userInput = fields.stripDecimal(userInput);
+      }
 
       try {
         await submitAnswer(req, req.session.question.questionKey, userInput);

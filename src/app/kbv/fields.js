@@ -1,8 +1,40 @@
+const { numericWithOptionalDecimal } = require("./fieldsHelper");
+
 module.exports = {
   "ita-bankaccount": {
     type: "text",
     journeyKey: "itabankaccount",
     validate: ["required", "numeric", { type: "exactlength", arguments: [4] }],
+  },
+  "rti-p60-earnings-above-pt": {
+    type: "text",
+    validate: [
+      "required",
+      {
+        type: "regex",
+        arguments: [numericWithOptionalDecimal],
+      },
+    ],
+  },
+  "rti-p60-postgraduate-loan-deductions": {
+    type: "text",
+    validate: [
+      "required",
+      {
+        type: "regex",
+        arguments: [numericWithOptionalDecimal],
+      },
+    ],
+  },
+  "rti-p60-student-loan-deductions": {
+    type: "text",
+    validate: [
+      "required",
+      {
+        type: "regex",
+        arguments: [numericWithOptionalDecimal],
+      },
+    ],
   },
   abandonRadio: {
     type: "radios",
