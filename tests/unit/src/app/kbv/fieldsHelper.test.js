@@ -58,22 +58,22 @@ describe("stripDecimal function test", () => {
   });
 });
 
-describe("numericWithOptionalDecimal regex test", () => {
+describe("numericWithOptionalDecimalZeros regex test", () => {
   it("should match numbers with optional decimal zeros and whitespace", () => {
-    expect("123").toMatch(fields.numericWithOptionalDecimal);
-    expect("123.00").toMatch(fields.numericWithOptionalDecimal);
-    expect("123.0").toMatch(fields.numericWithOptionalDecimal);
-    expect("123 . 00").toMatch(fields.numericWithOptionalDecimal);
-    expect(" 123 ").toMatch(fields.numericWithOptionalDecimal);
+    expect("123").toMatch(fields.numericWithOptionalDecimalZeros);
+    expect("123.00").toMatch(fields.numericWithOptionalDecimalZeros);
+    expect("123.0").toMatch(fields.numericWithOptionalDecimalZeros);
+    expect("123 . 00").toMatch(fields.numericWithOptionalDecimalZeros);
+    expect(" 123 ").toMatch(fields.numericWithOptionalDecimalZeros);
   });
 
   it("should not match strings without numbers", () => {
-    expect("abc").not.toMatch(fields.numericWithOptionalDecimal);
-    expect("  ").not.toMatch(fields.numericWithOptionalDecimal);
+    expect("abc").not.toMatch(fields.numericWithOptionalDecimalZeros);
+    expect("  ").not.toMatch(fields.numericWithOptionalDecimalZeros);
   });
 
   it("should not match numbers with non-zero decimal parts", () => {
-    expect("123.45").not.toMatch(fields.numericWithOptionalDecimal);
-    expect("123.5").not.toMatch(fields.numericWithOptionalDecimal);
+    expect("123.45").not.toMatch(fields.numericWithOptionalDecimalZeros);
+    expect("123.5").not.toMatch(fields.numericWithOptionalDecimalZeros);
   });
 });

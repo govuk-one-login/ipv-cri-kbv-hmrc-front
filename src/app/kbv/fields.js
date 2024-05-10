@@ -1,4 +1,4 @@
-const { numericWithOptionalDecimal } = require("./fieldsHelper");
+const { numericWithOptionalDecimalZeros } = require("./fieldsHelper");
 
 module.exports = {
   "ita-bankaccount": {
@@ -12,7 +12,7 @@ module.exports = {
       "required",
       {
         type: "regex",
-        arguments: [numericWithOptionalDecimal],
+        arguments: [numericWithOptionalDecimalZeros],
       },
     ],
   },
@@ -22,7 +22,7 @@ module.exports = {
       "required",
       {
         type: "regex",
-        arguments: [numericWithOptionalDecimal],
+        arguments: [numericWithOptionalDecimalZeros],
       },
     ],
   },
@@ -32,7 +32,7 @@ module.exports = {
       "required",
       {
         type: "regex",
-        arguments: [numericWithOptionalDecimal],
+        arguments: [numericWithOptionalDecimalZeros],
       },
     ],
   },
