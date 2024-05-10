@@ -5,6 +5,7 @@ jest.mock("../../../../../../src/app/kbv/service");
 
 const presenters = require("../../../../../../src/presenters");
 jest.mock("../../../../../../src/presenters");
+const fields = require("../../../../../../src/app/kbv/fieldsHelper");
 
 describe("single-amount-question controller", () => {
   let controller;
@@ -138,6 +139,47 @@ describe("single-amount-question controller", () => {
         expect(req.session.question).toEqual({
           questionKey: "rti-p60-payment-for-year",
         });
+      });
+
+      it("should strip spaces and decimal when required", async () => {
+        const questionKey = "rti-p60-earnings-above-pt";
+        req.session.question.questionKey = questionKey;
+        req.body[questionKey] = " 123.45 ";
+        req.form.options.fields[questionKey] = { stripDecimal: true };
+        service.getNextQuestion.mockResolvedValue({});
+        service.submitAnswer.mockResolvedValue({});
+        fields.stripSpaces = jest.fn().mockReturnValue("123.45");
+        fields.stripDecimal = jest.fn().mockReturnValue("123");
+
+        await controller.saveValues(req, res, next);
+
+        expect(fields.stripSpaces).toHaveBeenCalledWith(" 123.45 ");
+        expect(fields.stripDecimal).toHaveBeenCalledWith("123.45");
+        expect(service.submitAnswer).toHaveBeenCalledWith(
+          req,
+          questionKey,
+          "123"
+        );
+      });
+
+      it("should strip spaces only when stripDecimal is not set to true", async () => {
+        const questionKey = "ita-bankaccount";
+        req.session.question.questionKey = questionKey;
+        req.body[questionKey] = " 123.45 ";
+        req.form.options.fields[questionKey] = { stripDecimal: false };
+        service.getNextQuestion.mockResolvedValue({});
+        service.submitAnswer.mockResolvedValue({});
+        fields.stripSpaces = jest.fn().mockReturnValue("123.45");
+
+        await controller.saveValues(req, res, next);
+
+        expect(fields.stripSpaces).toHaveBeenCalledWith(" 123.45 ");
+        expect(fields.stripDecimal).not.toHaveBeenCalled();
+        expect(service.submitAnswer).toHaveBeenCalledWith(
+          req,
+          questionKey,
+          "123.45"
+        );
       });
     });
 
