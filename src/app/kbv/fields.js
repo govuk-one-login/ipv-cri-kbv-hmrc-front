@@ -15,6 +15,7 @@ module.exports = {
         arguments: [numericWithOptionalDecimalZeros],
       },
     ],
+    stripDecimal: true,
   },
   "rti-p60-postgraduate-loan-deductions": {
     type: "text",
@@ -25,6 +26,7 @@ module.exports = {
         arguments: [numericWithOptionalDecimalZeros],
       },
     ],
+    stripDecimal: true,
   },
   "rti-p60-student-loan-deductions": {
     type: "text",
@@ -35,6 +37,7 @@ module.exports = {
         arguments: [numericWithOptionalDecimalZeros],
       },
     ],
+    stripDecimal: true,
   },
   abandonRadio: {
     type: "radios",

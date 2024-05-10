@@ -140,6 +140,47 @@ describe("single-amount-question controller", () => {
           questionKey: "rti-p60-payment-for-year",
         });
       });
+
+      it("should strip spaces and decimal when required", async () => {
+        const questionKey = "rti-p60-earnings-above-pt";
+        req.session.question.questionKey = questionKey;
+        req.body[questionKey] = " 123.45 ";
+        req.form.options.fields[questionKey] = { stripDecimal: true };
+        service.getNextQuestion.mockResolvedValue({});
+        service.submitAnswer.mockResolvedValue({});
+        fields.stripSpaces = jest.fn().mockReturnValue("123.45");
+        fields.stripDecimal = jest.fn().mockReturnValue("123");
+
+        await controller.saveValues(req, res, next);
+
+        expect(fields.stripSpaces).toHaveBeenCalledWith(" 123.45 ");
+        expect(fields.stripDecimal).toHaveBeenCalledWith("123.45");
+        expect(service.submitAnswer).toHaveBeenCalledWith(
+          req,
+          questionKey,
+          "123"
+        );
+      });
+
+      it("should strip spaces only when stripDecimal is not set to true", async () => {
+        const questionKey = "ita-bankaccount";
+        req.session.question.questionKey = questionKey;
+        req.body[questionKey] = " 123.45 ";
+        req.form.options.fields[questionKey] = { stripDecimal: false };
+        service.getNextQuestion.mockResolvedValue({});
+        service.submitAnswer.mockResolvedValue({});
+        fields.stripSpaces = jest.fn().mockReturnValue("123.45");
+
+        await controller.saveValues(req, res, next);
+
+        expect(fields.stripSpaces).toHaveBeenCalledWith(" 123.45 ");
+        expect(fields.stripDecimal).not.toHaveBeenCalled();
+        expect(service.submitAnswer).toHaveBeenCalledWith(
+          req,
+          questionKey,
+          "123.45"
+        );
+      });
     });
 
     describe("When answer API fails", () => {
@@ -177,44 +218,6 @@ describe("single-amount-question controller", () => {
         });
 
         await controller.saveValues(req, res, callback);
-      });
-    });
-
-    describe("#stripDecimal", () => {
-      it("should strip decimal points from input when matching questionKey", async () => {
-        req.session.question.questionKey = "rti-p60-earnings-above-pt";
-        req.body["rti-p60-earnings-above-pt"] = " 123.00 ";
-
-        const stripDecimal = jest.spyOn(fields, "stripDecimal");
-
-        const superSaveValues = jest
-          .spyOn(BaseController.prototype, "saveValues")
-          .mockImplementation((req, res, callback) => {
-            callback();
-          });
-
-        await controller.saveValues(req, res, next);
-
-        expect(superSaveValues).toHaveBeenCalled();
-        expect(stripDecimal).toHaveBeenCalledWith("123.00");
-      });
-
-      it("should not strip decimal points from input when questionKey is not in the switch statment", async () => {
-        req.session.question.questionKey = "other-question-key";
-        req.body["other-question-key"] = " 123.00 ";
-
-        const stripDecimal = jest.spyOn(fields, "stripDecimal");
-
-        const superSaveValues = jest
-          .spyOn(BaseController.prototype, "saveValues")
-          .mockImplementation((req, res, callback) => {
-            callback();
-          });
-
-        await controller.saveValues(req, res, next);
-
-        expect(superSaveValues).toHaveBeenCalled();
-        expect(stripDecimal).not.toHaveBeenCalled();
       });
     });
   });
