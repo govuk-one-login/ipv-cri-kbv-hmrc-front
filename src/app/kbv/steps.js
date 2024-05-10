@@ -31,15 +31,18 @@ module.exports = {
   "/question/enter-national-insurance-payslip": {
     backLink: null,
     controller: singleAmountQuestionController,
+    fields: ["rti-payslip-national-insurance"],
     next: "load-question",
   },
   "/question/enter-tax-payslip": {
     backLink: null,
     controller: singleAmountQuestionController,
+    fields: ["rti-payslip-income-tax"],
     next: "load-question",
   },
   "/question/enter-total-for-year-p60": {
     controller: singleAmountQuestionController,
+    fields: ["rti-p60-payment-for-year"],
     next: "load-question",
   },
   "/question/enter-earnings-above-pt-p60": {
@@ -57,11 +60,13 @@ module.exports = {
   "/question/enter-statutory-shared-parental-pay-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
+    fields: ["rti-p60-statutory-shared-parental-pay"],
     next: "load-question",
   },
   "/question/enter-statutory-adoption-pay-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
+    fields: ["rti-p60-statutory-adoption-pay"],
     next: "load-question",
   },
   "/question/enter-statutory-maternity-pay-p60": {
@@ -78,6 +83,7 @@ module.exports = {
   "/question/enter-employees-contributions-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
+    fields: ["rti-p60-employee-ni-contributions"],
     next: "load-question",
   },
   "/question/enter-4-digits-bank-account-tax-credits": {

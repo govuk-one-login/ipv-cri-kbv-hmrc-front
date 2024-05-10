@@ -19,7 +19,7 @@ When(
     const singleAmountQuestionPage = new EnterRecentTaxCreditsPayment(
       this.page
     );
-    await singleAmountQuestionPage.answer("1234");
+    await singleAmountQuestionPage.answer("1234.45");
     await singleAmountQuestionPage.continue();
   }
 );

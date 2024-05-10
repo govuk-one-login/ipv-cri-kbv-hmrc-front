@@ -11,8 +11,8 @@ module.exports = class PlaywrightDevPage {
     await this.page.click("#continue");
   }
 
-  async answer() {
-    await this.page.fill('input[type="text"]', "23");
+  async answer(answer = "23") {
+    await this.page.fill('input[type="text"]', answer);
   }
 
   isCurrentPage() {

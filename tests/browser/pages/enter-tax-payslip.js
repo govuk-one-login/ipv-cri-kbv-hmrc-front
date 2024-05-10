@@ -12,7 +12,7 @@ module.exports = class PlaywrightDevPage {
   }
 
   async answer() {
-    await this.page.fill('input[type="text"]', "23");
+    await this.page.fill('input[type="text"]', "1234.56");
   }
 
   isCurrentPage() {
