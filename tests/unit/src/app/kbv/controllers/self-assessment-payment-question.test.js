@@ -1,6 +1,7 @@
 const BaseController = require("hmpo-form-wizard").Controller;
 const Controller = require("../../../../../../src/app/kbv/controllers/self-assessment-payment-question");
 const service = require("../../../../../../src/app/kbv/service");
+const constants = require("../../../../../../src/constants/question-keys");
 jest.mock("../../../../../../src/app/kbv/service");
 
 describe("self-assessment-payment-question controller", () => {
@@ -38,7 +39,7 @@ describe("self-assessment-payment-question controller", () => {
 
     describe("on API success", () => {
       it("should call answer endpoint to post submitted answer", async () => {
-        const questionKey = "sa-payment-details";
+        const questionKey = constants.SA_PAYMENT_DETAILS;
         req.session.question.questionKey = questionKey;
         req.body = {
           selfAssessmentPaymentDate: "2023-02-22",
@@ -51,17 +52,17 @@ describe("self-assessment-payment-question controller", () => {
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
-          "sa-payment-details",
+          constants.SA_PAYMENT_DETAILS,
           JSON.stringify(req.body)
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
 
       it("should call question endpoint to get next question and store it in session", async () => {
-        req.session.question.questionKey = "sa-payment-details";
+        req.session.question.questionKey = constants.SA_PAYMENT_DETAILS;
         req.body.question = "3";
         service.getNextQuestion.mockResolvedValue({
-          data: { questionKey: "rti-p60-payment-for-year" },
+          data: { questionKey: constants.RTI_P60_PAYMENT_FOR_YEAR },
         });
         service.submitAnswer.mockResolvedValue({});
 
@@ -70,7 +71,7 @@ describe("self-assessment-payment-question controller", () => {
         expect(service.getNextQuestion).toHaveBeenCalledWith(req);
         expect(service.getNextQuestion).toHaveBeenCalledTimes(1);
         expect(req.session.question).toEqual({
-          questionKey: "rti-p60-payment-for-year",
+          questionKey: constants.RTI_P60_PAYMENT_FOR_YEAR,
         });
       });
     });

@@ -1,4 +1,5 @@
 const taxYearToRange = require("../../../../src/utils/tax-year-to-range");
+const constants = require("../../../../src/constants/question-keys");
 
 Date.now = jest.fn(() => new Date("2024-05-01"));
 
@@ -10,7 +11,7 @@ describe("tax-year-to-range", () => {
 
   beforeEach(() => {
     question = {
-      questionKey: "sa-income-from-pensions",
+      questionKey: constants.SA_INCOME_FROM_PENSIONS,
       info: {
         currentTaxYear: taxYear,
       },

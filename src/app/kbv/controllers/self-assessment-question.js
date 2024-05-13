@@ -1,5 +1,6 @@
 const debug = require("debug")("load-question");
 const BaseController = require("hmpo-form-wizard").Controller;
+const constants = require("../../../constants/question-keys");
 const { submitAnswer, getNextQuestion } = require("../service");
 const taxYearToRange = require("../../../utils/tax-year-to-range");
 
@@ -36,7 +37,7 @@ class SelfAssessmentQuestionController extends BaseController {
             req.body.statePensionAndBenefitsShort,
         });
 
-        await submitAnswer(req, "sa-income-from-pensions", userInput);
+        await submitAnswer(req, constants.SA_INCOME_FROM_PENSIONS, userInput);
 
         req.session.question = undefined;
         const nextQuestion = await getNextQuestion(req);

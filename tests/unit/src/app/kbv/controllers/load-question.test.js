@@ -1,11 +1,7 @@
 const BaseController = require("hmpo-form-wizard").Controller;
 const Controller = require("../../../../../../src/app/kbv/controllers/load-question");
-
-const {
-  API: {
-    PATHS: { QUESTION },
-  },
-} = require("../../../../../../src/lib/config");
+const { QUESTION } = require("../../../../../../src/lib/config").API.PATHS;
+const constants = require("../../../../../../src/constants/question-keys");
 
 jest.mock();
 describe("question controller", () => {
@@ -68,7 +64,7 @@ describe("question controller", () => {
     it('should return "true" when there is a next question', () => {
       const req = {
         session: {
-          question: { questionKey: "rti-payslip-national-insurance" },
+          question: { questionKey: constants.RTI_PAYSLIP_NATIONAL_INSURANCE },
         },
       };
 
@@ -93,7 +89,7 @@ describe("question controller", () => {
     it("should return path for the next question", () => {
       const req = {
         session: {
-          question: { questionKey: "rti-payslip-national-insurance" },
+          question: { questionKey: constants.RTI_PAYSLIP_NATIONAL_INSURANCE },
         },
       };
 
