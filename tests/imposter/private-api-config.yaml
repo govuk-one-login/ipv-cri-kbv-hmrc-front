@@ -93,25 +93,6 @@ resources:
       template: true
       content: |
         {}
-  ### 'abandon' journey ###
-  # As this handler is first in this file it takes precedence over the default handler for /authorization for questions
-  # (see below)
-  - method: GET
-    path: /authorization
-    requestHeaders:
-      session-id:
-        value: "questions-abandon.+"
-        operator: Matches
-    response:
-      statusCode: 500
-      content: |
-        {
-          "redirect_uri": "http://example.net",
-          "oauth_error": {
-            "error_description": "access-denied",
-            "error": "access_denied"
-          }
-        }
   - method: POST
     path: /session
     requestBody:
@@ -197,6 +178,17 @@ resources:
       session-id:
         value: "questions-.+-SEPARATOR-.+" # Match our session_id pattern
         operator: Matches
+    steps:
+      # short-circuit when it's the 'abandon' journey
+      - type: script
+        code: |
+          if (/questions-abandon.+/.test(context.request.headers['session-id'])) {
+            var deniedResponse = {
+              redirect_uri: "http://example.net",
+              oauth_error: { error_description: "access-denied", error: "access_denied" }
+            };
+            respond().withStatusCode(500).withContent(JSON.stringify(deniedResponse));
+          }
     response:
       template: true
       statusCode: 200
