@@ -1,12 +1,13 @@
 const { numericWithOptionalDecimalZeros } = require("./fieldsHelper");
+const constants = require("../../constants/question-keys");
 
 module.exports = {
-  "ita-bankaccount": {
+  [constants.ITA_BANKACCOUNT]: {
     type: "text",
     journeyKey: "itabankaccount",
     validate: ["required", "numeric", { type: "exactlength", arguments: [4] }],
   },
-  "rti-p60-earnings-above-pt": {
+  [constants.RTI_P60_EARNINGS_ABOVE_PT]: {
     type: "text",
     validate: [
       "required",
@@ -17,7 +18,7 @@ module.exports = {
     ],
     stripDecimal: true,
   },
-  "rti-p60-postgraduate-loan-deductions": {
+  [constants.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS]: {
     type: "text",
     validate: [
       "required",
@@ -28,7 +29,7 @@ module.exports = {
     ],
     stripDecimal: true,
   },
-  "rti-p60-student-loan-deductions": {
+  [constants.RTI_P60_STUDENT_LOAN_DEDUCTIONS]: {
     type: "text",
     validate: [
       "required",

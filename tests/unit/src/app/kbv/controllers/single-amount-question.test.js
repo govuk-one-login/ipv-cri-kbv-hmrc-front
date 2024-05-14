@@ -6,6 +6,7 @@ jest.mock("../../../../../../src/app/kbv/service");
 const presenters = require("../../../../../../src/presenters");
 jest.mock("../../../../../../src/presenters");
 const fields = require("../../../../../../src/app/kbv/fieldsHelper");
+const constants = require("../../../../../../src/constants/question-keys");
 
 describe("single-amount-question controller", () => {
   let controller;
@@ -108,7 +109,7 @@ describe("single-amount-question controller", () => {
 
     describe("on API success", () => {
       it("should call answer endpoint to post submitted answer", async () => {
-        const questionKey = "rti-payslip-national-insurance";
+        const questionKey = constants.RTI_PAYSLIP_NATIONAL_INSURANCE;
         req.session.question.questionKey = questionKey;
         req.body[questionKey] = "3";
         service.getNextQuestion.mockResolvedValue({});
@@ -118,17 +119,18 @@ describe("single-amount-question controller", () => {
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
-          "rti-payslip-national-insurance",
+          constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
           "3"
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
 
       it("should call question endpoint to get next question and store it in session", async () => {
-        req.session.question.questionKey = "rti-payslip-national-insurance";
+        req.session.question.questionKey =
+          constants.RTI_PAYSLIP_NATIONAL_INSURANCE;
         req.body.question = "3";
         service.getNextQuestion.mockResolvedValue({
-          data: { questionKey: "rti-p60-payment-for-year" },
+          data: { questionKey: constants.RTI_P60_PAYMENT_FOR_YEAR },
         });
         service.submitAnswer.mockResolvedValue({});
 
@@ -137,12 +139,12 @@ describe("single-amount-question controller", () => {
         expect(service.getNextQuestion).toHaveBeenCalledWith(req);
         expect(service.getNextQuestion).toHaveBeenCalledTimes(1);
         expect(req.session.question).toEqual({
-          questionKey: "rti-p60-payment-for-year",
+          questionKey: constants.RTI_P60_PAYMENT_FOR_YEAR,
         });
       });
 
       it("should strip spaces and decimal when required", async () => {
-        const questionKey = "rti-p60-earnings-above-pt";
+        const questionKey = constants.RTI_P60_EARNINGS_ABOVE_PT;
         req.session.question.questionKey = questionKey;
         req.body[questionKey] = " 123.45 ";
         req.form.options.fields[questionKey] = { stripDecimal: true };
@@ -163,7 +165,7 @@ describe("single-amount-question controller", () => {
       });
 
       it("should strip spaces only when stripDecimal is not set to true", async () => {
-        const questionKey = "ita-bankaccount";
+        const questionKey = constants.ITA_BANKACCOUNT;
         req.session.question.questionKey = questionKey;
         req.body[questionKey] = " 123.45 ";
         req.form.options.fields[questionKey] = { stripDecimal: false };

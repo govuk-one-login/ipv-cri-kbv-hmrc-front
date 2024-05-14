@@ -1,5 +1,6 @@
 const debug = require("debug")("load-question");
 const BaseController = require("hmpo-form-wizard").Controller;
+const constants = require("../../../constants/question-keys");
 const { submitAnswer, getNextQuestion } = require("../service");
 
 class SelfAssessmentPaymentQuestionController extends BaseController {
@@ -15,7 +16,7 @@ class SelfAssessmentPaymentQuestionController extends BaseController {
           selfAssessmentPaymentAmount: req.body.selfAssessmentPaymentAmount,
         });
 
-        await submitAnswer(req, "sa-payment-details", userInput);
+        await submitAnswer(req, constants.SA_PAYMENT_DETAILS, userInput);
 
         req.session.question = undefined;
         const nextQuestion = await getNextQuestion(req);

@@ -4,6 +4,7 @@ const proveIdentityAnotherWayController = require("./controllers/prove-identity-
 const selfAssessmentRouterController = require("./controllers/self-assessment-router");
 const selfAssessmentQuestionController = require("./controllers/self-assessment-question");
 const selfAssessmentPaymentQuestionController = require("./controllers/self-assessment-payment-question");
+const constants = require("../../constants/question-keys");
 
 module.exports = {
   "/": {
@@ -44,13 +45,13 @@ module.exports = {
   "/question/enter-earnings-above-pt-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
-    fields: ["rti-p60-earnings-above-pt"],
+    fields: [constants.RTI_P60_EARNINGS_ABOVE_PT],
     next: "load-question",
   },
   "/question/enter-postgraduate-loan-deductions-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
-    fields: ["rti-p60-postgraduate-loan-deductions"],
+    fields: [constants.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS],
     next: "load-question",
   },
   "/question/enter-statutory-shared-parental-pay-p60": {
@@ -71,7 +72,7 @@ module.exports = {
   "/question/enter-student-loan-deductions-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
-    fields: ["rti-p60-student-loan-deductions"],
+    fields: [constants.RTI_P60_STUDENT_LOAN_DEDUCTIONS],
     next: "load-question",
   },
   "/question/enter-employees-contributions-p60": {
@@ -81,13 +82,13 @@ module.exports = {
   },
   "/question/enter-4-digits-bank-account-tax-credits": {
     backLink: null,
-    fields: ["ita-bankaccount"],
+    fields: [constants.ITA_BANKACCOUNT],
     controller: singleAmountQuestionController,
     next: "load-question",
   },
   "/question/enter-recent-tax-credits-payment": {
     backLink: null,
-    fields: ["tc-amount"],
+    fields: [constants.TC_AMOUNT],
     controller: singleAmountQuestionController,
     next: "load-question",
   },

@@ -1,33 +1,48 @@
 const debug = require("debug")("load-question");
 const BaseController = require("hmpo-form-wizard").Controller;
-
 const {
   API: {
     PATHS: { QUESTION },
   },
 } = require("../../../lib/config");
+const constants = require("../../../constants/question-keys");
 
 const questionKeyToPathMap = new Map([
-  ["rti-payslip-national-insurance", "enter-national-insurance-payslip"],
-  ["rti-payslip-income-tax", "enter-tax-payslip"],
-  ["ita-bankaccount", "enter-4-digits-bank-account-tax-credits"],
-  ["rti-p60-payment-for-year", "enter-total-for-year-p60"],
-  ["rti-p60-earnings-above-pt", "enter-earnings-above-pt-p60"],
   [
-    "rti-p60-postgraduate-loan-deductions",
+    constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
+    "enter-national-insurance-payslip",
+  ],
+  [constants.RTI_PAYSLIP_INCOME_TAX, "enter-tax-payslip"],
+  [constants.ITA_BANKACCOUNT, "enter-4-digits-bank-account-tax-credits"],
+  [constants.RTI_P60_PAYMENT_FOR_YEAR, "enter-total-for-year-p60"],
+  [constants.RTI_P60_EARNINGS_ABOVE_PT, "enter-earnings-above-pt-p60"],
+  [
+    constants.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS,
     "enter-postgraduate-loan-deductions-p60",
   ],
   [
-    "rti-p60-statutory-shared-parental-pay",
+    constants.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY,
     "enter-statutory-shared-parental-pay-p60",
   ],
-  ["rti-p60-statutory-adoption-pay", "enter-statutory-adoption-pay-p60"],
-  ["rti-p60-statutory-maternity-pay", "enter-statutory-maternity-pay-p60"],
-  ["rti-p60-student-loan-deductions", "enter-student-loan-deductions-p60"],
-  ["rti-p60-employee-ni-contributions", "enter-employees-contributions-p60"],
-  ["sa-income-from-pensions", "what-type-self-assessment"],
-  ["tc-amount", "enter-recent-tax-credits-payment"],
-  ["sa-payment-details", "enter-recent-self-assessment-payment"],
+  [
+    constants.RTI_P60_STATUTORY_ADOPTION_PAY,
+    "enter-statutory-adoption-pay-p60",
+  ],
+  [
+    constants.RTI_P60_STATUTORY_MATERNITY_PAY,
+    "enter-statutory-maternity-pay-p60",
+  ],
+  [
+    constants.RTI_P60_STUDENT_LOAN_DEDUCTIONS,
+    "enter-student-loan-deductions-p60",
+  ],
+  [
+    constants.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS,
+    "enter-employees-contributions-p60",
+  ],
+  [constants.SA_INCOME_FROM_PENSIONS, "what-type-self-assessment"],
+  [constants.TC_AMOUNT, "enter-recent-tax-credits-payment"],
+  [constants.SA_PAYMENT_DETAILS, "enter-recent-self-assessment-payment"],
 ]);
 
 class LoadQuestionController extends BaseController {

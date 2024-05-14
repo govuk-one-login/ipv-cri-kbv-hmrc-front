@@ -1,6 +1,7 @@
 const BaseController = require("hmpo-form-wizard").Controller;
 const Controller = require("../../../../../../src/app/kbv/controllers/self-assessment-question");
 const service = require("../../../../../../src/app/kbv/service");
+const constants = require("../../../../../../src/constants/question-keys");
 jest.mock("../../../../../../src/app/kbv/service");
 
 describe("self-assessment-question controller", () => {
@@ -77,7 +78,7 @@ describe("self-assessment-question controller", () => {
 
     describe("on API success", () => {
       it("should call answer endpoint to post submitted answer", async () => {
-        const questionKey = "sa-income-from-pensions";
+        const questionKey = constants.SA_INCOME_FROM_PENSIONS;
         req.session.question.questionKey = questionKey;
         req.body = {
           statePension: 20,
@@ -93,14 +94,14 @@ describe("self-assessment-question controller", () => {
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
-          "sa-income-from-pensions",
+          constants.SA_INCOME_FROM_PENSIONS,
           JSON.stringify(req.body)
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
 
       it("should call answer endpoint to post submitted answer with short self assessment values", async () => {
-        const questionKey = "sa-income-from-pensions";
+        const questionKey = constants.SA_INCOME_FROM_PENSIONS;
         req.session.question.questionKey = questionKey;
         req.body = {
           statePensionShort: 20,
@@ -124,17 +125,17 @@ describe("self-assessment-question controller", () => {
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
-          "sa-income-from-pensions",
+          constants.SA_INCOME_FROM_PENSIONS,
           JSON.stringify(apiRequestBody)
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
 
       it("should call question endpoint to get next question and store it in session", async () => {
-        req.session.question.questionKey = "sa-income-from-pensions";
+        req.session.question.questionKey = constants.SA_INCOME_FROM_PENSIONS;
         req.body.question = "3";
         service.getNextQuestion.mockResolvedValue({
-          data: { questionKey: "rti-p60-payment-for-year" },
+          data: { questionKey: constants.RTI_P60_PAYMENT_FOR_YEAR },
         });
         service.submitAnswer.mockResolvedValue({});
 
@@ -143,7 +144,7 @@ describe("self-assessment-question controller", () => {
         expect(service.getNextQuestion).toHaveBeenCalledWith(req);
         expect(service.getNextQuestion).toHaveBeenCalledTimes(1);
         expect(req.session.question).toEqual({
-          questionKey: "rti-p60-payment-for-year",
+          questionKey: constants.RTI_P60_PAYMENT_FOR_YEAR,
         });
       });
     });
