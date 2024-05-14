@@ -14,8 +14,8 @@ const amountFieldValidateRequiredAndAmountWithDecimals = {
       fn: (value) => !!value.match(numericWithOptionalDecimal),
     },
     {
-      type: "regex",
-      arguments: [numericWithRequiredDecimals],
+      type: "regexPoundsAndPence",
+      fn: (value) => !!value.match(numericWithRequiredDecimals),
     },
   ],
   classes: "govuk-input--width-5",

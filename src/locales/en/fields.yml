@@ -4,21 +4,21 @@ rti-payslip-national-insurance:
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regex: Amount must include pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 rti-payslip-income-tax:
   label: Amount
   hint: For example 123.86
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regex: Amount must include pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 rti-p60-payment-for-year:
   label: Amount
   hint: For example, 21350.75
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regex: Amount must include pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 rti-p60-earnings-above-pt:
   label: Amount
   hint: For example, 24368
@@ -37,14 +37,14 @@ rti-p60-statutory-shared-parental-pay:
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regex: Amount must include pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 rti-p60-statutory-adoption-pay:
   label: Amount
   hint: For example, 15620.75
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regex: Amount must include pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 rti-p60-statutory-maternity-pay:
   label: Amount
   hint: For example, 15620.75
@@ -60,7 +60,7 @@ rti-p60-employee-ni-contributions:
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regex: Amount must include pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""
@@ -159,7 +159,7 @@ tc-amount:
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regex: Amount must include pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 selfAssessmentPaymentDate:
   label: Date of payment
   legend: Date of payment
@@ -172,7 +172,7 @@ selfAssessmentPaymentAmount:
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regex: Amount must include pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 date-day:
   label: Day
 date-month:
