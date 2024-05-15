@@ -1,5 +1,25 @@
-const { numericWithOptionalDecimalZeros } = require("./fieldsHelper");
+const {
+  numericWithOptionalDecimalZeros,
+  numericWithOptionalDecimal,
+  numericWithRequiredDecimals,
+} = require("./fieldsHelper");
 const constants = require("../../constants/question-keys");
+
+const amountFieldValidateRequiredAndAmountWithDecimals = {
+  type: "text",
+  validate: [
+    "required",
+    {
+      type: "regexNumeric",
+      fn: (value) => !!value.match(numericWithOptionalDecimal),
+    },
+    {
+      type: "regexPoundsAndPence",
+      fn: (value) => !!value.match(numericWithRequiredDecimals),
+    },
+  ],
+  classes: "govuk-input--width-5",
+};
 
 module.exports = {
   [constants.ITA_BANKACCOUNT]: {
@@ -40,6 +60,17 @@ module.exports = {
     ],
     stripDecimal: true,
   },
+  "rti-payslip-national-insurance":
+    amountFieldValidateRequiredAndAmountWithDecimals,
+  "rti-payslip-income-tax": amountFieldValidateRequiredAndAmountWithDecimals,
+  "tc-amount": amountFieldValidateRequiredAndAmountWithDecimals,
+  "rti-p60-employee-ni-contributions":
+    amountFieldValidateRequiredAndAmountWithDecimals,
+  "rti-p60-payment-for-year": amountFieldValidateRequiredAndAmountWithDecimals,
+  "rti-p60-statutory-shared-parental-pay":
+    amountFieldValidateRequiredAndAmountWithDecimals,
+  "rti-p60-statutory-adoption-pay":
+    amountFieldValidateRequiredAndAmountWithDecimals,
   abandonRadio: {
     type: "radios",
     items: ["stop", "continue"],
@@ -103,9 +134,5 @@ module.exports = {
   selfAssessmentPaymentDate: {
     type: "date",
   },
-  selfAssessmentPaymentAmount: {
-    type: "text",
-    validate: ["required"],
-    classes: "govuk-input--width-5",
-  },
+  selfAssessmentPaymentAmount: amountFieldValidateRequiredAndAmountWithDecimals,
 };

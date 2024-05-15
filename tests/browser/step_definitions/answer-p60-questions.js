@@ -9,10 +9,10 @@ Then("they should see the {string} question page", async function (path) {
 });
 
 When(
-  "they enter amount and continue from the {string} question page",
-  async function (path) {
+  "they enter amount {string} and continue from the {string} question page",
+  async function (amount, path) {
     const p60QuestionPage = new AnswerP60QuestionsPage(this.page, String(path));
-    await p60QuestionPage.answer("1234");
+    await p60QuestionPage.answer(String(amount));
     await p60QuestionPage.continue();
   }
 );

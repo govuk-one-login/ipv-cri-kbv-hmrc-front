@@ -21,21 +21,21 @@ Feature: Happy path
     Then they should see the answer security questions page
     When they continue from answer security questions
     Then they should see the "enter-total-for-year-p60" question page
-    When they enter amount and continue from the "enter-total-for-year-p60" question page
+    When they enter amount "1234.45" and continue from the "enter-total-for-year-p60" question page
     Then they should see the "enter-earnings-above-pt-p60" question page
-    When they enter amount and continue from the "enter-earnings-above-pt-p60" question page
+    When they enter amount "1234" and continue from the "enter-earnings-above-pt-p60" question page
     Then they should see the "enter-postgraduate-loan-deductions-p60" question page
-    When they enter amount and continue from the "enter-postgraduate-loan-deductions-p60" question page
+    When they enter amount "1234" and continue from the "enter-postgraduate-loan-deductions-p60" question page
     Then they should see the "enter-statutory-shared-parental-pay-p60" question page
-    When they enter amount and continue from the "enter-statutory-shared-parental-pay-p60" question page
+    When they enter amount "1234.45" and continue from the "enter-statutory-shared-parental-pay-p60" question page
     Then they should see the "enter-statutory-adoption-pay-p60" question page
-    When they enter amount and continue from the "enter-statutory-adoption-pay-p60" question page
+    When they enter amount "1234.45" and continue from the "enter-statutory-adoption-pay-p60" question page
     Then they should see the "enter-statutory-maternity-pay-p60" question page
-    When they enter amount and continue from the "enter-statutory-maternity-pay-p60" question page
+    When they enter amount "1234" and continue from the "enter-statutory-maternity-pay-p60" question page
     Then they should see the "enter-student-loan-deductions-p60" question page
-    When they enter amount and continue from the "enter-student-loan-deductions-p60" question page
+    When they enter amount "1234" and continue from the "enter-student-loan-deductions-p60" question page
     Then they should see the "enter-employees-contributions-p60" question page
-    When they enter amount and continue from the "enter-employees-contributions-p60" question page
+    When they enter amount "1234.45" and continue from the "enter-employees-contributions-p60" question page
     Then they should be redirected as a success
 
   @mock-api:questions-selfAssessment @selfAssessment-journey
