@@ -31,7 +31,7 @@ Feature: Happy path
     Then they should see the "enter-statutory-adoption-pay-p60" question page
     When they enter amount "1234.45" and continue from the "enter-statutory-adoption-pay-p60" question page
     Then they should see the "enter-statutory-maternity-pay-p60" question page
-    When they enter amount "1234" and continue from the "enter-statutory-maternity-pay-p60" question page
+    When they enter amount "1234.45" and continue from the "enter-statutory-maternity-pay-p60" question page
     Then they should see the "enter-student-loan-deductions-p60" question page
     When they enter amount "1234" and continue from the "enter-student-loan-deductions-p60" question page
     Then they should see the "enter-employees-contributions-p60" question page

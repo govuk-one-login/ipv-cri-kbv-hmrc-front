@@ -31,18 +31,18 @@ module.exports = {
   "/question/enter-national-insurance-payslip": {
     backLink: null,
     controller: singleAmountQuestionController,
-    fields: ["rti-payslip-national-insurance"],
+    fields: [constants.RTI_PAYSLIP_NATIONAL_INSURANCE],
     next: "load-question",
   },
   "/question/enter-tax-payslip": {
     backLink: null,
     controller: singleAmountQuestionController,
-    fields: ["rti-payslip-income-tax"],
+    fields: [constants.RTI_PAYSLIP_INCOME_TAX],
     next: "load-question",
   },
   "/question/enter-total-for-year-p60": {
     controller: singleAmountQuestionController,
-    fields: ["rti-p60-payment-for-year"],
+    fields: [constants.RTI_P60_PAYMENT_FOR_YEAR],
     next: "load-question",
   },
   "/question/enter-earnings-above-pt-p60": {
@@ -60,18 +60,19 @@ module.exports = {
   "/question/enter-statutory-shared-parental-pay-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
-    fields: ["rti-p60-statutory-shared-parental-pay"],
+    fields: [constants.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY],
     next: "load-question",
   },
   "/question/enter-statutory-adoption-pay-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
-    fields: ["rti-p60-statutory-adoption-pay"],
+    fields: [constants.RTI_P60_STATUTORY_ADOPTION_PAY],
     next: "load-question",
   },
   "/question/enter-statutory-maternity-pay-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
+    fields: [constants.RTI_P60_STATUTORY_MATERNITY_PAY],
     next: "load-question",
   },
   "/question/enter-student-loan-deductions-p60": {
@@ -83,7 +84,7 @@ module.exports = {
   "/question/enter-employees-contributions-p60": {
     backLink: null,
     controller: singleAmountQuestionController,
-    fields: ["rti-p60-employee-ni-contributions"],
+    fields: [constants.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS],
     next: "load-question",
   },
   "/question/enter-4-digits-bank-account-tax-credits": {

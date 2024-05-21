@@ -60,16 +60,20 @@ module.exports = {
     ],
     stripDecimal: true,
   },
-  "rti-payslip-national-insurance":
+  [constants.RTI_P60_STATUTORY_MATERNITY_PAY]:
     amountFieldValidateRequiredAndAmountWithDecimals,
-  "rti-payslip-income-tax": amountFieldValidateRequiredAndAmountWithDecimals,
-  "tc-amount": amountFieldValidateRequiredAndAmountWithDecimals,
-  "rti-p60-employee-ni-contributions":
+  [constants.RTI_PAYSLIP_NATIONAL_INSURANCE]:
     amountFieldValidateRequiredAndAmountWithDecimals,
-  "rti-p60-payment-for-year": amountFieldValidateRequiredAndAmountWithDecimals,
-  "rti-p60-statutory-shared-parental-pay":
+  [constants.RTI_PAYSLIP_INCOME_TAX]:
     amountFieldValidateRequiredAndAmountWithDecimals,
-  "rti-p60-statutory-adoption-pay":
+  [constants.TC_AMOUNT]: amountFieldValidateRequiredAndAmountWithDecimals,
+  [constants.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS]:
+    amountFieldValidateRequiredAndAmountWithDecimals,
+  [constants.RTI_P60_PAYMENT_FOR_YEAR]:
+    amountFieldValidateRequiredAndAmountWithDecimals,
+  [constants.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY]:
+    amountFieldValidateRequiredAndAmountWithDecimals,
+  [constants.RTI_P60_STATUTORY_ADOPTION_PAY]:
     amountFieldValidateRequiredAndAmountWithDecimals,
   abandonRadio: {
     type: "radios",
