@@ -48,6 +48,10 @@ rti-p60-statutory-adoption-pay:
 rti-p60-statutory-maternity-pay:
   label: Swm
   hint: Er enghraifft, 15620.75
+  validation:
+    required: Rhowch swm
+    regexNumeric: Rhowch swm dilys mewn punnoedd a cheiniogau, fel 123.45
+    regexPoundsAndPence: Rhaid i'r swm gynnwys punnoedd a cheiniogau, fel 123.45
 rti-p60-student-loan-deductions:
   label: Swm
   hint: Er enghraifft, 765

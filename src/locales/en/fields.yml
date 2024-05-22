@@ -48,6 +48,10 @@ rti-p60-statutory-adoption-pay:
 rti-p60-statutory-maternity-pay:
   label: Amount
   hint: For example, 15620.75
+  validation:
+    required: Enter an amount
+    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 rti-p60-student-loan-deductions:
   label: Amount
   hint: For example, 765
