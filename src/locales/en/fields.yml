@@ -1,6 +1,7 @@
 rti-payslip-national-insurance:
   label: Amount
   hint: For example 123.86
+  prefix: £
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
@@ -8,6 +9,7 @@ rti-payslip-national-insurance:
 rti-payslip-income-tax:
   label: Amount
   hint: For example 123.86
+  prefix: £
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
@@ -15,6 +17,7 @@ rti-payslip-income-tax:
 rti-p60-payment-for-year:
   label: Amount
   hint: For example, 21350.75
+  prefix: £
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
@@ -22,18 +25,21 @@ rti-p60-payment-for-year:
 rti-p60-earnings-above-pt:
   label: Amount
   hint: For example, 24368
+  prefix: £
   validation:
     required: Enter an amount
     regex: Amount must be a whole number, like 123
 rti-p60-postgraduate-loan-deductions:
   label: Amount
   hint: For example, 765
+  prefix: £
   validation:
     required: Enter an amount
     regex: Amount must be a whole number, like 123
 rti-p60-statutory-shared-parental-pay:
   label: Amount
   hint: For example, 15620.75
+  prefix: £
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
@@ -41,6 +47,7 @@ rti-p60-statutory-shared-parental-pay:
 rti-p60-statutory-adoption-pay:
   label: Amount
   hint: For example, 15620.75
+  prefix: £
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
@@ -48,6 +55,7 @@ rti-p60-statutory-adoption-pay:
 rti-p60-statutory-maternity-pay:
   label: Amount
   hint: For example, 15620.75
+  prefix: £
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
@@ -55,12 +63,14 @@ rti-p60-statutory-maternity-pay:
 rti-p60-student-loan-deductions:
   label: Amount
   hint: For example, 765
+  prefix: £
   validation:
     required: Enter an amount
     regex: Amount must be a whole number, like 123
 rti-p60-employee-ni-contributions:
   label: Amount
   hint: For example, 836.16
+  prefix: £
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
@@ -68,6 +78,7 @@ rti-p60-employee-ni-contributions:
 ita-bankaccount:
   label: Last 4 digits of your account number
   hint: ""
+  prefix: ""
   validation:
     default: Enter the last 4 digits of your account number
     numeric: Last 4 digits of your account number must only include numbers
@@ -160,6 +171,7 @@ statePensionAndBenefitsShort:
 tc-amount:
   label: Amount
   hint: For example 36.75
+  prefix: £
   validation:
     required: Enter an amount
     regexNumeric: Enter a valid amount in pounds and pence, like 123.45
@@ -172,6 +184,7 @@ selfAssessmentPaymentDate:
 selfAssessmentPaymentAmount:
   label: Payment amount
   hint: Enter the amount in pounds and pence. For example, 3625.75.
+  prefix: £
   content: ""
   validation:
     required: Enter an amount
