@@ -5,7 +5,7 @@ const {
 } = require("./fieldsHelper");
 const constants = require("../../constants/question-keys");
 
-const amountFieldValidateRequiredAndAmountWithDecimals = {
+const validateRequiredAmountWithPoundsAndPence = {
   type: "text",
   validate: [
     "required",
@@ -21,60 +21,43 @@ const amountFieldValidateRequiredAndAmountWithDecimals = {
   classes: "govuk-input--width-5",
 };
 
+const validateRequiredAmountWithPounds = {
+  type: "text",
+  validate: [
+    "required",
+    {
+      type: "regex",
+      arguments: [numericWithOptionalDecimalZeros],
+    },
+  ],
+  classes: "govuk-input--width-5",
+  stripDecimal: true,
+};
+
 module.exports = {
   [constants.ITA_BANKACCOUNT]: {
     type: "text",
     journeyKey: "itabankaccount",
     validate: ["required", "numeric", { type: "exactlength", arguments: [4] }],
   },
-  [constants.RTI_P60_EARNINGS_ABOVE_PT]: {
-    type: "text",
-    validate: [
-      "required",
-      {
-        type: "regex",
-        arguments: [numericWithOptionalDecimalZeros],
-      },
-    ],
-    stripDecimal: true,
-  },
-  [constants.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS]: {
-    type: "text",
-    validate: [
-      "required",
-      {
-        type: "regex",
-        arguments: [numericWithOptionalDecimalZeros],
-      },
-    ],
-    stripDecimal: true,
-  },
-  [constants.RTI_P60_STUDENT_LOAN_DEDUCTIONS]: {
-    type: "text",
-    validate: [
-      "required",
-      {
-        type: "regex",
-        arguments: [numericWithOptionalDecimalZeros],
-      },
-    ],
-    stripDecimal: true,
-  },
+  [constants.RTI_P60_EARNINGS_ABOVE_PT]: validateRequiredAmountWithPounds,
+  [constants.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS]:
+    validateRequiredAmountWithPounds,
+  [constants.RTI_P60_STUDENT_LOAN_DEDUCTIONS]: validateRequiredAmountWithPounds,
   [constants.RTI_P60_STATUTORY_MATERNITY_PAY]:
-    amountFieldValidateRequiredAndAmountWithDecimals,
+    validateRequiredAmountWithPoundsAndPence,
   [constants.RTI_PAYSLIP_NATIONAL_INSURANCE]:
-    amountFieldValidateRequiredAndAmountWithDecimals,
-  [constants.RTI_PAYSLIP_INCOME_TAX]:
-    amountFieldValidateRequiredAndAmountWithDecimals,
-  [constants.TC_AMOUNT]: amountFieldValidateRequiredAndAmountWithDecimals,
+    validateRequiredAmountWithPoundsAndPence,
+  [constants.RTI_PAYSLIP_INCOME_TAX]: validateRequiredAmountWithPoundsAndPence,
+  [constants.TC_AMOUNT]: validateRequiredAmountWithPoundsAndPence,
   [constants.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS]:
-    amountFieldValidateRequiredAndAmountWithDecimals,
+    validateRequiredAmountWithPoundsAndPence,
   [constants.RTI_P60_PAYMENT_FOR_YEAR]:
-    amountFieldValidateRequiredAndAmountWithDecimals,
+    validateRequiredAmountWithPoundsAndPence,
   [constants.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY]:
-    amountFieldValidateRequiredAndAmountWithDecimals,
+    validateRequiredAmountWithPoundsAndPence,
   [constants.RTI_P60_STATUTORY_ADOPTION_PAY]:
-    amountFieldValidateRequiredAndAmountWithDecimals,
+    validateRequiredAmountWithPoundsAndPence,
   abandonRadio: {
     type: "radios",
     items: ["stop", "continue"],
@@ -85,59 +68,19 @@ module.exports = {
     items: ["sa100", "sa200"],
     validate: ["required"],
   },
-  statePension: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
-  otherPension: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
-  employmentAndSupportAllowance: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
-  jobSeekersAllowance: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
-  statePensionAndBenefits: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
-  statePensionShort: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
-  otherPensionShort: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
-  employmentAndSupportAllowanceShort: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
-  jobSeekersAllowanceShort: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
-  statePensionAndBenefitsShort: {
-    type: "text",
-    validate: ["required", "numeric"],
-    classes: "govuk-input--width-5",
-  },
+  statePension: validateRequiredAmountWithPounds,
+  otherPension: validateRequiredAmountWithPounds,
+  employmentAndSupportAllowance: validateRequiredAmountWithPounds,
+  jobSeekersAllowance: validateRequiredAmountWithPounds,
+  statePensionAndBenefits: validateRequiredAmountWithPounds,
+  statePensionShort: validateRequiredAmountWithPounds,
+  otherPensionShort: validateRequiredAmountWithPounds,
+  employmentAndSupportAllowanceShort: validateRequiredAmountWithPounds,
+  jobSeekersAllowanceShort: validateRequiredAmountWithPounds,
+  statePensionAndBenefitsShort: validateRequiredAmountWithPounds,
   selfAssessmentPaymentDate: {
     type: "date",
     validate: ["required", "date", { type: "before", arguments: [] }],
   },
-  selfAssessmentPaymentAmount: amountFieldValidateRequiredAndAmountWithDecimals,
+  selfAssessmentPaymentAmount: validateRequiredAmountWithPoundsAndPence,
 };

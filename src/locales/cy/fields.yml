@@ -121,51 +121,81 @@ selfAssessmentRouter:
 statePension:
   label: Pensiwn y Wladwriaeth
   hint: Defnyddiwch blwch 8
+  validation:
+    default: Rhowch swm yn 'Pensiwn y Wladwriaeth'
+    regex: Rhowch rif cyfan, fel 123, yn 'Pensiwn y Wladwriaeth'
   prefix: £
   content: ""
 otherPension:
   label: Pensiynau (heblaw am Bensiynau y Wladwriaeth), blwydd-daliadau ymddeol a chyfandaliadau trethadwy sy'n cael eu trin fel pensiynau
   hint: Defnyddiwch blwch 11
+  validation:
+    default: Rhowch swm yn 'Pensiynau (ac eithrio Pensiynau'r Wladwriaeth), blwydd-daliadau ymddeol a chyfandaliadau trethadwy sy'n cael eu trin fel pensiynau'
+    regex: Rhowch rif cyfan, fel 123, yn 'Pensiynau (ac eithrio Pensiwn y Wladwriaeth), blwydd-daliadau ymddeol a chyfandaliadau trethadwy sy'n cael eu trin fel pensiynau'
   prefix: £
   content: ""
 employmentAndSupportAllowance:
   label: Budd-dal Analluogrwydd trethadwy a Lwfans Cyflogaeth a Chymorth yn seiliedig ar gyfraniadau
   hint: Defnyddiwch blwch 13
+  validation:
+    required: Rhowch swm yn 'Budd-dal Analluogrwydd Trethadwy a Lwfans Cyflogaeth a Chymorth yn seiliedig ar gyfraniadau'
+    regex: Rhowch rif cyfan, fel 123, yn 'Budd-dal Analluogrwydd Trethadwy a Lwfans Cyflogaeth a Chymorth yn seiliedig ar gyfraniadau'
   prefix: £
   content: ""
 jobSeekersAllowance:
   label: Lwfans Ceisio Gwaith
   hint: Defnyddiwch blwch 15
+  validation:
+    default: Rhowch swm yn 'Lwfans Ceisio Gwaith'
+    regex: Rhowch rif cyfan, fel 123, yn 'Lwfans Ceisio Gwaith'
   prefix: £
   content: ""
 statePensionAndBenefits:
   label: Cyfanswm unrhyw Bensiynau y Wladwriaeth a budd-daliadau trethadwy eraill
   hint: Defnyddiwch blwch 16
+  validation:
+    default: Rhowch swm yn 'Cyfanswm unrhyw Bensiynau y Wladwriaeth a budd-daliadau trethadwy eraill'
+    regex: Rhowch rif cyfan, fel 123, yn 'Cyfanswm unrhyw Bensiynau y Wladwriaeth a budd-daliadau trethadwy eraill'
   prefix: £
   content: ""
 statePensionShort:
   label: Pensiwn y Wladwriaeth
   hint: Defnyddiwch blwch 4.1
+  validation:
+    default: Rhowch swm yn 'Pensiwn y Wladwriaeth'
+    regex: Rhowch rif cyfan, fel 123, yn 'Pensiwn y Wladwriaeth'
   prefix: £
   content: ""
 otherPensionShort:
   label: Pensiynau (heblaw am Bensiynau y Wladwriaeth), blwydd-daliadau ymddeol a chyfandaliadau trethadwy sy'n cael eu trin fel pensiynau
   hint: Defnyddiwch blwch 4.2
+  validation:
+    default: Rhowch swm yn 'Pensiynau (ac eithrio Pensiynau'r Wladwriaeth), blwydd-daliadau ymddeol a chyfandaliadau trethadwy sy'n cael eu trin fel pensiynau'
+    regex: Rhowch rif cyfan, fel 123, yn 'Pensiynau (ac eithrio Pensiwn y Wladwriaeth), blwydd-daliadau ymddeol a chyfandaliadau trethadwy sy'n cael eu trin fel pensiynau'
   prefix: £
   content: ""
 employmentAndSupportAllowanceShort:
   label: Budd-dal Analluogrwydd trethadwy a Lwfans Cyflogaeth a Chymorth yn seiliedig ar gyfraniadau
   hint: Defnyddiwch blwch 4.3
+  validation:
+    required: Rhowch swm yn 'Budd-dal Analluogrwydd Trethadwy a Lwfans Cyflogaeth a Chymorth yn seiliedig ar gyfraniadau'
+    regex: Rhowch rif cyfan, fel 123, yn 'Budd-dal Analluogrwydd Trethadwy a Lwfans Cyflogaeth a Chymorth yn seiliedig ar gyfraniadau'
   prefix: £
   content: ""
 jobSeekersAllowanceShort:
   label: Lwfans Ceisio Gwaith
   hint: Defnyddiwch blwch 4.5
+  validation:
+    default: Rhowch swm yn 'Lwfans Ceisio Gwaith'
+    regex: Rhowch rif cyfan, fel 123, yn 'Lwfans Ceisio Gwaith'
   prefix: £
   content: ""
 statePensionAndBenefitsShort:
   label: Cyfanswm unrhyw Bensiynau y Wladwriaeth a budd-daliadau trethadwy eraill
   hint: Defnyddiwch blwch 4.6
+  validation:
+    default: Rhowch swm yn 'Cyfanswm unrhyw Bensiynau y Wladwriaeth a budd-daliadau trethadwy eraill'
+    regex: Rhowch rif cyfan, fel 123, yn 'Cyfanswm unrhyw Bensiynau y Wladwriaeth a budd-daliadau trethadwy eraill'
   prefix: £
   content: ""
 tc-amount:
