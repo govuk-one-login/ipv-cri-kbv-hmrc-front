@@ -16,7 +16,7 @@ module.exports = class PlaywrightDevPage {
     return pathname === this.path;
   }
 
-  async answer() {
+  async answer(answer) {
     await this.page.waitForSelector('input[id="selfAssessmentPaymentAmount"]');
     const day = await this.page.$('input[id="selfAssessmentPaymentDate-day"]');
     const month = await this.page.$(
@@ -27,9 +27,9 @@ module.exports = class PlaywrightDevPage {
     );
     const amount = await this.page.$('input[id="selfAssessmentPaymentAmount"]');
 
-    await day.fill("30");
-    await month.fill("11");
-    await year.fill("2023");
-    await amount.fill("3625.75");
+    await day.fill(answer.day);
+    await month.fill(answer.month);
+    await year.fill(answer.year);
+    await amount.fill(answer.amount);
   }
 };

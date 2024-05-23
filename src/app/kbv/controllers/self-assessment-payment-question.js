@@ -1,9 +1,12 @@
 const debug = require("debug")("load-question");
 const BaseController = require("hmpo-form-wizard").Controller;
+const DateControllerMixin = require("hmpo-components").mixins.Date;
 const constants = require("../../../constants/question-keys");
 const { submitAnswer, getNextQuestion } = require("../service");
 
-class SelfAssessmentPaymentQuestionController extends BaseController {
+const DateController = DateControllerMixin(BaseController);
+
+class SelfAssessmentPaymentQuestionController extends DateController {
   async saveValues(req, res, callback) {
     await super.saveValues(req, res, async (err) => {
       if (err) {
