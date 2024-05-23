@@ -1,13 +1,25 @@
 openapi: "3.0.1"
 info:
-  title: "HMRC KBV Credential Issuer Private Api"
-  version: "1.0"
+  title: "HMRC KBV Credential Issuer Private Api Specification"
+  version: "2.0"
 
 paths:
   /authorization:
     get:
       parameters:
-        - $ref: "#/components/parameters/SessionHeader"
+        - in: query
+          name: request
+          schema:
+            type: string
+          description: "Encrypted JWT Session Object"
+          example: "eyAiBiCKD1EiFCGlHmIiJiKBLjM2N0ONPiQaR...."
+        - in: query
+          name: client_id
+          schema:
+            type: string
+          description:  "client identifier"
+          example: "ipv-core-stub"
+
       responses:
         "200":
           description: "200 response"
@@ -49,19 +61,6 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Authorization"
-            examples:
-              201:
-                description: "Example body to receive a HTTP 201 response"
-                value:
-                  session_id: "1fbc5730-9d17-416d-b2ca-0be90e1e93f5"
-              400:
-                description: "Example body to receive a HTTP 400 response"
-                value:
-                  session_id: "fad21bea-bce9-4aa7-8889-d50c7d26616e"
-              500:
-                description: "Example body to receive a HTTP 500 response"
-                value:
-                  session_id: "f27b8afc-90ef-4e0f-83ad-00a2f5692590"
         required: true
       responses:
         "201":
@@ -72,7 +71,7 @@ paths:
                 $ref: "#/components/schemas/Session"
               examples:
                 201:
-                  summary: "An example of a successful response message"
+                  summary: "Session created response"
                   value:
                     session_id: "1fbc5730-9d17-416d-b2ca-0be90e1e93f5"
                     state: "string"
@@ -90,31 +89,118 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /fetchquestions:
+    get:
+      parameters:
+        - $ref: "#/components/parameters/SessionHeader"
+      responses:
+        "200":
+          description: "Triggers the retrival of questions for the previously supplied NINO, returns if the NINO has sufficient or insufficient matching questions"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FetchQuestionsResponse"
+              examples:
+                ZeroQuestions:
+                  value:
+                    status: insufficient_questions
+                QuestionsFailedFilterRules:
+                  value:
+                    status: insufficient_questions                    
+                QuestionsPassedFilterRules:
+                  value:
+                    status: sufficient_questions
+
+        "204":
+          description: "Request already retrieved, but continue (User back button recoverery path)"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FetchQuestionsResponse"
+              examples:
+                ZeroQuestions:
+                  value:
+                    status: insufficient_questions
+                QuestionsFailedFilterRules:
+                  value:
+                    status: insufficient_questions                    
+                QuestionsPassedFilterRules:
+                  value:
+                    status: sufficient_questions           
+
+        "403":
+          description: "Session Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"
+              example:
+                oauth_error:
+                    error: "access_denied"
+                    error_description: "Access denied"
+        "500":
+          description: "Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"
+        "504":
+          description: "Server Error caused by a network issue with the remote api (Timeout/Unexpected Status Codes)"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"   
+              example:
+                oauth_error:
+                    error: "server_error"
+                    error_description: "Unexpected server error"
+
   /question:
     get:
       parameters:
         - $ref: "#/components/parameters/SessionHeader"
       responses:
         "200":
-          description: "Questions returned"
+          description: "Single Question Response"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Question"
+                $ref: "#/components/schemas/QuestionResponse"
+              examples:
+                P60CurrentYear:
+                  value:
+                    questionKey: "rti-p60-payment-for-year"
+                    info:
+                      currentTaxYear: "2021/2022"
+                P60CurrentYearOrPrevious:
+                  value:
+                    questionKey: "rti-p60-payment-for-year"
+                    info:
+                      currentTaxYear: "2021/2022"
+                      previousTaxYear: "2020/2021"                      
+                TaxCreditAmount:
+                  value:
+                    questionKey: "tc-amount"
+
+          
         "204":
-          description: "No more questions"
-        "400":
-          description: "Client Error"
+          description: "No more questions (User back button recoverery path)"
+        "403":
+          description: "Session Not Found"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"   
+              example:
+                oauth_error:
+                    error: "access_denied"
+                    error_description: "Access denied"          
         "500":
           description: "Server Error"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"                        
 
   /answer:
     post:
@@ -124,47 +210,73 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Answer"
+              $ref: "#/components/schemas/AnswerPost"
         required: true
       responses:
-        "202":
-          description: "Answered submitted"
-        "404":
-          description: "Does not exist"
-        "422":
-          description: "Question already answered"
-        "400":
-          description: "Client Error"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "500":
-          description: "Server Error"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /abandon:
-    post:
-      parameters:
-        - $ref: "#/components/parameters/SessionHeader"
-      responses:
         "200":
-          description: "OK"
-        "400":
-          description: "Bad Request"
+          description: "Question answer/sequence completed - result stored"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/AnswerResponse"
+              example: 
+                response: "Question answer/sequence completed - result stored"
+        "202":
+          description: "Submitted answer saved"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnswerResponse"
+              example: 
+                response: "Submitted answer saved"          
+        "204":
+          description: "Question already answered, but continue (User back button recoverery path)"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnswerResponse"
+              example: 
+                response: "Continue"
+        "400":
+          description: "Client Submission Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"   
+              example:
+                oauth_error:
+                    error: "invalid_request"
+                    error_description: "Invalid request"
+        "409":
+          description: "Error with answer key summitted - e.g unknown question key / question key answered out of sequence - (unrecoverable)"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"   
+              example:
+                oauth_error:
+                    error: "invalid_request"
+                    error_description: "Invalid request"                      
         "500":
           description: "Server Error"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"   
+              example:
+                oauth_error:
+                    error: "server_error"
+                    error_description: "Unexpected server error"
+        "504":
+          description: "Server Error caused by a network issue with the remote api (Timeout/Unexpected Status Codes)"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"   
+              example:
+                oauth_error:
+                    error: "server_error"
+                    error_description: "Unexpected server error"
 
 components:
   parameters:
@@ -187,11 +299,14 @@ components:
       type: "object"
       properties:
         client_id:
+          description: "client identifier"
           type: "string"
           minLength: 1
-          example: "ipv-stub"
+          example: "ipv-core-stub"
         request:
+          description: "Encrypted JWT Session Object"
           type: "string"
+          example: "eyAiBiCKD1EiFCGlHmIiJiKBLjM2N0ONPiQaR...."
     AuthorizationResponse:
       required:
         - "redirect_uri"
@@ -210,10 +325,27 @@ components:
           type: "string"
           format: "uri"
           example: "https://di-ipv-core-stub.london.cloudapps.digital/callback"
+
     Error:
       title: "Error Schema"
       type: "object"
       properties:
+
+    CommmonExpressOauthAxiosError:
+      title: "Common Express Oauth Error Schema"
+      description: "Error Format expected by CommonExpress Error Handler"
+      type: "object"
+      properties:
+        oauth_error:
+          type: "object"
+          properties:
+            error:
+              type: "string"
+              example: "server_error"
+            error_description:
+              type: "string"
+              example: "Unexpected server error"
+
     Session:
       required:
         - "session_id"
@@ -227,33 +359,56 @@ components:
           type: "string"
         redirect_uri:
           type: "string"
-    Question:
+
+    FetchQuestionsResponse:
       type: "object"
       properties:
-        key:
+        status:
+          type: "string"
+          nullable: false
+          enum: [sufficient_questions, insufficient_questions]
+          example: sufficient_questions
+
+    QuestionResponse:
+      type: "object"
+      properties:
+        questionKey:
+          description: The unique identifier for the question
           type: "string"
           example: "rti-p60-payment-for-year"
         info:
+          description: Not present for all question keys
           type: "object"
+          nullable: true
           properties:
             currentTaxYear:
               type: "string"
               example: "2021/2022"
             previousTaxYear:
+              description: May not be present - dependant on tax year rules
               type: "string"
+              nullable: true
               example: "2020/2021"
-    Answer:
+
+    AnswerPost:
       required:
         - "key"
         - "value"
       type: "object"
       properties:
-        key:
+        questionKey:
           description: The unique identifier for the question
           type: "string"
           example: "rti-p60-payment-for-year"
-
         value:
           description: Answer provided by the user
           type: "string"
           example: "400.94"
+
+    AnswerResponse:
+      type: "object"
+      properties:
+        response:
+          description: Human readable indication of the current state
+          type: "string"
+          example: "Answer Saved"
