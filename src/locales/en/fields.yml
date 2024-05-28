@@ -183,12 +183,11 @@ selfAssessmentPaymentDate:
   content: ""
   validation:
     default: "Date of payment must be a real date"
-    required: "Enter your Date of payment"
     before: "Date of payment must be today or in the past"
     numeric-day: "Date of payment must include a day between 1 and 31"
     numeric-month: "Date of payment must include a month between 1 and 12"
     numeric-year: "Date of payment must include a valid year, like 2023"
-    date-day: "Date of payment must include a day between 1 and 31"
+    date-day: "Date of payment must be a real date"
     date-month: "Date of payment must include a month between 1 and 12"
     date-year: "Date of payment must include a valid year, like 2023"
     required-day: "Date of payment must include a day between 1 and 31"

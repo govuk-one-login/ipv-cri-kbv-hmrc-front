@@ -183,12 +183,11 @@ selfAssessmentPaymentDate:
   content: ""
   validation:
     default: "Rhaid i ddyddiad y taliad fod yn ddyddiad gwirioneddol"
-    required: "Enter your Date of payment"
     before: "Rhaid i ddyddiad y taliad fod heddiw neu yn y gorffennol"
     numeric-day: "Rhaid i ddyddiad y taliad gynnwys diwrnod rhwng 1 a 31"
     numeric-month: "Rhaid i ddyddiad y taliad gynnwys mis rhwng 1 a 12"
     numeric-year: "Rhaid i ddyddiad y taliad gynnwys blwyddyn ddilys, fel 2023"
-    date-day: "Rhaid i ddyddiad y taliad gynnwys diwrnod rhwng 1 a 31"
+    date-day: "Rhaid i ddyddiad y taliad fod yn ddyddiad gwirioneddol"
     date-month: "Rhaid i ddyddiad y taliad gynnwys mis rhwng 1 a 12"
     date-year: "Rhaid i ddyddiad y taliad gynnwys blwyddyn ddilys, fel 2023"
     required-day: "Rhaid i ddyddiad y taliad gynnwys diwrnod rhwng 1 a 31"

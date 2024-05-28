@@ -49,8 +49,6 @@ Feature: Happy path
     Then they should see the pensions-benefits-short-tax-return question page
     When they enter correct pension details
     Then they should see the enter-recent-self-assessment-payment question page
-    When they enter wrong self assessment payment details
-    Then they should see the enter-recent-self-assessment-payment question page with error
     When they enter correct self assessment payment details
     Then they should be redirected as a success
 

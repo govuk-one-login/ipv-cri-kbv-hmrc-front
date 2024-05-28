@@ -55,3 +55,19 @@ Feature: Validation scenarios
     Then they should see enter amount error message
     When they enter amount "1234.45" and continue from the "enter-employees-contributions-p60" question page
     Then they should be redirected as a success
+
+  @mock-api:questions-selfAssessment @selfAssessment-journey
+  Scenario: Validation Path for selfAssessment-journey
+    Given Happy Harriet is using the system
+    And they have started the journey
+    Then they should see the answer security questions page
+    When they continue from answer security questions
+    Then they should see the what-type-self-assessment question page
+    When they select "sa200" and continue from the what-type-self-assessment question page
+    Then they should see the pensions-benefits-short-tax-return question page
+    When they enter correct pension details
+    Then they should see the enter-recent-self-assessment-payment question page
+    When they enter wrong self assessment payment details
+    Then they should see the enter-recent-self-assessment-payment question page with error
+    When they enter correct self assessment payment details
+    Then they should be redirected as a success
