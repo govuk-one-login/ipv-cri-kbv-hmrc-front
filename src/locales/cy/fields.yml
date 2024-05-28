@@ -181,6 +181,18 @@ selfAssessmentPaymentDate:
   legend: Dyddiad y taliad
   hint: Er enghraifft, 31 3 2024
   content: ""
+  validation:
+    default: "Rhaid i ddyddiad y taliad fod yn ddyddiad gwirioneddol"
+    before: "Rhaid i ddyddiad y taliad fod heddiw neu yn y gorffennol"
+    numeric-day: "Rhaid i ddyddiad y taliad gynnwys diwrnod rhwng 1 a 31"
+    numeric-month: "Rhaid i ddyddiad y taliad gynnwys mis rhwng 1 a 12"
+    numeric-year: "Rhaid i ddyddiad y taliad gynnwys blwyddyn ddilys, fel 2023"
+    date-day: "Rhaid i ddyddiad y taliad fod yn ddyddiad gwirioneddol"
+    date-month: "Rhaid i ddyddiad y taliad gynnwys mis rhwng 1 a 12"
+    date-year: "Rhaid i ddyddiad y taliad gynnwys blwyddyn ddilys, fel 2023"
+    required-day: "Rhaid i ddyddiad y taliad gynnwys diwrnod rhwng 1 a 31"
+    required-month: "Rhaid i ddyddiad y taliad gynnwys mis rhwng 1 a 12"
+    required-year: "Rhaid i ddyddiad y taliad gynnwys blwyddyn ddilys, fel 2023"
 selfAssessmentPaymentAmount:
   label: Swm y taliad
   hint: Rhowch y swm mewn punnoedd a cheiniogau. Er enghraifft, 3625.75.
@@ -190,6 +202,12 @@ selfAssessmentPaymentAmount:
     required: Rhowch swm
     regexNumeric: Rhowch swm dilys mewn punnoedd a cheiniogau, fel 123.45
     regexPoundsAndPence: Rhaid i'r swm gynnwys punnoedd a cheiniogau, fel 123.45
+selfAssessmentPaymentDate-day:
+  content: ""
+selfAssessmentPaymentDate-month:
+  content: ""
+selfAssessmentPaymentDate-year:
+  content: ""
 date-day:
   label: Dydd
 date-month:

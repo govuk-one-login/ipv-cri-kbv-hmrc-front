@@ -137,6 +137,7 @@ module.exports = {
   },
   selfAssessmentPaymentDate: {
     type: "date",
+    validate: ["required", "date", { type: "before", arguments: [] }],
   },
   selfAssessmentPaymentAmount: amountFieldValidateRequiredAndAmountWithDecimals,
 };
