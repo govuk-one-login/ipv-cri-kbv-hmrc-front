@@ -17,7 +17,7 @@ describe("question-to-title", () => {
     presenters.questionToTitle(question, translate);
 
     expect(translate).toHaveBeenCalledWith(
-      `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.title`
+      `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.title`
     );
   });
 

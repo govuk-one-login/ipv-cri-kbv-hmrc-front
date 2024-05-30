@@ -1,7 +1,7 @@
 const monthsAgoToDate = require("../utils/months-ago-to-date");
 
 module.exports = function (question, translate, language) {
-  const key = `fields.${question.questionKey}.content`;
+  const key = `pages.${question.questionKey}.content`;
   const data = {};
 
   if (question?.info?.months) {
@@ -14,5 +14,5 @@ module.exports = function (question, translate, language) {
     return content;
   }
 
-  return " ";
+  return "";
 };

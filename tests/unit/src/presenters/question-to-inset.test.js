@@ -30,7 +30,7 @@ describe("question-to-inset", () => {
     presenters.questionToInset(question, translate, englishLanguage);
 
     expect(translate).toHaveBeenCalledWith(
-      `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+      `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
       {}
     );
   });
@@ -43,14 +43,14 @@ describe("question-to-inset", () => {
       englishLanguage
     );
 
-    expect(insetTest).toBe(" ");
+    expect(insetTest).toBe("");
   });
 
   describe("with translation key found", () => {
     it("should return english language translated content", () => {
-      translate.mockReturnValue(
-        `translated question inset three months ago ${englishDate}`
-      );
+      translate.mockReturnValue({
+        html: `translated question inset three months ago ${englishDate}`,
+      });
 
       const result = presenters.questionToInset(
         question,
@@ -59,19 +59,19 @@ describe("question-to-inset", () => {
       );
 
       expect(translate).toHaveBeenCalledWith(
-        `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
         data
       );
 
-      expect(result).toBe(
-        `translated question inset three months ago ${englishDate}`
-      );
+      expect(result).toEqual({
+        html: `translated question inset three months ago ${englishDate}`,
+      });
     });
 
     it("should return welsh language translated content", () => {
-      translate.mockReturnValue(
-        `mewnosod cwestiwn wedi'i gyfieithu dri mis yn ôl ${welshDate}`
-      );
+      translate.mockReturnValue({
+        html: `mewnosod cwestiwn wedi'i gyfieithu dri mis yn ôl ${welshDate}`,
+      });
 
       const result = presenters.questionToInset(
         question,
@@ -82,25 +82,54 @@ describe("question-to-inset", () => {
       data.dynamicDate = welshDate;
 
       expect(translate).toHaveBeenCalledWith(
-        `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
         data
       );
 
-      expect(result).toBe(
-        `mewnosod cwestiwn wedi'i gyfieithu dri mis yn ôl ${welshDate}`
-      );
+      expect(result).toEqual({
+        html: `mewnosod cwestiwn wedi'i gyfieithu dri mis yn ôl ${welshDate}`,
+      });
     });
   });
 
-  describe("question-to-inset with currentTaxYear", () => {
-    let question;
-    const englishLanguage = "en";
-
+  describe("question-to-inset with currentTaxYear and previousTaxYear", () => {
     beforeEach(() => {
       translate = jest.fn();
     });
 
-    it("should include tax year information in the translated inset when currentTaxYear is defined", () => {
+    it("should include tax year information in the translated inset when currentTaxYear and previousTaxYear are defined", () => {
+      question = {
+        questionKey: constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
+        info: {
+          currentTaxYear: "2022/23",
+          previousTaxYear: "2021/22",
+        },
+      };
+
+      const {
+        currentYearRangeStart,
+        currentYearRangeEnd,
+        previousYearRangeStart,
+        previousYearRangeEnd,
+      } = taxYearToRange(
+        question.info.currentTaxYear,
+        question.info.previousTaxYear
+      );
+
+      presenters.questionToInset(question, translate, englishLanguage);
+
+      expect(translate).toHaveBeenCalledWith(
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+        {
+          currentYearRangeStart,
+          currentYearRangeEnd,
+          previousYearRangeStart,
+          previousYearRangeEnd,
+        }
+      );
+    });
+
+    it("should include tax year information in the translated inset when only currentTaxYear is defined", () => {
       question = {
         questionKey: constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
         info: {
@@ -108,14 +137,18 @@ describe("question-to-inset", () => {
         },
       };
 
-      const { yearRangeStart, yearRangeEnd } = taxYearToRange(
-        question?.info?.currentTaxYear
+      const { currentYearRangeStart, currentYearRangeEnd } = taxYearToRange(
+        question.info.currentTaxYear
       );
+
       presenters.questionToInset(question, translate, englishLanguage);
 
       expect(translate).toHaveBeenCalledWith(
-        `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
-        { yearRangeStart, yearRangeEnd }
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+        {
+          currentYearRangeStart,
+          currentYearRangeEnd,
+        }
       );
     });
 
@@ -128,7 +161,7 @@ describe("question-to-inset", () => {
       presenters.questionToInset(question, translate, englishLanguage);
 
       expect(translate).toHaveBeenCalledWith(
-        `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
         {}
       );
     });
@@ -144,13 +177,13 @@ describe("question-to-inset", () => {
       };
 
       const { dynamicDate } = monthsAgoToDate(
-        question?.info?.months,
+        question.info.months,
         englishLanguage
       );
       presenters.questionToInset(question, translate, englishLanguage);
 
       expect(translate).toHaveBeenCalledWith(
-        `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
         { dynamicDate }
       );
     });
@@ -164,7 +197,7 @@ describe("question-to-inset", () => {
       presenters.questionToInset(question, translate, englishLanguage);
 
       expect(translate).toHaveBeenCalledWith(
-        `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
         {}
       );
     });

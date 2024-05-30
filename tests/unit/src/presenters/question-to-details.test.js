@@ -17,7 +17,7 @@ describe("question-to-details", () => {
     presenters.questionToDetails(question, translate);
 
     expect(translate).toHaveBeenCalledWith(
-      `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.details`
+      `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.details`
     );
   });
 
@@ -42,7 +42,7 @@ describe("question-to-details", () => {
 
       const result = presenters.questionToDetails(question, translate);
 
-      expect(result).toBe(" ");
+      expect(result).toBe("");
     });
 
     it("should return an empty string if details are not in the expected format", () => {
@@ -53,7 +53,7 @@ describe("question-to-details", () => {
 
       const result = presenters.questionToDetails(question, translate);
 
-      expect(result).toBe(" ");
+      expect(result).toBe("");
     });
   });
 });

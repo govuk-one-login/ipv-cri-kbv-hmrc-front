@@ -5,31 +5,57 @@ Date.now = jest.fn(() => new Date("2024-05-01"));
 
 describe("tax-year-to-range", () => {
   let question;
-  const taxYear = "2022/23";
-  const yearRangeStart = 2022;
-  const yearRangeEnd = 2023;
+  const currentTaxYear = "2022/23";
+  const previousTaxYear = "2021/22";
+  const currentYearRangeStart = 2022;
+  const currentYearRangeEnd = 2023;
+  const previousYearRangeStart = 2021;
+  const previousYearRangeEnd = 2022;
 
   beforeEach(() => {
     question = {
       questionKey: constants.SA_INCOME_FROM_PENSIONS,
       info: {
-        currentTaxYear: taxYear,
+        currentTaxYear: currentTaxYear,
+        previousTaxYear: previousTaxYear,
       },
     };
   });
 
-  it("should return empty object when currentTaxYear is undefined", () => {
+  it("should return empty object when currentTaxYear and previousTaxYear are undefined", () => {
     question.info.currentTaxYear = undefined;
-    const result = taxYearToRange(question?.info?.currentTaxYear);
+    question.info.previousTaxYear = undefined;
+    const result = taxYearToRange(
+      question?.info?.currentTaxYear,
+      question?.info?.previousTaxYear
+    );
 
     expect(result).toEqual({});
   });
 
   describe("with currentTaxYear defined", () => {
-    it("should return object with yearRangeStart and yearRangeEnd when currentTaxYear is defined", () => {
-      const result = taxYearToRange(question?.info?.currentTaxYear);
+    it("should return object with currentYearRangeStart and currentYearRangeEnd when only currentTaxYear is defined", () => {
+      question.info.previousTaxYear = undefined;
+      const result = taxYearToRange(
+        question?.info?.currentTaxYear,
+        question?.info?.previousTaxYear
+      );
 
-      expect(result).toEqual({ yearRangeStart, yearRangeEnd });
+      expect(result).toEqual({ currentYearRangeStart, currentYearRangeEnd });
+    });
+
+    it("should return object with currentYearRangeStart, currentYearRangeEnd, previousYearRangeStart, and previousYearRangeEnd when both currentTaxYear and previousTaxYear are defined", () => {
+      const result = taxYearToRange(
+        question?.info?.currentTaxYear,
+        question?.info?.previousTaxYear
+      );
+
+      expect(result).toEqual({
+        currentYearRangeStart,
+        currentYearRangeEnd,
+        previousYearRangeStart,
+        previousYearRangeEnd,
+      });
     });
   });
 });

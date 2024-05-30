@@ -41,6 +41,7 @@ module.exports = {
     next: "load-question",
   },
   "/question/enter-total-for-year-p60": {
+    backLink: null,
     controller: singleAmountQuestionController,
     fields: [constants.RTI_P60_PAYMENT_FOR_YEAR],
     next: "load-question",

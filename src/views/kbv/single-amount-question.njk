@@ -1,49 +1,24 @@
-{% extends "base-form.njk" %}
-{% from "hmpo-text/macro.njk" import hmpoText %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "hmpo-details/macro.njk" import hmpoDetails %}
+  {% extends "base-form.njk" %}
+  {% from "hmpo-text/macro.njk" import hmpoText %}
+  {% from "hmpo-details/macro.njk" import hmpoDetails %}
+  {% from "hmpo-inset-text/macro.njk" import hmpoInsetText %}
 
+  {% set hmpoPageKey = question.name %}
+  {% set gtmJourney = question.name + "- start" %}
 
-{% set gtmJourney = "kbv-hmrc - middle" %}
+  {% block mainContentBody %}
+    {% if question.details %}
+      {{ hmpoInsetText(question.inset) }}
+    {% endif %}
 
-{% set hmpoTitle = question.title %}
+    {{ hmpoHtml(question.content) }}
 
-{% block mainContent %}
-  <h1 class="govuk-heading-l"> {{ question.title }} </h1>
+    {% if question.details %}
+      {{ hmpoDetails(question.details) }}
+    {% endif %}
+  {% endblock %}
 
-  {% if question.inset != " " %}
-    {{ govukInsetText({
-      text: question.inset
-    }) }}
-  {% endif %}
-
-  {{ hmpoHtml(question.content) }}
-
-  {% if question.details != " " %}
-    {{ hmpoDetails({
-      summaryText: question.details.summaryText,
-      html: question.details.html
-    }) }}
-  {% endif %}
-
-  {% call hmpoForm(ctx) %}
-
-    {{ hmpoText(ctx, {
-      id: question.name,
-      name: question.name,
-      label: {
-        text: question.label,
-        classes: "govuk-label--m"
-      },
-      hint: {
-        text: question.hint
-      },
-      classes: "govuk-input--width-5"
-    }) }}
-
+  {% block submitButton %}
     {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
-  {% endcall %}
-
-  {{ hmpoHtml(translate("pages.shared.abandon")) }}
-
-{% endblock %}
+    {{ hmpoHtml(translate("pages.shared.abandon")) }}
+  {% endblock %}
