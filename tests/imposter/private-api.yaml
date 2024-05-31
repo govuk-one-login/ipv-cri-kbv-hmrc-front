@@ -90,9 +90,13 @@ paths:
                 $ref: "#/components/schemas/Error"
 
   /fetchquestions:
-    get:
+    post:
       parameters:
         - $ref: "#/components/parameters/SessionHeader"
+      requestBody:
+        content:
+          application/json: {}
+        required: false
       responses:
         "200":
           description: "Triggers the retrival of questions for the previously supplied NINO, returns if the NINO has sufficient or insufficient matching questions"
