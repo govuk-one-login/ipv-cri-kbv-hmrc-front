@@ -4,7 +4,7 @@ info:
   version: "2.0"
 
 paths:
-  /authorization:
+  /oauth2/authorize:
     get:
       description: Front end-route provided by common-express (front-end middleware)
       parameters:
@@ -51,7 +51,7 @@ paths:
     post:
       description: > 
         Endpoint provided by private api gateway.
-        Posted to via common-express middleware as part of handling the /authorization call.
+        Posted to via common-express middleware as part of handling the /oauth2/authorize call.
       parameters:
         - in: header
           name: "X-Forwarded-For"
@@ -179,7 +179,7 @@ paths:
                   value:
                     questionKey: "tc-amount"
         "204":
-          description: No more questions (User back button recoverery path)
+          description: No more questions for this NINO
         "403":
           description: Session not found
           content:
@@ -214,13 +214,15 @@ paths:
         required: true
       responses:
         "200":
-          description: Question answer/sequence completed - result stored
+          description: > 
+            All expected answers have been recieved and forwarded to the the thirdparty.
+            The response has been processed and VC evidence is now saved.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/AnswerResponse"
               example: 
-                response: "Question answer/sequence completed - result stored"
+                response: "VC evidence is saved"
         "202":
           description: Submitted answer saved
           content:
@@ -230,7 +232,7 @@ paths:
               example: 
                 response: "Submitted answer saved"
         "204":
-          description: Question already answered, but continue (User back button recovery path)
+          description: This question already answered, but continue (User back button recovery path)
           content:
             application/json:
               schema:
