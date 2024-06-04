@@ -9,7 +9,7 @@ module.exports = function (question, translate, language) {
     Object.assign(data, monthsAgoToDate(question?.info?.months, language));
   }
 
-  if (question?.info?.currentTaxYear && question?.info?.previousTaxYear) {
+  if (question?.info?.currentTaxYear) {
     Object.assign(
       data,
       taxYearToRange(
@@ -17,13 +17,11 @@ module.exports = function (question, translate, language) {
         question.info.previousTaxYear
       )
     );
-  } else if (question?.info?.currentTaxYear) {
-    Object.assign(data, taxYearToRange(question.info.currentTaxYear));
   }
 
   const inset = translate(key, data);
 
-  if (inset && typeof inset === "object" && "html" in inset) {
+  if (inset && !inset.includes(question.questionKey)) {
     return inset;
   }
 

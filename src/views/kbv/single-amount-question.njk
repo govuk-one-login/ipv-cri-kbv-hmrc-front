@@ -7,9 +7,22 @@
   {% set gtmJourney = question.name + "- start" %}
 
   {% block mainContentBody %}
-    {% if question.details %}
-      {{ hmpoInsetText(question.inset) }}
-    {% endif %}
+
+  {% if question.inset %}
+    <div class="govuk-inset-text">
+      {% if currentYearRangeStart %}
+        <p>{{ question.inset[0] }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ question.inset[1] }}</li>
+          {% if previousYearRangeStart %}
+            <li>{{ question.inset[2] }}</li>
+          {% endif %}
+        </ul>
+      {% else %}
+        <p>{{ question.inset }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
 
     {{ hmpoHtml(question.content) }}
 

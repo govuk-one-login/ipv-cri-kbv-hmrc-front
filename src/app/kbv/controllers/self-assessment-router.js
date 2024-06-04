@@ -8,7 +8,7 @@ class SelfAssessmentRouterController extends BaseController {
         return callback(err, locals);
       }
 
-      locals = taxYearToRange(req.session.question.info.currentTaxYear);
+      locals = taxYearToRange(req.session.question?.info?.currentTaxYear);
 
       callback(null, locals);
     });

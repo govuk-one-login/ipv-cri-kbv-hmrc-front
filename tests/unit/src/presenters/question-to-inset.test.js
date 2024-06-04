@@ -48,9 +48,9 @@ describe("question-to-inset", () => {
 
   describe("with translation key found", () => {
     it("should return english language translated content", () => {
-      translate.mockReturnValue({
-        html: `translated question inset three months ago ${englishDate}`,
-      });
+      translate.mockReturnValue(
+        `translated question inset three months ago ${englishDate}`
+      );
 
       const result = presenters.questionToInset(
         question,
@@ -63,15 +63,15 @@ describe("question-to-inset", () => {
         data
       );
 
-      expect(result).toEqual({
-        html: `translated question inset three months ago ${englishDate}`,
-      });
+      expect(result).toBe(
+        `translated question inset three months ago ${englishDate}`
+      );
     });
 
     it("should return welsh language translated content", () => {
-      translate.mockReturnValue({
-        html: `mewnosod cwestiwn wedi'i gyfieithu dri mis yn ôl ${welshDate}`,
-      });
+      translate.mockReturnValue(
+        `mewnosod cwestiwn wedi'i gyfieithu dri mis yn ôl ${welshDate}`
+      );
 
       const result = presenters.questionToInset(
         question,
@@ -86,9 +86,9 @@ describe("question-to-inset", () => {
         data
       );
 
-      expect(result).toEqual({
-        html: `mewnosod cwestiwn wedi'i gyfieithu dri mis yn ôl ${welshDate}`,
-      });
+      expect(result).toBe(
+        `mewnosod cwestiwn wedi'i gyfieithu dri mis yn ôl ${welshDate}`
+      );
     });
   });
 
