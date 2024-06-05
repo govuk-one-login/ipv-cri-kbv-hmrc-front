@@ -10,13 +10,11 @@
 
   {% if question.inset %}
     <div class="govuk-inset-text">
-      {% if currentYearRangeStart %}
+      {% if previousYearRangeStart %}
         <p>{{ question.inset[0] }}</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>{{ question.inset[1] }}</li>
-          {% if previousYearRangeStart %}
-            <li>{{ question.inset[2] }}</li>
-          {% endif %}
+          <li>{{ question.inset[2] }}</li>
         </ul>
       {% else %}
         <p>{{ question.inset }}</p>

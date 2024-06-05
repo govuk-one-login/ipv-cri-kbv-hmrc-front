@@ -119,7 +119,7 @@ describe("question-to-inset", () => {
       presenters.questionToInset(question, translate, englishLanguage);
 
       expect(translate).toHaveBeenCalledWith(
-        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.insetMultipleTaxYears`,
         {
           currentYearRangeStart,
           currentYearRangeEnd,
@@ -189,6 +189,38 @@ describe("question-to-inset", () => {
     });
 
     it("should not include months information in the translated inset when months is not defined", () => {
+      question = {
+        questionKey: constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
+        info: {},
+      };
+
+      presenters.questionToInset(question, translate, englishLanguage);
+
+      expect(translate).toHaveBeenCalledWith(
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.inset`,
+        {}
+      );
+    });
+  });
+
+  describe("question-to-inset key based on previousTaxYear presence", () => {
+    it("should set key to include insetMultipleTaxYears when previousTaxYear is defined", () => {
+      question = {
+        questionKey: constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
+        info: {
+          previousTaxYear: "2021/22",
+        },
+      };
+
+      presenters.questionToInset(question, translate, englishLanguage);
+
+      expect(translate).toHaveBeenCalledWith(
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.insetMultipleTaxYears`,
+        {}
+      );
+    });
+
+    it("should set key to include inset when previousTaxYear is not defined", () => {
       question = {
         questionKey: constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
         info: {},

@@ -41,7 +41,8 @@ rti-payslip-income-tax:
 rti-p60-payment-for-year:
   title: Rhowch y ‘cyfanswm am y flwyddyn’ o'ch P60
   h1: Rhowch y ‘cyfanswm am y flwyddyn’ o'ch P60
-  inset:
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
     - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
     - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
@@ -56,7 +57,8 @@ rti-p60-payment-for-year:
 rti-p60-earnings-above-pt:
   title: Rhowch swm yr ‘enillion dros y PD’ o'ch P60
   h1: Rhowch swm yr ‘enillion dros y PD’ o'ch P60
-  inset:
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
     - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
     - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
@@ -70,7 +72,8 @@ rti-p60-earnings-above-pt:
 rti-p60-postgraduate-loan-deductions:
   title: Rhowch swm y ‘didyniadau benthyciad ôl-raddedig’ o'ch P60
   h1: Rhowch swm y ‘didyniadau benthyciad ôl-raddedig’ o'ch P60
-  inset:
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
     - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn::"
     - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
@@ -84,7 +87,8 @@ rti-p60-postgraduate-loan-deductions:
 rti-p60-statutory-shared-parental-pay:
   title: Rhowch swm y ‘tâl statudol ar y cyd i rieni’ o'ch P60
   h1: Rhowch swm y ‘tâl statudol ar y cyd i rieni’ o'ch P60
-  inset:
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
     - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
     - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
@@ -98,7 +102,8 @@ rti-p60-statutory-shared-parental-pay:
 rti-p60-statutory-adoption-pay:
   title: Rhowch swm y ‘tâl mabwysiadu statudol’ o'ch P60
   h1: Rhowch swm y ‘tâl mabwysiadu statudol’ o'ch P60
-  inset:
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
     - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
     - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
@@ -112,7 +117,8 @@ rti-p60-statutory-adoption-pay:
 rti-p60-statutory-maternity-pay:
   title: Rhowch swm y ‘tâl mamolaeth statudol’ o'ch P60
   h1: Rhowch swm y ‘tâl mamolaeth statudol’ o'ch P60
-  inset:
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
     - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
     - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
@@ -126,7 +132,8 @@ rti-p60-statutory-maternity-pay:
 rti-p60-student-loan-deductions:
   title: Rhowch swm y ‘didyniadau benthyciad myfyriwr’ o'ch P60
   h1: Rhowch swm y ‘didyniadau benthyciad myfyriwr’ o'ch P60
-  inset:
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
     - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
     - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
@@ -140,7 +147,8 @@ rti-p60-student-loan-deductions:
 rti-p60-employee-ni-contributions:
   title: Rhowch swm 'cyfraniadau'r cyflogai' o'ch P60
   h1: Rhowch swm 'cyfraniadau'r cyflogai' o'ch P60
-  inset:
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
     - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
     - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"

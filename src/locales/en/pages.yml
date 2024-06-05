@@ -41,7 +41,8 @@ rti-payslip-income-tax:
 rti-p60-payment-for-year:
   title: Enter the ‘total for year’ amount from your P60
   h1: Enter the ‘total for year’ amount from your P60
-  inset:
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
     - "You can use a P60 from either of these tax years:"
     - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
@@ -56,7 +57,8 @@ rti-p60-payment-for-year:
 rti-p60-earnings-above-pt:
   title: Enter the ‘earnings above the PT’ amount from your P60
   h1: Enter the ‘earnings above the PT’ amount from your P60
-  inset:
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
     - "You can use a P60 from either of these tax years:"
     - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
@@ -70,7 +72,8 @@ rti-p60-earnings-above-pt:
 rti-p60-postgraduate-loan-deductions:
   title: Enter the ‘postgraduate loan deductions’ amount from your P60
   h1: Enter the ‘postgraduate loan deductions’ amount from your P60
-  inset:
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
     - "You can use a P60 from either of these tax years:"
     - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
@@ -84,7 +87,8 @@ rti-p60-postgraduate-loan-deductions:
 rti-p60-statutory-shared-parental-pay:
   title: Enter the ‘statutory shared parental pay’ amount from your P60
   h1: Enter the ‘statutory shared parental pay’ amount from your P60
-  inset:
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
     - "You can use a P60 from either of these tax years:"
     - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
@@ -98,7 +102,8 @@ rti-p60-statutory-shared-parental-pay:
 rti-p60-statutory-adoption-pay:
   title: Enter the ‘statutory adoption pay’ amount from your P60
   h1: Enter the ‘statutory adoption pay’ amount from your P60
-  inset:
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
     - "You can use a P60 from either of these tax years:"
     - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
@@ -112,7 +117,8 @@ rti-p60-statutory-adoption-pay:
 rti-p60-statutory-maternity-pay:
   title: Enter the ‘statutory maternity pay’ amount from your P60
   h1: Enter the ‘statutory maternity pay’ amount from your P60
-  inset:
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
     - "You can use a P60 from either of these tax years:"
     - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
@@ -126,7 +132,8 @@ rti-p60-statutory-maternity-pay:
 rti-p60-student-loan-deductions:
   title: Enter the ‘student loan deductions’ amount from your P60
   h1: Enter the ‘student loan deductions’ amount from your P60
-  inset:
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
     - "You can use a P60 from either of these tax years:"
     - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
@@ -140,7 +147,8 @@ rti-p60-student-loan-deductions:
 rti-p60-employee-ni-contributions:
   title: Enter the ‘employee’s contributions’ amount from your P60
   h1: Enter the ‘employee’s contributions’ amount from your P60
-  inset:
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
     - "You can use a P60 from either of these tax years:"
     - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
