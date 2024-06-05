@@ -35,15 +35,15 @@ describe("SelfAssessmentRouterController", () => {
     it("should set up locals object correctly", (done) => {
       const taxYearToRange = require("../../../../../../src/utils/tax-year-to-range");
       taxYearToRange.mockReturnValue({
-        yearRangeStart: 2023,
-        yearRangeEnd: 2024,
+        currnetYearRangeStart: 2023,
+        currentYearRangeEnd: 2024,
       });
 
       const callback = jest.fn((err, locals) => {
         expect(err).toBeNull();
         expect(locals).toBeDefined();
-        expect(locals.yearRangeStart).toBe(2023);
-        expect(locals.yearRangeEnd).toBe(2024);
+        expect(locals.currnetYearRangeStart).toBe(2023);
+        expect(locals.currentYearRangeEnd).toBe(2024);
         done();
       });
 

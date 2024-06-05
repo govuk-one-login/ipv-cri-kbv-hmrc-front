@@ -1,5 +1,5 @@
 module.exports = function (question, translate) {
-  const key = `fields.${question.questionKey}.details`;
+  const key = `pages.${question.questionKey}.details`;
   const details = translate(key);
 
   if (
@@ -11,5 +11,5 @@ module.exports = function (question, translate) {
     return details;
   }
 
-  return " ";
+  return "";
 };

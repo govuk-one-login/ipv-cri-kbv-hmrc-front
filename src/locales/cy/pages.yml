@@ -24,6 +24,7 @@ answer-security-questions:
   start-button: Dechrau
 rti-payslip-national-insurance:
   title: Rhowch swm yr Yswiriant Gwladol a dalwyd gennych o slip cyflog diweddar
+  h1: Rhowch swm yr Yswiriant Gwladol a dalwyd gennych o slip cyflog diweddar
   inset: Defnyddiwch slip cyflog wedi'i ddyddio ar ôl {{ dynamicDate }} i ateb y cwestiwn hwn
   content:
     - Dywedwch wrthym faint o Yswiriant Gwladol rydych wedi'i dalu.
@@ -31,6 +32,7 @@ rti-payslip-national-insurance:
     - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
 rti-payslip-income-tax:
   title: Rhowch faint o dreth a dalwyd gennych o slip cyflog diweddar
+  h1: Rhowch faint o dreth a dalwyd gennych o slip cyflog diweddar
   inset: Defnyddiwch slip cyflog wedi'i ddyddio ar ôl {{ dynamicDate }} i ateb y cwestiwn hwn
   content:
     - Dywedwch wrthym faint o Dreth Incwm rydych wedi'i dalu.
@@ -38,18 +40,28 @@ rti-payslip-income-tax:
     - Rhowch y swm mewn punnoedd a cheiniogau yn union fel y mae'n ymddangos ar eich slip cyflog.
 rti-p60-payment-for-year:
   title: Rhowch y ‘cyfanswm am y flwyddyn’ o'ch P60
-  inset: Defnyddiwch P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} i ateb y cwestiwn hwn.
+  h1: Rhowch y ‘cyfanswm am y flwyddyn’ o'ch P60
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
+    - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
+    - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
   content:
     - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘cyfanswm am y flwyddyn’. Byddwch yn dod o hyd i hyn yn yr adran ‘manylion cyflog a threth incwm’ o'ch P60.
     - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
   details:
     summaryText: Os oes gennych fwy nag un P60
     html: >-
-      <p>Rhowch y swm yn y blwch wedi'i labelu ‘yn y gyflogaeth hon’.</p>
-      <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi. </p>
+      <p> Rhowch y swm yn y blwch wedi'i labelu ‘yn y gyflogaeth hon’. </p>
+      <p> Dim ond y swm o un P60 sydd angen i chi ei rhoi. </p>
 rti-p60-earnings-above-pt:
   title: Rhowch swm yr ‘enillion dros y PD’ o'ch P60
-  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} ateb y cwestiwn hwn.
+  h1: Rhowch swm yr ‘enillion dros y PD’ o'ch P60
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
+    - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
+    - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
   content:
     - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘enillion dros y PD, hyd at a chan gynnwys y Terfyn Enillion Uchaf (TEU)’. Byddwch yn dod o hyd i hyn yn yr adran ‘Cyfraniadau Yswiriant Gwladol yn y gyflogaeth hon’ o'ch P60.
     - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
@@ -59,7 +71,12 @@ rti-p60-earnings-above-pt:
       <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi.</p>
 rti-p60-postgraduate-loan-deductions:
   title: Rhowch swm y ‘didyniadau benthyciad ôl-raddedig’ o'ch P60
-  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} ateb y cwestiwn hwn.
+  h1: Rhowch swm y ‘didyniadau benthyciad ôl-raddedig’ o'ch P60
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
+    - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn::"
+    - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
   content:
     - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘didyniadau benthyciad ôl-raddedig.’ Byddwch yn dod o hyd i hyn yn yr adran ‘manylion eraill’ o'ch P60.
     - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
@@ -69,7 +86,12 @@ rti-p60-postgraduate-loan-deductions:
       <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi.</p>
 rti-p60-statutory-shared-parental-pay:
   title: Rhowch swm y ‘tâl statudol ar y cyd i rieni’ o'ch P60
-  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} ateb y cwestiwn hwn.
+  h1: Rhowch swm y ‘tâl statudol ar y cyd i rieni’ o'ch P60
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
+    - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
+    - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
   content:
     - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘tâl statudol ar y cyd i rieni.’ Byddwch yn dod o hyd i hyn yn yr adran ‘taliadau statudol’ o'ch P60.
     - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
@@ -79,7 +101,12 @@ rti-p60-statutory-shared-parental-pay:
       <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi.</p>
 rti-p60-statutory-adoption-pay:
   title: Rhowch swm y ‘tâl mabwysiadu statudol’ o'ch P60
-  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} ateb y cwestiwn hwn.
+  h1: Rhowch swm y ‘tâl mabwysiadu statudol’ o'ch P60
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
+    - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
+    - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
   content:
     - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘tâl mabwysiadu statudol.’ Byddwch yn dod o hyd i hyn yn yr adran ‘taliadau statudol’ o'ch P60.
     - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
@@ -89,7 +116,12 @@ rti-p60-statutory-adoption-pay:
       <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi.</p>
 rti-p60-statutory-maternity-pay:
   title: Rhowch swm y ‘tâl mamolaeth statudol’ o'ch P60
-  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} ateb y cwestiwn hwn.
+  h1: Rhowch swm y ‘tâl mamolaeth statudol’ o'ch P60
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
+    - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
+    - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
   content:
     - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘tâl mamolaeth statudol.’ Byddwch yn dod o hyd i hyn yn yr adran ‘taliadau statudol’ o'ch P60.
     - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
@@ -99,7 +131,12 @@ rti-p60-statutory-maternity-pay:
       <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi.</p>
 rti-p60-student-loan-deductions:
   title: Rhowch swm y ‘didyniadau benthyciad myfyriwr’ o'ch P60
-  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} ateb y cwestiwn hwn.
+  h1: Rhowch swm y ‘didyniadau benthyciad myfyriwr’ o'ch P60
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
+    - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
+    - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
   content:
     - Dywedwch wrthym y swm yn y blwch wedi'i labelu ‘didyniadau benthyciad myfyriwr.’ Byddwch yn dod o hyd i hyn yn yr adran ‘manylion eraill’ o'ch P60.
     - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
@@ -109,7 +146,12 @@ rti-p60-student-loan-deductions:
       <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi.</p>
 rti-p60-employee-ni-contributions:
   title: Rhowch swm 'cyfraniadau'r cyflogai' o'ch P60
-  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }} ateb y cwestiwn hwn.
+  h1: Rhowch swm 'cyfraniadau'r cyflogai' o'ch P60
+  inset: Defnyddiwch eich P60 o'r flwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }} ateb y cwestiwn hwn.
+  insetMultipleTaxYears:
+    - "Gallwch ddefnyddio P60 ar gyfer y naill un o'r blynyddoedd treth hyn:"
+    - "{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}"
   content:
     - Dywedwch wrthym y swm yn y blwch wedi'i labelu 'cyfraniadau'r cyflogai sy'n ddyledus ar yr holl enillion dros y PD’. Byddwch yn dod o hyd i hyn yn yr adran ‘Cyfraniadau Yswiriant Gwladol yn y gyflogaeth hon’ o'ch P60.
     - Rhowch y swm mewn punnoedd a cheiniogau, yn union fel mae'n ymddangos ar eich P60.
@@ -119,6 +161,7 @@ rti-p60-employee-ni-contributions:
       <p>Dim ond y swm o un P60 sydd angen i chi ei rhoi.</p>
 ita-bankaccount:
   title: Rhowch 4 digid olaf y cyfrif banc neu gymdeithas adeiladu y telir eich credydau treth iddo
+  h1: Rhowch 4 digid olaf y cyfrif banc neu gymdeithas adeiladu y telir eich credydau treth iddo
   content:
     - Gallwch chwilio am eich rhif cyfrif ar eich
     - - cerdyn banc
@@ -131,8 +174,8 @@ prove-identity-another-way:
   content: Efallai y gallwch brofi eich hunaniaeth mewn ffordd arall gyda GOV.UK One Login. Neu gallwch fynd yn ôl i'r gwasanaeth rydych angen ei ddefnyddio a gwirio a oes ffyrdd eraill o gael mynediad ato.
   warning: Ni allwch ddychwelyd i'r sgrin hon os ydych yn chwilio am ffordd arall o brofi eich hunaniaeth.
 questionWhatTypeSelfAssessment:
-  title: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }}?
-  h1: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ yearRangeStart }} i {{ yearRangeEnd }}?
+  title: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }}?
+  h1: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }}?
   content:
     - Mae hyn er mwyn i ni ofyn cwestiynau i chi am y ffurflen gywir.
     - Byddwch ond wedi anfon ffurflen dreth fer (SA200) os oedd CThEF wedi dweud wrthych am wneud hynny.
@@ -140,7 +183,7 @@ pensions-benefits-self-assessment:
   title: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
   h1: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
   content:
-    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich Ffurflen dreth Hunanasesiad ar gyfer y naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ info.yearRangeStart }} i {{ info.yearRangeEnd }}</li><li>{{ info.yearRangeStart }} i {{ info.yearRangeEnd }}</li></ul></div>
+    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich Ffurflen dreth Hunanasesiad ar gyfer y naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}</li><li>{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}</li></ul></div>
     - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
     - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
     - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.
@@ -148,12 +191,13 @@ pensions-benefits-short-tax-return:
   title: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
   h1: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
   content:
-    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich ffurflen treth fer (SA200) ar gyfer naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ info.yearRangeStart }} i {{ info.yearRangeEnd }}</li><li>{{ info.yearRangeStart }} i {{ info.yearRangeEnd }}</li></ul></div>
+    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich ffurflen treth fer (SA200) ar gyfer naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}</li><li>{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}</li></ul></div>
     - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
     - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
     - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.
 tc-amount:
   title: Rhowch swm taliad credydau treth diweddar
+  h1: Rhowch swm taliad credydau treth diweddar
   content:
     - Dywedwch wrthym am daliad credydau treth a gawsoch ar ôl {{ dynamicDate }}.
     - Byddwch yn cael taliadau credydau treth bob wythnos neu bob 4 wythnos. Dim ond swm un taliad sydd angen i chi ei roi

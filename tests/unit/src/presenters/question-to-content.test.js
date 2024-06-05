@@ -20,7 +20,7 @@ describe("question-to-content", () => {
     presenters.questionToContent(question, translate, language);
 
     expect(translate).toHaveBeenCalledWith(
-      `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
+      `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
       {}
     );
   });
@@ -47,7 +47,7 @@ describe("question-to-content", () => {
       presenters.questionToContent(question, translate, language);
 
       expect(translate).toHaveBeenCalledWith(
-        `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
         { dynamicDate }
       );
     });
@@ -56,7 +56,7 @@ describe("question-to-content", () => {
       presenters.questionToContent(question, translate, language);
 
       expect(translate).toHaveBeenCalledWith(
-        `fields.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
+        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
         {}
       );
     });

@@ -37,7 +37,6 @@ const validateRequiredAmountWithPounds = {
 module.exports = {
   [constants.ITA_BANKACCOUNT]: {
     type: "text",
-    journeyKey: "itabankaccount",
     validate: ["required", "numeric", { type: "exactlength", arguments: [4] }],
   },
   [constants.RTI_P60_EARNINGS_ABOVE_PT]: validateRequiredAmountWithPounds,

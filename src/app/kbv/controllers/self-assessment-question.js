@@ -11,7 +11,10 @@ class SelfAssessmentQuestionController extends BaseController {
         return callback(err, locals);
       }
 
-      locals.info = taxYearToRange(req.session.question.info.currentTaxYear);
+      locals = taxYearToRange(
+        req.session.question?.info?.currentTaxYear,
+        req.session.question?.info?.previousTaxYear
+      );
 
       callback(null, locals);
     });

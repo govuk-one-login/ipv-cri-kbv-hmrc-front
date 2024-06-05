@@ -4,6 +4,7 @@ const BaseController = require("hmpo-form-wizard").Controller;
 const presenters = require("../../../presenters");
 const { submitAnswer, getNextQuestion } = require("../service");
 const fields = require("../fieldsHelper");
+const taxYearToRange = require("../../../utils/tax-year-to-range");
 
 class SingleAmountQuestionController extends BaseController {
   configure(req, res, next) {
@@ -19,6 +20,11 @@ class SingleAmountQuestionController extends BaseController {
       if (err) {
         return callback(err, locals);
       }
+
+      locals = taxYearToRange(
+        req.session.question?.info?.currentTaxYear,
+        req.session.question?.info?.previousTaxYear
+      );
 
       locals.question = {
         label: presenters.questionToLabel(req.session.question, req.translate),

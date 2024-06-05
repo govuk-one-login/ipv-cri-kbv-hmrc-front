@@ -4,12 +4,7 @@
 {% set hmpoPageKey = "answer-security-questions" %}
 {% set gtmJourney = "kbv-hmrc - start" %}
 
-{% block mainContentBody %}
-  {{ hmpoHtml(translate("pages.answer-security-questions.content")) }}
-  {{ hmpoDetails(translate("pages.answer-security-questions.details", { returnObjects: true}))}}
-{% endblock %}
-
 {% block submitButton %}
   {{ hmpoSubmit(ctx, {id: "start", text: translate("pages.answer-security-questions.start-button")}) }}
-  <p>{{ hmpoHtml(translate("pages.shared.abandon")) }}</p>
+  {{ hmpoHtml(translate("pages.shared.abandon")) }}
 {% endblock %}

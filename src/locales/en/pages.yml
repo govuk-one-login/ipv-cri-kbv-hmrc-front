@@ -24,6 +24,7 @@ answer-security-questions:
   start-button: Start
 rti-payslip-national-insurance:
   title: Enter the amount of National Insurance you paid from a recent payslip
+  h1: Enter the amount of National Insurance you paid from a recent payslip
   inset: Use a payslip dated after {{ dynamicDate }} to answer this question
   content:
     - Tell us the amount of National Insurance you paid.
@@ -31,6 +32,7 @@ rti-payslip-national-insurance:
     - Enter the amount in pounds and pence, exactly as it appears on your payslip.
 rti-payslip-income-tax:
   title: Enter the amount of Income Tax you paid from a recent payslip
+  h1: Enter the amount of Income Tax you paid from a recent payslip
   inset: Use a payslip dated after {{ dynamicDate }} to help you answer this question
   content:
     - Tell us the amount of Income Tax you paid.
@@ -38,7 +40,12 @@ rti-payslip-income-tax:
     - Enter the amount in pounds and pence, exactly as it appears on your payslip.
 rti-p60-payment-for-year:
   title: Enter the ‘total for year’ amount from your P60
-  inset: Use a P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
+  h1: Enter the ‘total for year’ amount from your P60
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
+    - "You can use a P60 from either of these tax years:"
+    - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
   content:
     - Tell us the amount in the box labelled ‘total for year’. You’ll find this in the ‘pay and income tax details’ section of your P60.
     - Enter the amount in pounds and pence, exactly as it appears on your P60.
@@ -49,7 +56,12 @@ rti-p60-payment-for-year:
       <p>You only need to enter the amount from one P60.</p>
 rti-p60-earnings-above-pt:
   title: Enter the ‘earnings above the PT’ amount from your P60
-  inset: Use your P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
+  h1: Enter the ‘earnings above the PT’ amount from your P60
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
+    - "You can use a P60 from either of these tax years:"
+    - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
   content:
     - Tell us the amount in the box labelled ‘earnings above the PT, up to and including the Upper Earnings Limit (UEL)’. You’ll find this in the ‘National Insurance contributions in this employment’ section of your P60.
     - Enter the amount in pounds without the pence, exactly as it appears on your P60.
@@ -59,7 +71,12 @@ rti-p60-earnings-above-pt:
       <p>You only need to enter the amount from one P60.</p>
 rti-p60-postgraduate-loan-deductions:
   title: Enter the ‘postgraduate loan deductions’ amount from your P60
-  inset: Use your P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
+  h1: Enter the ‘postgraduate loan deductions’ amount from your P60
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
+    - "You can use a P60 from either of these tax years:"
+    - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
   content:
     - Tell us the amount in the box labelled ‘postgraduate loan deductions.’ You’ll find this in the ‘other details’ section of your P60.
     - Enter the amount in pounds without the pence, exactly as it appears on your P60.
@@ -69,7 +86,12 @@ rti-p60-postgraduate-loan-deductions:
       <p>You only need to enter the amount from one P60.</p>
 rti-p60-statutory-shared-parental-pay:
   title: Enter the ‘statutory shared parental pay’ amount from your P60
-  inset: Use your P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
+  h1: Enter the ‘statutory shared parental pay’ amount from your P60
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
+    - "You can use a P60 from either of these tax years:"
+    - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
   content:
     - Tell us the amount in the box labelled ‘statutory shared parental pay.’ You’ll find this in the ‘statutory payments’ section of your P60.
     - Enter the amount in pounds and pence, exactly as it appears on your P60.
@@ -79,7 +101,12 @@ rti-p60-statutory-shared-parental-pay:
       <p>You only need to enter the amount from one P60.</p>
 rti-p60-statutory-adoption-pay:
   title: Enter the ‘statutory adoption pay’ amount from your P60
-  inset: Use your P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
+  h1: Enter the ‘statutory adoption pay’ amount from your P60
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
+    - "You can use a P60 from either of these tax years:"
+    - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
   content:
     - Tell us the amount in the box labelled ‘statutory adoption pay.’ You’ll find this in the ‘statutory payments’ section of your P60.
     - Enter the amount in pounds and pence, exactly as it appears on your P60.
@@ -89,7 +116,12 @@ rti-p60-statutory-adoption-pay:
       <p>You only need to enter the amount from one P60.</p>
 rti-p60-statutory-maternity-pay:
   title: Enter the ‘statutory maternity pay’ amount from your P60
-  inset: Use your P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
+  h1: Enter the ‘statutory maternity pay’ amount from your P60
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
+    - "You can use a P60 from either of these tax years:"
+    - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
   content:
     - Tell us the amount in the box labelled ‘statutory maternity pay.’ You’ll find this in the ‘statutory payments’ section of your P60.
     - Enter the amount in pounds and pence, exactly as it appears on your P60.
@@ -99,7 +131,12 @@ rti-p60-statutory-maternity-pay:
       <p>You only need to enter the amount from one P60.</p>
 rti-p60-student-loan-deductions:
   title: Enter the ‘student loan deductions’ amount from your P60
-  inset: Use your P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
+  h1: Enter the ‘student loan deductions’ amount from your P60
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
+    - "You can use a P60 from either of these tax years:"
+    - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
   content:
     - Tell us the amount in the box labelled ‘student loan deductions.’ You’ll find this in the ‘other details’ section of your P60.
     - Enter the amount in pounds without the pence, exactly as it appears on your P60.
@@ -109,7 +146,12 @@ rti-p60-student-loan-deductions:
       <p>You only need to enter the amount from one P60.</p>
 rti-p60-employee-ni-contributions:
   title: Enter the ‘employee’s contributions’ amount from your P60
-  inset: Use your P60 from the tax year {{ yearRangeStart }} to {{ yearRangeEnd }} to answer this question.
+  h1: Enter the ‘employee’s contributions’ amount from your P60
+  inset: Use your P60 from the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }} to answer this question.
+  insetMultipleTaxYears:
+    - "You can use a P60 from either of these tax years:"
+    - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
+    - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
   content:
     - Tell us the amount in the box labelled ‘employee’s contributions due on all earnings above the PT’. You’ll find this in the ‘National Insurance contributions in this employment’ section of your P60.
     - Enter the amount in pounds and pence, exactly as it appears on your P60.
@@ -119,6 +161,7 @@ rti-p60-employee-ni-contributions:
       <p>You only need to enter the amount from one P60.</p>
 ita-bankaccount:
   title: Enter the last 4 digits of the bank or building society account your tax credits are paid into
+  h1: Enter the last 4 digits of the bank or building society account your tax credits are paid into
   content:
     - "You can look for your account number on your:"
     - - bank card
@@ -131,8 +174,8 @@ prove-identity-another-way:
   content: You may be able to prove your identity another way with GOV.UK One Login. Or you can go back to the service you need to use and check if there are other ways to access it.
   warning: You cannot return to this screen if you look for another way to prove your identity.
 questionWhatTypeSelfAssessment:
-  title: What type of Self Assessment tax return did you send for the tax year {{ yearRangeStart }} to {{ yearRangeEnd }}?
-  h1: What type of Self Assessment tax return did you send for the tax year {{ yearRangeStart }} to {{ yearRangeEnd }}?
+  title: What type of Self Assessment tax return did you send for the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }}?
+  h1: What type of Self Assessment tax return did you send for the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }}?
   content:
     - This is so we can ask you questions about the right Self Assessment tax return.
     - You’ll only have sent a short tax return (SA200) if HMRC told you to.
@@ -140,7 +183,7 @@ pensions-benefits-self-assessment:
   title: Enter pensions and benefits amounts from your Self Assessment tax return
   h1: Enter pensions and benefits amounts from your Self Assessment tax return
   content:
-    - <div class="govuk-inset-text"><p>To answer this question, use your Self Assessment tax return for either of these tax years:</p><ul class="govuk-list govuk-list--bullet"><li>{{ info.yearRangeStart }} to {{ info.yearRangeEnd }}</li><li>{{ info.yearRangeStart }} to {{ info.yearRangeEnd }}</li></ul></div>
+    - <div class="govuk-inset-text"><p>To answer this question, use your Self Assessment tax return for either of these tax years:</p><ul class="govuk-list govuk-list--bullet"><li>{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}</li><li>{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}</li></ul></div>
     - Tell us the amount of pensions and benefits you received.
     - The box numbers and names on this page are the same as on your tax return.
     - Enter the amounts in pounds without the pence, exactly as they appear on your tax return. If the box in your tax return is empty, enter 0.
@@ -148,12 +191,13 @@ pensions-benefits-short-tax-return:
   title: Enter pensions and benefits amounts from your short tax return
   h1: Enter pensions and benefits amounts from your short tax return
   content:
-    - <div class="govuk-inset-text"><p>To answer this question, use your short tax return (SA200) for either of these tax years:</p><ul class="govuk-list govuk-list--bullet"><li>{{ info.yearRangeStart }} to {{ info.yearRangeEnd }}</li><li>{{ info.yearRangeStart }} to {{ info.yearRangeEnd }}</li></ul></div>
+    - <div class="govuk-inset-text"><p>To answer this question, use your short tax return (SA200) for either of these tax years:</p><ul class="govuk-list govuk-list--bullet"><li>{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}</li><li>{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}</li></ul></div>
     - Tell us the amounts you received in pensions and benefits.
     - The box numbers and names on this page are the same as on your tax return.
     - Enter the amounts in pounds without the pence, exactly as they appear on your tax return. If the box on your tax return is empty, enter 0.
 tc-amount:
   title: Enter a recent tax credits payment amount
+  h1: Enter a recent tax credits payment amount
   content:
     - Tell us about a tax credits payment you’ve had after {{ dynamicDate }}.
     - You’ll get tax credits payments every week or every 4 weeks. You only need to enter one payment amount.

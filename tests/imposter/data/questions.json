@@ -24,43 +24,50 @@
       {
         "questionKey": "rti-p60-earnings-above-pt",
         "info": {
-          "currentTaxYear": "2022/23"
+          "currentTaxYear": "2022/23",
+          "previousTaxYear": "2021/22"
         }
       },
       {
         "questionKey": "rti-p60-postgraduate-loan-deductions",
         "info": {
-          "currentTaxYear": "2022/23"
+          "currentTaxYear": "2022/23",
+          "previousTaxYear": "2021/22"
         }
       },
       {
         "questionKey": "rti-p60-statutory-shared-parental-pay",
         "info": {
-          "currentTaxYear": "2022/23"
+          "currentTaxYear": "2022/23",
+          "previousTaxYear": "2021/22"
         }
       },
       {
         "questionKey": "rti-p60-statutory-adoption-pay",
         "info": {
-          "currentTaxYear": "2022/23"
+          "currentTaxYear": "2022/23",
+          "previousTaxYear": "2021/22"
         }
       },
       {
         "questionKey": "rti-p60-statutory-maternity-pay",
         "info": {
-          "currentTaxYear": "2022/23"
+          "currentTaxYear": "2022/23",
+          "previousTaxYear": "2021/22"
         }
       },
       {
         "questionKey": "rti-p60-student-loan-deductions",
         "info": {
-          "currentTaxYear": "2022/23"
+          "currentTaxYear": "2022/23",
+          "previousTaxYear": "2021/22"
         }
       },
       {
         "questionKey": "rti-p60-employee-ni-contributions",
         "info": {
-          "currentTaxYear": "2022/23"
+          "currentTaxYear": "2022/23",
+          "previousTaxYear": "2021/22"
         }
       }
     ],
@@ -79,7 +86,8 @@
       {
         "questionKey": "sa-income-from-pensions",
         "info": {
-          "currentTaxYear": "2022/23"
+          "currentTaxYear": "2022/23",
+          "previousTaxYear": "2021/22"
         }
       },
       {

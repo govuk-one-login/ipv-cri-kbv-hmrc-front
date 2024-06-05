@@ -2,7 +2,7 @@ const taxYearToRange = require("../utils/tax-year-to-range");
 const monthsAgoToDate = require("../utils/months-ago-to-date");
 
 module.exports = function (question, translate, language) {
-  const key = `fields.${question.questionKey}.inset`;
+  let key = "";
   const data = {};
 
   if (question?.info?.months) {
@@ -10,7 +10,19 @@ module.exports = function (question, translate, language) {
   }
 
   if (question?.info?.currentTaxYear) {
-    Object.assign(data, taxYearToRange(question?.info?.currentTaxYear));
+    Object.assign(
+      data,
+      taxYearToRange(
+        question.info.currentTaxYear,
+        question.info.previousTaxYear
+      )
+    );
+  }
+
+  if (question?.info?.previousTaxYear) {
+    key = `pages.${question.questionKey}.insetMultipleTaxYears`;
+  } else {
+    key = `pages.${question.questionKey}.inset`;
   }
 
   const inset = translate(key, data);
@@ -19,5 +31,5 @@ module.exports = function (question, translate, language) {
     return inset;
   }
 
-  return " ";
+  return "";
 };
