@@ -41,9 +41,9 @@ describe("self-assessment-payment-question controller", () => {
       it("should call answer endpoint to post submitted answer", async () => {
         const questionKey = constants.SA_PAYMENT_DETAILS;
         req.session.question.questionKey = questionKey;
-        req.body = {
+        req.form.values = {
           selfAssessmentPaymentDate: "2023-02-22",
-          selfAssessmentPaymentAmount: 2000.2,
+          selfAssessmentPaymentAmount: 2000.22,
         };
         service.getNextQuestion.mockResolvedValue({});
         service.submitAnswer.mockResolvedValue({});
@@ -53,7 +53,7 @@ describe("self-assessment-payment-question controller", () => {
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
           constants.SA_PAYMENT_DETAILS,
-          JSON.stringify(req.body)
+          JSON.stringify(req.form.values)
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });

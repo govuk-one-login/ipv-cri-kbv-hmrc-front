@@ -6,7 +6,7 @@ def journeyType = sessionId.substring(prefix.length(), separatorIndex)
 
 def parser = new groovy.json.JsonSlurper();
 def body = parser.parseText(context.request.body);
-def questionKey = body.key;
+def questionKey = body.questionKey;
 def answer = body.value;
 
 def questionStore = stores.open("questions");
