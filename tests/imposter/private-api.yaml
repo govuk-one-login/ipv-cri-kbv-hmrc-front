@@ -210,7 +210,7 @@ components:
     Question:
       type: "object"
       properties:
-        key:
+        questionKey:
           type: "string"
           example: "rti-p60-payment-for-year"
         info:

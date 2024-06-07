@@ -1,6 +1,5 @@
 const loadQuestionController = require("./controllers/load-question");
 const singleAmountQuestionController = require("./controllers/single-amount-question");
-const proveIdentityAnotherWayController = require("./controllers/prove-identity-another-way");
 const selfAssessmentRouterController = require("./controllers/self-assessment-router");
 const selfAssessmentQuestionController = require("./controllers/self-assessment-question");
 const selfAssessmentPaymentQuestionController = require("./controllers/self-assessment-payment-question");
@@ -156,7 +155,6 @@ module.exports = {
     backLink: null,
     entryPoint: true,
     fields: ["abandonRadio"],
-    controller: proveIdentityAnotherWayController,
     next: [
       {
         field: "abandonRadio",
