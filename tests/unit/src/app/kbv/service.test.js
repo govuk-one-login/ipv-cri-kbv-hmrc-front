@@ -24,7 +24,7 @@ describe("Service Tests", () => {
       expect(req.axios.post).toHaveBeenCalledWith(
         ANSWER,
         {
-          key: questionKey,
+          questionKey,
           value: userInput,
         },
         {

@@ -8,7 +8,7 @@ const submitAnswer = async (req, questionKey, userInput) => {
   return req.axios.post(
     ANSWER,
     {
-      key: questionKey,
+      questionKey,
       value: userInput,
     },
     {

@@ -114,21 +114,6 @@ resources:
     response:
       scriptFile: scripts/post-answer.groovy
 
-  - method: POST
-    path: /abandon
-    response:
-      statusCode: 200
-      content: |
-        {}
-  - method: POST
-    path: /abandon
-    requestHeaders:
-      session-id: "abandon-fail"
-    response:
-      statusCode: 400
-      content: |
-        {}
-
   # Default journey that will get questions from the question store matching the initial client_id value as long as that
   # value starts with "questions-"
   - method: POST
