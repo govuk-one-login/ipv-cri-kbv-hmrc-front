@@ -11,7 +11,7 @@ describe("SelfAssessmentRouterController", () => {
   beforeEach(() => {
     controller = new SelfAssessmentRouterController({ route: "/test" });
     req = global.req;
-    req.lang = "en";
+    req.lng = "en";
     req.form.options = {
       fields: {},
       templatePath: "template-path",

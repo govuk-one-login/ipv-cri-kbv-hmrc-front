@@ -32,17 +32,17 @@ class SingleAmountQuestionController extends BaseController {
         content: presenters.questionToContent(
           req.session.question,
           req.translate,
-          req.lang
+          req.lng
         ),
         inset: presenters.questionToInset(
           req.session.question,
           req.translate,
-          req.lang
+          req.lng
         ),
         details: presenters.questionToDetails(
           req.session.question,
           req.translate,
-          req.lang
+          req.lng
         ),
         title: presenters.questionToTitle(req.session.question, req.translate),
         name: req.session.question?.questionKey,

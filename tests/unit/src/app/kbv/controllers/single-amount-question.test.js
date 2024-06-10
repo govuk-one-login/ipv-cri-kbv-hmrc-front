@@ -17,7 +17,7 @@ describe("single-amount-question controller", () => {
   beforeEach(() => {
     controller = new Controller({ route: "/test" });
     req = global.req;
-    req.lang = "en";
+    req.lng = "en";
     req.form.options = {
       fields: {},
       templatePath: "template-path",
