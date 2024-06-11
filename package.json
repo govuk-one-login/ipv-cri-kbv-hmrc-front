@@ -22,9 +22,9 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "3.592.0",
     "@govuk-one-login/di-ipv-cri-common-express": "6.2.2",
     "@govuk-one-login/one-login-analytics": "1.0.2",
-    "aws-sdk": "2.1621.0",
     "axios": "1.6.8",
     "cfenv": "1.2.4",
     "connect-dynamodb": "2.0.6",
