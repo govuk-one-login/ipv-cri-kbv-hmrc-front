@@ -4,7 +4,7 @@ require("express-async-errors");
 const path = require("path");
 const session = require("express-session");
 
-const { DynamoDB } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 
 const DynamoDBStore = require("connect-dynamodb")(session);
 
@@ -39,12 +39,12 @@ const loggerConfig = {
   app: false,
 };
 
-const dynamodb = new DynamoDB({
+const dynamodbClient = new DynamoDBClient({
   region: AWS_REGION,
 });
 
 const dynamoDBSessionStore = new DynamoDBStore({
-  client: dynamodb,
+  client: dynamodbClient,
   table: SESSION_TABLE_NAME,
 });
 

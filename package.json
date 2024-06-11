@@ -27,7 +27,7 @@
     "@govuk-one-login/one-login-analytics": "1.0.2",
     "axios": "1.6.8",
     "cfenv": "1.2.4",
-    "connect-dynamodb": "2.0.6",
+    "connect-dynamodb": "3.0.3",
     "dotenv": "16.4.5",
     "express": "4.19.2",
     "express-async-errors": "3.1.1",
