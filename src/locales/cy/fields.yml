@@ -256,3 +256,10 @@ date-month:
   label: Mis
 date-year:
   label: Blwyddyn
+govuk:
+  languageToggle:
+    ariaLabel: Dewis iaith
+    englishLanguage: English
+    englishVisuallyHidden: Change to English
+    welshLanguage: Cymraeg
+    welshVisuallyHidden: Newid yr iaith ir Gymraeg
