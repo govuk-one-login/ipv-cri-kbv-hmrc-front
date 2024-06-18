@@ -130,7 +130,7 @@ http://localhost:5000/oauth2/authorize?request=ignored&client_id=success
 Unit tests can be run from the root of the project using:
 
 ```
-npm run dev
+npm run test
 ```
 
 They use Jest as the test runner, which is configured using [jest.config.js](./jest.config.js)
