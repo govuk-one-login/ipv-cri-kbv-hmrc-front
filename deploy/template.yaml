@@ -319,6 +319,8 @@ Resources:
                   "account.gov.uk",
                   !Sub "${Environment}.account.gov.uk",
                 ]
+            - Name: LANGUAGE_TOGGLE_DISABLED
+              Value: true
           Secrets:
             - Name: DT_TENANT
               ValueFrom: !Join

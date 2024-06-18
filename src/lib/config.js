@@ -23,6 +23,7 @@ module.exports = {
       GA4_DISABLED: process.env.GA4_DISABLED || "true",
       GA4_CONTAINER_ID: process.env.GA4_CONTAINER_ID,
     },
+    LANGUAGE_TOGGLE_DISABLED: process.env.LANGUAGE_TOGGLE_DISABLED || "true",
   },
   AWS_REGION: process.env.AWS_REGION || "eu-west-2",
   PORT: Number(process.env.PORT) || 5000,

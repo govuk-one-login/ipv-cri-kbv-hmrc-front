@@ -256,3 +256,10 @@ date-month:
   label: Month
 date-year:
   label: Year
+govuk:
+  languageToggle:
+    ariaLabel: Choose Language
+    englishLanguage: English
+    englishVisuallyHidden: Change to English
+    welshLanguage: Cymraeg
+    welshVisuallyHidden: Newid yr iaith ir Gymraeg
