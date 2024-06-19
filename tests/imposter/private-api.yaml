@@ -119,8 +119,8 @@ paths:
                 $ref: "#/components/schemas/CommmonExpressOauthAxiosError"
               example:
                 oauth_error:
-                    error: "invalid_request"
-                    error_description: "Invalid request"
+                  error: "invalid_request"
+                  error_description: "Invalid request"
         "403":
           description: Session not found
           content:
@@ -129,8 +129,8 @@ paths:
                 $ref: "#/components/schemas/CommmonExpressOauthAxiosError"
               example:
                 oauth_error:
-                    error: "access_denied"
-                    error_description: "Access denied"
+                  error: "access_denied"
+                  error_description: "Access denied"
         "500":
           description: Server error
           content:
@@ -145,8 +145,8 @@ paths:
                 $ref: "#/components/schemas/CommmonExpressOauthAxiosError"
               example:
                 oauth_error:
-                    error: "server_error"
-                    error_description: "Unexpected server error"
+                  error: "server_error"
+                  error_description: "Unexpected server error"
 
   /question:
     get:

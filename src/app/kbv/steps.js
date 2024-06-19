@@ -1,3 +1,4 @@
+const startController = require("./controllers/start");
 const loadQuestionController = require("./controllers/load-question");
 const singleAmountQuestionController = require("./controllers/single-amount-question");
 const selfAssessmentRouterController = require("./controllers/self-assessment-router");
@@ -10,6 +11,7 @@ module.exports = {
     resetJourney: true,
     entryPoint: true,
     skip: true,
+    controller: startController,
     next: "answer-security-questions",
   },
   "/answer-security-questions": {

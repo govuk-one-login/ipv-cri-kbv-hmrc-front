@@ -12,6 +12,37 @@ system:
       preloadFile: data/questions.json
 
 resources:
+  ### 'insufficient-questions' journey ###
+  - method: POST
+    path: /session
+    requestBody:
+      jsonPath: $.client_id
+      value: "insufficient-questions"
+    response:
+      statusCode: 201
+      template: true
+      content: |
+        {
+          "session_id": "insufficient-questions",
+          "state": "sT@t3",
+          "redirect_uri": "http://example.net"
+        }
+
+  - method: POST
+    path: /fetchquestions
+    requestHeaders:
+      session-id: insufficient-questions
+    response:
+      statusCode: 400
+      content: |
+        {
+          "redirect_uri": "http://example.net",
+          "oauth_error": {
+            "error_description": "Invalid request",
+            "error": "invalid_request"
+          }
+        }
+
   ### 'question-500' journey ###
   - method: GET
     path: /question
@@ -138,6 +169,15 @@ resources:
           "state": "sT@t3",
           "redirect_uri": "http://example.net"
         }
+
+  - method: POST
+    path: /fetchquestions
+    requestHeaders:
+      session-id:
+        value: "questions-.+-SEPARATOR-.+" # Match our session_id pattern
+        operator: Matches
+    response:
+      statusCode: 200
 
   - method: GET
     path: /question

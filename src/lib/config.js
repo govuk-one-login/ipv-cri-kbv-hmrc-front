@@ -6,6 +6,7 @@ module.exports = {
     PATHS: {
       SESSION: "session",
       AUTHORIZATION: "authorization",
+      FETCHQUESTIONS: "fetchquestions",
       QUESTION: "question",
       ANSWER: "answer",
     },

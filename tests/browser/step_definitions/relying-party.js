@@ -34,13 +34,16 @@ Then("they should be redirected as a success", function () {
   expect(rpPage.hasSuccessQueryParams()).to.be.true;
 });
 
-Then(/^the error should be (.*)$/, function (error_code) {
-  const rpPage = new RelyingPartyPage(this.page, this.TESTING_CLIENT_ID);
+Then(
+  /^they should be redirected as an error with code (.*)$/,
+  function (error_code) {
+    const rpPage = new RelyingPartyPage(this.page, this.TESTING_CLIENT_ID);
 
-  expect(rpPage.isRelyingPartyServer()).to.be.true;
+    expect(rpPage.isRelyingPartyServer()).to.be.true;
 
-  expect(rpPage.isErrorCode(error_code)).to.be.true;
-});
+    expect(rpPage.isErrorCode(error_code)).to.be.true;
+  }
+);
 
 When("they return to a previous page", async function () {
   const rpPage = new RelyingPartyPage(this.page, this.TESTING_CLIENT_ID);
