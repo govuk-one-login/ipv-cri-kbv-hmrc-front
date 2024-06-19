@@ -90,6 +90,64 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /fetchquestions:
+    post:
+      description: >
+        Endpoint provided by the private api gateway, triggers the retrival of questions for the NINO supplied previously in the shared claims of the JWT.
+        Returns 200 if the matching NINO has sufficient questions,
+        else returns 400 with an oauth error containing invalid_request if there are not sufficient questions.
+      parameters:
+        - $ref: "#/components/parameters/SessionHeader"
+      requestBody:
+        content:
+          application/json: {}
+        required: false
+      responses:
+        "200":
+          description: There are sufficient questions
+          content:
+            application/json: {}
+        "204":
+          description: Request already retrieved, but continue the user has sufficient questions (User back button recovery path)
+          content:
+            application/json: {}
+        "400":
+          description: Insufficient questions for this NINO
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"
+              example:
+                oauth_error:
+                  error: "invalid_request"
+                  error_description: "Invalid request"
+        "403":
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"
+              example:
+                oauth_error:
+                  error: "access_denied"
+                  error_description: "Access denied"
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"
+        "504":
+          description: Server error caused by a network issue with the remote api (Timeout/Unexpected Status Codes)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommmonExpressOauthAxiosError"
+              example:
+                oauth_error:
+                  error: "server_error"
+                  error_description: "Unexpected server error"
+
   /question:
     get:
       parameters:
