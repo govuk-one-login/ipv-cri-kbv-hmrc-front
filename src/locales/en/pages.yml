@@ -1,6 +1,6 @@
 shared:
   abandon: "<a href='/kbv/prove-identity-another-way' class='govuk-link' id='abandon' data-id='abandon'>I need to prove my identity another way</a>"
-answer-security-questions:
+answerSecurityQuestions:
   title: Answer some security questions
   h1: Answer some security questions
   content:
@@ -168,7 +168,7 @@ ita-bankaccount:
       - online account or banking app
       - bank statement
       - paying-in book or cheque book
-prove-identity-another-way:
+proveIdentityAnotherWay:
   title: Prove your identity another way
   h1: Prove your identity another way
   content: You may be able to prove your identity another way with GOV.UK One Login. Or you can go back to the service you need to use and check if there are other ways to access it.
@@ -179,7 +179,7 @@ questionWhatTypeSelfAssessment:
   content:
     - This is so we can ask you questions about the right Self Assessment tax return.
     - You’ll only have sent a short tax return (SA200) if HMRC told you to.
-pensions-benefits-self-assessment:
+questionEnterPensionsBenefitsSelfAssessment:
   title: Enter pensions and benefits amounts from your Self Assessment tax return
   h1: Enter pensions and benefits amounts from your Self Assessment tax return
   content:
@@ -187,7 +187,7 @@ pensions-benefits-self-assessment:
     - Tell us the amount of pensions and benefits you received.
     - The box numbers and names on this page are the same as on your tax return.
     - Enter the amounts in pounds without the pence, exactly as they appear on your tax return. If the box in your tax return is empty, enter 0.
-pensions-benefits-short-tax-return:
+questionEnterPensionsBenefitsShortTaxReturn:
   title: Enter pensions and benefits amounts from your short tax return
   h1: Enter pensions and benefits amounts from your short tax return
   content:

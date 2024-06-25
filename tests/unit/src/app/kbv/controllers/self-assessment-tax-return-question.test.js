@@ -1,5 +1,5 @@
 const BaseController = require("hmpo-form-wizard").Controller;
-const Controller = require("../../../../../../src/app/kbv/controllers/self-assessment-question");
+const Controller = require("../../../../../../src/app/kbv/controllers/self-assessment-tax-return-question");
 const service = require("../../../../../../src/app/kbv/service");
 const constants = require("../../../../../../src/constants/question-keys");
 jest.mock("../../../../../../src/app/kbv/service");

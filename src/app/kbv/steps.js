@@ -1,8 +1,8 @@
 const startController = require("./controllers/start");
 const loadQuestionController = require("./controllers/load-question");
-const singleAmountQuestionController = require("./controllers/single-amount-question");
+const SingleInputQuestionController = require("./controllers/single-input-question");
 const selfAssessmentRouterController = require("./controllers/self-assessment-router");
-const selfAssessmentQuestionController = require("./controllers/self-assessment-question");
+const SelfAssessmentTaxReturnQuestionController = require("./controllers/self-assessment-tax-return-question");
 const selfAssessmentPaymentQuestionController = require("./controllers/self-assessment-payment-question");
 const constants = require("../../constants/question-keys");
 
@@ -31,74 +31,74 @@ module.exports = {
   },
   "/question/enter-national-insurance-payslip": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_PAYSLIP_NATIONAL_INSURANCE],
     next: "load-question",
   },
   "/question/enter-tax-payslip": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_PAYSLIP_INCOME_TAX],
     next: "load-question",
   },
   "/question/enter-total-for-year-p60": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_P60_PAYMENT_FOR_YEAR],
     next: "load-question",
   },
   "/question/enter-earnings-above-pt-p60": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_P60_EARNINGS_ABOVE_PT],
     next: "load-question",
   },
   "/question/enter-postgraduate-loan-deductions-p60": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS],
     next: "load-question",
   },
   "/question/enter-statutory-shared-parental-pay-p60": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY],
     next: "load-question",
   },
   "/question/enter-statutory-adoption-pay-p60": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_P60_STATUTORY_ADOPTION_PAY],
     next: "load-question",
   },
   "/question/enter-statutory-maternity-pay-p60": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_P60_STATUTORY_MATERNITY_PAY],
     next: "load-question",
   },
   "/question/enter-student-loan-deductions-p60": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_P60_STUDENT_LOAN_DEDUCTIONS],
     next: "load-question",
   },
   "/question/enter-employees-contributions-p60": {
     backLink: null,
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     fields: [constants.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS],
     next: "load-question",
   },
   "/question/enter-4-digits-bank-account-tax-credits": {
     backLink: null,
     fields: [constants.ITA_BANKACCOUNT],
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     next: "load-question",
   },
   "/question/enter-recent-tax-credits-payment": {
     backLink: null,
     fields: [constants.TC_AMOUNT],
-    controller: singleAmountQuestionController,
+    controller: SingleInputQuestionController,
     next: "load-question",
   },
   "/question/what-type-self-assessment": {
@@ -130,7 +130,7 @@ module.exports = {
       "jobSeekersAllowance",
       "statePensionAndBenefits",
     ],
-    controller: selfAssessmentQuestionController,
+    controller: SelfAssessmentTaxReturnQuestionController,
     next: "load-question",
   },
   "/question/enter-pensions-benefits-short-tax-return": {
@@ -143,7 +143,7 @@ module.exports = {
       "jobSeekersAllowanceShort",
       "statePensionAndBenefitsShort",
     ],
-    controller: selfAssessmentQuestionController,
+    controller: SelfAssessmentTaxReturnQuestionController,
     next: "load-question",
   },
   "/question/enter-recent-self-assessment-payment": {

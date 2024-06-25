@@ -1,6 +1,6 @@
 shared:
   abandon: "<a href='/kbv/prove-identity-another-way' class='govuk-link' id='abandon' data-id='abandon'>Mae angen i mi brofi fy hunaniaeth mewn ffordd arall</a>"
-answer-security-questions:
+answerSecurityQuestions:
   title: Atebwch rhai cwestiynau diogelwch
   h1: Atebwch rhai cwestiynau diogelwch
   content:
@@ -168,7 +168,7 @@ ita-bankaccount:
       - cyfrif ar-lein neu ap bancio
       - cyfriflen banc
       - llyfr talu i mewn neu lyfr siec
-prove-identity-another-way:
+proveIdentityAnotherWay:
   title: Profi eich hunaniaeth mewn ffordd arall
   h1: Profi eich hunaniaeth mewn ffordd arall
   content: Efallai y gallwch brofi eich hunaniaeth mewn ffordd arall gyda GOV.UK One Login. Neu gallwch fynd yn ôl i'r gwasanaeth rydych angen ei ddefnyddio a gwirio a oes ffyrdd eraill o gael mynediad ato.
@@ -179,7 +179,7 @@ questionWhatTypeSelfAssessment:
   content:
     - Mae hyn er mwyn i ni ofyn cwestiynau i chi am y ffurflen gywir.
     - Byddwch ond wedi anfon ffurflen dreth fer (SA200) os oedd CThEF wedi dweud wrthych am wneud hynny.
-pensions-benefits-self-assessment:
+questionEnterPensionsBenefitsSelfAssessment:
   title: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
   h1: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
   content:
@@ -187,7 +187,7 @@ pensions-benefits-self-assessment:
     - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
     - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
     - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.
-pensions-benefits-short-tax-return:
+questionEnterPensionsBenefitsShortTaxReturn:
   title: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
   h1: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
   content:

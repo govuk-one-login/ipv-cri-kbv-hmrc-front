@@ -3,7 +3,7 @@
 
 {% set gtmJourney = "self-assessment-payment - start" %}
 
-{% block submitButton %}
-  {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
+{% block mainContent %}
+  {{ super() }}
   {{ hmpoHtml(translate("pages.shared.abandon")) }}
 {% endblock %}

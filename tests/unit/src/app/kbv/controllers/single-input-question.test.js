@@ -1,5 +1,5 @@
 const BaseController = require("hmpo-form-wizard").Controller;
-const Controller = require("../../../../../../src/app/kbv/controllers/single-amount-question");
+const Controller = require("../../../../../../src/app/kbv/controllers/single-input-question");
 const service = require("../../../../../../src/app/kbv/service");
 jest.mock("../../../../../../src/app/kbv/service");
 
@@ -8,7 +8,7 @@ jest.mock("../../../../../../src/presenters");
 const fields = require("../../../../../../src/app/kbv/fieldsHelper");
 const constants = require("../../../../../../src/constants/question-keys");
 
-describe("single-amount-question controller", () => {
+describe("single-input-question controller", () => {
   let controller;
   let req;
   let next;
@@ -39,7 +39,7 @@ describe("single-amount-question controller", () => {
   describe("#configure", () => {
     it("should set the template to be the shared template for this controller", () => {
       controller.configure(req, res, next);
-      expect(req.form.options.template).toContain("single-amount-question");
+      expect(req.form.options.template).toContain("single-input-question");
     });
   });
 

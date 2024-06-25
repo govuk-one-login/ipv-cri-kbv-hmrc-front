@@ -4,7 +4,7 @@ const constants = require("../../../constants/question-keys");
 const { submitAnswer, getNextQuestion } = require("../service");
 const taxYearToRange = require("../../../utils/tax-year-to-range");
 
-class SelfAssessmentQuestionController extends BaseController {
+class SelfAssessmentTaxReturnQuestionController extends BaseController {
   locals(req, res, callback) {
     super.locals(req, res, (err, locals) => {
       if (err) {
@@ -58,4 +58,4 @@ class SelfAssessmentQuestionController extends BaseController {
   }
 }
 
-module.exports = SelfAssessmentQuestionController;
+module.exports = SelfAssessmentTaxReturnQuestionController;

@@ -1,10 +1,9 @@
 {% extends "base-form.njk" %}
 {% from "hmpo-details/macro.njk" import hmpoDetails %}
 
-{% set hmpoPageKey = "answer-security-questions" %}
 {% set gtmJourney = "kbv-hmrc - start" %}
 
 {% block submitButton %}
-  {{ hmpoSubmit(ctx, {id: "start", text: translate("pages.answer-security-questions.start-button")}) }}
+  {{ hmpoSubmit(ctx, {id: "start", text: translate("pages.answerSecurityQuestions.start-button")}) }}
   {{ hmpoHtml(translate("pages.shared.abandon")) }}
 {% endblock %}
