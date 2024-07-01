@@ -22,6 +22,45 @@ answerSecurityQuestions:
       <a href='https://signin.account.gov.uk/privacy-notice' class='govuk-link' rel='noreferrer noopener' target='_blank'>
       darllenwch ein hysbysiad preifatrwydd (agor mewn tab newydd)</a>.</p>
   start-button: Dechrau
+proveIdentityAnotherWay:
+  title: Profi eich hunaniaeth mewn ffordd arall
+  h1: Profi eich hunaniaeth mewn ffordd arall
+  content: Efallai y gallwch brofi eich hunaniaeth mewn ffordd arall gyda GOV.UK One Login. Neu gallwch fynd yn ôl i'r gwasanaeth rydych angen ei ddefnyddio a gwirio a oes ffyrdd eraill o gael mynediad ato.
+  warning: Ni allwch ddychwelyd i'r sgrin hon os ydych yn chwilio am ffordd arall o brofi eich hunaniaeth.
+questionWhatTypeSelfAssessment:
+  title: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }}?
+  h1: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }}?
+  content:
+    - Mae hyn er mwyn i ni ofyn cwestiynau i chi am y ffurflen gywir.
+    - Byddwch ond wedi anfon ffurflen dreth fer (SA200) os oedd CThEF wedi dweud wrthych am wneud hynny.
+questionEnterPensionsBenefitsSelfAssessment:
+  title: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
+  h1: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
+  content:
+    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich Ffurflen dreth Hunanasesiad ar gyfer y naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}</li><li>{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}</li></ul></div>
+    - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
+    - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
+    - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.
+questionEnterPensionsBenefitsShortTaxReturn:
+  title: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
+  h1: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
+  content:
+    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich ffurflen treth fer (SA200) ar gyfer naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}</li><li>{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}</li></ul></div>
+    - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
+    - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
+    - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.
+questionEnterRecentSelfAssessmentPayment:
+  title: Rhowch y manylion o'ch taliad Hunanasesiad mwyaf diweddar
+  h1: Rhowch y manylion o'ch taliad Hunanasesiad mwyaf diweddar
+  content:
+    - <div class="govuk-inset-text">Gallwch ddefnyddio cyfriflen banc i ateb y cwestiwn hwn.</div>
+    - Dywedwch wrthym y taliad diwethaf a wnaethoch tuag at eich bil treth Hunanasesiad.
+tc-amount:
+  title: Rhowch swm taliad credydau treth diweddar
+  h1: Rhowch swm taliad credydau treth diweddar
+  content:
+    - Dywedwch wrthym am daliad credydau treth a gawsoch ar ôl {{ dynamicDate }}.
+    - Byddwch yn cael taliadau credydau treth bob wythnos neu bob 4 wythnos. Dim ond swm un taliad sydd angen i chi ei roi
 rti-payslip-national-insurance:
   title: Rhowch swm yr Yswiriant Gwladol a dalwyd gennych o slip cyflog diweddar
   h1: Rhowch swm yr Yswiriant Gwladol a dalwyd gennych o slip cyflog diweddar
@@ -168,42 +207,3 @@ ita-bankaccount:
       - cyfrif ar-lein neu ap bancio
       - cyfriflen banc
       - llyfr talu i mewn neu lyfr siec
-proveIdentityAnotherWay:
-  title: Profi eich hunaniaeth mewn ffordd arall
-  h1: Profi eich hunaniaeth mewn ffordd arall
-  content: Efallai y gallwch brofi eich hunaniaeth mewn ffordd arall gyda GOV.UK One Login. Neu gallwch fynd yn ôl i'r gwasanaeth rydych angen ei ddefnyddio a gwirio a oes ffyrdd eraill o gael mynediad ato.
-  warning: Ni allwch ddychwelyd i'r sgrin hon os ydych yn chwilio am ffordd arall o brofi eich hunaniaeth.
-questionWhatTypeSelfAssessment:
-  title: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }}?
-  h1: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }}?
-  content:
-    - Mae hyn er mwyn i ni ofyn cwestiynau i chi am y ffurflen gywir.
-    - Byddwch ond wedi anfon ffurflen dreth fer (SA200) os oedd CThEF wedi dweud wrthych am wneud hynny.
-questionEnterPensionsBenefitsSelfAssessment:
-  title: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
-  h1: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
-  content:
-    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich Ffurflen dreth Hunanasesiad ar gyfer y naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}</li><li>{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}</li></ul></div>
-    - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
-    - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
-    - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.
-questionEnterPensionsBenefitsShortTaxReturn:
-  title: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
-  h1: Rhowch symiau pensiynau a budd-daliadau o'ch ffurflen dreth fer
-  content:
-    - <div class="govuk-inset-text"><p>I ateb y cwestiwn hwn, defnyddiwch eich ffurflen treth fer (SA200) ar gyfer naill flwyddyn dreth yma neu'r llall:</p><ul class="govuk-list govuk-list--bullet"><li>{{ currentYearRangeStart }} i {{ currentYearRangeEnd }}</li><li>{{ previousYearRangeStart }} i {{ previousYearRangeEnd }}</li></ul></div>
-    - Dywedwch wrthym swm y pensiynau a budd-daliadau rydych yn eu derbyn.
-    - Mae rhifau'r blychau ac enwau ar y dudalen hon yr un fath ag ar eich ffurflen dreth.
-    - Rhowch y symiau mewn punnoedd heb y ceiniog, yn union fel maent yn ymddangos ar eich ffurflen dreth. Os yw'r blwch ar eich ffurflen dreth yn wag, rhowch 0.
-tc-amount:
-  title: Rhowch swm taliad credydau treth diweddar
-  h1: Rhowch swm taliad credydau treth diweddar
-  content:
-    - Dywedwch wrthym am daliad credydau treth a gawsoch ar ôl {{ dynamicDate }}.
-    - Byddwch yn cael taliadau credydau treth bob wythnos neu bob 4 wythnos. Dim ond swm un taliad sydd angen i chi ei roi
-questionEnterRecentSelfAssessmentPayment:
-  title: Rhowch y manylion o'ch taliad Hunanasesiad mwyaf diweddar
-  h1: Rhowch y manylion o'ch taliad Hunanasesiad mwyaf diweddar
-  content:
-    - <div class="govuk-inset-text">Gallwch ddefnyddio cyfriflen banc i ateb y cwestiwn hwn.</div>
-    - Dywedwch wrthym y taliad diwethaf a wnaethoch tuag at eich bil treth Hunanasesiad.
