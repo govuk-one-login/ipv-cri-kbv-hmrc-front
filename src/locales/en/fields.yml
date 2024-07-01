@@ -1,99 +1,3 @@
-rti-payslip-national-insurance:
-  label: Amount
-  hint: For example 123.86
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
-rti-payslip-income-tax:
-  label: Amount
-  hint: For example 123.86
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
-rti-p60-payment-for-year:
-  label: Amount
-  hint: For example, 21350.75
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
-rti-p60-earnings-above-pt:
-  label: Amount
-  hint: For example, 24368
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regex: Amount must be a whole number, like 123
-rti-p60-postgraduate-loan-deductions:
-  label: Amount
-  hint: For example, 765
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regex: Amount must be a whole number, like 123
-rti-p60-statutory-shared-parental-pay:
-  label: Amount
-  hint: For example, 15620.75
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
-rti-p60-statutory-adoption-pay:
-  label: Amount
-  hint: For example, 15620.75
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
-rti-p60-statutory-maternity-pay:
-  label: Amount
-  hint: For example, 15620.75
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
-rti-p60-student-loan-deductions:
-  label: Amount
-  hint: For example, 765
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regex: Amount must be a whole number, like 123
-rti-p60-employee-ni-contributions:
-  label: Amount
-  hint: For example, 836.16
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
-ita-bankaccount:
-  label: Last 4 digits of your account number
-  hint: ""
-  prefix: ""
-  content: ""
-  validation:
-    default: Enter the last 4 digits of your account number
-    numeric: Last 4 digits of your account number must only include numbers
-    exactlength: Last 4 digits of your account number must be 4 numbers
 abandonRadio:
   label: What would you like to do?
   legend: What would you like to do?
@@ -209,15 +113,6 @@ statePensionAndBenefitsShort:
     regex: Enter a whole number, like 123, in 'Total of any other taxable State Pensions and benefits'
   prefix: £
   content: ""
-tc-amount:
-  label: Amount
-  hint: For example 36.75
-  prefix: £
-  content: ""
-  validation:
-    required: Enter an amount
-    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
-    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 selfAssessmentPaymentDate:
   label: Date of payment
   legend: Date of payment
@@ -250,12 +145,6 @@ selfAssessmentPaymentDate-month:
   content: ""
 selfAssessmentPaymentDate-year:
   content: ""
-date-day:
-  label: Day
-date-month:
-  label: Month
-date-year:
-  label: Year
 govuk:
   languageToggle:
     ariaLabel: Choose Language
@@ -263,3 +152,114 @@ govuk:
     englishVisuallyHidden: Change to English
     welshLanguage: Cymraeg
     welshVisuallyHidden: Newid yr iaith ir Gymraeg
+date-day:
+  label: Day
+date-month:
+  label: Month
+date-year:
+  label: Year
+tc-amount:
+  label: Amount
+  hint: For example 36.75
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
+rti-payslip-national-insurance:
+  label: Amount
+  hint: For example 123.86
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
+rti-payslip-income-tax:
+  label: Amount
+  hint: For example 123.86
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
+rti-p60-payment-for-year:
+  label: Amount
+  hint: For example, 21350.75
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
+rti-p60-earnings-above-pt:
+  label: Amount
+  hint: For example, 24368
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regex: Amount must be a whole number, like 123
+rti-p60-postgraduate-loan-deductions:
+  label: Amount
+  hint: For example, 765
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regex: Amount must be a whole number, like 123
+rti-p60-statutory-shared-parental-pay:
+  label: Amount
+  hint: For example, 15620.75
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
+rti-p60-statutory-adoption-pay:
+  label: Amount
+  hint: For example, 15620.75
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
+rti-p60-statutory-maternity-pay:
+  label: Amount
+  hint: For example, 15620.75
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
+rti-p60-student-loan-deductions:
+  label: Amount
+  hint: For example, 765
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regex: Amount must be a whole number, like 123
+rti-p60-employee-ni-contributions:
+  label: Amount
+  hint: For example, 836.16
+  prefix: £
+  content: ""
+  validation:
+    required: Enter an amount
+    regexNumeric: Enter a valid amount in pounds and pence, like 123.45
+    regexPoundsAndPence: Amount must include pounds and pence, like 123.45
+ita-bankaccount:
+  label: Last 4 digits of your account number
+  hint: ""
+  prefix: ""
+  content: ""
+  validation:
+    default: Enter the last 4 digits of your account number
+    numeric: Last 4 digits of your account number must only include numbers
+    exactlength: Last 4 digits of your account number must be 4 numbers
