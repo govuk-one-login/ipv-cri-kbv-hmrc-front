@@ -95,7 +95,7 @@ describe("self-assessment-question controller", () => {
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
           constants.SA_INCOME_FROM_PENSIONS,
-          JSON.stringify(req.body)
+          "160"
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
@@ -106,27 +106,19 @@ describe("self-assessment-question controller", () => {
         req.body = {
           statePensionShort: 20,
           otherPensionShort: 20,
-          employmentAndSupportAllowanceShort: 30,
+          employmentAndSupportAllowanceShort: 50,
           jobSeekersAllowanceShort: 40,
           statePensionAndBenefitsShort: 50,
         };
         service.getNextQuestion.mockResolvedValue({});
         service.submitAnswer.mockResolvedValue({});
 
-        const apiRequestBody = {
-          statePension: 20,
-          otherPension: 20,
-          employmentAndSupportAllowance: 30,
-          jobSeekersAllowance: 40,
-          statePensionAndBenefits: 50,
-        };
-
         await controller.saveValues(req, res, next);
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
           constants.SA_INCOME_FROM_PENSIONS,
-          JSON.stringify(apiRequestBody)
+          "180"
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
