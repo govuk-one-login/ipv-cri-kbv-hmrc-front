@@ -27,7 +27,7 @@ class SelfAssessmentTaxReturnQuestionController extends BaseController {
       }
 
       try {
-        const userInput = JSON.stringify({
+        const pensionContributions = {
           statePension: req.body.statePension || req.body.statePensionShort,
           otherPension: req.body.otherPension || req.body.otherPensionShort,
           employmentAndSupportAllowance:
@@ -38,9 +38,19 @@ class SelfAssessmentTaxReturnQuestionController extends BaseController {
           statePensionAndBenefits:
             req.body.statePensionAndBenefits ||
             req.body.statePensionAndBenefitsShort,
-        });
+        };
 
-        await submitAnswer(req, constants.SA_INCOME_FROM_PENSIONS, userInput);
+        const totalPensionContribution = Object.keys(
+          pensionContributions
+        ).reduce(function (previous, key) {
+          return previous + parseFloat(pensionContributions[key] || 0);
+        }, 0);
+
+        await submitAnswer(
+          req,
+          constants.SA_INCOME_FROM_PENSIONS,
+          totalPensionContribution.toString()
+        );
 
         req.session.question = undefined;
         const nextQuestion = await getNextQuestion(req);
