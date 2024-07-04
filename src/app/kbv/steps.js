@@ -6,6 +6,7 @@ const SelfAssessmentTaxReturnQuestionController = require("./controllers/self-as
 const selfAssessmentPaymentQuestionController = require("./controllers/self-assessment-payment-question");
 const questionKeys = require("../../constants/question-keys");
 const routes = require("../../constants/routes");
+const fields = require("../../constants/fields");
 
 module.exports = {
   [routes.BASE_PATH]: {
@@ -109,16 +110,16 @@ module.exports = {
     template: "self-assessment-router",
     backLink: null,
     entryPoint: true,
-    fields: ["selfAssessmentRouter"],
+    fields: [fields.SELF_ASSESSMENT_ROUTER],
     controller: selfAssessmentRouterController,
     next: [
       {
-        field: "selfAssessmentRouter",
+        field: fields.SELF_ASSESSMENT_ROUTER,
         value: "sa100",
         next: `${routes.BASE_KBV_QUESTION_PATH}${routes.ENTER_PENSION_BENEFITS_SELF_ASSESSMENT}`,
       },
       {
-        field: "selfAssessmentRouter",
+        field: fields.SELF_ASSESSMENT_ROUTER,
         value: "sa200",
         next: `${routes.BASE_KBV_QUESTION_PATH}${routes.ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN}`,
       },
@@ -129,11 +130,11 @@ module.exports = {
       backLink: null,
       template: "pensions-benefits-self-assessment",
       fields: [
-        "statePension",
-        "otherPension",
-        "employmentAndSupportAllowance",
-        "jobSeekersAllowance",
-        "statePensionAndBenefits",
+        fields.STATE_PENSION,
+        fields.OTHER_PENSION,
+        fields.EMPLOYMENT_AND_SUPPORT_ALLOWANCE,
+        fields.JOB_SEEKERS_ALLOWANCE,
+        fields.STATE_PENSION_AND_BENEFITS,
       ],
       controller: SelfAssessmentTaxReturnQuestionController,
       next: routes.LOAD_QUESTION,
@@ -143,11 +144,11 @@ module.exports = {
       backLink: null,
       template: "pensions-benefits-short-tax-return",
       fields: [
-        "statePensionShort",
-        "otherPensionShort",
-        "employmentAndSupportAllowanceShort",
-        "jobSeekersAllowanceShort",
-        "statePensionAndBenefitsShort",
+        fields.STATE_PENSION_SHORT,
+        fields.OTHER_PENSION_SHORT,
+        fields.EMPLOYMENT_AND_SUPPORT_ALLOWANCE_SHORT,
+        fields.JOB_SEEKERS_ALLOWANCE_SHORT,
+        fields.STATE_PENSION_AND_BENEFITS_SHORT,
       ],
       controller: SelfAssessmentTaxReturnQuestionController,
       next: routes.LOAD_QUESTION,
@@ -156,22 +157,22 @@ module.exports = {
     {
       backLink: null,
       template: "self-assessment-payment",
-      fields: ["selfAssessmentPaymentDate", "selfAssessmentPaymentAmount"],
+      fields: [fields.SELF_ASSESSMENT_PAYMENT_DATE, fields.SELF_ASSESSMENT_PAYMENT_AMOUNT],
       controller: selfAssessmentPaymentQuestionController,
       next: routes.LOAD_QUESTION,
     },
   [`${routes.BASE_PATH}${routes.PROVE_IDENTITY_ANOTHER_WAY}`]: {
     backLink: null,
     entryPoint: true,
-    fields: ["abandonRadio"],
+    fields: [fields.ABANDON_RADIO],
     next: [
       {
-        field: "abandonRadio",
+        field: fields.ABANDON_RADIO,
         value: "stop",
         next: "/oauth2/callback",
       },
       {
-        field: "abandonRadio",
+        field: fields.ABANDON_RADIO,
         value: "continue",
         next: [
           {

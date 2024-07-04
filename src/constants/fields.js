@@ -1,0 +1,16 @@
+module.exports = Object.freeze({
+  SELF_ASSESSMENT_ROUTER: "selfAssessmentRouter",
+  STATE_PENSION: "statePension",
+  OTHER_PENSION: "otherPension",
+  EMPLOYMENT_AND_SUPPORT_ALLOWANCE: "employmentAndSupportAllowance",
+  JOB_SEEKERS_ALLOWANCE: "jobSeekersAllowance",
+  STATE_PENSION_AND_BENEFITS: "statePensionAndBenefits",
+  STATE_PENSION_SHORT: "statePensionShort",
+  OTHER_PENSION_SHORT: "otherPensionShort",
+  EMPLOYMENT_AND_SUPPORT_ALLOWANCE_SHORT: "employmentAndSupportAllowanceShort",
+  JOB_SEEKERS_ALLOWANCE_SHORT: "jobSeekersAllowanceShort",
+  STATE_PENSION_AND_BENEFITS_SHORT: "statePensionAndBenefitsShort",
+  SELF_ASSESSMENT_PAYMENT_DATE: "selfAssessmentPaymentDate",
+  SELF_ASSESSMENT_PAYMENT_AMOUNT: "selfAssessmentPaymentAmount",
+  ABANDON_RADIO: "abandonRadio",
+});
