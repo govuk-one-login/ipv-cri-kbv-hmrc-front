@@ -3,6 +3,7 @@ module.exports = Object.freeze({
   BASE_QUESTION_PATH: "/question/",
   BASE_KBV_PATH: "/kbv/",
   BASE_KBV_QUESTION_PATH: "/kbv/question/",
+  OAUTH2_CALLBACK_PATH: "/oauth2/callback",
   PROVE_IDENTITY_ANOTHER_WAY: "prove-identity-another-way",
   DONE: "done",
   ANSWER_SECURITY_QUESTIONS: "answer-security-questions",

@@ -169,7 +169,7 @@ module.exports = {
       {
         field: fields.ABANDON_RADIO,
         value: "stop",
-        next: "/oauth2/callback",
+        next: routes.OAUTH2_CALLBACK_PATH,
       },
       {
         field: fields.ABANDON_RADIO,
@@ -187,6 +187,6 @@ module.exports = {
   [`${routes.BASE_PATH}${routes.DONE}`]: {
     skip: true,
     noPost: true,
-    next: "/oauth2/callback",
+    next: routes.OAUTH2_CALLBACK_PATH,
   },
 };
