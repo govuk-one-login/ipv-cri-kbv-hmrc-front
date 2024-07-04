@@ -5,44 +5,44 @@ const {
     PATHS: { QUESTION },
   },
 } = require("../../../lib/config");
-const constants = require("../../../constants/question-keys");
+const questionKeys = require("../../../constants/question-keys");
 
 const questionKeyToPathMap = new Map([
   [
-    constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
+    questionKeys.RTI_PAYSLIP_NATIONAL_INSURANCE,
     "enter-national-insurance-payslip",
   ],
-  [constants.RTI_PAYSLIP_INCOME_TAX, "enter-tax-payslip"],
-  [constants.ITA_BANKACCOUNT, "enter-4-digits-bank-account-tax-credits"],
-  [constants.RTI_P60_PAYMENT_FOR_YEAR, "enter-total-for-year-p60"],
-  [constants.RTI_P60_EARNINGS_ABOVE_PT, "enter-earnings-above-pt-p60"],
+  [questionKeys.RTI_PAYSLIP_INCOME_TAX, "enter-tax-payslip"],
+  [questionKeys.ITA_BANKACCOUNT, "enter-4-digits-bank-account-tax-credits"],
+  [questionKeys.RTI_P60_PAYMENT_FOR_YEAR, "enter-total-for-year-p60"],
+  [questionKeys.RTI_P60_EARNINGS_ABOVE_PT, "enter-earnings-above-pt-p60"],
   [
-    constants.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS,
+    questionKeys.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS,
     "enter-postgraduate-loan-deductions-p60",
   ],
   [
-    constants.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY,
+    questionKeys.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY,
     "enter-statutory-shared-parental-pay-p60",
   ],
   [
-    constants.RTI_P60_STATUTORY_ADOPTION_PAY,
+    questionKeys.RTI_P60_STATUTORY_ADOPTION_PAY,
     "enter-statutory-adoption-pay-p60",
   ],
   [
-    constants.RTI_P60_STATUTORY_MATERNITY_PAY,
+    questionKeys.RTI_P60_STATUTORY_MATERNITY_PAY,
     "enter-statutory-maternity-pay-p60",
   ],
   [
-    constants.RTI_P60_STUDENT_LOAN_DEDUCTIONS,
+    questionKeys.RTI_P60_STUDENT_LOAN_DEDUCTIONS,
     "enter-student-loan-deductions-p60",
   ],
   [
-    constants.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS,
+    questionKeys.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS,
     "enter-employees-contributions-p60",
   ],
-  [constants.SA_INCOME_FROM_PENSIONS, "what-type-self-assessment"],
-  [constants.TC_AMOUNT, "enter-recent-tax-credits-payment"],
-  [constants.SA_PAYMENT_DETAILS, "enter-recent-self-assessment-payment"],
+  [questionKeys.SA_INCOME_FROM_PENSIONS, "what-type-self-assessment"],
+  [questionKeys.TC_AMOUNT, "enter-recent-tax-credits-payment"],
+  [questionKeys.SA_PAYMENT_DETAILS, "enter-recent-self-assessment-payment"],
 ]);
 
 class LoadQuestionController extends BaseController {

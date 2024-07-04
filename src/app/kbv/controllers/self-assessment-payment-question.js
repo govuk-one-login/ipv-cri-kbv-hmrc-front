@@ -1,7 +1,7 @@
 const debug = require("debug")("load-question");
 const BaseController = require("hmpo-form-wizard").Controller;
 const DateControllerMixin = require("hmpo-components").mixins.Date;
-const constants = require("../../../constants/question-keys");
+const questionKeys = require("../../../constants/question-keys");
 const { submitAnswer, getNextQuestion } = require("../service");
 
 const DateController = DateControllerMixin(BaseController);
@@ -20,7 +20,7 @@ class SelfAssessmentPaymentQuestionController extends DateController {
             req.form.values.selfAssessmentPaymentAmount,
         });
 
-        await submitAnswer(req, constants.SA_PAYMENT_DETAILS, userInput);
+        await submitAnswer(req, questionKeys.SA_PAYMENT_DETAILS, userInput);
 
         req.session.question = undefined;
         const nextQuestion = await getNextQuestion(req);
