@@ -2,6 +2,7 @@ const debug = require("debug")("load-question");
 const BaseController = require("hmpo-form-wizard").Controller;
 const DateControllerMixin = require("hmpo-components").mixins.Date;
 const questionKeys = require("../../../constants/question-keys");
+const fields = require("../../../constants/fields");
 const { submitAnswer, getNextQuestion } = require("../service");
 
 const DateController = DateControllerMixin(BaseController);
@@ -15,8 +16,9 @@ class SelfAssessmentPaymentQuestionController extends DateController {
 
       try {
         const userInput = JSON.stringify({
-          selfAssessmentPaymentDate: req.form.values.selfAssessmentPaymentDate,
-          selfAssessmentPaymentAmount:
+          [fields.SELF_ASSESSMENT_PAYMENT_DATE]:
+            req.form.values.selfAssessmentPaymentDate,
+          [fields.SELF_ASSESSMENT_PAYMENT_AMOUNT]:
             req.form.values.selfAssessmentPaymentAmount,
         });
 

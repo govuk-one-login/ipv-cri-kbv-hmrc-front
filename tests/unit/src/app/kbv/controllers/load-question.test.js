@@ -4,7 +4,6 @@ const { QUESTION } = require("../../../../../../src/lib/config").API.PATHS;
 const questionKeys = require("../../../../../../src/constants/question-keys");
 const routes = require("../../../../../../src/constants/routes");
 
-
 jest.mock();
 describe("question controller", () => {
   let controller;
@@ -101,7 +100,9 @@ describe("question controller", () => {
 
       const result = controller.getQuestionPath(req);
 
-      expect(result).toBe(`question/${routes.ENTER_NATIONAL_INSURANCE_PAYSLIP}`);
+      expect(result).toBe(
+        `question/${routes.ENTER_NATIONAL_INSURANCE_PAYSLIP}`
+      );
     });
   });
 });

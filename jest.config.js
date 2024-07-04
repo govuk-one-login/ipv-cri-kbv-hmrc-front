@@ -6,6 +6,7 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/tests/unit/lib/helpers"],
   coveragePathIgnorePatterns: [
     "src/assets/.*",
+    "src/constants/.*",
     "src/app/.*/fields.js",
     "src/app/.*/steps.js",
     "src/app/.*/index.js",

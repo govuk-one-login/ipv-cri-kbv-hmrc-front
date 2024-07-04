@@ -4,6 +4,7 @@ const {
   numericWithRequiredDecimals,
 } = require("./fieldsHelper");
 const questionKeys = require("../../constants/question-keys");
+const fields = require("../../constants/fields");
 
 const validateRequiredAmountWithPoundsAndPence = {
   type: "text",
@@ -59,29 +60,31 @@ module.exports = {
     validateRequiredAmountWithPoundsAndPence,
   [questionKeys.RTI_P60_STATUTORY_ADOPTION_PAY]:
     validateRequiredAmountWithPoundsAndPence,
-  abandonRadio: {
+  [fields.ABANDON_RADIO]: {
     type: "radios",
     items: ["stop", "continue"],
     validate: ["required"],
   },
-  selfAssessmentRouter: {
+  [fields.SELF_ASSESSMENT_ROUTER]: {
     type: "radios",
     items: ["sa100", "sa200"],
     validate: ["required"],
   },
-  statePension: validateRequiredAmountWithPounds,
-  otherPension: validateRequiredAmountWithPounds,
-  employmentAndSupportAllowance: validateRequiredAmountWithPounds,
-  jobSeekersAllowance: validateRequiredAmountWithPounds,
-  statePensionAndBenefits: validateRequiredAmountWithPounds,
-  statePensionShort: validateRequiredAmountWithPounds,
-  otherPensionShort: validateRequiredAmountWithPounds,
-  employmentAndSupportAllowanceShort: validateRequiredAmountWithPounds,
-  jobSeekersAllowanceShort: validateRequiredAmountWithPounds,
-  statePensionAndBenefitsShort: validateRequiredAmountWithPounds,
-  selfAssessmentPaymentDate: {
+  [fields.STATE_PENSION]: validateRequiredAmountWithPounds,
+  [fields.OTHER_PENSION]: validateRequiredAmountWithPounds,
+  [fields.EMPLOYMENT_AND_SUPPORT_ALLOWANCE]: validateRequiredAmountWithPounds,
+  [fields.JOB_SEEKERS_ALLOWANCE]: validateRequiredAmountWithPounds,
+  [fields.STATE_PENSION_AND_BENEFITS]: validateRequiredAmountWithPounds,
+  [fields.STATE_PENSION_AND_BENEFITS_SHORT]: validateRequiredAmountWithPounds,
+  [fields.OTHER_PENSION_SHORT]: validateRequiredAmountWithPounds,
+  [fields.EMPLOYMENT_AND_SUPPORT_ALLOWANCE_SHORT]:
+    validateRequiredAmountWithPounds,
+  [fields.JOB_SEEKERS_ALLOWANCE_SHORT]: validateRequiredAmountWithPounds,
+  [fields.STATE_PENSION_AND_BENEFITS_SHORT]: validateRequiredAmountWithPounds,
+  [fields.SELF_ASSESSMENT_PAYMENT_DATE]: {
     type: "date",
     validate: ["required", "date", { type: "before", arguments: [] }],
   },
-  selfAssessmentPaymentAmount: validateRequiredAmountWithPoundsAndPence,
+  [fields.SELF_ASSESSMENT_PAYMENT_AMOUNT]:
+    validateRequiredAmountWithPoundsAndPence,
 };

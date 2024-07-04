@@ -157,7 +157,10 @@ module.exports = {
     {
       backLink: null,
       template: "self-assessment-payment",
-      fields: [fields.SELF_ASSESSMENT_PAYMENT_DATE, fields.SELF_ASSESSMENT_PAYMENT_AMOUNT],
+      fields: [
+        fields.SELF_ASSESSMENT_PAYMENT_DATE,
+        fields.SELF_ASSESSMENT_PAYMENT_AMOUNT,
+      ],
       controller: selfAssessmentPaymentQuestionController,
       next: routes.LOAD_QUESTION,
     },

@@ -1,6 +1,7 @@
 const debug = require("debug")("load-question");
 const BaseController = require("hmpo-form-wizard").Controller;
-const constants = require("../../../constants/question-keys");
+const questionKeys = require("../../../constants/question-keys");
+const fields = require("../../../constants/fields");
 const { submitAnswer, getNextQuestion } = require("../service");
 const taxYearToRange = require("../../../utils/tax-year-to-range");
 
@@ -28,14 +29,16 @@ class SelfAssessmentTaxReturnQuestionController extends BaseController {
 
       try {
         const pensionContributions = {
-          statePension: req.body.statePension || req.body.statePensionShort,
-          otherPension: req.body.otherPension || req.body.otherPensionShort,
-          employmentAndSupportAllowance:
+          [fields.STATE_PENSION]:
+            req.body.statePension || req.body.statePensionShort,
+          [fields.OTHER_PENSION]:
+            req.body.otherPension || req.body.otherPensionShort,
+          [fields.EMPLOYMENT_AND_SUPPORT_ALLOWANCE]:
             req.body.employmentAndSupportAllowance ||
             req.body.employmentAndSupportAllowanceShort,
-          jobSeekersAllowance:
+          [fields.JOB_SEEKERS_ALLOWANCE]:
             req.body.jobSeekersAllowance || req.body.jobSeekersAllowanceShort,
-          statePensionAndBenefits:
+          [fields.STATE_PENSION_AND_BENEFITS]:
             req.body.statePensionAndBenefits ||
             req.body.statePensionAndBenefitsShort,
         };
@@ -48,7 +51,7 @@ class SelfAssessmentTaxReturnQuestionController extends BaseController {
 
         await submitAnswer(
           req,
-          constants.SA_INCOME_FROM_PENSIONS,
+          questionKeys.SA_INCOME_FROM_PENSIONS,
           totalPensionContribution.toString()
         );
 
