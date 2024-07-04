@@ -4,6 +4,9 @@ const {
   PensionsBenefitsShortTaxReturnPage,
 } = require("../pages");
 const { expect } = require("chai");
+const {
+  ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN
+} = require("../../../src/constants/routes");
 
 Then(
   "they should see the pensions-benefits-self-assessment question page",
@@ -24,7 +27,7 @@ Then(
 When("they enter correct pension details", async function () {
   const page = this.page
     .url()
-    .includes("enter-pensions-benefits-short-tax-return")
+    .includes(ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN)
     ? new PensionsBenefitsShortTaxReturnPage(this.page)
     : new PensionsBenefitsSelfAssessmentPage(this.page);
 
@@ -35,7 +38,7 @@ When("they enter correct pension details", async function () {
 When("they enter invalid pension details", async function () {
   const page = this.page
     .url()
-    .includes("enter-pensions-benefits-short-tax-return")
+    .includes(ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN)
     ? new PensionsBenefitsShortTaxReturnPage(this.page)
     : new PensionsBenefitsSelfAssessmentPage(this.page);
 
@@ -46,7 +49,7 @@ When("they enter invalid pension details", async function () {
 When("they enter empty pension details", async function () {
   const page = this.page
     .url()
-    .includes("enter-pensions-benefits-short-tax-return")
+    .includes(ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN)
     ? new PensionsBenefitsShortTaxReturnPage(this.page)
     : new PensionsBenefitsSelfAssessmentPage(this.page);
 
@@ -57,7 +60,7 @@ When("they enter empty pension details", async function () {
 Then("they should see error messages", async function () {
   const page = this.page
     .url()
-    .includes("enter-pensions-benefits-short-tax-return")
+    .includes(ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN)
     ? new PensionsBenefitsShortTaxReturnPage(this.page)
     : new PensionsBenefitsSelfAssessmentPage(this.page);
 

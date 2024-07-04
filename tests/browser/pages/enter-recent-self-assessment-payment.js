@@ -1,10 +1,15 @@
+const {
+  BASE_KBV_QUESTION_PATH,
+  ENTER_RECENT_SELF_ASSESSMENT_PAYMENT,
+} = require("../../../src/constants/routes");
+
 module.exports = class PlaywrightDevPage {
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/question/enter-recent-self-assessment-payment";
+    this.path = `${BASE_KBV_QUESTION_PATH}${ENTER_RECENT_SELF_ASSESSMENT_PAYMENT}`;
   }
 
   async continue() {

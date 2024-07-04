@@ -42,12 +42,14 @@ module.exports = {
   [questionKeys.RTI_P60_EARNINGS_ABOVE_PT]: validateRequiredAmountWithPounds,
   [questionKeys.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS]:
     validateRequiredAmountWithPounds,
-  [questionKeys.RTI_P60_STUDENT_LOAN_DEDUCTIONS]: validateRequiredAmountWithPounds,
+  [questionKeys.RTI_P60_STUDENT_LOAN_DEDUCTIONS]:
+    validateRequiredAmountWithPounds,
   [questionKeys.RTI_P60_STATUTORY_MATERNITY_PAY]:
     validateRequiredAmountWithPoundsAndPence,
   [questionKeys.RTI_PAYSLIP_NATIONAL_INSURANCE]:
     validateRequiredAmountWithPoundsAndPence,
-  [questionKeys.RTI_PAYSLIP_INCOME_TAX]: validateRequiredAmountWithPoundsAndPence,
+  [questionKeys.RTI_PAYSLIP_INCOME_TAX]:
+    validateRequiredAmountWithPoundsAndPence,
   [questionKeys.TC_AMOUNT]: validateRequiredAmountWithPoundsAndPence,
   [questionKeys.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS]:
     validateRequiredAmountWithPoundsAndPence,

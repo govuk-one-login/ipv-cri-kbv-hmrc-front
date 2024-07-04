@@ -1,10 +1,15 @@
+const {
+  BASE_KBV_QUESTION_PATH,
+  ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN,
+} = require("../../../src/constants/routes");
+
 module.exports = class PensionsBenefitsShortTaxReturnPage {
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/question/enter-pensions-benefits-short-tax-return";
+    this.path = `${BASE_KBV_QUESTION_PATH}${ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN}`;
   }
 
   async continue() {

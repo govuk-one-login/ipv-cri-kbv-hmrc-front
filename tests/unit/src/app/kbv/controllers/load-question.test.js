@@ -2,6 +2,8 @@ const BaseController = require("hmpo-form-wizard").Controller;
 const Controller = require("../../../../../../src/app/kbv/controllers/load-question");
 const { QUESTION } = require("../../../../../../src/lib/config").API.PATHS;
 const questionKeys = require("../../../../../../src/constants/question-keys");
+const routes = require("../../../../../../src/constants/routes");
+
 
 jest.mock();
 describe("question controller", () => {
@@ -64,7 +66,9 @@ describe("question controller", () => {
     it('should return "true" when there is a next question', () => {
       const req = {
         session: {
-          question: { questionKey: questionKeys.RTI_PAYSLIP_NATIONAL_INSURANCE },
+          question: {
+            questionKey: questionKeys.RTI_PAYSLIP_NATIONAL_INSURANCE,
+          },
         },
       };
 
@@ -89,13 +93,15 @@ describe("question controller", () => {
     it("should return path for the next question", () => {
       const req = {
         session: {
-          question: { questionKey: questionKeys.RTI_PAYSLIP_NATIONAL_INSURANCE },
+          question: {
+            questionKey: questionKeys.RTI_PAYSLIP_NATIONAL_INSURANCE,
+          },
         },
       };
 
       const result = controller.getQuestionPath(req);
 
-      expect(result).toBe("question/enter-national-insurance-payslip");
+      expect(result).toBe(`question/${routes.ENTER_NATIONAL_INSURANCE_PAYSLIP}`);
     });
   });
 });

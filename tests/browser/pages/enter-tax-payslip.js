@@ -1,10 +1,15 @@
+const {
+  BASE_KBV_QUESTION_PATH,
+  ENTER_TAX_PAYSLIP,
+} = require("../../../src/constants/routes");
+
 module.exports = class PlaywrightDevPage {
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/question/enter-tax-payslip";
+    this.path = `${BASE_KBV_QUESTION_PATH}${ENTER_TAX_PAYSLIP}`;
   }
 
   async continue() {

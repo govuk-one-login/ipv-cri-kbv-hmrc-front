@@ -1,10 +1,15 @@
+const {
+  BASE_KBV_QUESTION_PATH,
+  ENTER_4_DIGITS_BANK_ACCOUNT_TAX_CREDITS,
+} = require("../../../src/constants/routes");
+
 module.exports = class PlaywrightDevPage {
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/question/enter-4-digits-bank-account-tax-credits";
+    this.path = `${BASE_KBV_QUESTION_PATH}${ENTER_4_DIGITS_BANK_ACCOUNT_TAX_CREDITS}`;
   }
 
   async continue() {

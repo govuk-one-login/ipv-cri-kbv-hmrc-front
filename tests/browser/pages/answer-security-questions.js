@@ -1,10 +1,16 @@
+const {
+  BASE_KBV_PATH,
+  ANSWER_SECURITY_QUESTIONS,
+} = require("../../../src/constants/routes");
+
 module.exports = class PlaywrightDevPage {
   /**
    * @param {import('@playwright/test').Page} page
    */
+
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/answer-security-questions";
+    this.path = `${BASE_KBV_PATH}${ANSWER_SECURITY_QUESTIONS}`;
   }
 
   async start() {

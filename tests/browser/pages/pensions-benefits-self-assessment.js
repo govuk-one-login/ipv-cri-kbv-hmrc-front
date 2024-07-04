@@ -1,10 +1,15 @@
+const {
+  BASE_KBV_QUESTION_PATH,
+  ENTER_PENSION_BENEFITS_SELF_ASSESSMENT,
+} = require("../../../src/constants/routes");
+
 module.exports = class PensionsBenefitsSelfAssessmentPage {
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/question/enter-pensions-benefits-self-assessment";
+    this.path = `${BASE_KBV_QUESTION_PATH}${ENTER_PENSION_BENEFITS_SELF_ASSESSMENT}`;
   }
 
   async continue() {

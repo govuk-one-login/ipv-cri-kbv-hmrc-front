@@ -1,10 +1,15 @@
+const {
+  BASE_KBV_PATH,
+  PROVE_IDENTITY_ANOTHER_WAY,
+} = require("../../../src/constants/routes");
+
 module.exports = class PlaywrightDevPage {
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
     this.page = page;
-    this.path = "/kbv/prove-identity-another-way";
+    this.path = `${BASE_KBV_PATH}${PROVE_IDENTITY_ANOTHER_WAY}`;
   }
 
   async continue() {
