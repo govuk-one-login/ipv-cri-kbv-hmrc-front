@@ -6,7 +6,7 @@ jest.mock("../../../../../../src/app/kbv/service");
 const presenters = require("../../../../../../src/presenters");
 jest.mock("../../../../../../src/presenters");
 const fields = require("../../../../../../src/app/kbv/fieldsHelper");
-const constants = require("../../../../../../src/constants/question-keys");
+const { APP } = require("../../../../../../src/lib/config");
 
 describe("single-input-question controller", () => {
   let controller;
@@ -109,7 +109,7 @@ describe("single-input-question controller", () => {
 
     describe("on API success", () => {
       it("should call answer endpoint to post submitted answer", async () => {
-        const questionKey = constants.RTI_PAYSLIP_NATIONAL_INSURANCE;
+        const questionKey = APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE;
         req.session.question.questionKey = questionKey;
         req.body[questionKey] = "3";
         service.getNextQuestion.mockResolvedValue({});
@@ -119,7 +119,7 @@ describe("single-input-question controller", () => {
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
-          constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
+          APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE,
           "3"
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
@@ -127,10 +127,10 @@ describe("single-input-question controller", () => {
 
       it("should call question endpoint to get next question and store it in session", async () => {
         req.session.question.questionKey =
-          constants.RTI_PAYSLIP_NATIONAL_INSURANCE;
+          APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE;
         req.body.question = "3";
         service.getNextQuestion.mockResolvedValue({
-          data: { questionKey: constants.RTI_P60_PAYMENT_FOR_YEAR },
+          data: { questionKey: APP.QUESTION_KEY.RTI_P60_PAYMENT_FOR_YEAR },
         });
         service.submitAnswer.mockResolvedValue({});
 
@@ -139,12 +139,12 @@ describe("single-input-question controller", () => {
         expect(service.getNextQuestion).toHaveBeenCalledWith(req);
         expect(service.getNextQuestion).toHaveBeenCalledTimes(1);
         expect(req.session.question).toEqual({
-          questionKey: constants.RTI_P60_PAYMENT_FOR_YEAR,
+          questionKey: APP.QUESTION_KEY.RTI_P60_PAYMENT_FOR_YEAR,
         });
       });
 
       it("should strip spaces and decimal when required", async () => {
-        const questionKey = constants.RTI_P60_EARNINGS_ABOVE_PT;
+        const questionKey = APP.QUESTION_KEY.RTI_P60_EARNINGS_ABOVE_PT;
         req.session.question.questionKey = questionKey;
         req.body[questionKey] = " 123.45 ";
         req.form.options.fields[questionKey] = { stripDecimal: true };
@@ -165,7 +165,7 @@ describe("single-input-question controller", () => {
       });
 
       it("should strip spaces only when stripDecimal is not set to true", async () => {
-        const questionKey = constants.ITA_BANKACCOUNT;
+        const questionKey = APP.QUESTION_KEY.ITA_BANKACCOUNT;
         req.session.question.questionKey = questionKey;
         req.body[questionKey] = " 123.45 ";
         req.form.options.fields[questionKey] = { stripDecimal: false };

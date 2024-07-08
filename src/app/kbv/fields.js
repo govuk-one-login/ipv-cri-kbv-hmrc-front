@@ -3,7 +3,7 @@ const {
   numericWithOptionalDecimal,
   numericWithRequiredDecimals,
 } = require("./fieldsHelper");
-const constants = require("../../constants/question-keys");
+const { APP } = require("../../lib/config");
 
 const validateRequiredAmountWithPoundsAndPence = {
   type: "text",
@@ -35,27 +35,30 @@ const validateRequiredAmountWithPounds = {
 };
 
 module.exports = {
-  [constants.ITA_BANKACCOUNT]: {
+  [APP.QUESTION_KEY.ITA_BANKACCOUNT]: {
     type: "text",
     validate: ["required", "numeric", { type: "exactlength", arguments: [4] }],
   },
-  [constants.RTI_P60_EARNINGS_ABOVE_PT]: validateRequiredAmountWithPounds,
-  [constants.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS]:
+  [APP.QUESTION_KEY.RTI_P60_EARNINGS_ABOVE_PT]:
     validateRequiredAmountWithPounds,
-  [constants.RTI_P60_STUDENT_LOAN_DEDUCTIONS]: validateRequiredAmountWithPounds,
-  [constants.RTI_P60_STATUTORY_MATERNITY_PAY]:
+  [APP.QUESTION_KEY.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS]:
+    validateRequiredAmountWithPounds,
+  [APP.QUESTION_KEY.RTI_P60_STUDENT_LOAN_DEDUCTIONS]:
+    validateRequiredAmountWithPounds,
+  [APP.QUESTION_KEY.RTI_P60_STATUTORY_MATERNITY_PAY]:
     validateRequiredAmountWithPoundsAndPence,
-  [constants.RTI_PAYSLIP_NATIONAL_INSURANCE]:
+  [APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE]:
     validateRequiredAmountWithPoundsAndPence,
-  [constants.RTI_PAYSLIP_INCOME_TAX]: validateRequiredAmountWithPoundsAndPence,
-  [constants.TC_AMOUNT]: validateRequiredAmountWithPoundsAndPence,
-  [constants.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS]:
+  [APP.QUESTION_KEY.RTI_PAYSLIP_INCOME_TAX]:
     validateRequiredAmountWithPoundsAndPence,
-  [constants.RTI_P60_PAYMENT_FOR_YEAR]:
+  [APP.QUESTION_KEY.TC_AMOUNT]: validateRequiredAmountWithPoundsAndPence,
+  [APP.QUESTION_KEY.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS]:
     validateRequiredAmountWithPoundsAndPence,
-  [constants.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY]:
+  [APP.QUESTION_KEY.RTI_P60_PAYMENT_FOR_YEAR]:
     validateRequiredAmountWithPoundsAndPence,
-  [constants.RTI_P60_STATUTORY_ADOPTION_PAY]:
+  [APP.QUESTION_KEY.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY]:
+    validateRequiredAmountWithPoundsAndPence,
+  [APP.QUESTION_KEY.RTI_P60_STATUTORY_ADOPTION_PAY]:
     validateRequiredAmountWithPoundsAndPence,
   abandonRadio: {
     type: "radios",
