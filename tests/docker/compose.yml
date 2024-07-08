@@ -26,8 +26,8 @@ services:
 
   cucumber:
     build:
-      context: ../browser
-      dockerfile: Dockerfile
+      context: ../..
+      dockerfile: tests/browser/Dockerfile
     environment:
       MOCK_API: true
       GITHUB_ACTIONS: true

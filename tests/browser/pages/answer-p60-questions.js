@@ -1,4 +1,4 @@
-const { BASE_KBV_QUESTION_PATH } = require("../../../constants/routes");
+const { BASE_KBV_QUESTION_PATH } = require("../../../src/constants/routes");
 
 module.exports = class PlaywrightDevPage {
   /**
