@@ -4,7 +4,7 @@ const SingleInputQuestionController = require("./controllers/single-input-questi
 const selfAssessmentRouterController = require("./controllers/self-assessment-router");
 const SelfAssessmentTaxReturnQuestionController = require("./controllers/self-assessment-tax-return-question");
 const selfAssessmentPaymentQuestionController = require("./controllers/self-assessment-payment-question");
-const constants = require("../../constants/question-keys");
+const { APP } = require("../../lib/config");
 
 module.exports = {
   "/": {
@@ -12,12 +12,12 @@ module.exports = {
     entryPoint: true,
     skip: true,
     controller: startController,
-    next: "answer-security-questions",
+    next: APP.PATHS.ANSWER_SECURITY_QUESTIONS,
   },
-  "/answer-security-questions": {
-    next: "load-question",
+  [`/${APP.PATHS.ANSWER_SECURITY_QUESTIONS}`]: {
+    next: APP.PATHS.LOAD_QUESTION,
   },
-  "/load-question": {
+  [`/${APP.PATHS.LOAD_QUESTION}`]: {
     backLink: null,
     controller: loadQuestionController,
     skip: true,
@@ -26,159 +26,174 @@ module.exports = {
         fn: loadQuestionController.prototype.hasQuestion,
         next: loadQuestionController.prototype.getQuestionPath,
       },
-      "done",
+      APP.PATHS.DONE,
     ],
   },
-  "/question/enter-national-insurance-payslip": {
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_NATIONAL_INSURANCE_PAYSLIP}`]:
+    {
+      backLink: null,
+      controller: SingleInputQuestionController,
+      fields: [APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE],
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_TAX_PAYSLIP}`]: {
     backLink: null,
     controller: SingleInputQuestionController,
-    fields: [constants.RTI_PAYSLIP_NATIONAL_INSURANCE],
-    next: "load-question",
+    fields: [APP.QUESTION_KEYS.RTI_PAYSLIP_INCOME_TAX],
+    next: APP.PATHS.LOAD_QUESTION,
   },
-  "/question/enter-tax-payslip": {
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_TOTAL_FOR_YEAR_P60}`]: {
     backLink: null,
     controller: SingleInputQuestionController,
-    fields: [constants.RTI_PAYSLIP_INCOME_TAX],
-    next: "load-question",
+    fields: [APP.QUESTION_KEYS.RTI_P60_PAYMENT_FOR_YEAR],
+    next: APP.PATHS.LOAD_QUESTION,
   },
-  "/question/enter-total-for-year-p60": {
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_EARNINGS_ABOVE_PT_P60}`]: {
     backLink: null,
     controller: SingleInputQuestionController,
-    fields: [constants.RTI_P60_PAYMENT_FOR_YEAR],
-    next: "load-question",
+    fields: [APP.QUESTION_KEYS.RTI_P60_EARNINGS_ABOVE_PT],
+    next: APP.PATHS.LOAD_QUESTION,
   },
-  "/question/enter-earnings-above-pt-p60": {
-    backLink: null,
-    controller: SingleInputQuestionController,
-    fields: [constants.RTI_P60_EARNINGS_ABOVE_PT],
-    next: "load-question",
-  },
-  "/question/enter-postgraduate-loan-deductions-p60": {
-    backLink: null,
-    controller: SingleInputQuestionController,
-    fields: [constants.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS],
-    next: "load-question",
-  },
-  "/question/enter-statutory-shared-parental-pay-p60": {
-    backLink: null,
-    controller: SingleInputQuestionController,
-    fields: [constants.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY],
-    next: "load-question",
-  },
-  "/question/enter-statutory-adoption-pay-p60": {
-    backLink: null,
-    controller: SingleInputQuestionController,
-    fields: [constants.RTI_P60_STATUTORY_ADOPTION_PAY],
-    next: "load-question",
-  },
-  "/question/enter-statutory-maternity-pay-p60": {
-    backLink: null,
-    controller: SingleInputQuestionController,
-    fields: [constants.RTI_P60_STATUTORY_MATERNITY_PAY],
-    next: "load-question",
-  },
-  "/question/enter-student-loan-deductions-p60": {
-    backLink: null,
-    controller: SingleInputQuestionController,
-    fields: [constants.RTI_P60_STUDENT_LOAN_DEDUCTIONS],
-    next: "load-question",
-  },
-  "/question/enter-employees-contributions-p60": {
-    backLink: null,
-    controller: SingleInputQuestionController,
-    fields: [constants.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS],
-    next: "load-question",
-  },
-  "/question/enter-4-digits-bank-account-tax-credits": {
-    backLink: null,
-    fields: [constants.ITA_BANKACCOUNT],
-    controller: SingleInputQuestionController,
-    next: "load-question",
-  },
-  "/question/enter-recent-tax-credits-payment": {
-    backLink: null,
-    fields: [constants.TC_AMOUNT],
-    controller: SingleInputQuestionController,
-    next: "load-question",
-  },
-  "/question/what-type-self-assessment": {
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_POSTGRADUATE_LOAN_DEDUCTIONS_P60}`]:
+    {
+      backLink: null,
+      controller: SingleInputQuestionController,
+      fields: [APP.QUESTION_KEYS.RTI_P60_POSTGRADUATE_LOAN_DEDUCTIONS],
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_STATUTORY_SHARED_PARENTAL_PAY_P60}`]:
+    {
+      backLink: null,
+      controller: SingleInputQuestionController,
+      fields: [APP.QUESTION_KEYS.RTI_P60_STATUTORY_SHARED_PARENTAL_PAY],
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_STATUTORY_ADOPTION_PAY_P60}`]:
+    {
+      backLink: null,
+      controller: SingleInputQuestionController,
+      fields: [APP.QUESTION_KEYS.RTI_P60_STATUTORY_ADOPTION_PAY],
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_STATUTORY_MATERNITY_PAY_P60}`]:
+    {
+      backLink: null,
+      controller: SingleInputQuestionController,
+      fields: [APP.QUESTION_KEYS.RTI_P60_STATUTORY_MATERNITY_PAY],
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_STUDENT_LOAN_DEDUCTIONS_P60}`]:
+    {
+      backLink: null,
+      controller: SingleInputQuestionController,
+      fields: [APP.QUESTION_KEYS.RTI_P60_STUDENT_LOAN_DEDUCTIONS],
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_EMPLOYEES_CONTRIBUTIONS_P60}`]:
+    {
+      backLink: null,
+      controller: SingleInputQuestionController,
+      fields: [APP.QUESTION_KEYS.RTI_P60_EMPLOYEE_NI_CONTRIBUTIONS],
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_4_DIGITS_BANK_ACCOUNT_TAX_CREDITS}`]:
+    {
+      backLink: null,
+      fields: [APP.QUESTION_KEYS.ITA_BANKACCOUNT],
+      controller: SingleInputQuestionController,
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_RECENT_TAX_CREDITS_PAYMENT}`]:
+    {
+      backLink: null,
+      fields: [APP.QUESTION_KEYS.TC_AMOUNT],
+      controller: SingleInputQuestionController,
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.WHAT_TYPE_SELF_ASSESSMENT}`]: {
     template: "self-assessment-router",
     backLink: null,
     entryPoint: true,
-    fields: ["selfAssessmentRouter"],
+    fields: [APP.FIELDS.SELF_ASSESSMENT_ROUTER],
     controller: selfAssessmentRouterController,
     next: [
       {
-        field: "selfAssessmentRouter",
+        field: APP.FIELDS.SELF_ASSESSMENT_ROUTER,
         value: "sa100",
-        next: "/kbv/question/enter-pensions-benefits-self-assessment",
+        next: `${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_PENSION_BENEFITS_SELF_ASSESSMENT}`,
       },
       {
-        field: "selfAssessmentRouter",
+        field: APP.FIELDS.SELF_ASSESSMENT_ROUTER,
         value: "sa200",
-        next: "/kbv/question/enter-pensions-benefits-short-tax-return",
+        next: `${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN}`,
       },
     ],
   },
-  "/question/enter-pensions-benefits-self-assessment": {
-    backLink: null,
-    template: "pensions-benefits-self-assessment",
-    fields: [
-      "statePension",
-      "otherPension",
-      "employmentAndSupportAllowance",
-      "jobSeekersAllowance",
-      "statePensionAndBenefits",
-    ],
-    controller: SelfAssessmentTaxReturnQuestionController,
-    next: "load-question",
-  },
-  "/question/enter-pensions-benefits-short-tax-return": {
-    backLink: null,
-    template: "pensions-benefits-short-tax-return",
-    fields: [
-      "statePensionShort",
-      "otherPensionShort",
-      "employmentAndSupportAllowanceShort",
-      "jobSeekersAllowanceShort",
-      "statePensionAndBenefitsShort",
-    ],
-    controller: SelfAssessmentTaxReturnQuestionController,
-    next: "load-question",
-  },
-  "/question/enter-recent-self-assessment-payment": {
-    backLink: null,
-    template: "self-assessment-payment",
-    fields: ["selfAssessmentPaymentDate", "selfAssessmentPaymentAmount"],
-    controller: selfAssessmentPaymentQuestionController,
-    next: "load-question",
-  },
-  "/prove-identity-another-way": {
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_PENSION_BENEFITS_SELF_ASSESSMENT}`]:
+    {
+      backLink: null,
+      template: "pensions-benefits-self-assessment",
+      fields: [
+        APP.FIELDS.STATE_PENSION,
+        APP.FIELDS.OTHER_PENSION,
+        APP.FIELDS.EMPLOYMENT_AND_SUPPORT_ALLOWANCE,
+        APP.FIELDS.JOB_SEEKERS_ALLOWANCE,
+        APP.FIELDS.STATE_PENSION_AND_BENEFITS,
+      ],
+      controller: SelfAssessmentTaxReturnQuestionController,
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN}`]:
+    {
+      backLink: null,
+      template: "pensions-benefits-short-tax-return",
+      fields: [
+        APP.FIELDS.STATE_PENSION_SHORT,
+        APP.FIELDS.OTHER_PENSION_SHORT,
+        APP.FIELDS.EMPLOYMENT_AND_SUPPORT_ALLOWANCE_SHORT,
+        APP.FIELDS.JOB_SEEKERS_ALLOWANCE_SHORT,
+        APP.FIELDS.STATE_PENSION_AND_BENEFITS_SHORT,
+      ],
+      controller: SelfAssessmentTaxReturnQuestionController,
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`/${APP.PATHS.QUESTION_PREFIX}${APP.PATHS.ENTER_RECENT_SELF_ASSESSMENT_PAYMENT}`]:
+    {
+      backLink: null,
+      template: "self-assessment-payment",
+      fields: [
+        APP.FIELDS.SELF_ASSESSMENT_PAYMENT_DATE,
+        APP.FIELDS.SELF_ASSESSMENT_PAYMENT_AMOUNT,
+      ],
+      controller: selfAssessmentPaymentQuestionController,
+      next: APP.PATHS.LOAD_QUESTION,
+    },
+  [`${APP.PATHS.PROVE_IDENTITY_ANOTHER_WAY}`]: {
     backLink: null,
     entryPoint: true,
-    fields: ["abandonRadio"],
+    fields: [APP.FIELDS.ABANDON_RADIO],
     next: [
       {
-        field: "abandonRadio",
+        field: APP.FIELDS.ABANDON_RADIO,
         value: "stop",
-        next: "/oauth2/callback",
+        next: APP.PATHS.OAUTH2_CALLBACK,
       },
       {
-        field: "abandonRadio",
+        field: APP.FIELDS.ABANDON_RADIO,
         value: "continue",
         next: [
           {
             fn: loadQuestionController.prototype.hasQuestion,
-            next: "load-question",
+            next: APP.PATHS.LOAD_QUESTION,
           },
-          "answer-security-questions",
+          APP.PATHS.ANSWER_SECURITY_QUESTIONS,
         ],
       },
     ],
   },
-  "/done": {
+  [`/${APP.PATHS.DONE}`]: {
     skip: true,
     noPost: true,
-    next: "/oauth2/callback",
+    next: APP.PATHS.OAUTH2_CALLBACK,
   },
 };

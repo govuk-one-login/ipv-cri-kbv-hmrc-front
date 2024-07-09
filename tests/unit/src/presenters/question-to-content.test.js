@@ -1,6 +1,6 @@
 const presenters = require("../../../../src/presenters");
 const monthsAgoToDate = require("../../../../src/utils/months-ago-to-date");
-const constants = require("../../../../src/constants/question-keys");
+const { APP } = require("../../../../src/lib/config");
 
 describe("question-to-content", () => {
   let translate;
@@ -9,7 +9,7 @@ describe("question-to-content", () => {
 
   beforeEach(() => {
     question = {
-      questionKey: constants.RTI_PAYSLIP_NATIONAL_INSURANCE,
+      questionKey: APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE,
     };
 
     translate = jest.fn();
@@ -20,7 +20,7 @@ describe("question-to-content", () => {
     presenters.questionToContent(question, translate, language);
 
     expect(translate).toHaveBeenCalledWith(
-      `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
+      `pages.${APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
       {}
     );
   });
@@ -47,7 +47,7 @@ describe("question-to-content", () => {
       presenters.questionToContent(question, translate, language);
 
       expect(translate).toHaveBeenCalledWith(
-        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
+        `pages.${APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
         { dynamicDate }
       );
     });
@@ -56,7 +56,7 @@ describe("question-to-content", () => {
       presenters.questionToContent(question, translate, language);
 
       expect(translate).toHaveBeenCalledWith(
-        `pages.${constants.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
+        `pages.${APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE}.content`,
         {}
       );
     });
