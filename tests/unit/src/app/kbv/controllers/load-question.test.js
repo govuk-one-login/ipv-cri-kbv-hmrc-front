@@ -69,7 +69,7 @@ describe("question controller", () => {
       const req = {
         session: {
           question: {
-            questionKey: APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE,
+            questionKey: APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE,
           },
         },
       };
@@ -96,7 +96,7 @@ describe("question controller", () => {
       const req = {
         session: {
           question: {
-            questionKey: APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE,
+            questionKey: APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE,
           },
         },
       };

@@ -15,12 +15,12 @@ module.exports = {
     BASE_URL: process.env.EXTERNAL_WEBSITE_HOST || "http://localhost:5000",
     PATHS: {
       KBV: "/kbv",
-      OAUTH2_CALLBACK_PATH: "/oauth2/callback",
+      OAUTH2_CALLBACK: "/oauth2/callback",
       PROVE_IDENTITY_ANOTHER_WAY: "/prove-identity-another-way",
-      DONE: "/done",
-      QUESTION: "/question/",
-      ANSWER_SECURITY_QUESTIONS: "/answer-security-questions",
-      LOAD_QUESTION: "/load-question",
+      DONE: "done",
+      QUESTION_PREFIX: "question/",
+      ANSWER_SECURITY_QUESTIONS: "answer-security-questions",
+      LOAD_QUESTION: "load-question",
       ENTER_NATIONAL_INSURANCE_PAYSLIP: "enter-national-insurance-payslip",
       ENTER_TAX_PAYSLIP: "enter-tax-payslip",
       ENTER_4_DIGITS_BANK_ACCOUNT_TAX_CREDITS:
@@ -44,7 +44,7 @@ module.exports = {
       ENTER_PENSION_BENEFITS_SHORT_TAX_RETURN:
         "enter-pensions-benefits-short-tax-return",
     },
-    QUESTION_KEY: {
+    QUESTION_KEYS: {
       RTI_PAYSLIP_NATIONAL_INSURANCE: "rti-payslip-national-insurance",
       RTI_PAYSLIP_INCOME_TAX: "rti-payslip-income-tax",
       RTI_P60_PAYMENT_FOR_YEAR: "rti-p60-payment-for-year",

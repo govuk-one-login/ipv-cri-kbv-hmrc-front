@@ -21,7 +21,11 @@ class SelfAssessmentPaymentQuestionController extends DateController {
             req.form.values.selfAssessmentPaymentAmount,
         });
 
-        await submitAnswer(req, APP.QUESTION_KEY.SA_PAYMENT_DETAILS, userInput);
+        await submitAnswer(
+          req,
+          APP.QUESTION_KEYS.SA_PAYMENT_DETAILS,
+          userInput
+        );
 
         req.session.question = undefined;
         const nextQuestion = await getNextQuestion(req);

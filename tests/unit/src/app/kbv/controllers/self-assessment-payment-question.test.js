@@ -39,7 +39,7 @@ describe("self-assessment-payment-question controller", () => {
 
     describe("on API success", () => {
       it("should call answer endpoint to post submitted answer", async () => {
-        const questionKey = APP.QUESTION_KEY.SA_PAYMENT_DETAILS;
+        const questionKey = APP.QUESTION_KEYS.SA_PAYMENT_DETAILS;
         req.session.question.questionKey = questionKey;
         req.form.values = {
           selfAssessmentPaymentDate: "2023-02-22",
@@ -52,17 +52,17 @@ describe("self-assessment-payment-question controller", () => {
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
-          APP.QUESTION_KEY.SA_PAYMENT_DETAILS,
+          APP.QUESTION_KEYS.SA_PAYMENT_DETAILS,
           JSON.stringify(req.form.values)
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
 
       it("should call question endpoint to get next question and store it in session", async () => {
-        req.session.question.questionKey = APP.QUESTION_KEY.SA_PAYMENT_DETAILS;
+        req.session.question.questionKey = APP.QUESTION_KEYS.SA_PAYMENT_DETAILS;
         req.body.question = "3";
         service.getNextQuestion.mockResolvedValue({
-          data: { questionKey: APP.QUESTION_KEY.RTI_P60_PAYMENT_FOR_YEAR },
+          data: { questionKey: APP.QUESTION_KEYS.RTI_P60_PAYMENT_FOR_YEAR },
         });
         service.submitAnswer.mockResolvedValue({});
 
@@ -71,7 +71,7 @@ describe("self-assessment-payment-question controller", () => {
         expect(service.getNextQuestion).toHaveBeenCalledWith(req);
         expect(service.getNextQuestion).toHaveBeenCalledTimes(1);
         expect(req.session.question).toEqual({
-          questionKey: APP.QUESTION_KEY.RTI_P60_PAYMENT_FOR_YEAR,
+          questionKey: APP.QUESTION_KEYS.RTI_P60_PAYMENT_FOR_YEAR,
         });
       });
     });

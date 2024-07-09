@@ -30,7 +30,7 @@ class SelfAssessmentTaxReturnQuestionController extends BaseController {
         const pensionContributions = {
           [APP.FIELDS.STATE_PENSION]:
             req.body.statePension || req.body.statePensionShort,
-          [APP.FIELDS.otherPension]:
+          [APP.FIELDS.OTHER_PENSION]:
             req.body.otherPension || req.body.otherPensionShort,
           [APP.FIELDS.EMPLOYMENT_AND_SUPPORT_ALLOWANCE]:
             req.body.employmentAndSupportAllowance ||
@@ -50,7 +50,7 @@ class SelfAssessmentTaxReturnQuestionController extends BaseController {
 
         await submitAnswer(
           req,
-          APP.QUESTION_KEY.SA_INCOME_FROM_PENSIONS,
+          APP.QUESTION_KEYS.SA_INCOME_FROM_PENSIONS,
           totalPensionContribution.toString()
         );
 

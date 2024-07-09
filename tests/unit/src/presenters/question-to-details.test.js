@@ -7,7 +7,7 @@ describe("question-to-details", () => {
 
   beforeEach(() => {
     question = {
-      questionKey: APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE,
+      questionKey: APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE,
     };
 
     translate = jest.fn();
@@ -17,7 +17,7 @@ describe("question-to-details", () => {
     presenters.questionToDetails(question, translate);
 
     expect(translate).toHaveBeenCalledWith(
-      `pages.${APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE}.details`
+      `pages.${APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE}.details`
     );
   });
 

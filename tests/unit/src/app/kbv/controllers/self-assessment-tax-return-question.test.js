@@ -78,7 +78,7 @@ describe("self-assessment-question controller", () => {
 
     describe("on API success", () => {
       it("should call answer endpoint to post submitted answer", async () => {
-        const questionKey = APP.QUESTION_KEY.SA_INCOME_FROM_PENSIONS;
+        const questionKey = APP.QUESTION_KEYS.SA_INCOME_FROM_PENSIONS;
         req.session.question.questionKey = questionKey;
         req.body = {
           statePension: 20,
@@ -94,14 +94,14 @@ describe("self-assessment-question controller", () => {
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
-          APP.QUESTION_KEY.SA_INCOME_FROM_PENSIONS,
+          APP.QUESTION_KEYS.SA_INCOME_FROM_PENSIONS,
           "160"
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
 
       it("should call answer endpoint to post submitted answer with short self assessment values", async () => {
-        const questionKey = APP.QUESTION_KEY.SA_INCOME_FROM_PENSIONS;
+        const questionKey = APP.QUESTION_KEYS.SA_INCOME_FROM_PENSIONS;
         req.session.question.questionKey = questionKey;
         req.body = {
           statePensionShort: 20,
@@ -117,7 +117,7 @@ describe("self-assessment-question controller", () => {
 
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
-          APP.QUESTION_KEY.SA_INCOME_FROM_PENSIONS,
+          APP.QUESTION_KEYS.SA_INCOME_FROM_PENSIONS,
           "180"
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
@@ -125,10 +125,10 @@ describe("self-assessment-question controller", () => {
 
       it("should call question endpoint to get next question and store it in session", async () => {
         req.session.question.questionKey =
-          APP.QUESTION_KEY.SA_INCOME_FROM_PENSIONS;
+          APP.QUESTION_KEYS.SA_INCOME_FROM_PENSIONS;
         req.body.question = "3";
         service.getNextQuestion.mockResolvedValue({
-          data: { questionKey: APP.QUESTION_KEY.RTI_P60_PAYMENT_FOR_YEAR },
+          data: { questionKey: APP.QUESTION_KEYS.RTI_P60_PAYMENT_FOR_YEAR },
         });
         service.submitAnswer.mockResolvedValue({});
 
@@ -137,7 +137,7 @@ describe("self-assessment-question controller", () => {
         expect(service.getNextQuestion).toHaveBeenCalledWith(req);
         expect(service.getNextQuestion).toHaveBeenCalledTimes(1);
         expect(req.session.question).toEqual({
-          questionKey: APP.QUESTION_KEY.RTI_P60_PAYMENT_FOR_YEAR,
+          questionKey: APP.QUESTION_KEYS.RTI_P60_PAYMENT_FOR_YEAR,
         });
       });
     });

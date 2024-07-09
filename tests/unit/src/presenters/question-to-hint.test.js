@@ -7,7 +7,7 @@ describe("question-to-hint", () => {
 
   beforeEach(() => {
     question = {
-      questionKey: APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE,
+      questionKey: APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE,
     };
 
     translate = jest.fn();
@@ -17,7 +17,7 @@ describe("question-to-hint", () => {
     presenters.questionToHint(question, translate);
 
     expect(translate).toHaveBeenCalledWith(
-      `fields.${APP.QUESTION_KEY.RTI_PAYSLIP_NATIONAL_INSURANCE}.hint`
+      `fields.${APP.QUESTION_KEYS.RTI_PAYSLIP_NATIONAL_INSURANCE}.hint`
     );
   });
 

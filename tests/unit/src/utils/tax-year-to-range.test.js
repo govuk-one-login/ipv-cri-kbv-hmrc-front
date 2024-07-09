@@ -14,7 +14,7 @@ describe("tax-year-to-range", () => {
 
   beforeEach(() => {
     question = {
-      questionKey: APP.QUESTION_KEY.SA_INCOME_FROM_PENSIONS,
+      questionKey: APP.QUESTION_KEYS.SA_INCOME_FROM_PENSIONS,
       info: {
         currentTaxYear: currentTaxYear,
         previousTaxYear: previousTaxYear,
