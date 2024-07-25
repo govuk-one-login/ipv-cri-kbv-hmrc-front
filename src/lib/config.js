@@ -79,6 +79,9 @@ module.exports = {
       SELF_ASSESSMENT_PAYMENT_AMOUNT: "selfAssessmentPaymentAmount",
       ABANDON_RADIO: "abandonRadio",
     },
+    DOMAIN: {
+      DEFAULT_PAYSLIP_MONTHS_AGO: 3,
+    },
     GTM: {
       ANALYTICS_COOKIE_DOMAIN:
         process.env.ANALYTICS_COOKIE_DOMAIN || "localhost",
