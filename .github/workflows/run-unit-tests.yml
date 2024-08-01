@@ -35,5 +35,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ inputs.coverage-artifact }}
-          retention-days: 3
+          retention-days: 30
           path: coverage/lcov.info
