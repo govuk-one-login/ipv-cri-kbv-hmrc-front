@@ -1,8 +1,20 @@
 {% extends "base-form.njk" %}
+{% from "components/onPageLoad/macro.njk" import ga4OnPageLoad %}
 
 {% set gtmJourney = "kbv-hmrc - middle" %}
 
 {% block mainContent %}
   {{ super() }}
   {{ hmpoHtml(translate("pages.shared.abandon")) }}
+
+  {{ ga4OnPageLoad({
+    nonce: cspNonce,
+    statusCode: '200',
+    englishPageTitle: 'pages.questionWhatTypeSelfAssessment.title' | translate,
+    taxonomyLevel1: 'web cri',
+    taxonomyLevel2: 'hmrc-kbv',
+    contentId: 'undefined',
+    loggedInStatus: true,
+    dynamic: false
+  }) }}
 {% endblock %}

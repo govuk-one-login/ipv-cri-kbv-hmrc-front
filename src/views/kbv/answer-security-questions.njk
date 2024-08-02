@@ -1,9 +1,21 @@
 {% extends "base-form.njk" %}
 {% from "hmpo-details/macro.njk" import hmpoDetails %}
+{% from "components/onPageLoad/macro.njk" import ga4OnPageLoad %}
 
 {% set gtmJourney = "kbv-hmrc - start" %}
 
 {% block submitButton %}
   {{ hmpoSubmit(ctx, {id: "start", text: translate("pages.answerSecurityQuestions.start-button")}) }}
   {{ hmpoHtml(translate("pages.shared.abandon")) }}
+
+  {{ ga4OnPageLoad({
+    nonce: cspNonce,
+    statusCode: '200',
+    englishPageTitle: 'pages.answerSecurityQuestions.title' | translate,
+    taxonomyLevel1: 'web cri',
+    taxonomyLevel2: 'hmrc-kbv',
+    contentId: 'undefined',
+    loggedInStatus: true,
+    dynamic: false
+  }) }}
 {% endblock %}

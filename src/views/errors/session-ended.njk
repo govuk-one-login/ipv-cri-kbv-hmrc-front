@@ -1,4 +1,16 @@
 {% extends "base-page.njk" %}
+{% from "components/onPageLoad/macro.njk" import ga4OnPageLoad %}
 
 {% set hmpoPageKey = "sessionEnded" %}
 {% set gtmJourney = "kbv-hmrc - error" %}
+
+{{ ga4OnPageLoad({
+  nonce: cspNonce,
+  statusCode: '400',
+  englishPageTitle: 'error.sessionEnded.title' | translate,
+  taxonomyLevel1: 'web cri',
+  taxonomyLevel2: 'hmrc-kbv',
+  contentId: 'undefined',
+  loggedInStatus: true,
+  dynamic: false
+}) }}
