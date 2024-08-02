@@ -31,7 +31,12 @@
   {% endblock %}
 
   {% block submitButton %}
-    {{ hmpoSubmit(ctx, {id: "continue", text: translate("buttons.next")}) }}
+    {% set daetaLink = ["/kbv/question/", question.name] | join %}
+    {{ hmpoSubmit(ctx, {
+      id: "continue",
+      text: translate("buttons.next"),
+      attributes: {"data-nav": true, "data-link": ctx("action")}
+    }) }}
     {{ hmpoHtml(translate("pages.shared.abandon")) }}
 
     {{ ga4OnPageLoad({
