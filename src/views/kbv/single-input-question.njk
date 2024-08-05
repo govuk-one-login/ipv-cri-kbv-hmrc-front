@@ -31,7 +31,6 @@
   {% endblock %}
 
   {% block submitButton %}
-    {% set daetaLink = ["/kbv/question/", question.name] | join %}
     {{ hmpoSubmit(ctx, {
       id: "continue",
       text: translate("buttons.next"),
