@@ -265,29 +265,11 @@ Resources:
       Cluster: !Ref EcsCluster
       DeploymentController:
         Type: CODE_DEPLOY
-      # DeploymentConfiguration:
-      #   MaximumPercent: 200
-      #   MinimumHealthyPercent: 50
-      #   DeploymentCircuitBreaker:
-      #     Enable: TRUE
-      #     Rollback: TRUE
       DesiredCount: 2
       EnableECSManagedTags: false
       HealthCheckGracePeriodSeconds: 60
       LaunchType: FARGATE
-      LoadBalancers:
-        - ContainerName: app
-          ContainerPort: 8080
-          TargetGroupArn: !Ref LoadBalancerListenerTargetGroupECS
-      NetworkConfiguration:
-        AwsvpcConfiguration:
-          AssignPublicIp: DISABLED
-          SecurityGroups:
-            - !GetAtt ECSSecurityGroup.GroupId
-          Subnets:
-            - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdA"
-            - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdB"
-      TaskDefinition: !Ref ECSServiceTaskDefinition
+
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-ECS"
@@ -513,32 +495,31 @@ Resources:
     Properties:
       TemplateURL: https://template-storage-templatebucket-1upzyw6v9cs42.s3.eu-west-2.amazonaws.com/ecs-canary-deployment/template.yaml?versionId=5RRU1nfKQD_d08FKttr8W7pzrAsqQiUM
       Parameters:
-        VpcId: !Sub ${VpcStackName}-VpcId
-        PermissionsBoundary:
-          Fn::ImportValue: !Sub "${AWS::StackName}-ECSCanaryPermissionsBoundaryArn"
-        CodeSigningConfigArn: !If
-          - UseCodeSigning
-          - !Ref CodeSigningConfigArn
-          - !Ref AWS::NoValue
-        ECSClusterName: !Ref EcsCluster
-        ECSServiceName: !GetAtt EcsService.Name
-        TargetGroupName: !GetAtt LoadBalancerListenerTargetGroupECS.TargetGroupName
-        GreenTargetGroupName: !GetAtt LoadBalancerListenerGreenTargetGroupECS.TargetGroupName
-        LoadBalancerListenerARN: !Ref LoadBalancerListener
-        ECSServiceTaskDefinition: !Ref ECSServiceTaskDefinition
-        DeploymentStrategy: !Ref DeploymentStrategy
-        ContainerName: "app"
-        ContainerPort: 8080
-        # Optional parameters
-        Subnets: !Join
-          - ","
-          - - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdA"
-            - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdB"
-        SecurityGroups: !GetAtt ECSSecurityGroup.GroupId
         CloudWatchAlarms: !Sub
           - "${MyAlarmOneVar},${MyAlarmTwoVar}"
           - MyAlarmOneVar: !Ref 5XXOnELB
             MyAlarmTwoVar: !Ref FrontTargetGroup5xxPercentErrors
+        CodeSigningConfigArn: !If
+          - UseCodeSigning
+          - !Ref CodeSigningConfigArn
+          - !Ref AWS::NoValue
+        ContainerName: "app"
+        ContainerPort: 8080
+        DeploymentStrategy: !Ref DeploymentStrategy
+        ECSClusterName: !Ref EcsCluster
+        ECSServiceName: !GetAtt EcsService.Name
+        ECSServiceTaskDefinition: !Ref ECSServiceTaskDefinition
+        GreenTargetGroupName: !GetAtt LoadBalancerListenerGreenTargetGroupECS.TargetGroupName
+        LoadBalancerListenerARN: !Ref LoadBalancerListener
+        PermissionsBoundary:
+          Fn::ImportValue: !Sub "${AWS::StackName}-ECSCanaryPermissionsBoundaryArn"
+        SecurityGroups: !GetAtt ECSSecurityGroup.GroupId
+        Subnets: !Join
+          - ","
+          - - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdA"
+            - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdB"
+        TargetGroupName: !GetAtt LoadBalancerListenerTargetGroupECS.TargetGroupName
+        VpcId: !Sub ${VpcStackName}-VpcId
 
   # Create the VPC Link to join the API Gateway to the
   # private Load Balancer in front of Passport Front ECS
