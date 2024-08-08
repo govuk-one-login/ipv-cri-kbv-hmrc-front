@@ -277,14 +277,14 @@ Resources:
   ECSAccessLogsGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: !Sub /aws/vendedlogs/aws/ecs/${AWS::StackName}-Front-ECS
+      LogGroupName: !Sub /aws/ecs/${AWS::StackName}-Front-ECS
       RetentionInDays: 14
 
   ECSAccessLogsGroupSubscriptionFilterCSLS:
     Type: AWS::Logs::SubscriptionFilter
     Condition: IsCSLSDisabled
     Properties:
-      DestinationArn: "arn:aws:logs:eu-west-2:885513274347:destination:csls_cw_logs_destination_prodpython"
+      DestinationArn: "arn:aws:logs:eu-west-2:885513274347:destination:csls_cw_logs_destination_prodpython-2"
       FilterPattern: ""
       LogGroupName: !Ref ECSAccessLogsGroup
 
@@ -546,14 +546,14 @@ Resources:
   APIGWAccessLogsGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: !Sub /aws/vendedlogs/aws/apigateway/${AWS::StackName}-API-GW-AccessLogs
+      LogGroupName: !Sub /aws/apigateway/${AWS::StackName}-API-GW-AccessLogs
       RetentionInDays: 30
 
   APIGWAccessLogsGroupSubscriptionFilterCSLS:
     Type: AWS::Logs::SubscriptionFilter
     Condition: IsCSLSDisabled
     Properties:
-      DestinationArn: "arn:aws:logs:eu-west-2:885513274347:destination:csls_cw_logs_destination_prodpython"
+      DestinationArn: "arn:aws:logs:eu-west-2:885513274347:destination:csls_cw_logs_destination_prodpython-2"
       FilterPattern: ""
       LogGroupName: !Ref APIGWAccessLogsGroup
 
