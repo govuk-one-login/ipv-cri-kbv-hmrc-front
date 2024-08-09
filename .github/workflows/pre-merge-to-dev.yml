@@ -40,7 +40,7 @@ jobs:
         run: sam validate --region ${{ env.AWS_REGION }} -t deploy/template.yaml
 
       - name: "Push image and template"
-        uses: govuk-one-login/devplatform-upload-action-ecr@v1.3.0
+        uses: govuk-one-login/devplatform-upload-action-ecr@8f14d1af61737413dc6eb39f071f01dc6d0e6c45
         with:
           artifact-bucket-name: ${{ secrets.DEV_ARTIFACT_BUCKET_NAME }}
           container-sign-kms-key-arn: ${{ secrets.DEV_CONTAINER_SIGN_KMS_KEY }}
@@ -48,3 +48,4 @@ jobs:
           docker-build-path: .
           role-to-assume-arn: ${{ secrets.DEV_GH_ACTIONS_ROLE_ARN }}
           ecr-repo-name: ${{ secrets.DEV_ECR_NAME_FRONT }}
+          ecr-cache-repo-name: ${{ secrets.DEV_ECR_NAME_FRONT }}
