@@ -2,6 +2,7 @@ module.exports = function (currentTaxYear, previousTaxYear) {
   const data = {};
 
   function processTaxYear(taxYear) {
+    console.log(taxYear);
     if (taxYear) {
       const [startYear] = taxYear.split("/");
       const yearRangeStart = parseInt(startYear, 10);
