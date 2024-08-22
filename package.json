@@ -53,6 +53,6 @@
     "jest-mock-req-res": "1.0.2",
     "nodemon": "3.1.4",
     "sass": "1.77.8",
-    "uglify-js": "3.19.1"
+    "uglify-js": "3.19.2"
   }
 }
