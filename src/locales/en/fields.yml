@@ -50,7 +50,7 @@ otherPension:
   prefix: £
   content: ""
 employmentAndSupportAllowance:
-  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance
+  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance (ESA)
   hint: Use box 13
   validation:
     required: Enter an amount in 'Taxable Incapacity Benefit and contribution-based Employment and Support Allowance'
@@ -90,7 +90,7 @@ otherPensionShort:
   prefix: £
   content: ""
 employmentAndSupportAllowanceShort:
-  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance
+  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance (ESA)
   hint: Use box 4.3
   validation:
     required: Enter an amount in 'Taxable Incapacity Benefit and contribution-based Employment and Support Allowance'
