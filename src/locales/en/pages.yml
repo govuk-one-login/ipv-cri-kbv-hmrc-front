@@ -105,7 +105,7 @@ rti-p60-earnings-above-pt:
     - Tell us the amount in the box labelled ‘earnings above the PT, up to and including the Upper Earnings Limit (UEL)’. You’ll find this in the ‘National Insurance contributions in this employment’ section of your P60.
     - Enter the amount in pounds without the pence, exactly as it appears on your P60.
   details:
-    summaryText: If you have more than one P60
+    summaryText: If you have more than one P60 in a tax year
     html: >-
       <p>You only need to enter the amount from one P60.</p>
 rti-p60-postgraduate-loan-deductions:
