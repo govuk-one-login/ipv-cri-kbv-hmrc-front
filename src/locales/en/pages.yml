@@ -86,7 +86,7 @@ rti-p60-payment-for-year:
     - "{{ currentYearRangeStart }} to {{ currentYearRangeEnd }}"
     - "{{ previousYearRangeStart }} to {{ previousYearRangeEnd }}"
   content:
-    - Tell us the amount in the box labelled ‘total for year’. You’ll find this in the ‘pay and income tax details’ section of your P60.
+    - Tell us the amount in the box labelled ‘total for year’. You’ll find this in the ‘pay and Income Tax details’ section of your P60.
     - Enter the amount in pounds and pence, exactly as it appears on your P60.
   details:
     summaryText: If you have more than one P60
