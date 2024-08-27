@@ -72,7 +72,7 @@ rti-payslip-national-insurance:
 rti-payslip-income-tax:
   title: Enter the amount of Income Tax you paid from a recent payslip
   h1: Enter the amount of Income Tax you paid from a recent payslip
-  inset: Use a payslip dated after {{ dynamicDate }} to help you answer this question
+  inset: Use a payslip dated after {{ dynamicDate }} to help you answer this question.
   content:
     - Tell us the amount of Income Tax you paid.
     - You can usually find the amount next to any pensions or National Insurance payments on your payslip. It may be called PAYE/Income Tax.

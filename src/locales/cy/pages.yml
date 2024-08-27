@@ -72,7 +72,7 @@ rti-payslip-national-insurance:
 rti-payslip-income-tax:
   title: Rhowch faint o dreth a dalwyd gennych o slip cyflog diweddar
   h1: Rhowch faint o dreth a dalwyd gennych o slip cyflog diweddar
-  inset: Defnyddiwch slip cyflog wedi'i ddyddio ar ôl {{ dynamicDate }} i ateb y cwestiwn hwn
+  inset: Defnyddiwch slip cyflog wedi'i ddyddio ar ôl {{ dynamicDate }} i ateb y cwestiwn hwn.
   content:
     - Dywedwch wrthym faint o Dreth Incwm rydych wedi'i dalu.
     - Fel arfer, gallwch ddod o hyd i'r swm wrth ymyl unrhyw bensiynau neu daliadau Yswiriant Gwladol ar eich slip cyflog. Gallai gael ei alw'n TWE neu'n Dreth Incwm
