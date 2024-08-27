@@ -160,7 +160,7 @@ date-year:
   label: Year
 tc-amount:
   label: Amount
-  hint: For example 36.75
+  hint: For example, 36.75
   prefix: £
   content: ""
   validation:
