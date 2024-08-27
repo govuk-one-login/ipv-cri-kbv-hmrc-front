@@ -116,7 +116,7 @@ statePensionAndBenefitsShort:
 selfAssessmentPaymentDate:
   label: Date of payment
   legend: Date of payment
-  hint: For example 31 3 2024
+  hint: For example, 31 3 2024
   content: ""
   validation:
     default: "Date of payment must be a real date"
