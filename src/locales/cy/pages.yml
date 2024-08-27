@@ -21,7 +21,7 @@ answerSecurityQuestions:
       <p>Os hoffech wybod mwy am sut y bydd eich manylion yn cael eu defnyddio i brofi eich hunaniaeth,
       <a href='https://signin.account.gov.uk/privacy-notice' class='govuk-link' rel='noreferrer noopener' target='_blank'>
       darllenwch ein hysbysiad preifatrwydd (agor mewn tab newydd)</a>.</p>
-  start-button: Dechrau
+  startButton: Dechrau
 proveIdentityAnotherWay:
   title: Profi eich hunaniaeth mewn ffordd arall
   h1: Profi eich hunaniaeth mewn ffordd arall

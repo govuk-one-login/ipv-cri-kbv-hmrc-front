@@ -21,7 +21,7 @@ answerSecurityQuestions:
       <p>If you'd like to know more about how your details will be used to prove your identity,
       <a href='https://signin.account.gov.uk/privacy-notice' class='govuk-link' rel='noreferrer noopener' target='_blank'>
       read our privacy notice (opens in a new tab)</a>.</p>
-  start-button: Start
+  startButton: Start
 proveIdentityAnotherWay:
   title: Prove your identity another way
   h1: Prove your identity another way
