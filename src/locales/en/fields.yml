@@ -169,7 +169,7 @@ tc-amount:
     regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 rti-payslip-national-insurance:
   label: Amount
-  hint: For example 123.86
+  hint: For example, 123.86
   prefix: £
   content: ""
   validation:
