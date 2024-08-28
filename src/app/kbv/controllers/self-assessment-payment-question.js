@@ -19,7 +19,6 @@ class SelfAssessmentPaymentQuestionController extends DateController {
           amount: new Number(req.form.values.selfAssessmentPaymentAmount),
           paymentDate: req.form.values.selfAssessmentPaymentDate,
         });
-        console.log("!!!!!!!!!!!!!!!!!!  " + userInput);
 
         await submitAnswer(
           req,
