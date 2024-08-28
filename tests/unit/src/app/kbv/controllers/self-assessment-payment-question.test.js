@@ -46,9 +46,9 @@ describe("self-assessment-payment-question controller", () => {
           selfAssessmentPaymentAmount: "2000.22",
         };
         const userInput = JSON.stringify({
-          amount: new Number(req.form.values.selfAssessmentPaymentAmount),
+          amount: parseFloat(req.form.values.selfAssessmentPaymentAmount),
           paymentDate: req.form.values.selfAssessmentPaymentDate,
-        })
+        });
         service.getNextQuestion.mockResolvedValue({});
         service.submitAnswer.mockResolvedValue({});
 

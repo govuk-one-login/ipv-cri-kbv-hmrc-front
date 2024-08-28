@@ -16,10 +16,9 @@ class SelfAssessmentPaymentQuestionController extends DateController {
 
       try {
         const userInput = JSON.stringify({
-          amount: new Number(req.form.values.selfAssessmentPaymentAmount),
+          amount: parseFloat(req.form.values.selfAssessmentPaymentAmount),
           paymentDate: req.form.values.selfAssessmentPaymentDate,
         });
-        console.log("!!!!!!!!!!!!!!!!!!  " + userInput);
 
         await submitAnswer(
           req,
