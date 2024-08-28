@@ -31,8 +31,9 @@ questionWhatTypeSelfAssessment:
   title: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }}?
   h1: Pa fath o ffurflen dreth Hunanasesiad a anfonwyd gennych ar gyfer blwyddyn dreth {{ currentYearRangeStart }} i {{ currentYearRangeEnd }}?
   content:
-    - Mae hyn er mwyn i ni ofyn cwestiynau i chi am y ffurflen gywir.
-    - Byddwch ond wedi anfon ffurflen dreth fer (SA200) os oedd CThEF wedi dweud wrthych am wneud hynny.
+  html: >-
+    <p class="govuk-hint">Mae hyn er mwyn i ni ofyn cwestiynau i chi am y ffurflen gywir.</p>
+    <p class="govuk-hint">Byddwch ond wedi anfon ffurflen dreth fer (SA200) os oedd CThEF wedi dweud wrthych am wneud hynny.</p>
 questionEnterPensionsBenefitsSelfAssessment:
   title: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad
   h1: Rhowch symiau pensiynau a budd-daliadau o'ch Ffurflen dreth Hunanasesiad

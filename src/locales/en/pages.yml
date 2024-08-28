@@ -31,8 +31,9 @@ questionWhatTypeSelfAssessment:
   title: What type of Self Assessment tax return did you send for the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }}?
   h1: What type of Self Assessment tax return did you send for the tax year {{ currentYearRangeStart }} to {{ currentYearRangeEnd }}?
   content:
-    - This is so we can ask you questions about the right Self Assessment tax return.
-    - You’ll only have sent a short tax return (SA200) if HMRC told you to.
+  html: >-
+    <p class="govuk-hint">This is so we can ask you questions about the right Self Assessment tax return.</p>
+    <p class="govuk-hint">You’ll only have sent a short tax return (SA200) if HMRC told you to.</p>
 questionEnterPensionsBenefitsSelfAssessment:
   title: Enter pensions and benefits amounts from your Self Assessment tax return
   h1: Enter pensions and benefits amounts from your Self Assessment tax return
