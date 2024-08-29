@@ -43,8 +43,12 @@ describe("self-assessment-payment-question controller", () => {
         req.session.question.questionKey = questionKey;
         req.form.values = {
           selfAssessmentPaymentDate: "2023-02-22",
-          selfAssessmentPaymentAmount: 2000.22,
+          selfAssessmentPaymentAmount: "2000.22",
         };
+        const userInput = JSON.stringify({
+          amount: parseFloat(req.form.values.selfAssessmentPaymentAmount),
+          paymentDate: req.form.values.selfAssessmentPaymentDate,
+        });
         service.getNextQuestion.mockResolvedValue({});
         service.submitAnswer.mockResolvedValue({});
 
@@ -53,7 +57,7 @@ describe("self-assessment-payment-question controller", () => {
         expect(service.submitAnswer).toHaveBeenCalledWith(
           req,
           APP.QUESTION_KEYS.SA_PAYMENT_DETAILS,
-          JSON.stringify(req.form.values)
+          userInput
         );
         expect(service.submitAnswer).toHaveBeenCalledTimes(1);
       });
