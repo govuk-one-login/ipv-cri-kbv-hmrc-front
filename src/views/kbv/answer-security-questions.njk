@@ -5,14 +5,9 @@
 {% set gtmJourney = "kbv-hmrc - start" %}
 
 {% block submitButton %}
-  {{ hmpoDetails({
-    summaryText: translate("pages.answerSecurityQuestions.details.summaryText"),
-    html: translate("pages.answerSecurityQuestions.details.html")
-  })}}
-
   {{ hmpoSubmit(ctx, {
     id: "start",
-    text: translate("pages.answerSecurityQuestions.startButton"),
+    text: translate("pages.answerSecurityQuestions.start-button"),
     attributes: {"data-nav": true, "data-link": ctx("action")}
   })}}
   {{ hmpoHtml(translate("pages.shared.abandon")) }}

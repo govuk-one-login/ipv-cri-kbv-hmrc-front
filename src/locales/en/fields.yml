@@ -50,7 +50,7 @@ otherPension:
   prefix: £
   content: ""
 employmentAndSupportAllowance:
-  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance (ESA)
+  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance
   hint: Use box 13
   validation:
     required: Enter an amount in 'Taxable Incapacity Benefit and contribution-based Employment and Support Allowance'
@@ -90,7 +90,7 @@ otherPensionShort:
   prefix: £
   content: ""
 employmentAndSupportAllowanceShort:
-  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance (ESA)
+  label: Taxable Incapacity Benefit and contribution-based Employment and Support Allowance
   hint: Use box 4.3
   validation:
     required: Enter an amount in 'Taxable Incapacity Benefit and contribution-based Employment and Support Allowance'
@@ -116,7 +116,7 @@ statePensionAndBenefitsShort:
 selfAssessmentPaymentDate:
   label: Date of payment
   legend: Date of payment
-  hint: For example, 31 3 2024
+  hint: For example 31 3 2024
   content: ""
   validation:
     default: "Date of payment must be a real date"
@@ -160,7 +160,7 @@ date-year:
   label: Year
 tc-amount:
   label: Amount
-  hint: For example, 36.75
+  hint: For example 36.75
   prefix: £
   content: ""
   validation:
@@ -169,7 +169,7 @@ tc-amount:
     regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 rti-payslip-national-insurance:
   label: Amount
-  hint: For example, 123.86
+  hint: For example 123.86
   prefix: £
   content: ""
   validation:
@@ -178,7 +178,7 @@ rti-payslip-national-insurance:
     regexPoundsAndPence: Amount must include pounds and pence, like 123.45
 rti-payslip-income-tax:
   label: Amount
-  hint: For example, 123.86
+  hint: For example 123.86
   prefix: £
   content: ""
   validation:

@@ -1,36 +1,11 @@
 {% extends "base-form.njk" %}
-{% from "hmpo-form/macro.njk" import hmpoForm %}
-{% from "hmpo-submit/macro.njk" import hmpoSubmit %}
-{% from "hmpo-radios/macro.njk" import hmpoRadios %}
 {% from "components/onPageLoad/macro.njk" import ga4OnPageLoad %}
 
 {% set gtmJourney = "kbv-hmrc - middle" %}
 
 {% block mainContent %}
-
-  {% call hmpoForm(ctx) %}
-    {{ hmpoRadios(ctx, {
-      id: "selfAssessmentRouter",
-      namePrefix: "selfAssessmentRouter",
-      fieldset: {
-          legend: {
-              html: translate("pages.questionWhatTypeSelfAssessment.title"),
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-          }
-      },
-      hint: {
-          html: translate("pages.questionWhatTypeSelfAssessment.html")
-      }
-    }) }}
-
-    {{ hmpoSubmit(ctx, {
-      id: "continue",
-      text: translate("buttons.next"),
-      attributes: {"data-nav": true, "data-link": ctx("action")}
-    }) }}
-    {{ hmpoHtml(translate("pages.shared.abandon")) }}
-  {% endcall %}
+  {{ super() }}
+  {{ hmpoHtml(translate("pages.shared.abandon")) }}
 
   {{ ga4OnPageLoad({
     nonce: cspNonce,
