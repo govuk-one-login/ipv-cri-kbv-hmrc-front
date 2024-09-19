@@ -15,9 +15,9 @@ The following quickstart process details how to install and run the browser test
 
 1. Install node dependencies:
 
-   ```
-   npm install
-   ```
+```
+npm install
+```
 
 ### Configuring the application
 
@@ -34,6 +34,8 @@ Set the [environment variables](./environment-variables.md) accordingly.
 ```
 npm run test:browser
 ```
+
+Set `CHROMIUM_HEADLESS` to `false` to see the user flow in a browser.
 
 ### Cucumber
 
