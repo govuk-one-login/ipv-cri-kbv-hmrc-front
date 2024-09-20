@@ -82,9 +82,12 @@ module.exports = {
       JOB_SEEKERS_ALLOWANCE_SHORT: "jobSeekersAllowanceShort",
       STATE_PENSION_AND_BENEFITS_SHORT: "statePensionAndBenefitsShort",
       SELF_ASSESSMENT_PAYMENT_DATE: "selfAssessmentPaymentDate",
-      SELF_ASSESSMENT_PAYMENT_DATE_DAY: "selfAssessmentPaymentDate" + HMPO_SUFFIX_DAY,
-      SELF_ASSESSMENT_PAYMENT_DATE_MONTH: "selfAssessmentPaymentDate" + HMPO_SUFFIX_MONTH,
-      SELF_ASSESSMENT_PAYMENT_DATE_YEAR: "selfAssessmentPaymentDate" + HMPO_SUFFIX_YEAR,
+      SELF_ASSESSMENT_PAYMENT_DATE_DAY:
+        "selfAssessmentPaymentDate" + HMPO_SUFFIX_DAY,
+      SELF_ASSESSMENT_PAYMENT_DATE_MONTH:
+        "selfAssessmentPaymentDate" + HMPO_SUFFIX_MONTH,
+      SELF_ASSESSMENT_PAYMENT_DATE_YEAR:
+        "selfAssessmentPaymentDate" + HMPO_SUFFIX_YEAR,
       SELF_ASSESSMENT_PAYMENT_AMOUNT: "selfAssessmentPaymentAmount",
       ABANDON_RADIO: "abandonRadio",
     },

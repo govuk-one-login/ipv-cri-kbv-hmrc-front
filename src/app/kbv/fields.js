@@ -40,7 +40,7 @@ module.exports = {
     validate: ["required", "numeric", { type: "exactlength", arguments: [4] }],
     // Remove maxlength attribute that gets automatically added for exactlength validators
     // https://github.com/HMPO/hmpo-components/blob/01473508284e1d06ebc72585f970f25f17fba49d/components/hmpo-text/macro.njk#L32
-    attributes: { "maxlength": undefined },
+    attributes: { maxlength: undefined },
   },
   [APP.QUESTION_KEYS.RTI_P60_EARNINGS_ABOVE_PT]:
     validateRequiredAmountWithPounds,
