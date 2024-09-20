@@ -19,7 +19,7 @@ When(
     const singleInputQuestionPage = new Enter4DigitsBankAccountTaxCredits(
       this.page
     );
-    await singleInputQuestionPage.answer("1234.45");
+    await singleInputQuestionPage.answer("1234");
     await singleInputQuestionPage.continue();
   }
 );
