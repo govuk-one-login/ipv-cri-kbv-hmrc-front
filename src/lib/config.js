@@ -1,5 +1,11 @@
 require("dotenv").config();
 
+// These are the suffixes that the GOVUK Design system adds to the ID of a date
+// control to generate the IDs of the text inputs.
+const HMPO_SUFFIX_DAY = "-day";
+const HMPO_SUFFIX_MONTH = "-month";
+const HMPO_SUFFIX_YEAR = "-year";
+
 module.exports = {
   API: {
     BASE_URL: process.env.API_BASE_URL || "http://localhost:8080",
@@ -76,6 +82,12 @@ module.exports = {
       JOB_SEEKERS_ALLOWANCE_SHORT: "jobSeekersAllowanceShort",
       STATE_PENSION_AND_BENEFITS_SHORT: "statePensionAndBenefitsShort",
       SELF_ASSESSMENT_PAYMENT_DATE: "selfAssessmentPaymentDate",
+      SELF_ASSESSMENT_PAYMENT_DATE_DAY:
+        "selfAssessmentPaymentDate" + HMPO_SUFFIX_DAY,
+      SELF_ASSESSMENT_PAYMENT_DATE_MONTH:
+        "selfAssessmentPaymentDate" + HMPO_SUFFIX_MONTH,
+      SELF_ASSESSMENT_PAYMENT_DATE_YEAR:
+        "selfAssessmentPaymentDate" + HMPO_SUFFIX_YEAR,
       SELF_ASSESSMENT_PAYMENT_AMOUNT: "selfAssessmentPaymentAmount",
       ABANDON_RADIO: "abandonRadio",
     },

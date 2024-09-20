@@ -163,6 +163,11 @@ module.exports = {
       template: "self-assessment-payment",
       fields: [
         APP.FIELDS.SELF_ASSESSMENT_PAYMENT_DATE,
+        // We need to explicitly specify the sub-fields of the date component
+        // so that the config we specify in fields.js is picked up and used.
+        APP.FIELDS.SELF_ASSESSMENT_PAYMENT_DATE_DAY,
+        APP.FIELDS.SELF_ASSESSMENT_PAYMENT_DATE_MONTH,
+        APP.FIELDS.SELF_ASSESSMENT_PAYMENT_DATE_YEAR,
         APP.FIELDS.SELF_ASSESSMENT_PAYMENT_AMOUNT,
       ],
       controller: selfAssessmentPaymentQuestionController,
