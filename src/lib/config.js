@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-// These are the suffixes that the HMPO framework adds to the ID of a date
+// These are the suffixes that the GOVUK Design system adds to the ID of a date
 // control to generate the IDs of the text inputs.
 const HMPO_SUFFIX_DAY = "-day";
 const HMPO_SUFFIX_MONTH = "-month";
