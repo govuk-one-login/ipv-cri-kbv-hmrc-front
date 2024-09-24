@@ -276,7 +276,6 @@ Resources:
           - UseCanaryDeployment
           - CODE_DEPLOY
           - ECS
-      DesiredCount: 2
       EnableECSManagedTags: false
       HealthCheckGracePeriodSeconds: 60
       LaunchType: FARGATE
