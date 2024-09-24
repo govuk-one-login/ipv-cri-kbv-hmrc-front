@@ -666,7 +666,7 @@ Resources:
         SSEType: KMS
 
   # ECS Autoscaling
-  EcsAutoScalingTarget:
+  ECSAutoScalingTarget:
     Condition: IsPerformance
     Type: AWS::ApplicationAutoScaling::ScalableTarget
     Properties:
@@ -683,7 +683,7 @@ Resources:
 
   EcsStepScaleOutPolicy:
     Condition: IsPerformance
-    DependsOn: EcsAutoScalingTarget
+    DependsOn: ECSAutoScalingTarget
     Type: AWS::ApplicationAutoScaling::ScalingPolicy
     Properties:
       PolicyName: EcsStepScalingOutPolicy
@@ -728,7 +728,7 @@ Resources:
 
   EcsStepScaleInPolicy:
     Condition: IsPerformance
-    DependsOn: EcsAutoScalingTarget
+    DependsOn: ECSAutoScalingTarget
     Type: AWS::ApplicationAutoScaling::ScalingPolicy
     Properties:
       PolicyName: EcsStepScalingInPolicy
@@ -759,7 +759,7 @@ Resources:
 
   EcsStepScaleOutAlarm:
     Condition: IsPerformance
-    DependsOn: EcsAutoScalingTarget
+    DependsOn: ECSAutoScalingTarget
     Type: AWS::CloudWatch::Alarm
     Properties:
       ActionsEnabled: true
@@ -783,7 +783,7 @@ Resources:
 
   EcsStepScaleInAlarm:
     Condition: IsPerformance
-    DependsOn: EcsAutoScalingTarget
+    DependsOn: ECSAutoScalingTarget
     Type: AWS::CloudWatch::Alarm
     Properties:
       ActionsEnabled: true
