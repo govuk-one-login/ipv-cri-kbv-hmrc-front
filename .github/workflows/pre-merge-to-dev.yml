@@ -1,8 +1,8 @@
 name: Deploy to dev
 on:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - LIME-1238-4
   workflow_dispatch: # Deploy Manually
 
 jobs:

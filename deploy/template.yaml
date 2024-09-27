@@ -203,6 +203,9 @@ Resources:
       HealthCheckEnabled: TRUE
       HealthCheckProtocol: HTTP
       HealthCheckPath: /healthcheck
+      HealthCheckTimeoutSeconds: 14
+      HealthCheckIntervalSeconds: 15
+      HealthyThresholdCount: 2
       Matcher:
         HttpCode: 200
       Port: 8080
@@ -242,28 +245,6 @@ Resources:
       LoadBalancerArn: !Ref LoadBalancer
       Port: 80
       Protocol: HTTP
-
-  PrivateLoadBalancerListenerTargetGroupECS:
-    Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
-    Properties:
-      HealthCheckEnabled: TRUE
-      HealthCheckProtocol: HTTP
-      HealthCheckPath: /healthcheck
-      HealthCheckTimeoutSeconds: 14
-      HealthCheckIntervalSeconds: 15
-      HealthyThresholdCount: 2
-      Matcher:
-        HttpCode: 200
-      Port: 80
-      Protocol: HTTP
-      TargetType: ip
-      VpcId:
-        Fn::ImportValue: !Sub ${VpcStackName}-VpcId
-      TargetGroupAttributes:
-        # AWS suggests setting this higher than the idle timeout of the load balancer (default 60s) to prevent possible 504 errors
-        # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html#http-502-issues
-        - Key: deregistration_delay.timeout_seconds
-          Value: 65
 
   # ECS cluster, service and task definition
   EcsCluster:
