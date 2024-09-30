@@ -46,7 +46,6 @@ Conditions:
     - !Equals [!Ref Environment, production]
   IsProduction: !Equals [!Ref Environment, production]
   IsPerformance: !Or
-    - !Equals [!Ref Environment, dev]
     - !Equals [!Ref Environment, build]
     - !Equals [!Ref Environment, production]
   UsePermissionsBoundary: !Not
