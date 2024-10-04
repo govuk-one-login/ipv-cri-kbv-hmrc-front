@@ -37,6 +37,10 @@ Parameters:
     Description: "Predefined deployment configuration for ECS application"
     Type: String
     Default: "None"
+  LogGroupRetentionInDays:
+    Description: "Retention for all log groups"
+    Type: Number
+    Default: "30"
 
 Conditions:
   IsNotDevelopment: !Or
@@ -319,7 +323,7 @@ Resources:
     Type: AWS::Logs::LogGroup
     Properties:
       LogGroupName: !Sub /aws/vendedlogs/ecs/${AWS::StackName}-Front-ECS
-      RetentionInDays: 14
+      RetentionInDays: !Ref LogGroupRetentionInDays
 
   ECSAccessLogsGroupSubscriptionFilterCSLS:
     Type: AWS::Logs::SubscriptionFilter
@@ -638,7 +642,7 @@ Resources:
     Type: AWS::Logs::LogGroup
     Properties:
       LogGroupName: !Sub /aws/vendedlogs/apigateway/${AWS::StackName}-API-GW-AccessLogs
-      RetentionInDays: 30
+      RetentionInDays: !Ref LogGroupRetentionInDays
 
   APIGWAccessLogsGroupSubscriptionFilterCSLS:
     Type: AWS::Logs::SubscriptionFilter
