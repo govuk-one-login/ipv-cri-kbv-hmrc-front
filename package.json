@@ -36,7 +36,7 @@
     "govuk-frontend": "4.8.0",
     "hmpo-app": "3.0.2",
     "hmpo-components": "6.5.1",
-    "hmpo-form-wizard": "13.0.1",
+    "hmpo-form-wizard": "13.0.2",
     "hmpo-i18n": "6.0.2",
     "hmpo-logger": "7.0.2",
     "nunjucks": "3.2.4"
