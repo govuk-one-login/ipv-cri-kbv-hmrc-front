@@ -31,6 +31,10 @@ Set the [environment variables](./environment-variables.md) accordingly.
 
 ### Running the tests
 
+Run imposter from the `../imposter` directory - see the `README.md` file there for details.
+
+Start the web server by running `npm run start` in the root directory
+
 ```
 npm run test:browser
 ```
