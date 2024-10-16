@@ -206,8 +206,8 @@ Resources:
       HealthCheckEnabled: TRUE
       HealthCheckProtocol: HTTP
       HealthCheckPath: /healthcheck
-      HealthCheckTimeoutSeconds: 14
-      HealthCheckIntervalSeconds: 15
+      HealthCheckTimeoutSeconds: 2
+      HealthCheckIntervalSeconds: 5
       HealthyThresholdCount: 2
       Matcher:
         HttpCode: 200
