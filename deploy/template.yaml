@@ -284,7 +284,10 @@ Resources:
           - CODE_DEPLOY
           - ECS
       EnableECSManagedTags: false
-      HealthCheckGracePeriodSeconds: 60
+      HealthCheckGracePeriodSeconds: !If
+        - UseCanaryDeployment
+        - !Ref AWS::NoValue
+        - 60
       LaunchType: FARGATE
       LoadBalancers: !If
         - UseCanaryDeployment
