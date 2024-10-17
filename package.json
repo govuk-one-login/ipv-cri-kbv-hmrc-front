@@ -35,7 +35,7 @@
     "express-session": "1.18.1",
     "govuk-frontend": "4.9.0",
     "hmpo-app": "3.0.2",
-    "hmpo-components": "6.5.1",
+    "hmpo-components": "7.0.0",
     "hmpo-form-wizard": "13.0.2",
     "hmpo-i18n": "7.0.0",
     "hmpo-logger": "8.0.0",
