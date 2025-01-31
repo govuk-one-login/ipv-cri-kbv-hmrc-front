@@ -65,22 +65,42 @@ Mappings:
       dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables
       ga4Disabled: "false"
       uaDisabled: "false"
+      minECSCount: 1
+      maxECSCount: 1
+      cpu: 256
+      memory: 512
     build:
       dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables
       ga4Disabled: "false"
       uaDisabled: "false"
+      minECSCount: 0
+      maxECSCount: 0
+      cpu: 256
+      memory: 512
     staging:
       dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables
       ga4Disabled: "false"
       uaDisabled: "false"
+      minECSCount: 0
+      maxECSCount: 0
+      cpu: 256
+      memory: 512
     integration:
       dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables
       ga4Disabled: "true"
       uaDisabled: "false"
+      minECSCount: 0
+      maxECSCount: 0
+      cpu: 256
+      memory: 512
     production:
       dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceProductionVariables
       ga4Disabled: "true"
       uaDisabled: "false"
+      minECSCount: 0
+      maxECSCount: 0
+      cpu: 256
+      memory: 512
   # see https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html
   ElasticLoadBalancerAccountIds:
     eu-west-2:
@@ -203,7 +223,7 @@ Resources:
   LoadBalancerListenerTargetGroupECS:
     Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
     Properties:
-      HealthCheckEnabled: TRUE
+      HealthCheckEnabled: true
       HealthCheckProtocol: HTTP
       HealthCheckPath: /healthcheck
       HealthCheckTimeoutSeconds: 2
@@ -223,7 +243,7 @@ Resources:
   LoadBalancerListenerGreenTargetGroupECS:
     Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
     Properties:
-      HealthCheckEnabled: TRUE
+      HealthCheckEnabled: true
       HealthCheckProtocol: HTTP
       HealthCheckPath: /healthcheck
       Matcher:
@@ -422,9 +442,9 @@ Resources:
               awslogs-group: !Ref ECSAccessLogsGroup
               awslogs-region: !Sub ${AWS::Region}
               awslogs-stream-prefix: !Sub ${AWS::StackName}-${Environment}
-      Cpu: "256"
+      Cpu: !FindInMap [EnvironmentConfiguration, !Ref Environment, cpu]
       ExecutionRoleArn: !GetAtt ECSTaskExecutionRole.Arn
-      Memory: "512"
+      Memory: !FindInMap [EnvironmentConfiguration, !Ref Environment, memory]
       NetworkMode: awsvpc
       RequiresCompatibilities:
         - FARGATE
@@ -677,11 +697,12 @@ Resources:
 
   # ECS Autoscaling
   ECSAutoScalingTarget:
-    Condition: IsPerformance
     Type: AWS::ApplicationAutoScaling::ScalableTarget
     Properties:
-      MaxCapacity: 1
-      MinCapacity: 1
+      MaxCapacity:
+        !FindInMap [EnvironmentConfiguration, !Ref Environment, maxECSCount]
+      MinCapacity:
+        !FindInMap [EnvironmentConfiguration, !Ref Environment, minECSCount]
       ResourceId: !Join
         - "/"
         - - "service"
@@ -692,7 +713,6 @@ Resources:
       ServiceNamespace: ecs
 
   EcsStepScaleOutPolicy:
-    Condition: IsPerformance
     DependsOn: ECSAutoScalingTarget
     Type: AWS::ApplicationAutoScaling::ScalingPolicy
     Properties:
@@ -734,7 +754,6 @@ Resources:
             # on Fargate, so leave the upper bound open
 
   EcsStepScaleInPolicy:
-    Condition: IsPerformance
     DependsOn: ECSAutoScalingTarget
     Type: AWS::ApplicationAutoScaling::ScalingPolicy
     Properties:
