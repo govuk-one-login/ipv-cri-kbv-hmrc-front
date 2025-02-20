@@ -304,7 +304,6 @@ Resources:
           DeploymentCircuitBreaker:
             Enable: !If [ EnableSpotArmInstance, FALSE, TRUE ]
             Rollback: !If [ EnableSpotArmInstance, FALSE, TRUE ]
-            DesiredCount: 2
       DeploymentController:
         Type: !If
           - UseCanaryDeployment
