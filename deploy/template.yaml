@@ -664,7 +664,7 @@ Resources:
           "responseLatency":"$context.responseLatency"
           }
 
-    CloudFrontWAFv2ACLAssociation:
+  CloudFrontWAFv2ACLAssociation:
     Type: AWS::WAFv2::WebACLAssociation
     Properties:
       ResourceArn: !Ref LoadBalancer
