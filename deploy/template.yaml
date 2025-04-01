@@ -25,7 +25,7 @@ Parameters:
       run.
     Type: String
   PermissionsBoundary:
-    Description: "The ARN of the permissions boundary to apply when creating IAM roles"
+    Description: "The ARN of the permissions boundary to apply when creating IAM roles."
     Type: String
     Default: "none"
   CodeSigningConfigArn:
@@ -58,11 +58,12 @@ Conditions:
     - !Equals [!Ref CodeSigningConfigArn, "none"]
   UseCanaryDeployment: !Not
     - !Equals [!Ref DeploymentStrategy, "None"]
+  EnableSpotArmInstance: !Equals [!Ref Environment, dev]
 
 Mappings:
   EnvironmentConfiguration:
     dev:
-      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables
+      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables # pragma: allowlist secret
       ga4Disabled: "false"
       uaDisabled: "false"
       minECSCount: 1
@@ -70,7 +71,7 @@ Mappings:
       cpu: 256
       memory: 512
     build:
-      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables
+      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables # pragma: allowlist secret
       ga4Disabled: "false"
       uaDisabled: "false"
       minECSCount: 0
@@ -78,7 +79,7 @@ Mappings:
       cpu: 256
       memory: 512
     staging:
-      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables
+      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables # pragma: allowlist secret
       ga4Disabled: "false"
       uaDisabled: "false"
       minECSCount: 0
@@ -86,7 +87,7 @@ Mappings:
       cpu: 256
       memory: 512
     integration:
-      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables
+      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables # pragma: allowlist secret
       ga4Disabled: "true"
       uaDisabled: "false"
       minECSCount: 0
@@ -94,7 +95,7 @@ Mappings:
       cpu: 256
       memory: 512
     production:
-      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceProductionVariables
+      dynatraceSecretArn: arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceProductionVariables # pragma: allowlist secret
       ga4Disabled: "true"
       uaDisabled: "false"
       minECSCount: 0
@@ -279,6 +280,8 @@ Resources:
       ClusterSettings:
         - Name: containerInsights
           Value: enabled
+      CapacityProviders:
+        - !If [EnableSpotArmInstance, "FARGATE_SPOT", "FARGATE"]
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-ECSCluster"
@@ -299,8 +302,8 @@ Resources:
         - MaximumPercent: 200
           MinimumHealthyPercent: 50
           DeploymentCircuitBreaker:
-            Enable: TRUE
-            Rollback: TRUE
+            Enable: !If [EnableSpotArmInstance, FALSE, TRUE]
+            Rollback: !If [EnableSpotArmInstance, FALSE, TRUE]
       DeploymentController:
         Type: !If
           - UseCanaryDeployment
@@ -451,6 +454,8 @@ Resources:
       NetworkMode: awsvpc
       RequiresCompatibilities:
         - FARGATE
+      RuntimePlatform:
+        CpuArchitecture: !If [EnableSpotArmInstance, "ARM64", "X86_64"]
       TaskRoleArn: !GetAtt ECSTaskRole.Arn
       Tags:
         - Key: Name
@@ -499,13 +504,13 @@ Resources:
                 Action:
                   - "secretsmanager:GetSecretValue" #pragma: allowlist secret
                 Resource:
-                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables*"
-                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceProductionVariables*"
+                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables*" # pragma: allowlist secret
+                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceProductionVariables*" # pragma: allowlist secret
               - Effect: Allow
                 Action:
                   - "secretsmanager:ListSecrets" #pragma: allowlist secret
                 Resource:
-                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:*"
+                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:*" # pragma: allowlist secret
               - Effect: Allow
                 Action:
                   - "kms:Decrypt"
@@ -552,13 +557,13 @@ Resources:
                 Action:
                   - "secretsmanager:GetSecretValue" #pragma: allowlist secret
                 Resource:
-                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables*"
-                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceProductionVariables*"
+                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceNonProductionVariables*" # pragma: allowlist secret
+                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:DynatraceProductionVariables*" # pragma: allowlist secret
               - Effect: Allow
                 Action:
                   - "secretsmanager:ListSecrets" #pragma: allowlist secret
                 Resource:
-                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:*"
+                  - "arn:aws:secretsmanager:eu-west-2:216552277552:secret:*" # pragma: allowlist secret
               - Effect: Allow
                 Action:
                   - "kms:Decrypt"
