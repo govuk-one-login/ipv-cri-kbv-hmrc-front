@@ -25,7 +25,7 @@ Parameters:
       run.
     Type: String
   PermissionsBoundary:
-    Description: "The ARN of the permissions boundary to apply when creating IAM roles"
+    Description: "The ARN of the permissions boundary to apply when creating IAM roles."
     Type: String
     Default: "none"
   CodeSigningConfigArn:
@@ -302,8 +302,8 @@ Resources:
         - MaximumPercent: 200
           MinimumHealthyPercent: 50
           DeploymentCircuitBreaker:
-            Enable: !If [ EnableSpotArmInstance, FALSE, TRUE ]
-            Rollback: !If [ EnableSpotArmInstance, FALSE, TRUE ]
+            Enable: !If [EnableSpotArmInstance, FALSE, TRUE]
+            Rollback: !If [EnableSpotArmInstance, FALSE, TRUE]
       DeploymentController:
         Type: !If
           - UseCanaryDeployment
