@@ -46,6 +46,6 @@ jobs:
           container-sign-kms-key-arn: ${{ secrets.DEV_CONTAINER_SIGN_KMS_KEY }}
           template-file: deploy/template.yaml
           docker-build-path: .
-          dockerfile: dev.Dockerfile
+          dockerfile: Dockerfile
           role-to-assume-arn: ${{ secrets.DEV_GH_ACTIONS_ROLE_ARN }}
           ecr-repo-name: ${{ secrets.DEV_ECR_NAME_FRONT }}
