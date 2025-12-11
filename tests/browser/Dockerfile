@@ -4,7 +4,7 @@ WORKDIR /tests
 
 COPY package.json package-lock.json ./
 
-RUN npm install
+RUN npm ci --frozen-lockfile
 
 COPY . ./
 

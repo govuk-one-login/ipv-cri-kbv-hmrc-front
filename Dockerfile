@@ -3,7 +3,7 @@ FROM --platform="linux/arm64" arm64v8/node@sha256:b16c4e21f9e9e4d02c226d7b2dde32
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --frozen-lockfile
 
 COPY /src ./src
 RUN npm run build
